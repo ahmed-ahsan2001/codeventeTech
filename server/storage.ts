@@ -1,4 +1,4 @@
-import { users, contacts, newsletters, type User, type InsertUser, type Contact, type InsertContact, type Newsletter, type InsertNewsletter } from "@shared/schema";
+import { users, contacts, newsletters, jobApplications, type User, type InsertUser, type Contact, type InsertContact, type Newsletter, type InsertNewsletter, type JobApplication, type InsertJobApplication } from "@shared/schema";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -8,23 +8,29 @@ export interface IStorage {
   getContacts(): Promise<Contact[]>;
   createNewsletter(newsletter: InsertNewsletter): Promise<Newsletter>;
   getNewsletters(): Promise<Newsletter[]>;
+  createJobApplication(application: InsertJobApplication & { resumeFileName?: string }): Promise<JobApplication>;
+  getJobApplications(): Promise<JobApplication[]>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private contacts: Map<number, Contact>;
   private newsletters: Map<number, Newsletter>;
+  private jobApplications: Map<number, JobApplication>;
   private currentUserId: number;
   private currentContactId: number;
   private currentNewsletterId: number;
+  private currentJobApplicationId: number;
 
   constructor() {
     this.users = new Map();
     this.contacts = new Map();
     this.newsletters = new Map();
+    this.jobApplications = new Map();
     this.currentUserId = 1;
     this.currentContactId = 1;
     this.currentNewsletterId = 1;
+    this.currentJobApplicationId = 1;
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -83,6 +89,23 @@ export class MemStorage implements IStorage {
 
   async getNewsletters(): Promise<Newsletter[]> {
     return Array.from(this.newsletters.values()).sort(
+      (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+    );
+  }
+
+  async createJobApplication(insertJobApplication: InsertJobApplication & { resumeFileName?: string }): Promise<JobApplication> {
+    const id = this.currentJobApplicationId++;
+    const jobApplication: JobApplication = { 
+      ...insertJobApplication, 
+      id, 
+      createdAt: new Date()
+    };
+    this.jobApplications.set(id, jobApplication);
+    return jobApplication;
+  }
+
+  async getJobApplications(): Promise<JobApplication[]> {
+    return Array.from(this.jobApplications.values()).sort(
       (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
     );
   }

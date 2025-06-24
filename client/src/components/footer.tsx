@@ -97,9 +97,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Careers
-                </span>
+                <Link href="/careers">
+                  <span className="text-slate-300 hover:text-white transition-colors cursor-pointer">
+                    Careers
+                  </span>
+                </Link>
               </li>
               <li>
                 <span className="text-slate-300 hover:text-white transition-colors cursor-pointer">

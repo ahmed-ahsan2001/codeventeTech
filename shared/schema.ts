@@ -26,6 +26,24 @@ export const newsletters = pgTable("newsletters", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+export const jobApplications = pgTable("job_applications", {
+  id: serial("id").primaryKey(),
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone"),
+  position: text("position").notNull(),
+  experience: text("experience").notNull(),
+  coverLetter: text("cover_letter").notNull(),
+  resumeFileName: text("resume_file_name"),
+  portfolioUrl: text("portfolio_url"),
+  linkedinUrl: text("linkedin_url"),
+  availability: text("availability"),
+  salary: text("salary"),
+  remote: boolean("remote").default(false),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -47,9 +65,29 @@ export const insertNewsletterSchema = createInsertSchema(newsletters).omit({
   email: z.string().email("Please enter a valid email address"),
 });
 
+export const insertJobApplicationSchema = createInsertSchema(jobApplications).omit({
+  id: true,
+  createdAt: true,
+  resumeFileName: true,
+}).extend({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().optional(),
+  position: z.string().min(1, "Position is required"),
+  experience: z.string().min(1, "Experience level is required"),
+  coverLetter: z.string().min(50, "Cover letter must be at least 50 characters long"),
+  portfolioUrl: z.string().url("Please enter a valid URL").optional().or(z.literal("")),
+  linkedinUrl: z.string().url("Please enter a valid URL").optional().or(z.literal("")),
+  availability: z.string().optional(),
+  salary: z.string().optional(),
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type Contact = typeof contacts.$inferSelect;
 export type InsertContact = z.infer<typeof insertContactSchema>;
 export type Newsletter = typeof newsletters.$inferSelect;
 export type InsertNewsletter = z.infer<typeof insertNewsletterSchema>;
+export type JobApplication = typeof jobApplications.$inferSelect;
+export type InsertJobApplication = z.infer<typeof insertJobApplicationSchema>;

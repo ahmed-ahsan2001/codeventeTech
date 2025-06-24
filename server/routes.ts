@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSchema, insertNewsletterSchema } from "@shared/schema";
+import { insertContactSchema, insertNewsletterSchema, insertJobApplicationSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission
@@ -74,6 +74,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(newsletters);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch newsletters" });
+    }
+  });
+
+  // Job application submission
+  app.post("/api/job-applications", async (req, res) => {
+    try {
+      const validatedData = insertJobApplicationSchema.parse(req.body);
+      const jobApplication = await storage.createJobApplication(validatedData);
+      res.json({ success: true, message: "Thank you for your application! We'll review it and get back to you within 1-2 weeks." });
+    } catch (error: any) {
+      if (error.issues) {
+        // Zod validation error
+        res.status(400).json({ 
+          success: false, 
+          message: "Validation failed",
+          errors: error.issues.map((issue: any) => ({
+            field: issue.path.join('.'),
+            message: issue.message
+          }))
+        });
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to submit application. Please try again." 
+        });
+      }
+    }
+  });
+
+  // Get job applications (admin endpoint)
+  app.get("/api/job-applications", async (req, res) => {
+    try {
+      const jobApplications = await storage.getJobApplications();
+      res.json(jobApplications);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch job applications" });
     }
   });
 
