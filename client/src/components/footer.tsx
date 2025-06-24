@@ -69,9 +69,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/services">
+                <Link href="/courses">
                   <span className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                    UI/UX Design
+                    Professional Courses
                   </span>
                 </Link>
               </li>

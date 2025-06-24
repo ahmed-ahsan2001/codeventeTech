@@ -1,4 +1,4 @@
-import { users, contacts, newsletters, jobApplications, type User, type InsertUser, type Contact, type InsertContact, type Newsletter, type InsertNewsletter, type JobApplication, type InsertJobApplication } from "@shared/schema";
+import { users, contacts, newsletters, jobApplications, courseEnrollments, type User, type InsertUser, type Contact, type InsertContact, type Newsletter, type InsertNewsletter, type JobApplication, type InsertJobApplication, type CourseEnrollment, type InsertCourseEnrollment } from "@shared/schema";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -10,6 +10,8 @@ export interface IStorage {
   getNewsletters(): Promise<Newsletter[]>;
   createJobApplication(application: InsertJobApplication & { resumeFileName?: string }): Promise<JobApplication>;
   getJobApplications(): Promise<JobApplication[]>;
+  createCourseEnrollment(enrollment: InsertCourseEnrollment): Promise<CourseEnrollment>;
+  getCourseEnrollments(): Promise<CourseEnrollment[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -17,20 +19,24 @@ export class MemStorage implements IStorage {
   private contacts: Map<number, Contact>;
   private newsletters: Map<number, Newsletter>;
   private jobApplications: Map<number, JobApplication>;
+  private courseEnrollments: Map<number, CourseEnrollment>;
   private currentUserId: number;
   private currentContactId: number;
   private currentNewsletterId: number;
   private currentJobApplicationId: number;
+  private currentCourseEnrollmentId: number;
 
   constructor() {
     this.users = new Map();
     this.contacts = new Map();
     this.newsletters = new Map();
     this.jobApplications = new Map();
+    this.courseEnrollments = new Map();
     this.currentUserId = 1;
     this.currentContactId = 1;
     this.currentNewsletterId = 1;
     this.currentJobApplicationId = 1;
+    this.currentCourseEnrollmentId = 1;
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -106,6 +112,23 @@ export class MemStorage implements IStorage {
 
   async getJobApplications(): Promise<JobApplication[]> {
     return Array.from(this.jobApplications.values()).sort(
+      (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+    );
+  }
+
+  async createCourseEnrollment(insertCourseEnrollment: InsertCourseEnrollment): Promise<CourseEnrollment> {
+    const id = this.currentCourseEnrollmentId++;
+    const courseEnrollment: CourseEnrollment = { 
+      ...insertCourseEnrollment, 
+      id, 
+      createdAt: new Date()
+    };
+    this.courseEnrollments.set(id, courseEnrollment);
+    return courseEnrollment;
+  }
+
+  async getCourseEnrollments(): Promise<CourseEnrollment[]> {
+    return Array.from(this.courseEnrollments.values()).sort(
       (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
     );
   }

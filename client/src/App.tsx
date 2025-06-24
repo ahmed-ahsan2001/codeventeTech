@@ -11,6 +11,7 @@ import Services from "@/pages/services";
 import Portfolio from "@/pages/portfolio";
 import Contact from "@/pages/contact";
 import Careers from "@/pages/careers";
+import Courses from "@/pages/courses";
 import NotFound from "@/pages/404";
 
 function Router() {
