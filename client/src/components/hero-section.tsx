@@ -97,7 +97,7 @@ export default function HeroSection() {
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white hover:text-slate-900 transition-all duration-200"
+              className="border-2 border-white text-white bg-transparent px-8 py-4 font-semibold hover:bg-white hover:text-slate-900 transition-all duration-200 backdrop-blur-sm"
             >
               View Our Work
             </Button>
