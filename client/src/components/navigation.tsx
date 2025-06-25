@@ -256,8 +256,7 @@ export default function Navigation() {
         )}
       </AnimatePresence>
 
-      {/* Spacer to prevent content from going under fixed nav */}
-      <div className="h-16 lg:h-20" />
+
     </>
   );
 }
