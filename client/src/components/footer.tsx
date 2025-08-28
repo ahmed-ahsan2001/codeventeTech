@@ -103,11 +103,6 @@ export default function Footer() {
                   </span>
                 </Link>
               </li>
-              <li>
-                <span className="text-slate-300 hover:text-white transition-colors cursor-pointer">
-                  Blog
-                </span>
-              </li>
             </ul>
           </div>
 
