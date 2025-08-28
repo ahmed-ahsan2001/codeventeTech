@@ -110,9 +110,6 @@ export default function Navigation() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button className="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-6 xl:px-8 py-2 xl:py-3 font-medium hover:from-blue-700 hover:to-violet-700 transition-all duration-200 shadow-lg hover:shadow-xl">
-                    Get Started
-                  </Button>
                 </motion.div>
               </Link>
             </div>
