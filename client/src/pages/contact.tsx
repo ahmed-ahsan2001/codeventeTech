@@ -3,13 +3,34 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from "@emailjs/browser";
-import { Mail, Phone, MapPin, Share2, Linkedin, Twitter, Github, Instagram, Map } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Twitter,
+  Github,
+  Instagram,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import SEOHead from "@/components/seo-head";
 import { insertContactSchema, type InsertContact } from "@shared/schema";
@@ -39,9 +60,10 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        "service_dy8se8c",       // ✅ Your service ID
-        "template_mfes4vk",      // ⚠️ Replace with your actual template ID
+        "service_dy8se8c", // ✅ Your EmailJS service ID
+        "template_mfes4vk", // ✅ Your EmailJS template ID
         {
+          to_email: "ahmedbawany2001@gmail.com", // ✅ recipient email (MUST match your template variable)
           user_name: data.name,
           user_email: data.email,
           company: data.company || "N/A",
@@ -50,17 +72,18 @@ export default function Contact() {
           message: data.message,
           newsletter: data.newsletter ? "Yes" : "No",
         },
-        "-99YvMRnAdyvXUCB2"        // ⚠️ Replace with your actual EmailJS public key
+        "-99YvMRnAdyvXUCB2" // ✅ Your EmailJS public key
       );
 
       toast({
         title: "Message Sent!",
-        description: "Your message has been successfully delivered to CodeVente.",
+        description:
+          "Your message has been successfully delivered to CodeVente.",
       });
 
       form.reset();
     } catch (error: any) {
-      console.error(error);
+      console.error("EmailJS error:", error);
       toast({
         title: "Failed to send message",
         description: error?.text || "Please try again later.",
@@ -96,7 +119,8 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Ready to transform your digital presence? Let's start the conversation.
+            Ready to transform your digital presence? Let's start the
+            conversation.
           </motion.p>
         </div>
       </section>
@@ -105,17 +129,22 @@ export default function Contact() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
-            
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold text-slate-900 mb-8">Send us a message</h2>
-              
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">
+                Send us a message
+              </h2>
+
               <Form {...form}>
-                <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form
+                  ref={formRef}
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6"
+                >
                   <FormField
                     control={form.control}
                     name="name"
@@ -123,7 +152,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Full Name *</FormLabel>
                         <FormControl>
-                          <Input {...field} className="py-3" />
+                          <Input {...field} className="py-3" required />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -137,7 +166,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Email Address *</FormLabel>
                         <FormControl>
-                          <Input type="email" {...field} className="py-3" />
+                          <Input type="email" {...field} className="py-3" required />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -164,18 +193,27 @@ export default function Contact() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Service Needed</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
                           <FormControl>
                             <SelectTrigger className="py-3">
                               <SelectValue placeholder="Select a service" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="web-development">Web Development</SelectItem>
-                            <SelectItem value="digital-marketing">Digital Marketing</SelectItem>
+                            <SelectItem value="web-development">
+                              Web Development
+                            </SelectItem>
+                            <SelectItem value="digital-marketing">
+                              Digital Marketing
+                            </SelectItem>
                             <SelectItem value="seo">SEO Optimization</SelectItem>
                             <SelectItem value="ui-ux">UI/UX Design</SelectItem>
-                            <SelectItem value="consultation">Tech Consultation</SelectItem>
+                            <SelectItem value="consultation">
+                              Tech Consultation
+                            </SelectItem>
                             <SelectItem value="other">Other</SelectItem>
                           </SelectContent>
                         </Select>
@@ -190,7 +228,10 @@ export default function Contact() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Project Budget</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
                           <FormControl>
                             <SelectTrigger className="py-3">
                               <SelectValue placeholder="Select budget range" />
@@ -221,6 +262,7 @@ export default function Contact() {
                             rows={6}
                             placeholder="Tell us about your project, goals, and timeline..."
                             className="resize-vertical"
+                            required
                           />
                         </FormControl>
                         <FormMessage />
@@ -241,7 +283,8 @@ export default function Contact() {
                         </FormControl>
                         <div className="space-y-1 leading-none">
                           <FormLabel className="text-sm text-slate-600">
-                            I'd like to receive updates about digital marketing trends and CodeVente news
+                            I'd like to receive updates about digital marketing trends
+                            and CodeVente news.
                           </FormLabel>
                         </div>
                       </FormItem>
@@ -259,8 +302,34 @@ export default function Contact() {
               </Form>
             </motion.div>
 
-            {/* Contact Info Section (unchanged) */}
-            {/* ... keep your existing contact info and map code as-is ... */}
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">
+                Contact Information
+              </h2>
+              <p className="text-slate-600 mb-8">
+                We'd love to hear from you! Reach out via email or social media.
+              </p>
+
+              <ul className="space-y-4 text-slate-700">
+                <li className="flex items-center space-x-3">
+                  <Mail className="w-5 h-5 text-blue-600" />
+                  <span>{COMPANY_INFO.email}</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <Phone className="w-5 h-5 text-blue-600" />
+                  <span>{COMPANY_INFO.phone}</span>
+                </li>
+                <li className="flex items-center space-x-3">
+                  <MapPin className="w-5 h-5 text-blue-600" />
+                  <span>{COMPANY_INFO.address}</span>
+                </li>
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
