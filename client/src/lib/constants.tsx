@@ -1,15 +1,15 @@
 export const COMPANY_INFO = {
   name: "CodeVente",
   tagline: "Empowering Innovation, Delivering Digital Solutions",
-  email: "hello@codevente.com",
-  supportEmail: "support@codevente.com",
-  phone: "+1 (555) 123-4567",
+  email: "",
+  supportEmail: "",
+  phone: "+92 312 2739457",
   address: {
-    street: "123 Innovation Drive",
-    city: "Tech Valley",
+    street: "Karachi",
+    city: "",
     state: "CA",
-    zip: "94105",
-    country: "United States"
+    zip: "75500",
+    country: "Pakistan"
   }
 };
 
