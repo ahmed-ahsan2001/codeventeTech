@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, ExternalLink, GraduationCap, Clock, Users } from "lucide-react";
+import { ArrowRight, ExternalLink, GraduationCap, Clock, Users, MessageCircle } from "lucide-react"; // ✅ Added MessageCircle
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,11 +9,16 @@ import HeroSection from "@/components/hero-section";
 import ServicesOverview from "@/components/services-overview";
 import TestimonialsCarousel from "@/components/testimonials-carousel";
 import NewsletterSignup from "@/components/newsletter-signup";
-import { PORTFOLIO_PROJECTS, COURSES } from "@/lib/constants";
+import { PORTFOLIO_PROJECTS, COMPANY_INFO } from "@/lib/constants"; // ✅ optional: use company info if phone available
 
 export default function Home() {
   const recentProjects = PORTFOLIO_PROJECTS.slice(0, 3);
-  const featuredCourses = COURSES.slice(0, 3);
+ 
+
+  // ✅ Define your WhatsApp link — replace with your business number
+  const whatsappNumber = COMPANY_INFO?.whatsapp || "+923122739457";
+  const whatsappMessage = encodeURIComponent("Hi! I'm interested in your services.");
+  const whatsappLink = `https://wa.me/${whatsappNumber.replace("+", "")}?text=${whatsappMessage}`;
 
   return (
     <>
@@ -117,7 +122,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredCourses.map((course, index) => (
               <motion.div
                 key={course.id}
@@ -171,7 +176,7 @@ export default function Home() {
                 </Card>
               </motion.div>
             ))}
-          </div>
+          </div> */}
 
           <motion.div
             className="text-center mt-12"
@@ -195,6 +200,16 @@ export default function Home() {
 
       {/* Newsletter Signup */}
       <NewsletterSignup />
+
+      {/* ✅ WhatsApp Floating Button */}
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-transform hover:scale-110"
+      >
+        <MessageCircle className="w-6 h-6" />
+      </a>
     </>
   );
 }

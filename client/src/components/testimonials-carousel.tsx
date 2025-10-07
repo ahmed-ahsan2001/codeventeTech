@@ -66,11 +66,6 @@ export default function TestimonialsCarousel() {
                       "{TESTIMONIALS[currentIndex].content}"
                     </blockquote>
                     <div className="flex items-center">
-                      <img
-                        src={TESTIMONIALS[currentIndex].avatar}
-                        alt={`${TESTIMONIALS[currentIndex].author} profile`}
-                        className="w-12 h-12 rounded-full mr-4 object-cover"
-                      />
                       <div>
                         <div className="font-semibold text-white">
                           {TESTIMONIALS[currentIndex].author}
