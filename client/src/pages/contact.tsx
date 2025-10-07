@@ -50,7 +50,7 @@ export default function Contact() {
           message: data.message,
           newsletter: data.newsletter ? "Yes" : "No",
         },
-        "99YvMRnAdyvXUCB2"        // ⚠️ Replace with your actual EmailJS public key
+        "-99YvMRnAdyvXUCB2"        // ⚠️ Replace with your actual EmailJS public key
       );
 
       toast({
