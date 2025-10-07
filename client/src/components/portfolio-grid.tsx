@@ -16,11 +16,14 @@ export default function PortfolioGrid() {
     { id: "design", label: "UI/UX Design" },
   ];
 
-  const filteredProjects = activeFilter === "all" 
-    ? PORTFOLIO_PROJECTS 
-    : PORTFOLIO_PROJECTS.filter(project => project.category === activeFilter);
+  const filteredProjects =
+    activeFilter === "all"
+      ? PORTFOLIO_PROJECTS
+      : PORTFOLIO_PROJECTS.filter(
+          (project) => project.category === activeFilter
+        );
 
-  const getCategoryColor = (category: string) => {
+  const getCategoryColor = (category: String) => {
     switch (category) {
       case "web":
         return "bg-blue-100 text-blue-800";
@@ -33,7 +36,7 @@ export default function PortfolioGrid() {
     }
   };
 
-  const getCategoryLabel = (category: string) => {
+  const getCategoryLabel = (category: String) => {
     switch (category) {
       case "web":
         return "Web Development";
@@ -96,14 +99,36 @@ export default function PortfolioGrid() {
                       ))}
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2">{project.title}</h3>
+
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                    {project.title}
+                  </h3>
                   <p className="text-slate-600 mb-4">{project.description}</p>
+
                   <div className="flex items-center justify-between mb-4">
-                    <div className="text-sm text-slate-500">{project.technologies}</div>
-                    <Button variant="ghost" size="sm" className="p-2">
-                      <ExternalLink className="w-5 h-5" />
-                    </Button>
+                    <div className="text-sm text-slate-500">
+                      {project.technologies}
+                    </div>
+
+                    {/* ✅ Open Live Project */}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="View Live Project"
+                      >
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="p-2 hover:bg-slate-100"
+                        >
+                          <ExternalLink className="w-5 h-5" />
+                        </Button>
+                      </a>
+                    )}
                   </div>
+
                   <div className="pt-4 border-t border-slate-100">
                     <div className="text-sm text-slate-600">
                       <strong>Results:</strong> {project.results}

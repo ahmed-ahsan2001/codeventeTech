@@ -94,7 +94,7 @@ export const PORTFOLIO_PROJECTS = [
     category: "web",
     image: "https://ik.imagekit.io/zakariamasjid/Screenshot%202025-10-07%20at%2010.29.26%E2%80%AFPM.png?updatedAt=1759858270613",
     technologies: "React, Node.js, Firebase",
-    results: "",
+    results: "High User Interation, Spirituality",
     rating: 5,
     link: "https://zakariamasjid.com"
   },
@@ -110,12 +110,12 @@ export const PORTFOLIO_PROJECTS = [
   },
   {
     id: 3,
-    title: "FoodTech Marketing Campaign",
-    description: "Multi-channel marketing strategy for food delivery startup including social media, PPC, and influencer partnerships.",
-    category: "marketing",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
-    technologies: "Google Ads, Facebook, Instagram",
-    results: "250% ROI, 150% increase in app downloads",
+    title: "Khadija Tul Kubra Website",
+    description: "Website Development, Payment gateway",
+    category: "web",
+    image: "https://ik.imagekit.io/zakariamasjid/Screenshot%202025-10-07%20at%2010.51.16%E2%80%AFPM.png?updatedAt=1759859501345",
+    technologies: "React, Node.js, Firebase, Pay Pro API",
+    results: "High Donation Rate",
     rating: 5
   },
   {
