@@ -180,7 +180,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Company</FormLabel>
                         <FormControl>
-                          <Input {...field} className="py-3" />
+                          <Input  className="py-3" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -326,7 +326,7 @@ export default function Contact() {
                 </li>
                 <li className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-blue-600" />
-                  <span>{COMPANY_INFO.address}</span>
+                  <span>{COMPANY_INFO.email}</span>
                 </li>
               </ul>
             </motion.div>

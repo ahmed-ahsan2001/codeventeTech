@@ -1,7 +1,7 @@
 export const COMPANY_INFO = {
   name: "CodeVente",
   tagline: "Empowering Innovation, Delivering Digital Solutions",
-  email: "",
+  email: "ahmedbawany2001@gmail.com",
   supportEmail: "",
   whatsapp: "+923122739457",
   phone: "+92 312 2739457",
