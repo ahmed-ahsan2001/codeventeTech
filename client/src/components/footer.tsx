@@ -126,15 +126,16 @@ export default function Footer() {
             &copy; 2024 {COMPANY_INFO.name}. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <span className="text-slate-400 hover:text-white text-sm transition-colors cursor-pointer">
-              Privacy Policy
-            </span>
-            <span className="text-slate-400 hover:text-white text-sm transition-colors cursor-pointer">
-              Terms of Service
-            </span>
-            <span className="text-slate-400 hover:text-white text-sm transition-colors cursor-pointer">
-              Cookie Policy
-            </span>
+            <Link href="/privacy-policy">
+              <span className="text-slate-400 hover:text-white text-sm transition-colors cursor-pointer">
+                Privacy Policy
+              </span>
+            </Link>
+            <Link href="/terms-of-service">
+              <span className="text-slate-400 hover:text-white text-sm transition-colors cursor-pointer">
+                Terms of Service
+              </span>
+            </Link>
           </div>
         </div>
       </div>

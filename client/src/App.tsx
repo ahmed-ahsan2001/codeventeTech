@@ -12,6 +12,8 @@ import Portfolio from "@/pages/portfolio";
 import Contact from "@/pages/contact";
 import Careers from "@/pages/careers";
 import Courses from "@/pages/courses";
+import PrivacyPolicy from "@/pages/privacy-policy";
+import TermsOfService from "@/pages/terms-of-service";
 import NotFound from "@/pages/404";
 
 function Router() {
@@ -24,6 +26,8 @@ function Router() {
       <Route path="/courses" component={Courses} />
       <Route path="/careers" component={Careers} />
       <Route path="/contact" component={Contact} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-of-service" component={TermsOfService} />
       <Route component={NotFound} />
     </Switch>
   );
