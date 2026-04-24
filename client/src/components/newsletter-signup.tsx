@@ -45,7 +45,7 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-violet-600">
+    <section className="py-20 bg-brand-gradient animate-gradient-shift">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,7 +54,7 @@ export default function NewsletterSignup() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl font-bold text-white mb-4">Stay Updated</h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-xl text-sky-100 mb-8">
             Get the latest insights on web development, digital marketing trends, and exclusive
             offers.
           </p>
@@ -71,7 +71,7 @@ export default function NewsletterSignup() {
             <Button
               type="submit"
               disabled={newsletterMutation.isPending}
-              className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200"
+              className="bg-white text-[#145983] px-6 py-3 rounded-lg font-semibold hover:bg-sky-50 transition-colors duration-200"
             >
               {newsletterMutation.isPending ? "Subscribing..." : "Subscribe"}
             </Button>

@@ -63,9 +63,17 @@ export default function Contact() {
         "service_dy8se8c", // ✅ Your EmailJS service ID
         "template_mfes4vk", // ✅ Your EmailJS template ID
         {
-          to_email: "ahmedbawany2001@gmail.com", // ✅ recipient email (MUST match your template variable)
+          // Provide common recipient variable names used in EmailJS templates.
+          to_email: "ahmedbawany2001@gmail.com",
+          recipient_email: "ahmedbawany2001@gmail.com",
+          recipient: "ahmedbawany2001@gmail.com",
+          to: "ahmedbawany2001@gmail.com",
+          email: data.email,
+          name: data.name,
+          title: data.service || "New contact inquiry",
           user_name: data.name,
           user_email: data.email,
+          reply_to: data.email,
           company: data.company || "N/A",
           service: data.service || "N/A",
           budget: data.budget || "N/A",
@@ -103,7 +111,7 @@ export default function Contact() {
       />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-cyan-600 to-blue-600">
+      <section className="py-20 bg-brand-gradient animate-gradient-shift">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             className="text-5xl font-bold text-white mb-6"
@@ -114,7 +122,7 @@ export default function Contact() {
             Get In Touch
           </motion.h1>
           <motion.p
-            className="text-xl text-cyan-100"
+            className="text-xl text-sky-100"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -126,7 +134,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brand-soft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
@@ -135,7 +143,7 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold text-slate-900 mb-8">
+              <h2 className="text-3xl font-bold text-white mb-8">
                 Send us a message
               </h2>
 
@@ -143,7 +151,7 @@ export default function Contact() {
                 <form
                   ref={formRef}
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-6"
+                  className="space-y-6 bg-slate-900/70 p-6 rounded-xl shadow-sm border border-sky-800/60"
                 >
                   <FormField
                     control={form.control}
@@ -180,7 +188,7 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Company</FormLabel>
                         <FormControl>
-                          <Input  className="py-3" />
+                          <Input {...field} className="py-3" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -224,34 +232,6 @@ export default function Contact() {
 
                   <FormField
                     control={form.control}
-                    name="budget"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Project Budget</FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger className="py-3">
-                              <SelectValue placeholder="Select budget range" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="under-5k">Under $5,000</SelectItem>
-                            <SelectItem value="5k-15k">$5,000 - $15,000</SelectItem>
-                            <SelectItem value="15k-50k">$15,000 - $50,000</SelectItem>
-                            <SelectItem value="50k-plus">$50,000+</SelectItem>
-                            <SelectItem value="discuss">Let's discuss</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
-                    control={form.control}
                     name="message"
                     render={({ field }) => (
                       <FormItem>
@@ -282,7 +262,7 @@ export default function Contact() {
                           />
                         </FormControl>
                         <div className="space-y-1 leading-none">
-                          <FormLabel className="text-sm text-slate-600">
+                          <FormLabel className="text-sm text-slate-300">
                             I'd like to receive updates about digital marketing trends
                             and CodeVente news.
                           </FormLabel>
@@ -294,7 +274,7 @@ export default function Contact() {
                   <Button
                     type="submit"
                     disabled={isSending}
-                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-200"
+                    className="w-full bg-brand-gradient text-white px-8 py-4 font-semibold hover:opacity-95 transition-all duration-200"
                   >
                     {isSending ? "Sending..." : "Send Message"}
                   </Button>
@@ -308,25 +288,25 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">
+              <h2 className="text-3xl font-bold text-white mb-6">
                 Contact Information
               </h2>
-              <p className="text-slate-600 mb-8">
+              <p className="text-slate-300 mb-8">
                 We'd love to hear from you! Reach out via email or social media.
               </p>
 
-              <ul className="space-y-4 text-slate-700">
+              <ul className="space-y-4 text-slate-200 bg-slate-900/70 p-6 rounded-xl border border-sky-800/60 shadow-sm">
                 <li className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-blue-600" />
+                  <Mail className="w-5 h-5 text-primary" />
                   <span>{COMPANY_INFO.email}</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-blue-600" />
+                  <Phone className="w-5 h-5 text-primary" />
                   <span>{COMPANY_INFO.phone}</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-blue-600" />
-                  <span>{COMPANY_INFO.email}</span>
+                  <MapPin className="w-5 h-5 text-primary" />
+                  <span>{COMPANY_INFO.address.street}, {COMPANY_INFO.address.country}</span>
                 </li>
               </ul>
             </motion.div>

@@ -11,7 +11,7 @@ export default function NotFound() {
         description="The page you're looking for doesn't exist. Return to CodeVente's homepage or contact us for assistance."
       />
       
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-900 to-violet-900 relative overflow-hidden">
+      <section className="min-h-screen flex items-center justify-center bg-brand-gradient animate-gradient-shift relative overflow-hidden">
         <div className="text-center px-4 relative z-10">
           <motion.div
             className="mb-8"
@@ -35,7 +35,7 @@ export default function NotFound() {
             <Link href="/">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-8 py-4 font-semibold hover:from-blue-700 hover:to-violet-700 transition-all duration-200 mr-4"
+                className="bg-white text-[#145983] px-8 py-4 font-semibold hover:bg-sky-50 transition-all duration-200 mr-4"
               >
                 Return Home
               </Button>
@@ -44,7 +44,7 @@ export default function NotFound() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white hover:text-slate-900 transition-all duration-200"
+                className="border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white hover:text-[#145983] transition-all duration-200"
               >
                 Contact Support
               </Button>
@@ -55,7 +55,7 @@ export default function NotFound() {
         {/* Floating animation elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
-            className="absolute top-20 left-10 w-4 h-4 bg-cyan-400 rounded-full opacity-60"
+            className="absolute top-20 left-10 w-4 h-4 bg-cyan-300 rounded-full opacity-60"
             animate={{
               y: [0, -20, 0],
             }}
@@ -66,7 +66,7 @@ export default function NotFound() {
             }}
           />
           <motion.div
-            className="absolute top-40 right-20 w-6 h-6 bg-violet-400 rounded-full opacity-40"
+            className="absolute top-40 right-20 w-6 h-6 bg-sky-200 rounded-full opacity-40"
             animate={{
               y: [0, -20, 0],
             }}
@@ -78,7 +78,7 @@ export default function NotFound() {
             }}
           />
           <motion.div
-            className="absolute bottom-40 left-20 w-8 h-8 bg-blue-400 rounded-full opacity-50"
+            className="absolute bottom-40 left-20 w-8 h-8 bg-sky-300 rounded-full opacity-50"
             animate={{
               y: [0, -20, 0],
             }}

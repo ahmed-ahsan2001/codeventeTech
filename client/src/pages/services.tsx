@@ -13,13 +13,6 @@ export default function Services() {
     "ui-ux": "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
   };
 
-  const colorMap = {
-    blue: "bg-blue-600 hover:bg-blue-700",
-    violet: "bg-violet-600 hover:bg-violet-700",
-    cyan: "bg-cyan-600 hover:bg-cyan-700",
-    emerald: "bg-emerald-600 hover:bg-emerald-700"
-  };
-
   return (
     <>
       <SEOHead
@@ -29,7 +22,7 @@ export default function Services() {
       />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-violet-600">
+      <section className="py-20 bg-brand-gradient animate-gradient-shift">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             className="text-5xl font-bold text-white mb-6"
@@ -40,7 +33,7 @@ export default function Services() {
             Our Services
           </motion.h1>
           <motion.p
-            className="text-xl text-blue-100"
+            className="text-xl text-sky-100"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -51,7 +44,7 @@ export default function Services() {
       </section>
 
       {/* Services Detail */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brand-soft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
           {SERVICES.map((service, index) => (
             <motion.div
@@ -64,24 +57,22 @@ export default function Services() {
             >
               <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
                 <div className="flex items-center mb-6">
-                  <div className={`w-16 h-16 bg-${service.color}-100 rounded-xl flex items-center justify-center mr-4`}>
+                  <div className="w-16 h-16 bg-white/80 rounded-xl flex items-center justify-center mr-4 border border-sky-100">
                     {/* Icon would be rendered here */}
                   </div>
-                  <h2 className="text-4xl font-bold text-slate-900">{service.title}</h2>
+                  <h2 className="text-4xl font-bold text-white">{service.title}</h2>
                 </div>
-                <p className="text-lg text-slate-600 mb-6">{service.description}</p>
+                <p className="text-lg text-slate-300 mb-6">{service.description}</p>
                 <ul className="space-y-3 mb-8">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-slate-600">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                    <li key={featureIndex} className="flex items-center text-slate-300">
+                      <CheckCircle className="w-5 h-5 text-sky-400 mr-3" />
                       {feature}
                     </li>
                   ))}
                 </ul>
                 <Link href="/contact">
-                  <Button
-                    className={`${colorMap[service.color as keyof typeof colorMap]} text-white px-8 py-3 font-semibold transition-colors duration-200`}
-                  >
+                  <Button className="bg-brand-gradient text-white px-8 py-3 font-semibold transition-all duration-200 hover:opacity-95">
                     Get Quote
                   </Button>
                 </Link>
@@ -90,7 +81,7 @@ export default function Services() {
                 <img
                   src={serviceImages[service.id as keyof typeof serviceImages]}
                   alt={`${service.title} illustration`}
-                  className="rounded-xl shadow-lg"
+                  className="rounded-xl shadow-lg ring-1 ring-sky-100"
                 />
               </div>
             </motion.div>
@@ -99,7 +90,7 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-brand-gradient animate-gradient-shift">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -108,14 +99,14 @@ export default function Services() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-white mb-6">Ready to Transform Your Business?</h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-sky-100 mb-8">
               Let's discuss how our services can help you achieve your digital goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-8 py-4 font-semibold hover:from-blue-700 hover:to-violet-700 transition-all duration-200"
+                  className="bg-white text-[#145983] px-8 py-4 font-semibold hover:bg-sky-50 transition-all duration-200"
                 >
                   Start Your Project
                 </Button>
@@ -124,7 +115,7 @@ export default function Services() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white hover:text-slate-900 transition-all duration-200"
+                  className="border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white hover:text-[#145983] transition-all duration-200"
                 >
                   View Portfolio
                 </Button>

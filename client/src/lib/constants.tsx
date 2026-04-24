@@ -1,3 +1,6 @@
+import quranAppImageOne from "@/assets/quran-app-1.png";
+import quranAppImageTwo from "@/assets/quran-app-2.png";
+
 export const COMPANY_INFO = {
   name: "CodeVente",
   tagline: "Empowering Innovation, Delivering Digital Solutions",
@@ -136,6 +139,18 @@ export const PORTFOLIO_PROJECTS = [
     image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
     technologies: "SEO, Content, Social Media",
     results: "400% increase in brand awareness, 180% growth in online sales",
+    rating: 5
+  },
+  {
+    id: 7,
+    title: "Quran App",
+    description: "Cross-platform Quran application with recitation, translation, bookmarks, and daily reminder features.",
+    category: "web",
+    categories: ["web", "mobile"],
+    image: quranAppImageOne,
+    secondaryImage: quranAppImageTwo,
+    technologies: "React, React Native, Node.js, Firebase",
+    results: "Unified experience across web and mobile with strong user engagement.",
     rating: 5
   }
 ];

@@ -5,28 +5,22 @@ import TeamSection from "@/components/team-section";
 export default function About() {
   const timeline = [
     {
-      year: "2020",
+      year: "2024",
       title: "CodeVente Founded",
       description: "Started with a vision to bridge the gap between innovative technology and business growth.",
       color: "blue"
     },
     {
-      year: "2021",
-      title: "First 50 Clients",
-      description: "Reached our first major milestone by serving 50+ satisfied clients across various industries.",
+      year: "2025",
+      title: "First 10 Projects",
+      description: "Successfully delivered our first 10 client projects across web, mobile, and digital growth services.",
       color: "violet"
     },
     {
-      year: "2022",
-      title: "Service Expansion",
-      description: "Expanded our services to include comprehensive digital marketing and SEO solutions.",
+      year: "2026",
+      title: "50+ Projects Delivered",
+      description: "Scaled delivery operations and crossed 50+ completed projects with strong client satisfaction.",
       color: "cyan"
-    },
-    {
-      year: "2023",
-      title: "Award Recognition",
-      description: "Recognized as \"Rising Tech Company of the Year\" for our innovative approach and client success.",
-      color: "emerald"
     }
   ];
 
@@ -46,7 +40,7 @@ export default function About() {
       />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-slate-900 to-blue-900">
+      <section className="py-20 bg-brand-gradient animate-gradient-shift">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             className="text-5xl font-bold text-white mb-6"
@@ -68,7 +62,7 @@ export default function About() {
       </section>
 
       {/* Mission and Vision */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brand-soft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -77,12 +71,12 @@ export default function About() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-slate-900 mb-6">Our Mission</h2>
-              <p className="text-lg text-slate-600 mb-6">
+              <h2 className="text-4xl font-bold text-white mb-6">Our Mission</h2>
+              <p className="text-lg text-slate-300 mb-6">
                 To empower businesses of all sizes with cutting-edge digital solutions that drive growth, enhance user experiences, and create lasting competitive advantages in the digital marketplace.
               </p>
-              <h3 className="text-2xl font-semibold text-slate-900 mb-4">Our Vision</h3>
-              <p className="text-lg text-slate-600">
+              <h3 className="text-2xl font-semibold text-white mb-4">Our Vision</h3>
+              <p className="text-lg text-slate-300">
                 To be the leading technology partner that transforms ideas into impactful digital experiences, fostering innovation and success for our clients worldwide.
               </p>
             </motion.div>
@@ -95,7 +89,7 @@ export default function About() {
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
                 alt="Team collaboration in modern office environment"
-                className="rounded-xl shadow-lg"
+                className="rounded-xl shadow-lg ring-1 ring-sky-100"
               />
             </motion.div>
           </div>
@@ -103,7 +97,7 @@ export default function About() {
       </section>
 
       {/* Company Journey Timeline */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -118,7 +112,7 @@ export default function About() {
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-blue-200"></div>
+            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-sky-200"></div>
 
             {/* Timeline items */}
             <div className="space-y-12">
@@ -133,7 +127,7 @@ export default function About() {
                 >
                   <div className={`absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 ${colorMap[item.color as keyof typeof colorMap].split(' ')[0]} rounded-full border-4 border-white shadow-lg z-10`}></div>
                   <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 1 ? 'md:pl-8' : 'md:pr-8'}`}>
-                    <div className="bg-white p-6 rounded-xl shadow-lg">
+                    <div className="bg-white p-6 rounded-xl shadow-lg border border-sky-100">
                       <div className={`font-semibold mb-2 ${colorMap[item.color as keyof typeof colorMap].split(' ')[1]}`}>
                         {item.year}
                       </div>

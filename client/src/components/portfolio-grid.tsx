@@ -12,6 +12,7 @@ export default function PortfolioGrid() {
   const filters = [
     { id: "all", label: "All Projects" },
     { id: "web", label: "Web Development" },
+    { id: "mobile", label: "Mobile Development" },
     { id: "marketing", label: "Digital Marketing" },
     { id: "design", label: "UI/UX Design" },
   ];
@@ -20,13 +21,17 @@ export default function PortfolioGrid() {
     activeFilter === "all"
       ? PORTFOLIO_PROJECTS
       : PORTFOLIO_PROJECTS.filter(
-          (project) => project.category === activeFilter
+          (project) =>
+            project.category === activeFilter ||
+            (Array.isArray(project.categories) && project.categories.includes(activeFilter))
         );
 
-  const getCategoryColor = (category: String) => {
+  const getCategoryColor = (category: string) => {
     switch (category) {
       case "web":
         return "bg-blue-100 text-blue-800";
+      case "mobile":
+        return "bg-cyan-100 text-cyan-800";
       case "marketing":
         return "bg-violet-100 text-violet-800";
       case "design":
@@ -36,10 +41,12 @@ export default function PortfolioGrid() {
     }
   };
 
-  const getCategoryLabel = (category: String) => {
+  const getCategoryLabel = (category: string) => {
     switch (category) {
       case "web":
         return "Web Development";
+      case "mobile":
+        return "Mobile Development";
       case "marketing":
         return "Digital Marketing";
       case "design":
@@ -50,7 +57,7 @@ export default function PortfolioGrid() {
   };
 
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-20 bg-brand-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -61,8 +68,8 @@ export default function PortfolioGrid() {
               onClick={() => setActiveFilter(filter.id)}
               className={`px-6 py-2 rounded-full font-medium transition-colors ${
                 activeFilter === filter.id
-                  ? "bg-blue-600 text-white"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  ? "bg-brand-gradient text-white"
+                  : "bg-white text-slate-600 border border-sky-100 hover:bg-sky-50"
               }`}
             >
               {filter.label}
@@ -71,7 +78,7 @@ export default function PortfolioGrid() {
         </div>
 
         {/* Project Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -80,33 +87,39 @@ export default function PortfolioGrid() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               layout
             >
-              <Card className="group bg-white hover:shadow-xl transition-all duration-300 hover:scale-105 overflow-hidden">
+              <Card className="group bg-white/90 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden border-sky-100">
                 <div className="relative overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-44 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge className={getCategoryColor(project.category)}>
-                      {getCategoryLabel(project.category)}
-                    </Badge>
-                    <div className="flex text-yellow-400">
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex items-start justify-between mb-3 gap-2">
+                    <div className="flex flex-wrap gap-2">
+                      {(Array.isArray(project.categories) ? project.categories : [project.category]).map(
+                        (category) => (
+                          <Badge key={`${project.id}-${category}`} className={getCategoryColor(category)}>
+                            {getCategoryLabel(category)}
+                          </Badge>
+                        )
+                      )}
+                    </div>
+                    <div className="hidden sm:flex text-yellow-400">
                       {[...Array(project.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                  <h3 className="text-lg md:text-xl font-semibold text-slate-900 mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-slate-600 mb-4">{project.description}</p>
+                  <p className="text-slate-600 text-sm md:text-base mb-3 md:mb-4 line-clamp-2 md:line-clamp-none">{project.description}</p>
 
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-sm text-slate-500">
+                  <div className="flex items-center justify-between mb-3 md:mb-4">
+                    <div className="text-xs md:text-sm text-slate-500 line-clamp-1 pr-3">
                       {project.technologies}
                     </div>
 
@@ -129,8 +142,8 @@ export default function PortfolioGrid() {
                     )}
                   </div>
 
-                  <div className="pt-4 border-t border-slate-100">
-                    <div className="text-sm text-slate-600">
+                  <div className="pt-3 md:pt-4 border-t border-slate-100">
+                    <div className="text-xs md:text-sm text-slate-600 line-clamp-2 md:line-clamp-none">
                       <strong>Results:</strong> {project.results}
                     </div>
                   </div>

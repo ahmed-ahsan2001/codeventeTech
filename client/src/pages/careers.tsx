@@ -171,7 +171,7 @@ export default function Careers() {
       />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-600 to-blue-600">
+      <section className="py-20 bg-brand-gradient animate-gradient-shift">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             className="text-5xl font-bold text-white mb-6"
@@ -182,7 +182,7 @@ export default function Careers() {
             Join Our Team
           </motion.h1>
           <motion.p
-            className="text-xl text-emerald-100"
+            className="text-xl text-sky-100"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -193,7 +193,7 @@ export default function Careers() {
       </section>
 
       {/* Company Culture */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brand-soft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -267,7 +267,7 @@ export default function Careers() {
       </section>
 
       {/* Open Positions */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -291,7 +291,7 @@ export default function Careers() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="bg-white hover:shadow-lg transition-shadow duration-300 h-full">
+                  <Card className="bg-white hover:shadow-lg transition-all duration-300 h-full border-sky-100 hover:-translate-y-1">
                     <CardContent className="p-8">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center">
@@ -329,7 +329,7 @@ export default function Careers() {
 
                       <Button
                         onClick={() => applyToPosition(position.id)}
-                        className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white hover:from-blue-700 hover:to-emerald-700 transition-all duration-200"
+                        className="w-full bg-brand-gradient text-white hover:opacity-95 transition-all duration-200"
                       >
                         Apply Now
                       </Button>
@@ -343,7 +343,7 @@ export default function Careers() {
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-brand-soft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -375,7 +375,7 @@ export default function Careers() {
       </section>
 
       {/* Application Form */}
-      <section id="application-form" className="py-20 bg-slate-50">
+      <section id="application-form" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
@@ -394,7 +394,7 @@ export default function Careers() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-white">
+            <Card className="bg-white border-sky-100">
               <CardContent className="p-8">
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -657,7 +657,7 @@ export default function Careers() {
                     <Button
                       type="submit"
                       disabled={jobApplicationMutation.isPending || !resumeFile}
-                      className="w-full bg-gradient-to-r from-emerald-600 to-blue-600 text-white px-8 py-4 font-semibold hover:from-emerald-700 hover:to-blue-700 transition-all duration-200"
+                      className="w-full bg-brand-gradient text-white px-8 py-4 font-semibold hover:opacity-95 transition-all duration-200"
                     >
                       {jobApplicationMutation.isPending ? "Submitting..." : "Submit Application"}
                     </Button>

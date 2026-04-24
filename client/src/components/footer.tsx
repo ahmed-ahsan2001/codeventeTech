@@ -4,13 +4,13 @@ import { COMPANY_INFO } from "@/lib/constants";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer className="bg-[#0b2d42] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center mb-6">
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-300 to-cyan-200 bg-clip-text text-transparent">
                 {COMPANY_INFO.name}
               </span>
             </div>
@@ -18,25 +18,25 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-[#12435f] hover:bg-[#1f74a6] rounded-lg flex items-center justify-center transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-[#12435f] hover:bg-[#1f74a6] rounded-lg flex items-center justify-center transition-colors"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-[#12435f] hover:bg-[#1f74a6] rounded-lg flex items-center justify-center transition-colors"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-slate-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-[#12435f] hover:bg-[#1f74a6] rounded-lg flex items-center justify-center transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -121,9 +121,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-[#1a4b69] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-400 text-sm">
-            &copy; 2024 {COMPANY_INFO.name}. All rights reserved.
+            &copy; 2026 {COMPANY_INFO.name}. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/privacy-policy">

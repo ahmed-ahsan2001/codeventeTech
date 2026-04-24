@@ -27,7 +27,7 @@ export default function TestimonialsCarousel() {
   }, []);
 
   return (
-    <section className="py-20 bg-slate-900">
+    <section className="py-20 bg-brand-gradient animate-gradient-shift">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -37,7 +37,7 @@ export default function TestimonialsCarousel() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
-          <p className="text-xl text-slate-300">
+          <p className="text-xl text-sky-100">
             Real feedback from real clients who've transformed their business with us.
           </p>
         </motion.div>
@@ -53,7 +53,7 @@ export default function TestimonialsCarousel() {
                 transition={{ duration: 0.5 }}
                 className="w-full"
               >
-                <Card className="bg-slate-800 border-slate-700 max-w-4xl mx-auto">
+                <Card className="brand-glass border-white/25 max-w-4xl mx-auto">
                   <CardContent className="p-8">
                     <div className="flex items-center mb-6">
                       <div className="flex text-yellow-400">
@@ -62,7 +62,7 @@ export default function TestimonialsCarousel() {
                         ))}
                       </div>
                     </div>
-                    <blockquote className="text-xl text-slate-200 mb-6">
+                    <blockquote className="text-xl text-slate-100 mb-6">
                       "{TESTIMONIALS[currentIndex].content}"
                     </blockquote>
                     <div className="flex items-center">
@@ -70,7 +70,7 @@ export default function TestimonialsCarousel() {
                         <div className="font-semibold text-white">
                           {TESTIMONIALS[currentIndex].author}
                         </div>
-                        <div className="text-slate-400">{TESTIMONIALS[currentIndex].company}</div>
+                        <div className="text-slate-300">{TESTIMONIALS[currentIndex].company}</div>
                       </div>
                     </div>
                   </CardContent>
@@ -84,7 +84,7 @@ export default function TestimonialsCarousel() {
             variant="ghost"
             size="sm"
             onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full"
           >
             <ChevronLeft className="w-6 h-6" />
           </Button>
@@ -92,7 +92,7 @@ export default function TestimonialsCarousel() {
             variant="ghost"
             size="sm"
             onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full"
           >
             <ChevronRight className="w-6 h-6" />
           </Button>

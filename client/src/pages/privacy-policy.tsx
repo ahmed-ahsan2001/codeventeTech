@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
       />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-slate-900 to-blue-900">
+      <section className="py-20 bg-brand-gradient animate-gradient-shift">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             className="text-5xl font-bold text-white mb-6"
@@ -25,7 +25,7 @@ export default function PrivacyPolicy() {
             Privacy Policy
           </motion.h1>
           <motion.p
-            className="text-xl text-slate-200"
+            className="text-xl text-sky-100"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -36,9 +36,9 @@ export default function PrivacyPolicy() {
       </section>
 
       {/* Content Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-brand-soft">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none bg-white rounded-xl border border-sky-100 p-6 md:p-10 shadow-sm">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -297,7 +297,7 @@ export default function PrivacyPolicy() {
               <p className="text-slate-600 mb-4">
                 If you have any questions about this Privacy Policy, please contact us:
               </p>
-              <div className="bg-slate-50 p-6 rounded-lg mb-8">
+              <div className="bg-sky-50 p-6 rounded-lg mb-8 border border-sky-100">
                 <p className="text-slate-700 mb-2"><strong>Email:</strong> {COMPANY_INFO.email}</p>
                 <p className="text-slate-700 mb-2"><strong>Phone:</strong> {COMPANY_INFO.phone}</p>
                 <p className="text-slate-700">

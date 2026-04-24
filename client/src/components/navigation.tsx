@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/codevente-logo.png";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -55,8 +56,8 @@ export default function Navigation() {
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-slate-200" 
-          : "bg-white shadow-sm border-b border-slate-200"
+          ? "bg-white/90 backdrop-blur-lg shadow-lg border-b border-sky-100" 
+          : "bg-white/80 backdrop-blur-sm shadow-sm border-b border-sky-100/70"
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 lg:h-20">
@@ -67,8 +68,8 @@ export default function Navigation() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg flex items-center justify-center mr-3 shadow-md">
-                  <span className="text-white font-bold text-sm lg:text-base">CV</span>
+                <div className="w-9 h-9 lg:w-11 lg:h-11 rounded-lg overflow-hidden mr-3 shadow-md ring-1 ring-sky-100 bg-white">
+                  <img src={logo} alt="CodeVente logo" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-xl lg:text-2xl font-bold text-slate-900">CodeVente</span>
               </motion.div>
@@ -79,9 +80,9 @@ export default function Navigation() {
               {navItems.map((item, index) => (
                 <Link key={item.href} href={item.href}>
                   <motion.span
-                    className={`relative text-sm xl:text-base font-medium transition-colors hover:text-blue-600 cursor-pointer ${
+                    className={`relative text-sm xl:text-base font-medium transition-colors hover:text-primary cursor-pointer ${
                       isActive(item.href)
-                        ? "text-blue-600"
+                        ? "text-primary"
                         : "text-slate-700"
                     }`}
                     whileHover={{ y: -2 }}
@@ -92,7 +93,7 @@ export default function Navigation() {
                     {item.label}
                     {isActive(item.href) && (
                       <motion.div
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-violet-600 rounded-full"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-gradient rounded-full"
                         layoutId="activeTab"
                         initial={false}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -177,8 +178,8 @@ export default function Navigation() {
                 <div className="flex items-center justify-between p-6 border-b border-slate-200">
                   <Link href="/">
                     <div className="flex items-center">
-                      <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg flex items-center justify-center mr-3">
-                        <span className="text-white font-bold text-sm">CV</span>
+                      <div className="w-8 h-8 rounded-lg overflow-hidden mr-3 ring-1 ring-sky-100">
+                        <img src={logo} alt="CodeVente logo" className="w-full h-full object-cover" />
                       </div>
                       <span className="text-xl font-bold text-slate-900">CodeVente</span>
                     </div>
@@ -202,8 +203,8 @@ export default function Navigation() {
                           transition={{ duration: 0.3, delay: index * 0.1 }}
                           className={`group flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-200 hover:bg-slate-50 ${
                             isActive(item.href)
-                              ? "bg-blue-50 text-blue-600"
-                              : "text-slate-700 hover:text-blue-600"
+                              ? "bg-sky-50 text-primary"
+                              : "text-slate-700 hover:text-primary"
                           }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -212,7 +213,7 @@ export default function Navigation() {
                             <motion.div
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
-                              className="w-2 h-2 bg-blue-600 rounded-full"
+                              className="w-2 h-2 bg-primary rounded-full"
                             />
                           )}
                         </motion.div>
@@ -230,7 +231,7 @@ export default function Navigation() {
                       transition={{ duration: 0.3, delay: 0.5 }}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <Button className="w-full bg-gradient-to-r from-blue-600 to-violet-600 text-white py-4 font-semibold hover:from-blue-700 hover:to-violet-700 transition-all duration-200 shadow-lg text-lg">
+                      <Button className="w-full bg-brand-gradient text-white py-4 font-semibold hover:opacity-95 transition-all duration-200 shadow-lg text-lg">
                         Get Started
                       </Button>
                     </motion.div>

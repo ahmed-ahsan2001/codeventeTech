@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Code, Megaphone, TrendingUp, Palette, CheckCircle } from "lucide-react";
+import { Code, Megaphone, TrendingUp, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { SERVICES } from "@/lib/constants";
 
 const iconMap = {
@@ -13,68 +12,72 @@ const iconMap = {
 };
 
 const colorMap = {
-  blue: "bg-blue-100 text-blue-600 group-hover:bg-blue-200",
-  violet: "bg-violet-100 text-violet-600 group-hover:bg-violet-200",
-  cyan: "bg-cyan-100 text-cyan-600 group-hover:bg-cyan-200",
-  emerald: "bg-emerald-100 text-emerald-600 group-hover:bg-emerald-200",
-};
-
-const gradientMap = {
-  blue: "hover:from-blue-50 hover:to-violet-50",
-  violet: "hover:from-violet-50 hover:to-cyan-50",
-  cyan: "hover:from-cyan-50 hover:to-emerald-50",
-  emerald: "hover:from-emerald-50 hover:to-blue-50",
+  blue: "bg-sky-100 text-sky-700",
+  violet: "bg-blue-100 text-blue-700",
+  cyan: "bg-cyan-100 text-cyan-700",
+  emerald: "bg-teal-100 text-teal-700",
 };
 
 export default function ServicesOverview() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 md:py-24 bg-brand-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">Our Services</h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            We provide comprehensive digital solutions to help your business thrive in the modern
-            marketplace.
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-10">
+          <motion.div
+            className="lg:col-span-4"
+            initial={{ opacity: 0, x: -25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary mb-3">What We Build</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-5">Services Designed Around Outcomes</h2>
+            <p className="text-base md:text-lg text-slate-300">
+              We combine product thinking, design, engineering, and growth strategy into one delivery pipeline.
+            </p>
+          </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {SERVICES.map((service, index) => {
-            const IconComponent = iconMap[service.icon as keyof typeof iconMap];
-            return (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card
-                  className={`group bg-slate-50 hover:bg-gradient-to-br ${
-                    gradientMap[service.color as keyof typeof gradientMap]
-                  } transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer h-full`}
+          <div className="lg:col-span-8 space-y-4 md:space-y-5">
+            {SERVICES.map((service, index) => {
+              const IconComponent = iconMap[service.icon as keyof typeof iconMap];
+              return (
+                <motion.div
+                  key={service.id}
+                  className="relative overflow-hidden bg-white border border-sky-100 rounded-2xl p-4 md:p-7 shadow-sm"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, delay: index * 0.1 }}
+                  viewport={{ once: true }}
                 >
-                  <CardContent className="p-8">
-                    <div
-                      className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${
-                        colorMap[service.color as keyof typeof colorMap]
-                      }`}
-                    >
+                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-sky-400 to-blue-500 md:hidden" />
+                  <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-5 pl-2 md:pl-0">
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${colorMap[service.color as keyof typeof colorMap]}`}>
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-4">{service.title}</h3>
-                    <p className="text-slate-600">{service.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            );
-          })}
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between gap-2 mb-2 md:mb-3">
+                        <h3 className="text-base md:text-xl font-semibold text-slate-900 leading-tight">{service.title}</h3>
+                        <span className="text-xs md:text-sm text-slate-500 bg-slate-100 rounded-full px-2 py-0.5">{`0${index + 1}`}</span>
+                      </div>
+                      <p className="text-sm md:text-base text-slate-600 mb-3 md:mb-4 line-clamp-2 md:line-clamp-none">{service.description}</p>
+                      <div className="flex flex-wrap gap-1.5 md:gap-2">
+                        {service.features.slice(0, 3).map((feature, featureIndex) => (
+                          <span
+                            key={feature}
+                            className={`text-[11px] md:text-xs px-2 py-1 rounded-full bg-sky-50 text-slate-600 border border-sky-100 ${
+                              featureIndex > 0 ? "hidden sm:inline-flex" : "inline-flex"
+                            }`}
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
         <motion.div
@@ -87,7 +90,7 @@ export default function ServicesOverview() {
           <Link href="/services">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-blue-600 to-violet-600 text-white px-8 py-3 font-semibold hover:from-blue-700 hover:to-violet-700 transition-all duration-200"
+              className="bg-brand-gradient text-white px-8 py-3 font-semibold hover:opacity-95 transition-all duration-200"
             >
               Learn More About Our Services
             </Button>
