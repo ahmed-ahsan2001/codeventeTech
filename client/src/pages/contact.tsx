@@ -59,34 +59,53 @@ export default function Contact() {
     setIsSending(true);
 
     try {
-      await emailjs.send(
-        "service_dy8se8c", // ✅ Your EmailJS service ID
-        "template_mfes4vk", // ✅ Your EmailJS template ID
+      const ownerEmail = COMPANY_INFO.email || "ahmedbawany2001@gmail.com";
+      const baseParams = {
+        to_email: ownerEmail,
+        recipient_email: ownerEmail,
+        recipient: ownerEmail,
+        to: ownerEmail,
+        user_name: data.name,
+        user_email: data.email,
+        reply_to: data.email,
+        company: data.company || "N/A",
+        service: data.service || "N/A",
+        budget: data.budget || "N/A",
+        message: data.message,
+        newsletter: data.newsletter ? "Yes" : "No",
+      };
+
+      // Send auto-reply to the submitter.
+      const userEmailPromise = emailjs.send(
+        "service_dy8se8c",
+        "template_mfes4vk",
         {
-          // Provide common recipient variable names used in EmailJS templates.
-          to_email: "ahmedbawany2001@gmail.com",
-          recipient_email: "ahmedbawany2001@gmail.com",
-          recipient: "ahmedbawany2001@gmail.com",
-          to: "ahmedbawany2001@gmail.com",
+          ...baseParams,
           email: data.email,
           name: data.name,
           title: data.service || "New contact inquiry",
-          user_name: data.name,
-          user_email: data.email,
-          reply_to: data.email,
-          company: data.company || "N/A",
-          service: data.service || "N/A",
-          budget: data.budget || "N/A",
-          message: data.message,
-          newsletter: data.newsletter ? "Yes" : "No",
         },
-        "-99YvMRnAdyvXUCB2" // ✅ Your EmailJS public key
+        "-99YvMRnAdyvXUCB2"
       );
+
+      // Send a copy to owner for lead tracking.
+      const ownerEmailPromise = emailjs.send(
+        "service_dy8se8c",
+        "template_mfes4vk",
+        {
+          ...baseParams,
+          email: ownerEmail,
+          name: "CodeVente Team",
+          title: `New lead: ${data.name} (${data.service || "General inquiry"})`,
+        },
+        "-99YvMRnAdyvXUCB2"
+      );
+
+      await Promise.all([userEmailPromise, ownerEmailPromise]);
 
       toast({
         title: "Message Sent!",
-        description:
-          "Your message has been successfully delivered to CodeVente.",
+        description: "Your message has been sent. A copy was also delivered to our team inbox.",
       });
 
       form.reset();
