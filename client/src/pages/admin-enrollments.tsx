@@ -52,6 +52,16 @@ export default function AdminEnrollments() {
               Total Enrollments: {enrollments.length}
             </p>
 
+            <div className="bg-[#1a1f2e] rounded-lg p-6 border border-orange-500/20 mb-8">
+              <h3 className="text-lg font-semibold text-white mb-2">📊 Google Sheets Integration Active</h3>
+              <p className="text-gray-400 text-sm mb-3">
+                All enrollments are automatically saved to your Google Sheet with payment screenshots uploaded to Google Drive.
+              </p>
+              <p className="text-orange-400 text-sm">
+                💡 <strong>View Payment Screenshots:</strong> Open your Google Sheet and click the Drive links in the Payment Screenshot column.
+              </p>
+            </div>
+
             {loading ? (
               <div className="text-center py-12">
                 <div className="inline-block w-8 h-8 border-4 border-gray-600 border-t-orange-500 rounded-full animate-spin"></div>
@@ -60,6 +70,7 @@ export default function AdminEnrollments() {
             ) : enrollments.length === 0 ? (
               <div className="bg-[#1a1f2e] rounded-lg p-12 text-center">
                 <p className="text-gray-400 text-lg">No enrollments yet</p>
+                <p className="text-gray-500 text-sm mt-2">Local backup data will appear here</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -114,31 +125,24 @@ export default function AdminEnrollments() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm">
                           {enrollment.paymentScreenshot ? (
-                            <a
-                              href={`/uploads/${enrollment.paymentScreenshot}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-orange-500 hover:text-orange-400 underline"
-                            >
-                              View
-                            </a>
+                            <span className="text-orange-500">
+                              {enrollment.paymentScreenshot}
+                            </span>
                           ) : (
-                            <span className="text-gray-500">No file</span>
+                            <span className="text-gray-500">Not uploaded</span>
                           )}
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
+                <div className="mt-4 text-center">
+                  <p className="text-sm text-gray-400">
+                    💡 This shows local backup data. View payment screenshots in your Google Sheet.
+                  </p>
+                </div>
               </div>
             )}
-
-            <div className="mt-8 bg-[#1a1f2e] rounded-lg p-6 border border-orange-500/20">
-              <h3 className="text-lg font-semibold text-white mb-2">📊 Google Sheets Integration</h3>
-              <p className="text-gray-400 text-sm">
-                All enrollments are automatically saved to your Google Sheet for easy management and sharing with your team.
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>

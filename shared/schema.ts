@@ -46,16 +46,11 @@ export const jobApplications = pgTable("job_applications", {
 
 export const courseEnrollments = pgTable("course_enrollments", {
   id: serial("id").primaryKey(),
-  firstName: text("first_name").notNull(),
-  lastName: text("last_name").notNull(),
+  fullName: text("full_name").notNull(),
   email: text("email").notNull(),
-  phone: text("phone"),
-  courseId: text("course_id").notNull(),
-  courseName: text("course_name").notNull(),
-  experience: text("experience").notNull(),
-  goals: text("goals").notNull(),
-  heardAbout: text("heard_about"),
-  newsletter: boolean("newsletter").default(false),
+  phoneNumber: text("phone_number").notNull(),
+  referralSource: text("referral_source").notNull(),
+  paymentScreenshot: text("payment_screenshot"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -102,15 +97,11 @@ export const insertCourseEnrollmentSchema = createInsertSchema(courseEnrollments
   id: true,
   createdAt: true,
 }).extend({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
+  fullName: z.string().min(1, "Full name is required"),
   email: z.string().email("Please enter a valid email address"),
-  phone: z.string().optional(),
-  courseId: z.string().min(1, "Course selection is required"),
-  courseName: z.string().min(1, "Course name is required"),
-  experience: z.string().min(1, "Experience level is required"),
-  goals: z.string().min(20, "Please describe your learning goals (minimum 20 characters)"),
-  heardAbout: z.string().optional(),
+  phoneNumber: z.string().min(1, "Phone number is required"),
+  referralSource: z.string().min(1, "Please select where you found us"),
+  paymentScreenshot: z.string().optional(),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

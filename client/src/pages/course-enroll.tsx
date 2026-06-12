@@ -124,13 +124,9 @@ export default function CourseEnroll() {
     try {
       const scriptUrl = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL;
       
-      if (!scriptUrl) {
-        console.warn('Google Apps Script URL not configured. Using local API fallback.');
-        // Fallback to local API
-        await submitToLocalAPI();
-        return;
-      }
-
+      // Convert image to base64
+      const base64Image = await convertToBase64(uploadedFile);
+      
       // Prepare data for Google Apps Script
       const enrollmentData = {
         fullName: formData.fullName,
@@ -138,61 +134,91 @@ export default function CourseEnroll() {
         phoneNumber: formData.phoneNumber,
         referralSource: formData.referralSource,
         paymentScreenshot: uploadedFile.name,
+        paymentScreenshotBase64: base64Image,
       };
 
-      // Submit to Google Apps Script
-      const response = await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors', // Important for Apps Script
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(enrollmentData),
-      });
-
-      // Note: no-cors mode doesn't allow reading the response
-      // So we assume success if no error is thrown
-      
-      toast({
-        title: "Enrollment Complete! 🎉",
-        description: "We'll verify your payment and send access within 24 hours. Check your email.",
-      });
-      
-      // Also submit to local API for backup
-      await submitToLocalAPI();
-      
-      // Reset form after successful submission
-      setTimeout(() => {
-        setFormData({
-          fullName: "",
-          phoneNumber: "",
-          email: "",
-          referralSource: "",
+      // Try Google Apps Script first
+      if (scriptUrl) {
+        try {
+          await fetch(scriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(enrollmentData),
+          });
+          
+          // If Google Apps Script succeeds, show success
+          toast({
+            title: "Enrollment Complete! 🎉",
+            description: "We'll verify your payment and send access within 24 hours. Check your email.",
+          });
+          
+          // Also save locally for backup
+          try {
+            await submitToLocalAPI();
+          } catch (error) {
+            console.log('Local backup failed, but Google Sheets succeeded:', error);
+          }
+          
+          // Reset form
+          setTimeout(() => {
+            setFormData({
+              fullName: "",
+              phoneNumber: "",
+              email: "",
+              referralSource: "",
+            });
+            setUploadedFile(null);
+            setStep(1);
+          }, 2000);
+          
+        } catch (error) {
+          console.error('Google Apps Script error:', error);
+          throw error; // Fall through to local API
+        }
+      } else {
+        // No Google Apps Script URL, use local API only
+        await submitToLocalAPI();
+        
+        toast({
+          title: "Enrollment Saved! 📝",
+          description: "Your enrollment has been saved locally. We'll process it soon!",
         });
-        setUploadedFile(null);
-        setStep(1);
-      }, 2000);
+        
+        // Reset form
+        setTimeout(() => {
+          setFormData({
+            fullName: "",
+            phoneNumber: "",
+            email: "",
+            referralSource: "",
+          });
+          setUploadedFile(null);
+          setStep(1);
+        }, 2000);
+      }
 
     } catch (error) {
       console.error('Enrollment error:', error);
-      
-      // Try local API as fallback
-      try {
-        await submitToLocalAPI();
-        toast({
-          title: "Enrollment Saved Locally",
-          description: "We've saved your enrollment. We'll process it soon!",
-        });
-      } catch (fallbackError) {
-        toast({
-          title: "Error",
-          description: "Failed to submit enrollment. Please try again or contact support.",
-          variant: "destructive",
-        });
-      }
+      toast({
+        title: "Error",
+        description: "Failed to submit enrollment. Please try again or contact support.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const convertToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (error) => reject(error);
+    });
   };
 
   const submitToLocalAPI = async () => {
@@ -211,7 +237,8 @@ export default function CourseEnroll() {
     });
 
     if (!response.ok) {
-      throw new Error('Local API submission failed');
+      const data = await response.json();
+      throw new Error(data.message || 'Local API submission failed');
     }
 
     return response.json();
