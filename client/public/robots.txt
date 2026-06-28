@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /courses/enroll
+
+Sitemap: https://codevente.com/sitemap.xml

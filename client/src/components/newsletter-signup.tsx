@@ -16,13 +16,10 @@ export default function NewsletterSignup() {
       return response.json();
     },
     onSuccess: (data) => {
-      toast({
-        title: "Success!",
-        description: data.message,
-      });
+      toast({ title: "Success!", description: data.message });
       setEmail("");
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast({
         title: "Error",
         description: error.message || "Failed to subscribe. Please try again.",
@@ -34,44 +31,40 @@ export default function NewsletterSignup() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) {
-      toast({
-        title: "Error",
-        description: "Please enter your email address.",
-        variant: "destructive",
-      });
+      toast({ title: "Error", description: "Please enter your email address.", variant: "destructive" });
       return;
     }
     newsletterMutation.mutate(email.trim());
   };
 
   return (
-    <section className="py-20 bg-brand-gradient animate-gradient-shift">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="section-padding-sm section-muted">
+      <div className="section-container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          className="max-w-2xl mx-auto text-center card-light p-8 md:p-10"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-white mb-4">Stay Updated</h2>
-          <p className="text-xl text-sky-100 mb-8">
-            Get the latest insights on web development, digital marketing trends, and exclusive
-            offers.
+          <p className="eyebrow-light mb-3">Newsletter</p>
+          <h2 className="heading-section text-slate-900 mb-3">Stay in the Loop</h2>
+          <p className="text-slate-600 mb-6">
+            Get insights on AI, software development, and startup product trends.
           </p>
-
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
             <Input
               type="email"
-              placeholder="Enter your email"
+              placeholder="you@company.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white focus:outline-none"
+              className="flex-1 h-12 rounded-xl border-slate-200 focus:border-primary"
               disabled={newsletterMutation.isPending}
             />
             <Button
               type="submit"
               disabled={newsletterMutation.isPending}
-              className="bg-white text-[#145983] px-6 py-3 rounded-lg font-semibold hover:bg-sky-50 transition-colors duration-200"
+              className="btn-primary-gradient h-12 px-8 rounded-xl"
             >
               {newsletterMutation.isPending ? "Subscribing..." : "Subscribe"}
             </Button>

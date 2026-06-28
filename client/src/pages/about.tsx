@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import SEOHead from "@/components/seo-head";
-import TeamSection from "@/components/team-section";
+import PageHero from "@/components/layout/page-hero";
+import SectionHeader from "@/components/layout/section-header";
+import CTABanner from "@/components/layout/cta-banner";
 
 export default function About() {
   const timeline = [
@@ -8,142 +10,145 @@ export default function About() {
       year: "2024",
       title: "CodeVente Founded",
       description: "Started with a vision to bridge the gap between innovative technology and business growth.",
-      color: "blue"
     },
     {
       year: "2025",
       title: "First 10 Projects",
       description: "Successfully delivered our first 10 client projects across web, mobile, and digital growth services.",
-      color: "violet"
     },
     {
       year: "2026",
       title: "50+ Projects Delivered",
       description: "Scaled delivery operations and crossed 50+ completed projects with strong client satisfaction.",
-      color: "cyan"
-    }
+    },
   ];
 
-  const colorMap = {
-    blue: "bg-blue-600 text-blue-600",
-    violet: "bg-violet-600 text-violet-600",
-    cyan: "bg-cyan-600 text-cyan-600",
-    emerald: "bg-emerald-600 text-emerald-600"
-  };
+  const values = [
+    { title: "Ship Fast", desc: "Pragmatic delivery over endless planning." },
+    { title: "Build Right", desc: "Production-grade code, not demo-quality patches." },
+    { title: "Stay Transparent", desc: "Clear timelines, honest scope, no surprises." },
+  ];
 
   return (
     <>
       <SEOHead
-        title="About CodeVente - Our Mission, Vision & Team"
-        description="Learn about CodeVente's mission to empower businesses through innovative digital solutions. Meet our expert team and discover our journey."
-        keywords="about codevente, tech company team, digital agency mission, web development team"
+        title="About CodeVente - AI & Software Development for Startups"
+        description="CodeVente is an AI and software development agency helping startups build web apps, mobile apps, and AI-powered products. Meet our team and discover our mission."
+        keywords="about codevente, AI software agency, startup development team, mobile app developers, web development team"
+        canonicalPath="/about"
       />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-brand-gradient animate-gradient-shift">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1
-            className="text-5xl font-bold text-white mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            About CodeVente
-          </motion.h1>
-          <motion.p
-            className="text-xl text-slate-200"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Empowering businesses through innovative digital solutions since our inception.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About Us"
+        title="An AI & Software Agency for Startups"
+        description="We help ambitious teams ship web apps, mobile apps, and AI-powered software — with strategy, design, and engineering under one roof."
+      />
 
-      {/* Mission and Vision */}
-      <section className="py-20 bg-brand-soft">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section className="section-padding section-dark">
+        <div className="section-container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.55 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-white mb-6">Our Mission</h2>
-              <p className="text-lg text-slate-300 mb-6">
-                To empower businesses of all sizes with cutting-edge digital solutions that drive growth, enhance user experiences, and create lasting competitive advantages in the digital marketplace.
-              </p>
-              <h3 className="text-2xl font-semibold text-white mb-4">Our Vision</h3>
-              <p className="text-lg text-slate-300">
-                To be the leading technology partner that transforms ideas into impactful digital experiences, fostering innovation and success for our clients worldwide.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-                alt="Team collaboration in modern office environment"
-                className="rounded-xl shadow-lg ring-1 ring-sky-100"
+              <SectionHeader
+                eyebrow="Mission"
+                title="Building Software Startups Can Scale On"
+                description="We deliver AI-powered web apps, mobile apps, and custom software that drive growth and create lasting competitive advantages."
+                align="left"
+                dark
               />
+              <div className="mt-8 space-y-4">
+                <h3 className="text-lg font-semibold text-white">Our Vision</h3>
+                <p className="text-slate-400 leading-relaxed">
+                  To be the leading technology partner that transforms ideas into impactful
+                  digital experiences — fostering innovation and success for clients worldwide.
+                </p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.55 }}
+              viewport={{ once: true }}
+            >
+              <div className="rounded-2xl overflow-hidden border border-sky-800/40 shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
+                  alt="Team collaboration"
+                  className="w-full aspect-[4/3] object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Company Journey Timeline */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Our Journey</h2>
-            <p className="text-xl text-slate-600">Key milestones in our growth and evolution.</p>
-          </motion.div>
-
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-sky-200"></div>
-
-            {/* Timeline items */}
-            <div className="space-y-12">
-              {timeline.map((item, index) => (
-                <motion.div
-                  key={item.year}
-                  className={`relative flex items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className={`absolute left-6 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 ${colorMap[item.color as keyof typeof colorMap].split(' ')[0]} rounded-full border-4 border-white shadow-lg z-10`}></div>
-                  <div className={`ml-16 md:ml-0 md:w-1/2 ${index % 2 === 1 ? 'md:pl-8' : 'md:pr-8'}`}>
-                    <div className="bg-white p-6 rounded-xl shadow-lg border border-sky-100">
-                      <div className={`font-semibold mb-2 ${colorMap[item.color as keyof typeof colorMap].split(' ')[1]}`}>
-                        {item.year}
-                      </div>
-                      <h3 className="text-xl font-semibold text-slate-900 mb-2">{item.title}</h3>
-                      <p className="text-slate-600">{item.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+      <section className="section-padding section-light">
+        <div className="section-container">
+          <SectionHeader
+            eyebrow="Values"
+            title="How We Operate"
+            description="Three principles that guide every engagement."
+          />
+          <div className="grid md:grid-cols-3 gap-5">
+            {values.map((v, i) => (
+              <motion.div
+                key={v.title}
+                className="card-light p-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="font-semibold text-slate-900 mb-2">{v.title}</h3>
+                <p className="text-sm text-slate-600">{v.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <TeamSection />
+      <section className="section-padding section-muted">
+        <div className="section-container">
+          <SectionHeader
+            eyebrow="Timeline"
+            title="Our Journey"
+            description="Key milestones in our growth and evolution."
+          />
+          <div className="max-w-3xl mx-auto space-y-6">
+            {timeline.map((item, index) => (
+              <motion.div
+                key={item.year}
+                className="card-light p-6 flex gap-6 items-start"
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.45, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                  <span className="text-sm font-bold text-primary">{item.year}</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-slate-900 mb-1">{item.title}</h3>
+                  <p className="text-sm text-slate-600">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTABanner
+        title="Want to Work With Us?"
+        description="Whether you're launching a product or scaling an existing one — let's talk."
+        primaryLabel="Get In Touch"
+        primaryHref="/contact"
+        secondaryLabel="View Careers"
+        secondaryHref="/careers"
+      />
     </>
   );
 }

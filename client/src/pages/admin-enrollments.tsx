@@ -22,11 +22,11 @@ export default function AdminEnrollments() {
 
   const fetchEnrollments = async () => {
     try {
-      const response = await fetch('/api/course-enrollments');
+      const response = await fetch("/api/course-enrollments");
       const data = await response.json();
       setEnrollments(data);
     } catch (error) {
-      console.error('Failed to fetch enrollments:', error);
+      console.error("Failed to fetch enrollments:", error);
     } finally {
       setLoading(false);
     }
@@ -38,6 +38,8 @@ export default function AdminEnrollments() {
         title="Course Enrollments - Admin"
         description="View all course enrollments"
         keywords="admin, enrollments"
+        noindex
+        canonicalPath="/admin/enrollments"
       />
 
       <div className="min-h-screen bg-brand-soft py-20 px-4">
@@ -52,30 +54,30 @@ export default function AdminEnrollments() {
               Total Enrollments: {enrollments.length}
             </p>
 
-            <div className="bg-[#1a1f2e] rounded-lg p-6 border border-orange-500/20 mb-8">
-              <h3 className="text-lg font-semibold text-white mb-2">📊 Google Sheets Integration Active</h3>
+            <div className="bg-brand-card rounded-lg p-6 border border-primary/20 mb-8">
+              <h3 className="text-lg font-semibold text-white mb-2">Google Sheets Integration Active</h3>
               <p className="text-gray-400 text-sm mb-3">
                 All enrollments are automatically saved to your Google Sheet with payment screenshots uploaded to Google Drive.
               </p>
-              <p className="text-orange-400 text-sm">
-                💡 <strong>View Payment Screenshots:</strong> Open your Google Sheet and click the Drive links in the Payment Screenshot column.
+              <p className="text-primary/80 text-sm">
+                View Payment Screenshots: Open your Google Sheet and click the Drive links in the Payment Screenshot column.
               </p>
             </div>
 
             {loading ? (
               <div className="text-center py-12">
-                <div className="inline-block w-8 h-8 border-4 border-gray-600 border-t-orange-500 rounded-full animate-spin"></div>
+                <div className="inline-block w-8 h-8 border-4 border-gray-600 border-t-primary rounded-full animate-spin"></div>
                 <p className="text-gray-400 mt-4">Loading enrollments...</p>
               </div>
             ) : enrollments.length === 0 ? (
-              <div className="bg-[#1a1f2e] rounded-lg p-12 text-center">
+              <div className="bg-brand-card rounded-lg p-12 text-center">
                 <p className="text-gray-400 text-lg">No enrollments yet</p>
                 <p className="text-gray-500 text-sm mt-2">Local backup data will appear here</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
-                <table className="w-full bg-[#1a1f2e] rounded-lg overflow-hidden">
-                  <thead className="bg-[#0f1420]">
+                <table className="w-full bg-brand-card rounded-lg overflow-hidden">
+                  <thead className="bg-brand-dark">
                     <tr>
                       <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">
                         Date
@@ -99,14 +101,14 @@ export default function AdminEnrollments() {
                   </thead>
                   <tbody className="divide-y divide-gray-800">
                     {enrollments.map((enrollment) => (
-                      <tr key={enrollment.id} className="hover:bg-[#141824] transition-colors">
+                      <tr key={enrollment.id} className="hover:bg-brand-card-alt transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                          {new Date(enrollment.createdAt).toLocaleDateString('en-US', {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit'
+                          {new Date(enrollment.createdAt).toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
                           })}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
@@ -119,13 +121,13 @@ export default function AdminEnrollments() {
                           {enrollment.phoneNumber}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                          <span className="px-2 py-1 bg-[#0f1420] rounded text-xs">
+                          <span className="px-2 py-1 bg-brand-dark rounded text-xs">
                             {enrollment.referralSource}
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm">
                           {enrollment.paymentScreenshot ? (
-                            <span className="text-orange-500">
+                            <span className="text-primary">
                               {enrollment.paymentScreenshot}
                             </span>
                           ) : (
@@ -138,7 +140,7 @@ export default function AdminEnrollments() {
                 </table>
                 <div className="mt-4 text-center">
                   <p className="text-sm text-gray-400">
-                    💡 This shows local backup data. View payment screenshots in your Google Sheet.
+                    This shows local backup data. View payment screenshots in your Google Sheet.
                   </p>
                 </div>
               </div>

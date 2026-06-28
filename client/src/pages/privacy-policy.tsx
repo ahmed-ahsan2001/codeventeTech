@@ -11,6 +11,7 @@ export default function PrivacyPolicy() {
         title="Privacy Policy - CodeVente"
         description="CodeVente's Privacy Policy outlining how we collect, use, and protect your personal information."
         keywords="privacy policy, data protection, user privacy, codevente privacy"
+        canonicalPath="/privacy-policy"
       />
 
       {/* Hero Section */}

@@ -11,6 +11,7 @@ export default function TermsOfService() {
         title="Terms of Service - CodeVente"
         description="CodeVente's Terms of Service outlining the rules and regulations for using our services."
         keywords="terms of service, terms and conditions, user agreement, codevente terms"
+        canonicalPath="/terms-of-service"
       />
 
       {/* Hero Section */}

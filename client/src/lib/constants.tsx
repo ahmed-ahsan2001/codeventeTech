@@ -1,35 +1,67 @@
-import quranAppImageOne from "@/assets/quran-app-1.png";
-import quranAppImageTwo from "@/assets/quran-app-2.png";
+export type { PortfolioProject } from "./portfolio";
+export { PORTFOLIO_PROJECTS, getProjectBySlug, getCaseStudyPath } from "./portfolio";
 
 export const COMPANY_INFO = {
   name: "CodeVente",
-  tagline: "Empowering Innovation, Delivering Digital Solutions",
+  tagline: "AI & Software Development Agency for Startups",
   email: "ahmedbawany2001@gmail.com",
   supportEmail: "",
   whatsapp: "+923122739457",
   phone: "+92 312 2739457",
   address: {
     street: "Karachi",
-    city: "",
-    state: "CA",
+    city: "Karachi",
+    state: "Sindh",
     zip: "75500",
-    country: "Pakistan"
-  }
+    country: "Pakistan",
+  },
+  social: {
+    linkedin: "https://www.linkedin.com/company/codevente",
+    twitter: "",
+    github: "https://github.com/codevente",
+    instagram: "https://www.instagram.com/codevente",
+  },
 };
 
 export const SERVICES = [
   {
     id: "web-development",
-    title: "Web Development",
-    description: "Custom web applications built with modern frameworks and best practices for performance and scalability.",
+    title: "Web & App Development",
+    description: "Full-stack web platforms and native cross-platform mobile apps — built with modern frameworks for performance, scale, and maintainability.",
     icon: "code",
     features: [
-      "Custom React & Next.js Applications",
-      "Responsive Design & Mobile Optimization", 
-      "E-commerce Solutions",
-      "API Integration & Development"
+      "React, Next.js & Node.js Applications",
+      "iOS & Android Apps (React Native)",
+      "API Design & Backend Development",
+      "E-commerce & SaaS Products",
     ],
-    color: "blue"
+    color: "blue",
+  },
+  {
+    id: "ai-solutions",
+    title: "AI Solutions & Integration",
+    description: "Custom AI features, LLM integrations, and intelligent automation that solve real business problems — not demo-grade chatbots.",
+    icon: "sparkles",
+    features: [
+      "OpenAI & LangChain Integrations",
+      "AI Agents & Workflow Automation",
+      "RAG Pipelines & Custom Models",
+      "AI-Powered Product Features",
+    ],
+    color: "violet",
+  },
+  {
+    id: "ui-ux",
+    title: "UI/UX Design",
+    description: "User-centered design for web and mobile products — intuitive interfaces that drive engagement and conversion.",
+    icon: "palette",
+    features: [
+      "User Research & Testing",
+      "Wireframing & Prototyping",
+      "Visual Design & Design Systems",
+      "Mobile & Web Interface Design",
+    ],
+    color: "emerald",
   },
   {
     id: "digital-marketing",
@@ -40,9 +72,9 @@ export const SERVICES = [
       "Social Media Marketing",
       "Content Marketing Strategy",
       "Pay-Per-Click Advertising",
-      "Email Marketing Campaigns"
+      "Email Marketing Campaigns",
     ],
-    color: "violet"
+    color: "cyan",
   },
   {
     id: "seo",
@@ -53,23 +85,10 @@ export const SERVICES = [
       "Technical SEO Audits",
       "Keyword Research & Strategy",
       "On-Page Optimization",
-      "Link Building & Authority"
+      "Link Building & Authority",
     ],
-    color: "cyan"
+    color: "blue",
   },
-  {
-    id: "ui-ux",
-    title: "UI/UX Design",
-    description: "User-centered design solutions that create intuitive, engaging, and conversion-focused experiences.",
-    icon: "palette",
-    features: [
-      "User Research & Testing",
-      "Wireframing & Prototyping",
-      "Visual Design & Branding",
-      "Accessibility Compliance"
-    ],
-    color: "emerald"
-  }
 ];
 
 export const TESTIMONIALS = [
@@ -87,72 +106,6 @@ export const TESTIMONIALS = [
     content: "The team's expertise in digital marketing helped us reach new audiences and grow our online presence significantly. Highly recommended!",
     rating: 5
   },
-];
-
-export const PORTFOLIO_PROJECTS = [
-  {
-    id: 1,
-    title: "Zakaria Masjid Website",
-    description: "Zakaria Masjid Website and hifz platform portal",
-    category: "web",
-    image: "https://ik.imagekit.io/zakariamasjid/Screenshot%202025-10-07%20at%2010.29.26%E2%80%AFPM.png?updatedAt=1759858270613",
-    technologies: "React, Node.js, Firebase",
-    results: "High User Interation, Spirituality",
-    rating: 5,
-    link: "https://zakariamasjid.com"
-  },
-  {
-    id: 2,
-    title: "HealthCare Mobile App",
-    description: "Patient management system with appointment scheduling, medical records, and telemedicine features.",
-    category: "design",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
-    technologies: "Figma, React Native",
-    results: "95% user satisfaction, 40% reduction in appointment no-shows",
-    rating: 5
-  },
-  {
-    id: 3,
-    title: "Khadija Tul Kubra Website",
-    description: "Website Development, Payment gateway",
-    category: "web",
-    image: "https://ik.imagekit.io/zakariamasjid/Screenshot%202025-10-07%20at%2010.51.16%E2%80%AFPM.png?updatedAt=1759859501345",
-    technologies: "React, Node.js, Firebase, Pay Pro API",
-    results: "High Donation Rate",
-    rating: 5
-  },
-  {
-    id: 5,
-    title: "EdTech Learning Platform",
-    description: "Comprehensive online learning platform with course management, progress tracking, and interactive assessments.",
-    category: "design",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
-    technologies: "Figma, Vue.js, Firebase",
-    results: "90% course completion rate, 45% increase in student engagement",
-    rating: 5
-  },
-  {
-    id: 6,
-    title: "Retail Brand Campaign",
-    description: "Integrated marketing campaign for fashion retailer including brand repositioning and omnichannel strategy.",
-    category: "marketing",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400",
-    technologies: "SEO, Content, Social Media",
-    results: "400% increase in brand awareness, 180% growth in online sales",
-    rating: 5
-  },
-  {
-    id: 7,
-    title: "Quran App",
-    description: "Cross-platform Quran application with recitation, translation, bookmarks, and daily reminder features.",
-    category: "web",
-    categories: ["web", "mobile"],
-    image: quranAppImageOne,
-    secondaryImage: quranAppImageTwo,
-    technologies: "React, React Native, Node.js, Firebase",
-    results: "Unified experience across web and mobile with strong user engagement.",
-    rating: 5
-  }
 ];
 
 // export const COURSES = [

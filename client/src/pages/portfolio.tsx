@@ -3,79 +3,39 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
 import PortfolioGrid from "@/components/portfolio-grid";
+import PageHero from "@/components/layout/page-hero";
+import CTABanner from "@/components/layout/cta-banner";
 
 export default function Portfolio() {
   return (
     <>
       <SEOHead
-        title="Portfolio - Our Best Web Development & Digital Marketing Projects"
-        description="Explore CodeVente's portfolio showcasing successful web development, digital marketing, and UI/UX design projects with proven results."
-        keywords="web development portfolio, digital marketing case studies, UI/UX design projects, react projects"
+        title="Portfolio - Web Apps, Mobile Apps & AI Projects"
+        description="Explore CodeVente's portfolio of web apps, mobile apps, AI integrations, and software projects built for startups with proven results."
+        keywords="software development portfolio, mobile app projects, AI integration case studies, web app portfolio, startup projects"
+        canonicalPath="/portfolio"
       />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-brand-gradient animate-gradient-shift">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1
-            className="text-5xl font-bold text-white mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Our Portfolio
-          </motion.h1>
-          <motion.p
-            className="text-xl text-sky-100"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Showcasing successful projects and client transformations.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Our Work"
+        title="Projects That Ship & Scale"
+        description="Real client work across web apps, mobile apps, AI products, and growth — with measurable outcomes."
+      >
+        <Link href="/contact">
+          <Button size="lg" className="btn-outline-dark rounded-xl px-8 py-6 text-base">
+            Start Your Project
+          </Button>
+        </Link>
+      </PageHero>
 
-      {/* Portfolio Filter */}
-      <section className="py-12 bg-white/90 border-b border-sky-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-lg text-slate-600">
-              Filter projects by category to see our expertise in action.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Portfolio Grid */}
       <PortfolioGrid />
 
-      {/* CTA Section */}
-      <section className="py-20 bg-brand-gradient animate-gradient-shift">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">Ready to Join Our Success Stories?</h2>
-            <p className="text-xl text-sky-100 mb-8">Let's create something amazing together.</p>
-            <Link href="/contact">
-              <Button
-                size="lg"
-                className="bg-white text-[#145983] px-8 py-4 font-semibold hover:bg-sky-50 transition-all duration-200"
-              >
-                Start Your Project
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <CTABanner
+        title="Ready to Join Our Success Stories?"
+        description="Let's create something amazing together."
+        primaryLabel="Start Your Project"
+        primaryHref="/contact"
+      />
     </>
   );
 }

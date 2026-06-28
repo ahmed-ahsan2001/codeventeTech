@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/codevente-logo.png";
@@ -16,35 +16,23 @@ export default function Navigation() {
     { href: "/services", label: "Services" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/courses", label: "Courses" },
+    { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact" },
   ];
 
-  // Handle scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+    return () => { document.body.style.overflow = "unset"; };
   }, [isMobileMenuOpen]);
 
   const isActive = (href: string) => {
@@ -54,207 +42,148 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-white/90 backdrop-blur-lg shadow-lg border-b border-sky-100" 
-          : "bg-white/80 backdrop-blur-sm shadow-sm border-b border-sky-100/70"
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 lg:h-20">
-            {/* Logo */}
+      <nav
+        className={`site-nav fixed top-0 left-0 right-0 z-[100] transition-shadow duration-300 border-b border-white/10 ${
+          isScrolled ? "shadow-lg shadow-black/30" : "shadow-sm shadow-black/10"
+        }`}
+      >
+        <div className="section-container">
+          <div className="flex justify-between items-center h-16 lg:h-[4.5rem]">
             <Link href="/">
-              <motion.div 
-                className="flex items-center cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.div
+                className="flex items-center cursor-pointer gap-3"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="w-9 h-9 lg:w-11 lg:h-11 rounded-lg overflow-hidden mr-3 shadow-md ring-1 ring-sky-100 bg-white">
+                <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-xl overflow-hidden ring-1 ring-white/20 bg-white/10">
                   <img src={logo} alt="CodeVente logo" className="w-full h-full object-cover" />
                 </div>
-                <span className="text-xl lg:text-2xl font-bold text-slate-900">CodeVente</span>
+                <span className="text-lg lg:text-xl font-bold text-white tracking-tight">
+                  CodeVente
+                </span>
               </motion.div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8 xl:space-x-10">
-              {navItems.map((item, index) => (
+            <div className="hidden xl:flex items-center gap-1">
+              {navItems.map((item) => (
                 <Link key={item.href} href={item.href}>
-                  <motion.span
-                    className={`relative text-sm xl:text-base font-medium transition-colors hover:text-primary cursor-pointer ${
+                  <span
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
                       isActive(item.href)
-                        ? "text-primary"
-                        : "text-slate-700"
+                        ? "text-white bg-white/10"
+                        : "text-slate-300 hover:text-white hover:bg-white/5"
                     }`}
-                    whileHover={{ y: -2 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
                     {item.label}
-                    {isActive(item.href) && (
-                      <motion.div
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-gradient rounded-full"
-                        layoutId="activeTab"
-                        initial={false}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
-                  </motion.span>
+                  </span>
                 </Link>
               ))}
             </div>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex">
+            <div className="hidden lg:flex xl:hidden items-center gap-1">
+              {navItems.slice(0, 5).map((item) => (
+                <Link key={item.href} href={item.href}>
+                  <span
+                    className={`px-2.5 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+                      isActive(item.href)
+                        ? "text-white bg-white/10"
+                        : "text-slate-300 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
+                </Link>
+              ))}
+            </div>
+
+            <div className="hidden lg:flex items-center gap-3">
               <Link href="/contact">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                </motion.div>
+                <Button className="btn-primary-gradient gap-2 rounded-xl">
+                  Get Started
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
               </Link>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="lg:hidden">
-              <motion.button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                whileTap={{ scale: 0.9 }}
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {isMobileMenuOpen ? (
-                    <motion.div
-                      key="close"
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <X className="h-6 w-6 text-slate-700" />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="menu"
-                      initial={{ rotate: 90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: -90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Menu className="h-6 w-6 text-slate-700" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.button>
-            </div>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Navigation Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] lg:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
-
-            {/* Mobile Menu */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-[90vw] bg-white shadow-2xl z-50 lg:hidden"
+              transition={{ type: "spring", damping: 28, stiffness: 220 }}
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-[90vw] bg-brand-dark border-l border-white/10 shadow-2xl z-[100] lg:hidden"
             >
               <div className="flex flex-col h-full">
-                {/* Mobile Header */}
-                <div className="flex items-center justify-between p-6 border-b border-slate-200">
+                <div className="flex items-center justify-between p-5 border-b border-white/10">
                   <Link href="/">
-                    <div className="flex items-center">
-                      <div className="w-8 h-8 rounded-lg overflow-hidden mr-3 ring-1 ring-sky-100">
-                        <img src={logo} alt="CodeVente logo" className="w-full h-full object-cover" />
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg overflow-hidden ring-1 ring-white/20">
+                        <img src={logo} alt="CodeVente" className="w-full h-full object-cover" />
                       </div>
-                      <span className="text-xl font-bold text-slate-900">CodeVente</span>
+                      <span className="text-lg font-bold text-white">CodeVente</span>
                     </div>
                   </Link>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
+                    className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10"
                   >
-                    <X className="h-6 w-6 text-slate-700" />
+                    <X className="h-5 w-5" />
                   </button>
                 </div>
 
-                {/* Mobile Navigation Items */}
-                <div className="flex-1 overflow-y-auto py-6">
-                  <div className="space-y-2 px-6">
-                    {navItems.map((item, index) => (
-                      <Link key={item.href} href={item.href}>
-                        <motion.div
-                          initial={{ opacity: 0, x: 50 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: index * 0.1 }}
-                          className={`group flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-200 hover:bg-slate-50 ${
-                            isActive(item.href)
-                              ? "bg-sky-50 text-primary"
-                              : "text-slate-700 hover:text-primary"
-                          }`}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          <span className="font-medium text-lg">{item.label}</span>
-                          {isActive(item.href) && (
-                            <motion.div
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              className="w-2 h-2 bg-primary rounded-full"
-                            />
-                          )}
-                        </motion.div>
-                      </Link>
-                    ))}
-                  </div>
+                <div className="flex-1 overflow-y-auto py-4 px-4 space-y-1">
+                  {navItems.map((item) => (
+                    <Link key={item.href} href={item.href}>
+                      <div
+                        className={`px-4 py-3 rounded-xl font-medium transition-colors ${
+                          isActive(item.href)
+                            ? "bg-primary/20 text-white border border-primary/30"
+                            : "text-slate-300 hover:bg-white/5 hover:text-white"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </div>
+                    </Link>
+                  ))}
                 </div>
 
-                {/* Mobile CTA */}
-                <div className="p-6 border-t border-slate-200">
+                <div className="p-5 border-t border-white/10">
                   <Link href="/contact">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.5 }}
+                    <Button
+                      className="w-full btn-primary-gradient py-6 text-base rounded-xl"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
-                      <Button className="w-full bg-brand-gradient text-white py-4 font-semibold hover:opacity-95 transition-all duration-200 shadow-lg text-lg">
-                        Get Started
-                      </Button>
-                    </motion.div>
+                      Get Started
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
                   </Link>
-                  
-                  {/* Contact Info */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.7 }}
-                    className="mt-6 text-center text-sm text-slate-500"
-                  >
-                    <p>Ready to transform your business?</p>
-                    <p className="font-medium text-slate-700">Let's build something amazing together</p>
-                  </motion.div>
                 </div>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-
-
     </>
   );
 }

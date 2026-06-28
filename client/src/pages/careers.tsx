@@ -26,6 +26,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import SEOHead from "@/components/seo-head";
+import PageHero from "@/components/layout/page-hero";
 import { insertJobApplicationSchema, type InsertJobApplication } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 
@@ -34,34 +35,34 @@ const openPositions = [
     id: "senior-frontend-developer",
     title: "Senior Frontend Developer",
     department: "Engineering",
-    location: "Remote / San Francisco",
+    location: "Remote / Karachi",
     type: "Full-time",
-    salary: "$120k - $160k",
+    salary: "PKR 150k - 250k / month",
     icon: Code,
     skills: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
-    description: "Lead frontend development initiatives and mentor junior developers while building cutting-edge user interfaces."
+    description: "Lead frontend development initiatives and mentor junior developers while building cutting-edge user interfaces.",
   },
   {
     id: "ui-ux-designer",
     title: "UI/UX Designer",
     department: "Design",
-    location: "Remote / New York",
+    location: "Remote / Karachi",
     type: "Full-time",
-    salary: "$90k - $130k",
+    salary: "PKR 100k - 180k / month",
     icon: Palette,
     skills: ["Figma", "Adobe Creative Suite", "Prototyping", "User Research"],
-    description: "Create beautiful, intuitive user experiences that drive engagement and conversion for our clients."
+    description: "Create beautiful, intuitive user experiences that drive engagement and conversion for our clients.",
   },
   {
     id: "digital-marketing-specialist",
     title: "Digital Marketing Specialist",
     department: "Marketing",
-    location: "Remote / Austin",
+    location: "Remote / Pakistan",
     type: "Full-time",
-    salary: "$70k - $100k",
+    salary: "PKR 80k - 130k / month",
     icon: Megaphone,
     skills: ["SEO", "Google Ads", "Social Media", "Analytics"],
-    description: "Develop and execute comprehensive digital marketing strategies for our diverse client portfolio."
+    description: "Develop and execute comprehensive digital marketing strategies for our diverse client portfolio.",
   },
   {
     id: "growth-hacker",
@@ -69,11 +70,11 @@ const openPositions = [
     department: "Marketing",
     location: "Remote",
     type: "Contract",
-    salary: "$60k - $90k",
+    salary: "PKR 60k - 100k / month",
     icon: TrendingUp,
     skills: ["A/B Testing", "Analytics", "Conversion Optimization", "Product Marketing"],
-    description: "Drive user acquisition and retention through data-driven growth experiments and optimization."
-  }
+    description: "Drive user acquisition and retention through data-driven growth experiments and optimization.",
+  },
 ];
 
 const benefits = [
@@ -167,117 +168,104 @@ export default function Careers() {
       <SEOHead
         title="Careers at CodeVente - Join Our Innovative Team"
         description="Join CodeVente's team of talented developers, designers, and marketers. Explore open positions and apply today for exciting career opportunities."
-        keywords="careers at codevente, tech jobs, web developer jobs, ui ux designer jobs, digital marketing jobs"
+        keywords="careers at codevente, AI engineer jobs, software developer jobs, mobile app developer jobs, ui ux designer jobs"
+        canonicalPath="/careers"
       />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-brand-gradient animate-gradient-shift">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1
-            className="text-5xl font-bold text-white mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Join Our Team
-          </motion.h1>
-          <motion.p
-            className="text-xl text-sky-100"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Build the future of digital experiences with passionate innovators and industry experts.
-          </motion.p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Careers"
+        title="Join Our Team"
+        description="Build the future of digital experiences with passionate innovators and industry experts."
+      />
 
       {/* Company Culture */}
-      <section className="py-20 bg-brand-soft">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding section-light">
+        <div className="section-container">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Why Choose CodeVente?</h2>
-            <p className="text-xl text-slate-600">We're building something special, and we want you to be part of it.</p>
+            <p className="eyebrow-light mb-3">Culture</p>
+            <h2 className="heading-section text-slate-900 mb-4">Why Choose CodeVente?</h2>
+            <p className="text-lead-light max-w-2xl mx-auto">We're building something special, and we want you to be part of it.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             <motion.div
-              className="text-center"
+              className="card-light p-6 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
+              <div className="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Collaborative Culture</h3>
-              <p className="text-slate-600">Work with diverse, talented teams that value your ideas and contributions.</p>
+              <h3 className="font-semibold text-slate-900 mb-2">Collaborative Culture</h3>
+              <p className="text-sm text-slate-600">Work with diverse, talented teams that value your ideas and contributions.</p>
             </motion.div>
 
             <motion.div
-              className="text-center"
+              className="card-light p-6 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-8 h-8 text-emerald-600" />
+              <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-6 h-6 text-emerald-600" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Growth Opportunities</h3>
-              <p className="text-slate-600">Continuous learning and career advancement in a fast-growing company.</p>
+              <h3 className="font-semibold text-slate-900 mb-2">Growth Opportunities</h3>
+              <p className="text-sm text-slate-600">Continuous learning and career advancement in a fast-growing company.</p>
             </motion.div>
 
             <motion.div
-              className="text-center"
+              className="card-light p-6 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-violet-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-violet-600" />
+              <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-6 h-6 text-violet-600" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Work-Life Balance</h3>
-              <p className="text-slate-600">Flexible schedules and remote-first approach to help you thrive.</p>
+              <h3 className="font-semibold text-slate-900 mb-2">Work-Life Balance</h3>
+              <p className="text-sm text-slate-600">Flexible schedules and remote-first approach to help you thrive.</p>
             </motion.div>
 
             <motion.div
-              className="text-center"
+              className="card-light p-6 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-8 h-8 text-cyan-600" />
+              <div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-6 h-6 text-cyan-600" />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">Competitive Package</h3>
-              <p className="text-slate-600">Excellent compensation, benefits, and equity opportunities.</p>
+              <h3 className="font-semibold text-slate-900 mb-2">Competitive Package</h3>
+              <p className="text-sm text-slate-600">Excellent compensation, benefits, and equity opportunities.</p>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Open Positions */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding section-muted">
+        <div className="section-container">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-14"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Open Positions</h2>
-            <p className="text-xl text-slate-600">Discover your next career opportunity with us.</p>
+            <p className="eyebrow-light mb-3">Open Roles</p>
+            <h2 className="heading-section text-slate-900 mb-4">Open Positions</h2>
+            <p className="text-lead-light">Discover your next career opportunity with us.</p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8">

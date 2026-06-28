@@ -1,101 +1,74 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Code, Megaphone, TrendingUp, Palette } from "lucide-react";
+import { Code, Megaphone, TrendingUp, Palette, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SERVICES } from "@/lib/constants";
+import SectionHeader from "@/components/layout/section-header";
 
 const iconMap = {
   code: Code,
+  sparkles: Sparkles,
   megaphone: Megaphone,
   "trending-up": TrendingUp,
   palette: Palette,
 };
 
-const colorMap = {
-  blue: "bg-sky-100 text-sky-700",
-  violet: "bg-blue-100 text-blue-700",
-  cyan: "bg-cyan-100 text-cyan-700",
-  emerald: "bg-teal-100 text-teal-700",
-};
-
 export default function ServicesOverview() {
   return (
-    <section className="py-16 md:py-24 bg-brand-soft">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-8 md:gap-10">
-          <motion.div
-            className="lg:col-span-4"
-            initial={{ opacity: 0, x: -25 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary mb-3">What We Build</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-5">Services Designed Around Outcomes</h2>
-            <p className="text-base md:text-lg text-slate-300">
-              We combine product thinking, design, engineering, and growth strategy into one delivery pipeline.
-            </p>
-          </motion.div>
+    <section className="section-padding section-dark">
+      <div className="section-container relative z-10">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
+          <div className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+            <SectionHeader
+              eyebrow="What We Build"
+              title="AI, Software & Growth — One Team"
+              description="Web apps, mobile apps, AI integrations, and growth systems — designed and shipped for startup speed."
+              align="left"
+              dark
+            />
+            <Link href="/services">
+              <Button className="btn-primary-gradient gap-2 mt-2">
+                Explore All Services
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
 
-          <div className="lg:col-span-8 space-y-4 md:space-y-5">
+          <div className="lg:col-span-8 grid sm:grid-cols-2 gap-5">
             {SERVICES.map((service, index) => {
-              const IconComponent = iconMap[service.icon as keyof typeof iconMap];
+              const Icon = iconMap[service.icon as keyof typeof iconMap];
               return (
                 <motion.div
                   key={service.id}
-                  className="relative overflow-hidden bg-white border border-sky-100 rounded-2xl p-4 md:p-7 shadow-sm"
+                  className="card-light p-6 group hover:-translate-y-1"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.55, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
                   viewport={{ once: true }}
                 >
-                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-sky-400 to-blue-500 md:hidden" />
-                  <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-5 pl-2 md:pl-0">
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${colorMap[service.color as keyof typeof colorMap]}`}>
-                      <IconComponent className="w-6 h-6" />
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-11 h-11 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between gap-2 mb-2 md:mb-3">
-                        <h3 className="text-base md:text-xl font-semibold text-slate-900 leading-tight">{service.title}</h3>
-                        <span className="text-xs md:text-sm text-slate-500 bg-slate-100 rounded-full px-2 py-0.5">{`0${index + 1}`}</span>
-                      </div>
-                      <p className="text-sm md:text-base text-slate-600 mb-3 md:mb-4 line-clamp-2 md:line-clamp-none">{service.description}</p>
-                      <div className="flex flex-wrap gap-1.5 md:gap-2">
-                        {service.features.slice(0, 3).map((feature, featureIndex) => (
-                          <span
-                            key={feature}
-                            className={`text-[11px] md:text-xs px-2 py-1 rounded-full bg-sky-50 text-slate-600 border border-sky-100 ${
-                              featureIndex > 0 ? "hidden sm:inline-flex" : "inline-flex"
-                            }`}
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
+                    <span className="text-xs font-mono text-slate-400">{`0${index + 1}`}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{service.title}</h3>
+                  <p className="text-sm text-slate-600 mb-4 leading-relaxed">{service.description}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {service.features.slice(0, 2).map((feature) => (
+                      <span
+                        key={feature}
+                        className="text-[11px] px-2.5 py-1 rounded-full bg-slate-50 text-slate-600 border border-slate-200"
+                      >
+                        {feature}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               );
             })}
           </div>
         </div>
-
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <Link href="/services">
-            <Button
-              size="lg"
-              className="bg-brand-gradient text-white px-8 py-3 font-semibold hover:opacity-95 transition-all duration-200"
-            >
-              Learn More About Our Services
-            </Button>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

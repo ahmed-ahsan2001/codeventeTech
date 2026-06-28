@@ -261,9 +261,11 @@ export default function CourseEnroll() {
         title="Enroll in AI Agent Content Video Ads Course - Limited Time Offer"
         description="Master AI-powered video advertising and content creation. Enroll now at a special launch price. Limited seats available."
         keywords="ai video ads, content creation, ai agents, video marketing, online learning"
+        canonicalPath="/courses/enroll"
+        noindex
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-[#0a0e1a] via-[#0d1220] to-[#0a0e1a] py-12 px-4">
+      <div className="min-h-screen bg-brand-soft py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Section - Pricing & Benefits */}
@@ -275,7 +277,7 @@ export default function CourseEnroll() {
             >
               {/* Launch Badge */}
               <div className="inline-block">
-                <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide">
+                <div className="bg-primary text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide">
                   🚀 Launch Price: First 100 Students Only
                 </div>
               </div>
@@ -283,7 +285,7 @@ export default function CourseEnroll() {
               {/* Pricing */}
               <div className="space-y-2">
                 <div className="flex items-baseline gap-3">
-                  <span className="text-6xl font-bold text-orange-500">$15</span>
+                  <span className="text-6xl font-bold text-primary">$15</span>
                   <div className="text-xl text-gray-300">
                     <span className="font-semibold">Rs. 4,800</span>
                     <div className="text-sm text-gray-400">Launch Price</div>
@@ -323,7 +325,7 @@ export default function CourseEnroll() {
                 <h3 className="text-lg font-semibold text-white">HOW TO ENROLL</h3>
                 <div className="space-y-3">
                   <div className="flex gap-3 items-start">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
                       1
                     </div>
                     <div className="text-sm text-gray-300 pt-1">
@@ -333,7 +335,7 @@ export default function CourseEnroll() {
                     </div>
                   </div>
                   <div className="flex gap-3 items-start">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
                       2
                     </div>
                     <div className="text-sm text-gray-300 pt-1">
@@ -343,7 +345,7 @@ export default function CourseEnroll() {
                     </div>
                   </div>
                   <div className="flex gap-3 items-start">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
                       3
                     </div>
                     <div className="text-sm text-gray-300 pt-1">
@@ -376,9 +378,8 @@ export default function CourseEnroll() {
               transition={{ duration: 0.6 }}
               className="lg:sticky lg:top-24"
             >
-              <div className="bg-gradient-to-br from-[#1a1f2e] to-[#141824] rounded-2xl shadow-2xl border border-gray-800 overflow-hidden">
-                {/* Form Header */}
-                <div className="bg-gradient-to-r from-[#0f1420] to-[#1a1f2e] border-b border-gray-800 px-6 py-4">
+              <div className="bg-brand-card rounded-2xl shadow-2xl border border-brand-card overflow-hidden">
+                <div className="bg-brand-dark border-b border-brand-card px-6 py-4">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-red-500"></div>
@@ -388,7 +389,7 @@ export default function CourseEnroll() {
                     <span className="text-xs text-gray-400">Enroll Now</span>
                     <div className="flex items-center gap-1">
                       <span className="text-xs text-gray-400">● Live</span>
-                      <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></div>
+                      <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                     </div>
                   </div>
                 </div>
@@ -396,7 +397,7 @@ export default function CourseEnroll() {
                 {/* Form Body */}
                 <div className="px-8 py-8">
                   <div className="mb-6">
-                    <div className="text-xs text-orange-500 font-semibold mb-2">
+                    <div className="text-xs text-primary font-semibold mb-2">
                       → STEP {step} OF 3
                     </div>
                     <h2 className="text-2xl font-bold text-white mb-2">
@@ -404,7 +405,7 @@ export default function CourseEnroll() {
                       {step === 2 && "Payment Instructions."}
                       {step === 3 && "Upload Screenshot."}
                     </h2>
-                    <p className="text-sm text-orange-400">
+                    <p className="text-sm text-primary/80">
                       {step === 1 && `→ ${seatsRemaining} seats remaining. Grab yours before price hits Rs. 9,900`}
                       {step === 2 && "→ Send exactly Rs. 4,800 to secure your spot"}
                       {step === 3 && "→ Upload your payment proof to get instant access"}
@@ -424,7 +425,7 @@ export default function CourseEnroll() {
                           placeholder="e.g., Ahmed Hassan"
                           value={formData.fullName}
                           onChange={(e) => handleInputChange("fullName", e.target.value)}
-                          className="bg-[#0d1117] border-gray-700 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500 h-12"
+                          className="bg-brand-input border-gray-700 text-white placeholder:text-gray-500 focus:border-primary focus:ring-primary h-12"
                           required
                         />
                       </div>
@@ -440,7 +441,7 @@ export default function CourseEnroll() {
                           placeholder="e.g., +92 300 1234567"
                           value={formData.phoneNumber}
                           onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
-                          className="bg-[#0d1117] border-gray-700 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500 h-12"
+                          className="bg-brand-input border-gray-700 text-white placeholder:text-gray-500 focus:border-primary focus:ring-primary h-12"
                           required
                         />
                       </div>
@@ -456,7 +457,7 @@ export default function CourseEnroll() {
                           placeholder="you@example.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange("email", e.target.value)}
-                          className="bg-[#0d1117] border-gray-700 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-orange-500 h-12"
+                          className="bg-brand-input border-gray-700 text-white placeholder:text-gray-500 focus:border-primary focus:ring-primary h-12"
                           required
                         />
                       </div>
@@ -470,10 +471,10 @@ export default function CourseEnroll() {
                           value={formData.referralSource}
                           onValueChange={(value) => handleInputChange("referralSource", value)}
                         >
-                          <SelectTrigger className="bg-[#0d1117] border-gray-700 text-white focus:border-orange-500 focus:ring-orange-500 h-12">
+                          <SelectTrigger className="bg-brand-input border-gray-700 text-white focus:border-primary focus:ring-primary h-12">
                             <SelectValue placeholder="Select platform..." />
                           </SelectTrigger>
-                          <SelectContent className="bg-[#1a1f2e] border-gray-700">
+                          <SelectContent className="bg-brand-card border-gray-700">
                             <SelectItem value="instagram">Instagram</SelectItem>
                             <SelectItem value="facebook">Facebook</SelectItem>
                             <SelectItem value="twitter">Twitter/X</SelectItem>
@@ -491,7 +492,7 @@ export default function CourseEnroll() {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold h-12 text-base transition-all duration-200 shadow-lg hover:shadow-orange-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 text-base transition-all duration-200 shadow-lg hover:shadow-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? "Processing..." : "Continue"}
                         <ArrowRight className="w-5 h-5 ml-2" />
@@ -501,29 +502,29 @@ export default function CourseEnroll() {
 
                   {step === 2 && (
                     <div className="space-y-6">
-                      <div className="bg-[#0d1117] border border-gray-700 rounded-lg p-6 space-y-4">
+                      <div className="bg-brand-input border border-gray-700 rounded-lg p-6 space-y-4">
                         <h3 className="text-lg font-semibold text-white">Payment Options</h3>
                         
                         <div className="space-y-3">
                           <p className="text-sm text-gray-300">
-                            Send <span className="font-bold text-orange-500">Rs. 4,800</span> via any of these methods:
+                            Send <span className="font-bold text-primary">Rs. 4,800</span> via any of these methods:
                           </p>
                           
                           <div className="space-y-2 text-sm text-gray-300">
                             <div className="flex items-center gap-2">
-                              <span className="text-orange-500">•</span>
+                              <span className="text-primary">•</span>
                               <span>Jazzcash</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="text-orange-500">•</span>
+                              <span className="text-primary">•</span>
                               <span>Easypaisa</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="text-orange-500">•</span>
+                              <span className="text-primary">•</span>
                               <span>Nayapay</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <span className="text-orange-500">•</span>
+                              <span className="text-primary">•</span>
                               <span>Bank Transfer (Meezan Bank)</span>
                             </div>
                           </div>
@@ -531,7 +532,7 @@ export default function CourseEnroll() {
 
                         <div className="pt-4 border-t border-gray-700">
                           <p className="text-xs text-gray-400 mb-2">Account Details:</p>
-                          <div className="bg-[#070a0f] p-4 rounded border border-gray-700">
+                          <div className="bg-brand-dark p-4 rounded border border-gray-700">
                             <p className="text-white font-mono text-sm">Account: 0166-0108318685</p>
                             <p className="text-white font-mono text-sm">Bank: Meezan Bank</p>
                             <p className="text-white font-mono text-sm">Name: Mohammad Ahmed Ahsan</p>
@@ -542,7 +543,7 @@ export default function CourseEnroll() {
 
                       <Button
                         onClick={() => setStep(3)}
-                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold h-12 text-base transition-all duration-200 shadow-lg hover:shadow-orange-500/50"
+                        className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 text-base transition-all duration-200 shadow-lg hover:shadow-primary/30"
                       >
                         I've Made Payment
                         <ArrowRight className="w-5 h-5 ml-2" />
@@ -559,14 +560,14 @@ export default function CourseEnroll() {
 
                   {step === 3 && (
                     <div className="space-y-6">
-                      <div className="bg-[#0d1117] border border-gray-700 rounded-lg p-6 space-y-4">
+                      <div className="bg-brand-input border border-gray-700 rounded-lg p-6 space-y-4">
                         <h3 className="text-lg font-semibold text-white">Upload Payment Screenshot</h3>
                         <p className="text-sm text-gray-300">
                           Take a screenshot of your payment confirmation and upload it below.
                         </p>
 
                         <div 
-                          className="border-2 border-dashed border-gray-700 rounded-lg p-8 text-center hover:border-orange-500 transition-colors cursor-pointer"
+                          className="border-2 border-dashed border-gray-700 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer"
                           onClick={() => fileInputRef.current?.click()}
                         >
                           <div className="space-y-2">
@@ -603,7 +604,7 @@ export default function CourseEnroll() {
                       <Button
                         onClick={handleFinalSubmit}
                         disabled={!uploadedFile || isSubmitting}
-                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold h-12 text-base transition-all duration-200 shadow-lg hover:shadow-orange-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 text-base transition-all duration-200 shadow-lg hover:shadow-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? "Submitting..." : "Submit & Complete Enrollment"}
                         <Check className="w-5 h-5 ml-2" />

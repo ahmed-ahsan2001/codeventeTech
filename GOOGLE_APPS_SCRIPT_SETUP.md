@@ -13,6 +13,14 @@ This is the recommended approach for your MVP - no backend complexity, completel
 Date | Name | Email | Phone | Referral Source | Payment Screenshot | Status | Notes
 ```
 
+5. **Format the Payment Screenshot column (Column F) to show images:**
+   - Click on column F header to select the entire column
+   - Adjust column width: Drag to make it wider (e.g., 200-250 pixels)
+   - Right-click → "Resize column" → Set to 200
+   - Adjust row height: Select rows 2 onwards → Right-click → "Resize rows" → Set to 150
+   
+   This will give enough space to display the payment screenshots!
+
 ## Step 2: Create Apps Script
 
 1. In your Google Sheet, click **Extensions** → **Apps Script**
@@ -28,6 +36,12 @@ function doPost(e) {
     // Parse the incoming data
     const data = JSON.parse(e.postData.contents);
     
+    // Handle image if it's base64
+    let imageUrl = "Not uploaded yet";
+    if (data.paymentScreenshotBase64) {
+      imageUrl = uploadImageToDrive(data.paymentScreenshotBase64, data.paymentScreenshot);
+    }
+    
     // Append new row with data
     sheet.appendRow([
       new Date(),                    // Date
@@ -35,13 +49,13 @@ function doPost(e) {
       data.email,                    // Email
       data.phoneNumber,              // Phone
       data.referralSource,           // Referral Source
-      data.paymentScreenshot || "Not uploaded yet", // Payment Screenshot
+      imageUrl,                      // Payment Screenshot (Drive URL or filename)
       "Pending",                     // Status
       ""                             // Notes
     ]);
     
     // Optional: Send email notification
-    sendEmailNotification(data);
+    sendEmailNotification(data, imageUrl);
     
     // Return success response
     return ContentService
@@ -62,7 +76,43 @@ function doPost(e) {
   }
 }
 
-function sendEmailNotification(data) {
+function uploadImageToDrive(base64Data, filename) {
+  try {
+    // Remove data:image/xxx;base64, prefix if present
+    const base64String = base64Data.replace(/^data:image\/\w+;base64,/, '');
+    
+    // Decode base64
+    const blob = Utilities.newBlob(
+      Utilities.base64Decode(base64String),
+      'image/jpeg',
+      filename || 'payment-screenshot.jpg'
+    );
+    
+    // Get or create "Course Payments" folder in Drive
+    let folder;
+    const folders = DriveApp.getFoldersByName("Course Payment Screenshots");
+    if (folders.hasNext()) {
+      folder = folders.next();
+    } else {
+      folder = DriveApp.createFolder("Course Payment Screenshots");
+    }
+    
+    // Upload file to Drive
+    const file = folder.createFile(blob);
+    
+    // Make file viewable by anyone with link
+    file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    
+    // Return the file URL
+    return file.getUrl();
+    
+  } catch (error) {
+    console.error("Error uploading to Drive:", error);
+    return "Upload failed: " + filename;
+  }
+}
+
+function sendEmailNotification(data, imageUrl) {
   // Replace with your email
   const YOUR_EMAIL = "your-email@example.com";
   
@@ -78,7 +128,8 @@ Email: ${data.email}
 Phone: ${data.phoneNumber}
 Found us via: ${data.referralSource}
 
-💰 Payment: ${data.paymentScreenshot ? "Screenshot uploaded" : "Pending"}
+💰 Payment Screenshot:
+${imageUrl}
 
 View all enrollments:
 https://docs.google.com/spreadsheets/d/${SpreadsheetApp.getActiveSpreadsheet().getId()}
@@ -118,12 +169,12 @@ function doGet(e) {
    - **Execute as:** **Me** (your Google account)
    - **Who has access:** **Anyone**
 5. Click **Deploy**
-6. You may need to authorize the script:
+6. **IMPORTANT:** You need to authorize additional permissions:
    - Click **Authorize access**
    - Choose your Google account
    - Click **Advanced** (if you see a warning)
    - Click **Go to [Project Name] (unsafe)**
-   - Click **Allow**
+   - Click **Allow** (The script needs Drive access to save images)
 7. **Copy the Web app URL** - it will look like:
    ```
    https://script.google.com/macros/s/AKfycby.../exec
@@ -147,9 +198,19 @@ VITE_GOOGLE_APPS_SCRIPT_URL=https://script.google.com/macros/s/AKfycby.../exec
 
 1. Restart your development server: `npm run dev`
 2. Go to `/courses/enroll`
-3. Fill out the form and submit
-4. Check your Google Sheet - you should see the data!
-5. Check your email - you should receive a notification!
+3. Fill out the form and upload a payment screenshot
+4. Submit enrollment
+5. Check your Google Sheet - you should see:
+   - ✅ Student data in the row
+   - ✅ Payment screenshot as a clickable Google Drive link
+6. **To display the image directly in the sheet:**
+   - Images are uploaded to Google Drive
+   - Click the link in the Payment Screenshot column to view
+   - **Optional:** To embed images, you can manually edit the formula in that cell:
+     - If the cell shows a Drive URL like: `https://drive.google.com/file/d/FILE_ID/view`
+     - Replace it with: `=IMAGE("https://drive.google.com/uc?id=FILE_ID")`
+     - The image will display directly in the cell!
+7. Check your email - you should receive a notification with the Drive link!
 
 ## Troubleshooting
 
@@ -179,17 +240,24 @@ VITE_GOOGLE_APPS_SCRIPT_URL=https://script.google.com/macros/s/AKfycby.../exec
 ✅ **Automatic Data Saving**
 - All enrollments saved to Google Sheets
 - Timestamped entries
-- No server required
+- No server required for data
 
 ✅ **Email Notifications**
 - Instant email when someone enrolls
 - Includes all student details
+- Shows payment screenshot filename
 - Direct link to your spreadsheet
+
+✅ **File Storage**
+- Payment screenshots are stored on your server in `/uploads/` folder
+- Only the filename is saved to Google Sheet
+- You can view images by going to `http://localhost:5000/admin/enrollments`
+- This keeps your Google Sheet clean and fast
 
 ✅ **Free Forever**
 - No costs
-- No server hosting
 - No database fees
+- Google Drive space not used for images
 
 ✅ **Easy Management**
 - View/edit in Google Sheets
@@ -221,11 +289,29 @@ Once data is in your sheet, you can:
 ## Example Sheet Layout
 
 ```
-| Date       | Name          | Email           | Phone        | Source    | Screenshot | Status   | Notes           |
-|------------|---------------|-----------------|--------------|-----------|------------|----------|-----------------|
-| 6/12/2026  | Ahmed Khan    | ahmed@email.com | +92 300...   | Instagram | Uploaded   | Pending  | Payment verified|
-| 6/12/2026  | Sara Ali      | sara@email.com  | +92 321...   | Facebook  | Uploaded   | Pending  |                 |
+| Date       | Name          | Email           | Phone        | Source    | Payment Screenshot                      | Status   | Notes           |
+|------------|---------------|-----------------|--------------|-----------|----------------------------------------|----------|-----------------|
+| 6/12/2026  | Ahmed Khan    | ahmed@email.com | +92 300...   | Instagram | [Google Drive Link - Click to view]    | Pending  | Payment verified|
+| 6/12/2026  | Sara Ali      | sara@email.com  | +92 321...   | Facebook  | [Google Drive Link - Click to view]    | Verified | Access sent     |
 ```
+
+**About Payment Screenshots:**
+- **Automatic Upload:** Images are automatically uploaded to Google Drive
+- **Stored in Folder:** "Course Payment Screenshots" folder in your Google Drive
+- **View Images:** Click the link in the sheet to open the image
+- **Direct Display (Optional):** You can convert Drive links to =IMAGE() formulas to show images directly in cells
+- **Email:** You'll receive the Drive link in your notification email too
+
+**To show images directly in cells:**
+1. After a submission, you'll see a Drive URL in the Payment Screenshot column
+2. The URL looks like: `https://drive.google.com/file/d/ABC123xyz/view`
+3. Extract the FILE_ID (the part between `/d/` and `/view`)
+4. Replace the cell content with: `=IMAGE("https://drive.google.com/uc?id=ABC123xyz")`
+5. The image will display in the cell!
+
+**Or use this simpler approach:**
+- Just click the Drive link to view the payment proof
+- This way you don't need to modify formulas manually
 
 ## Security Notes
 

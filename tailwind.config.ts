@@ -10,7 +10,19 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
       colors: {
+        brand: {
+          DEFAULT: "var(--brand-blue)",
+          dark: "var(--brand-dark)",
+          navy: "var(--brand-navy)",
+          light: "var(--brand-light)",
+          border: "var(--brand-border)",
+          card: "var(--brand-card)",
+          "card-alt": "var(--brand-card-alt)",
+        },
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {
