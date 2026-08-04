@@ -8,6 +8,10 @@ import {
   Rocket,
   ShieldCheck,
   Building2,
+  Sparkles,
+  Zap,
+  Target,
+  TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
@@ -17,6 +21,9 @@ import TestimonialsCarousel from "@/components/testimonials-carousel";
 import NewsletterSignup from "@/components/newsletter-signup";
 import SectionHeader from "@/components/layout/section-header";
 import CTABanner from "@/components/layout/cta-banner";
+import CountUp from "@/components/animations/CountUp";
+import FadeInSection from "@/components/animations/FadeInSection";
+import GradientOrb from "@/components/effects/GradientOrb";
 import { PORTFOLIO_PROJECTS, COMPANY_INFO } from "@/lib/constants";
 import { getCaseStudyPath } from "@/lib/portfolio";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/seo";
@@ -64,42 +71,96 @@ export default function Home() {
       <HeroSection />
 
       {/* Trust bar */}
-      <section className="section-padding-sm section-muted">
+      <section className="section-padding-sm bg-gradient-to-b from-slate-50 to-white border-y border-slate-100">
         <div className="section-container">
           <SectionHeader
             eyebrow="Trusted By"
             title="Growing Brands Across Pakistan & Beyond"
             align="center"
           />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {trustLogos.map((logo, index) => (
+
+          {/* Marquee animation */}
+          <div className="relative mt-12">
+            <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <motion.div
-                key={logo}
-                className="trust-pill"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                viewport={{ once: true }}
+                className="flex gap-8 w-max"
+                animate={{
+                  x: [0, -1000],
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 20,
+                    ease: "linear",
+                  },
+                }}
               >
-                {logo}
+                {[...trustLogos, ...trustLogos, ...trustLogos].map((logo, index) => (
+                  <div
+                    key={`${logo}-${index}`}
+                    className="trust-pill min-w-[200px] group hover:scale-105 hover:shadow-lg hover:border-cyan-300 transition-all duration-300"
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <span>{logo}</span>
+                    </div>
+                  </div>
+                ))}
               </motion.div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Impact metrics */}
-      <section className="section-padding-sm section-dark border-y border-white/5">
+      <section className="relative section-padding section-dark border-y border-white/5 overflow-hidden">
+        <GradientOrb size={600} color="cyan" blur={140} opacity={0.15} className="top-1/2 left-1/4" />
+        <GradientOrb size={500} color="purple" blur={120} opacity={0.12} className="bottom-0 right-1/3" />
+
         <div className="section-container relative z-10">
-          <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-            <div className="flex w-max gap-4 marquee-track hover:[animation-play-state:paused]">
-              {[...impactStats, ...impactStats].map((stat, index) => (
-                <div key={`${stat.label}-${index}`} className="stat-pill min-w-[220px] md:min-w-[260px] flex-shrink-0">
-                  <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-sm text-slate-400">{stat.label}</div>
-                </div>
-              ))}
+          <FadeInSection direction="up">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Built for <span className="gradient-text">Impact</span>
+              </h2>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                Real results from startups and businesses who trusted us with their vision
+              </p>
             </div>
+          </FadeInSection>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {[
+              { icon: Target, label: "Projects Delivered", value: 50, suffix: "+", color: "cyan" },
+              { icon: Sparkles, label: "Client Satisfaction", value: 95, suffix: "%", color: "purple" },
+              { icon: TrendingUp, label: "Industries Served", value: 12, suffix: "+", color: "blue" },
+              { icon: Zap, label: "Avg. Speed Increase", value: 2.4, suffix: "x", color: "cyan" },
+            ].map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <FadeInSection key={stat.label} delay={index * 0.1} direction="up">
+                  <motion.div
+                    className="card-holographic p-6 text-center group"
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-${stat.color}-500/10 border border-${stat.color}-500/20 mb-4 group-hover:scale-110 transition-transform`}>
+                      <Icon className={`w-6 h-6 text-${stat.color}-400`} />
+                    </div>
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                      <CountUp
+                        end={stat.value}
+                        suffix={stat.suffix}
+                        decimals={stat.suffix === "x" ? 1 : 0}
+                        duration={2.5}
+                      />
+                    </div>
+                    <div className="text-sm text-slate-400 font-medium">{stat.label}</div>
+                  </motion.div>
+                </FadeInSection>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -107,37 +168,69 @@ export default function Home() {
       <ServicesOverview />
 
       {/* Process */}
-      <section className="section-padding section-dark">
+      <section className="relative section-padding section-dark overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse-glow" />
+          <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }} />
+        </div>
+
         <div className="section-container relative z-10">
-          <SectionHeader
-            eyebrow="How We Work"
-            title="A Process Built for Real Launches"
-            description="Strategy without shipping is noise. We work in focused cycles — audit, harden, launch."
-            dark
-          />
-          <div className="grid md:grid-cols-3 gap-5">
+          <FadeInSection direction="up">
+            <SectionHeader
+              eyebrow="How We Work"
+              title="A Process Built for Real Launches"
+              description="Strategy without shipping is noise. We work in focused cycles — audit, harden, launch."
+              dark
+            />
+          </FadeInSection>
+
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mt-12 relative">
+            {/* Connecting lines */}
+            <div className="hidden md:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+
             {processSteps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <motion.div
+                <FadeInSection
                   key={step.title}
-                  className="card-dark p-7"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  delay={index * 0.15}
+                  direction="up"
+                  className="relative"
                 >
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="w-10 h-10 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-sky-300" />
+                  <motion.div
+                    className="card-holographic p-8 h-full group"
+                    whileHover={{ y: -8 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {/* Step number background */}
+                    <div className="absolute top-4 right-4 text-7xl font-bold text-white/5 select-none">
+                      0{index + 1}
                     </div>
-                    <span className="text-xs font-semibold text-sky-400 uppercase tracking-wider">
-                      Step 0{index + 1}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">{step.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{step.description}</p>
-                </motion.div>
+
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all">
+                          <Icon className="w-7 h-7 text-cyan-400" />
+                        </div>
+                        <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest">
+                          Step {index + 1}
+                        </span>
+                      </div>
+
+                      <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors">
+                        {step.title}
+                      </h3>
+                      <p className="text-slate-300 leading-relaxed">
+                        {step.description}
+                      </p>
+
+                      {/* Hover indicator */}
+                      <div className="mt-6 pt-4 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ArrowRight className="w-5 h-5 text-cyan-400 animate-pulse" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </FadeInSection>
               );
             })}
           </div>

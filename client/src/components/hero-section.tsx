@@ -1,147 +1,257 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroOffice from "@/assets/hero-office.png";
+import HeroScene3D from "@/components/three/HeroScene3D";
+import TextReveal from "@/components/animations/TextReveal";
+import FadeInSection from "@/components/animations/FadeInSection";
+import MagneticButton from "@/components/animations/MagneticButton";
+import CountUp from "@/components/animations/CountUp";
+import GradientOrb from "@/components/effects/GradientOrb";
+import MeshGradient from "@/components/effects/MeshGradient";
+import GridOverlay from "@/components/effects/GridOverlay";
 
 export default function HeroSection() {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const scale = useTransform(scrollY, [0, 300], [1, 0.95]);
+
   const heroPoints = [
-    "Web, mobile & AI products built for startups",
-    "Custom LLM integrations & intelligent automation",
-    "Production-ready architecture from prototype to launch",
+    "AI-powered web & mobile products",
+    "Production-ready architecture",
+    "Startup-focused delivery",
   ];
 
   return (
-    <section className="relative min-h-[88vh] flex items-center overflow-hidden pt-28 lg:pt-32 pb-16">
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroOffice}
-          alt="CodeVente team collaborating"
-          className="w-full h-full object-cover"
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background with 3D Scene */}
+      <div className="absolute inset-0 bg-space-dark">
+        <div className="absolute inset-0 opacity-60">
+          <HeroScene3D />
+        </div>
+
+        <MeshGradient opacity={0.4} />
+        <GridOverlay size={64} opacity={0.02} />
+
+        {/* Gradient orbs */}
+        <GradientOrb
+          size={400}
+          color="blue"
+          blur={100}
+          opacity={0.3}
+          className="top-0 left-1/4"
         />
-        <div className="absolute inset-0 bg-brand-gradient animate-gradient-shift opacity-92" />
-        <div className="hero-mesh" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80" />
+        <GradientOrb
+          size={500}
+          color="cyan"
+          blur={120}
+          opacity={0.2}
+          className="bottom-0 right-1/4"
+        />
+        <GradientOrb
+          size={300}
+          color="purple"
+          blur={80}
+          opacity={0.25}
+          className="top-1/2 right-1/3"
+        />
       </div>
 
-      <div className="absolute inset-0 z-10 pointer-events-none">
-        <div className="absolute -top-24 -left-12 w-72 h-72 rounded-full bg-sky-400/10 blur-3xl animate-pulse-soft" />
-        <div className="absolute top-1/3 right-10 w-80 h-80 rounded-full bg-cyan-300/10 blur-3xl animate-pulse-soft [animation-delay:1200ms]" />
-      </div>
-
-      <div className="section-container relative z-20 w-full">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      {/* Content */}
+      <motion.div
+        style={{ opacity, scale }}
+        className="section-container relative z-20 w-full py-32 lg:py-40"
+      >
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column - Main Content */}
           <div className="lg:col-span-7">
-            <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sky-100 text-sm mb-6 backdrop-blur-sm"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              AI & Software Development for Startups — Karachi & Remote
-            </motion.div>
+            {/* Badge */}
+            <FadeInSection delay={0} direction="up">
+              <div className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-sky-100 text-sm mb-8 backdrop-blur-md">
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [1, 0.8, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="w-2 h-2 rounded-full bg-emerald-400"
+                />
+                <Sparkles className="w-4 h-4 text-cyan-400" />
+                <span className="font-medium">AI & Software Development for Startups</span>
+              </div>
+            </FadeInSection>
 
-            <motion.h1
-              className="heading-display text-white mb-6"
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              Build AI-Powered Software{" "}
-              <span className="bg-gradient-to-r from-sky-300 via-cyan-200 to-white bg-clip-text text-transparent">
-                That Startups Can Scale
+            {/* Headline */}
+            <h1 className="heading-display text-white mb-6">
+              <TextReveal delay={0.1} className="block">
+                Build AI Products That
+              </TextReveal>
+              <span className="block mt-2 bg-gradient-to-r from-sky-300 via-cyan-200 to-white bg-clip-text text-transparent">
+                <TextReveal delay={0.3}>Define the Future</TextReveal>
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              className="text-lead text-slate-200 mb-8 max-w-xl"
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-            >
-              We design and ship web apps, mobile apps, and AI-powered products for startups —
-              from vibe-coded prototypes to secure, production-ready software ready for real users
-              and investor conversations.
-            </motion.p>
+            {/* Subheading */}
+            <FadeInSection delay={0.5} direction="up">
+              <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-10 max-w-2xl">
+                We're the technical co-founder startups hire when speed{" "}
+                <span className="text-cyan-300 font-semibold">and</span> quality matter —
+                from AI integration to production launch.
+              </p>
+            </FadeInSection>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 mb-10"
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <Link href="/contact">
-                <Button size="lg" className="btn-outline-dark rounded-xl px-8 py-6 text-base gap-2">
-                  Book Free Audit
-                  <ArrowUpRight className="w-5 h-5" />
-                </Button>
-              </Link>
-              <Link href="/portfolio">
-                <Button size="lg" className="btn-outline-light rounded-xl px-8 py-6 text-base">
-                  View Our Work
-                </Button>
-              </Link>
-            </motion.div>
+            {/* CTAs */}
+            <FadeInSection delay={0.6} direction="up">
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <Link href="/contact">
+                  <MagneticButton strength={0.2}>
+                    <Button
+                      size="lg"
+                      className="btn-primary-gradient rounded-2xl px-10 py-7 text-lg gap-3 shadow-2xl shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all"
+                    >
+                      Start Your Project
+                      <ArrowUpRight className="w-5 h-5" />
+                    </Button>
+                  </MagneticButton>
+                </Link>
+                <Link href="/portfolio">
+                  <MagneticButton strength={0.2}>
+                    <Button
+                      size="lg"
+                      className="btn-outline-light rounded-2xl px-10 py-7 text-lg border-2"
+                    >
+                      View Case Studies
+                    </Button>
+                  </MagneticButton>
+                </Link>
+              </div>
+            </FadeInSection>
 
-            <motion.div
-              className="grid sm:grid-cols-3 gap-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-            >
-              {heroPoints.map((point) => (
-                <div
-                  key={point}
-                  className="card-glass px-4 py-3.5 text-sm text-slate-200 flex items-start gap-2.5"
-                >
-                  <CheckCircle2 className="w-4 h-4 mt-0.5 text-sky-300 flex-shrink-0" />
-                  <span>{point}</span>
-                </div>
-              ))}
-            </motion.div>
+            {/* Feature Points */}
+            <FadeInSection delay={0.7} direction="up">
+              <div className="grid sm:grid-cols-3 gap-3">
+                {heroPoints.map((point, index) => (
+                  <motion.div
+                    key={point}
+                    className="card-holographic px-5 py-4 text-sm text-slate-200 flex items-start gap-3"
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <CheckCircle2 className="w-4 h-4 mt-0.5 text-cyan-400 flex-shrink-0" />
+                    <span className="font-medium">{point}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </FadeInSection>
           </div>
 
-          <motion.div
-            className="lg:col-span-5"
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25 }}
-          >
-            <div className="card-glass p-6 md:p-8">
-              <p className="eyebrow mb-3">Execution Snapshot</p>
-              <h3 className="text-2xl font-bold text-white mb-6">
-                From Demo to Launch in Weeks
+          {/* Right Column - Stats Card */}
+          <FadeInSection delay={0.8} direction="left" className="lg:col-span-5">
+            <div className="card-holographic p-8 md:p-10">
+              <div className="flex items-center gap-2 mb-6">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+                <p className="eyebrow">Why CodeVente</p>
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+              </div>
+
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+                Trusted by Innovative Startups
               </h3>
 
-              <div className="space-y-4">
-                <div className="rounded-xl bg-black/30 border border-white/10 p-4">
-                  <p className="text-xs text-slate-400 uppercase tracking-wider mb-1">Recent delivery</p>
-                  <p className="font-semibold text-white">Quran App — Web + Mobile</p>
-                  <p className="text-sm text-slate-400 mt-1">React, React Native, Firebase</p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="stat-pill">
-                    <p className="text-3xl font-bold text-white">95%</p>
-                    <p className="text-xs text-slate-400 mt-1">Client Satisfaction</p>
-                  </div>
-                  <div className="stat-pill">
-                    <p className="text-3xl font-bold text-white">50+</p>
-                    <p className="text-xs text-slate-400 mt-1">Projects Delivered</p>
-                  </div>
-                </div>
-
-                <div className="pt-2 border-t border-white/10">
-                  <p className="text-xs text-slate-400">
-                    Trusted by Zakaria Masjid, AK Impression, Khadija Tul Kubra & more
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <motion.div
+                  className="stat-pill relative overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+                  <p className="text-4xl font-bold text-white relative z-10">
+                    <CountUp end={50} suffix="+" duration={2.5} />
                   </p>
+                  <p className="text-sm text-slate-400 mt-2 relative z-10">
+                    Projects Delivered
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="stat-pill relative overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+                  <p className="text-4xl font-bold text-white relative z-10">
+                    <CountUp end={95} suffix="%" duration={2.5} />
+                  </p>
+                  <p className="text-sm text-slate-400 mt-2 relative z-10">
+                    Client Satisfaction
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="stat-pill relative overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+                  <p className="text-4xl font-bold text-white relative z-10">
+                    <CountUp end={12} suffix="+" duration={2.5} />
+                  </p>
+                  <p className="text-sm text-slate-400 mt-2 relative z-10">Industries Served</p>
+                </motion.div>
+
+                <motion.div
+                  className="stat-pill relative overflow-hidden"
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+                  <p className="text-4xl font-bold text-white relative z-10">
+                    <CountUp end={2.4} suffix="x" decimals={1} duration={2.5} />
+                  </p>
+                  <p className="text-sm text-slate-400 mt-2 relative z-10">
+                    Avg. Speed Increase
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Trust Bar */}
+              <div className="pt-6 border-t border-white/10">
+                <p className="text-center text-sm text-slate-400 mb-3">Trusted by</p>
+                <div className="flex flex-wrap justify-center gap-2 text-xs text-slate-500 font-medium">
+                  <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                    Zakaria Masjid
+                  </span>
+                  <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                    AK Impression
+                  </span>
+                  <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                    Quran App
+                  </span>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </FadeInSection>
         </div>
-      </div>
+
+        {/* Scroll Indicator */}
+        <FadeInSection delay={1} direction="up" className="mt-16 lg:mt-20">
+          <motion.div
+            className="flex flex-col items-center gap-2 text-slate-400"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="text-xs uppercase tracking-wider">Scroll to explore</span>
+            <div className="w-6 h-10 rounded-full border-2 border-slate-600 flex justify-center pt-2">
+              <motion.div
+                className="w-1.5 h-1.5 rounded-full bg-cyan-400"
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
+          </motion.div>
+        </FadeInSection>
+      </motion.div>
     </section>
   );
 }
