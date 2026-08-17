@@ -21,7 +21,7 @@ import CourseEnroll from "@/pages/course-enroll";
 import AdminEnrollments from "@/pages/admin-enrollments";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import TermsOfService from "@/pages/terms-of-service";
-import CaseStudy from "@/pages/case-study";
+import ERPNextImplementation from "@/pages/erpnext-implementation";
 import NotFound from "@/pages/404";
 
 function Router() {
@@ -29,6 +29,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
+      <Route path="/erpnext-implementation" component={ERPNextImplementation} />
       <Route path="/services/:slug" component={ServiceDetail} />
       <Route path="/services" component={Services} />
       <Route path="/portfolio/:slug" component={CaseStudy} />

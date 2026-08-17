@@ -14,7 +14,7 @@ export default function Services() {
     <>
       <SEOHead
         title="Services — AI, Web & App Development | CodeVente"
-        description="AI solutions, web and mobile app development, UI/UX design, digital marketing, and SEO — full-stack services built for startups."
+        description="AI solutions, web and mobile development, ERPNext implementation, UI/UX design, digital marketing, and SEO — full-stack services built for startups and businesses."
         keywords="AI development services, mobile app development, web development agency, LLM integration"
         canonicalPath="/services"
       />
@@ -22,7 +22,7 @@ export default function Services() {
       <PageHero
         eyebrow="Services"
         title="AI & Software Built for Startups"
-        description="Web apps, mobile apps, AI integrations, and growth systems — one team from idea to production."
+        description="Web apps, mobile apps, AI integrations, ERPNext deployments, and growth systems — one team from idea to production."
       />
 
       <section className="relative section-padding section-dark overflow-hidden">

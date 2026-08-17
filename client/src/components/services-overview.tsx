@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Code, Megaphone, TrendingUp, Palette, Sparkles, ArrowRight, ArrowUpRight } from "lucide-react";
+import { Code, Megaphone, TrendingUp, Palette, Sparkles, ArrowRight, ArrowUpRight, LayoutGrid } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SERVICES } from "@/lib/constants";
 import SectionHeader from "@/components/layout/section-header";
@@ -13,6 +13,7 @@ const iconMap = {
   megaphone: Megaphone,
   "trending-up": TrendingUp,
   palette: Palette,
+  "layout-grid": LayoutGrid,
 };
 
 const colorMap: Record<string, string> = {
@@ -20,6 +21,7 @@ const colorMap: Record<string, string> = {
   violet: "from-neon-purple/20 to-neon-purple/5 border-neon-purple/20 group-hover:border-neon-purple/40",
   emerald: "from-emerald-500/20 to-emerald-500/5 border-emerald-500/20 group-hover:border-emerald-500/40",
   cyan: "from-cyan-500/20 to-cyan-500/5 border-cyan-500/20 group-hover:border-cyan-500/40",
+  amber: "from-amber-500/20 to-amber-500/5 border-amber-500/20 group-hover:border-amber-500/40",
 };
 
 export default function ServicesOverview() {
@@ -31,8 +33,8 @@ export default function ServicesOverview() {
         <FadeInSection direction="up">
           <SectionHeader
             eyebrow="Services"
-            title="End-to-End Product Engineering"
-            description="From AI integration to full-stack development — one team, one vision, zero friction."
+            title="End-to-End Product & Operations Engineering"
+            description="From AI integration and full-stack development to ERPNext deployment — one team, one vision, zero friction."
             dark
             align="center"
           />
@@ -44,7 +46,7 @@ export default function ServicesOverview() {
             const colorClass = colorMap[service.color] ?? colorMap.blue;
             return (
               <FadeInSection key={service.id} delay={index * 0.07} direction="up">
-                <Link href={`/services/${service.id}`}>
+                <Link href={service.id === "erp-implementation" ? "/erpnext-implementation" : `/services/${service.id}`}>
                   <motion.div
                     className={`card-holographic p-7 h-full group cursor-pointer`}
                     whileHover={{ y: -6 }}

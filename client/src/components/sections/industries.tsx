@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import {
-  Landmark, HeartPulse, ShoppingBag, GraduationCap, Layers, Heart,
+  Landmark, HeartPulse, ShoppingBag, GraduationCap, Layers, Heart, Building2,
 } from "lucide-react";
 import SectionHeader from "@/components/layout/section-header";
 import FadeInSection from "@/components/animations/FadeInSection";
@@ -13,6 +13,7 @@ const iconMap = {
   "graduation-cap": GraduationCap,
   layers: Layers,
   heart: Heart,
+  "building-2": Building2,
 };
 
 export default function IndustriesSection() {

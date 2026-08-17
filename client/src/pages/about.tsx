@@ -141,18 +141,37 @@ export default function About() {
             align="center"
           />
           <div className="grid md:grid-cols-3 gap-5 mt-4 max-w-4xl mx-auto">
-            {TEAM_MEMBERS.map((member, i) => (
-              <FadeInSection key={member.name} delay={i * 0.1} direction="up">
-                <motion.div className="card-holographic overflow-hidden" whileHover={{ y: -4 }}>
-                  <img src={member.image} alt={member.name} className="w-full aspect-square object-cover" loading="lazy" />
-                  <div className="p-5">
-                    <h3 className="font-semibold text-white">{member.name}</h3>
-                    <p className="text-sm text-electric mb-2">{member.role}</p>
-                    <p className="text-xs text-slate-500">{member.bio}</p>
-                  </div>
-                </motion.div>
-              </FadeInSection>
-            ))}
+            {TEAM_MEMBERS.map((member, i) => {
+              const initials = member.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")
+                .slice(0, 2);
+
+              return (
+                <FadeInSection key={member.name} delay={i * 0.1} direction="up">
+                  <motion.div className="card-holographic overflow-hidden" whileHover={{ y: -4 }}>
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full aspect-square object-cover object-top"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full aspect-square bg-gradient-to-br from-electric/20 to-neon-purple/10 flex items-center justify-center border-b border-white/[0.06]">
+                        <span className="text-4xl font-bold text-electric/60">{initials}</span>
+                      </div>
+                    )}
+                    <div className="p-5">
+                      <h3 className="font-semibold text-white">{member.name}</h3>
+                      <p className="text-sm text-electric mb-2">{member.role}</p>
+                      <p className="text-xs text-slate-500">{member.bio}</p>
+                    </div>
+                  </motion.div>
+                </FadeInSection>
+              );
+            })}
           </div>
         </div>
       </section>

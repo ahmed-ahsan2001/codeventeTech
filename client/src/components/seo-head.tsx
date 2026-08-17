@@ -14,9 +14,9 @@ interface SEOHeadProps {
 }
 
 export default function SEOHead({
-  title = "CodeVente — AI & Software Development Agency for Startups",
-  description = "CodeVente builds AI-powered web apps, mobile apps, and custom software for startups. From prototype to production — strategy, design, engineering, and AI integration in one team.",
-  keywords = "AI development, software development agency, mobile app development, web development, startup MVP, LLM integration, React Native, Pakistan",
+  title = "CodeVente — AI, Software & ERPNext Implementation Agency",
+  description = "CodeVente builds AI-powered web apps, mobile apps, and custom ERPNext implementations for startups and businesses in Pakistan. ERPNext deployment, customization, data migration, and cloud hosting.",
+  keywords = "ERPNext implementation Pakistan, ERPNext customization, ERPNext consultant Karachi, AI development, software development agency, mobile app development, ERP implementation services, Frappe ERPNext partner",
   ogTitle,
   ogDescription,
   ogImage = DEFAULT_OG_IMAGE,
@@ -63,7 +63,13 @@ export default function SEOHead({
     updateMetaTag("og:title", ogTitle || title, "property");
     updateMetaTag("og:description", ogDescription || description, "property");
     updateMetaTag("og:image", ogImage, "property");
+    updateMetaTag("geo.region", "PK-SD");
+    updateMetaTag("geo.placename", "Karachi, Pakistan");
+    updateMetaTag("geo.position", "24.8607;67.0011");
+    updateMetaTag("ICBM", "24.8607, 67.0011");
+
     updateMetaTag("og:type", "website", "property");
+    updateMetaTag("og:locale", "en_PK", "property");
     updateMetaTag("og:site_name", "CodeVente", "property");
     updateMetaTag("og:url", absoluteUrl(canonicalPath || window.location.pathname), "property");
 

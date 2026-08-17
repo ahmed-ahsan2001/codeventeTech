@@ -202,6 +202,7 @@ export default function Contact() {
                           <SelectContent>
                             <SelectItem value="web-app-development">Web & App Development</SelectItem>
                             <SelectItem value="ai-solutions">AI Solutions & Integration</SelectItem>
+                            <SelectItem value="erp-implementation">ERP Implementation (ERPNext)</SelectItem>
                             <SelectItem value="ui-ux">UI/UX Design</SelectItem>
                             <SelectItem value="digital-marketing">Digital Marketing</SelectItem>
                             <SelectItem value="seo">SEO Optimization</SelectItem>

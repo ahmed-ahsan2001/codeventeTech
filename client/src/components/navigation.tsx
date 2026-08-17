@@ -129,7 +129,7 @@ export default function Navigation() {
                           className="absolute top-full left-0 mt-2 w-72 p-2 rounded-2xl bg-void-elevated/95 backdrop-blur-2xl border border-white/10 shadow-2xl"
                         >
                           {SERVICES.map((service) => (
-                            <Link key={service.id} href={`/services/${service.id}`}>
+                            <Link key={service.id} href={service.id === "erp-implementation" ? "/erpnext-implementation" : `/services/${service.id}`}>
                               <div className="px-4 py-3 rounded-xl hover:bg-white/[0.06] transition-colors cursor-pointer group">
                                 <p className="text-sm font-medium text-white group-hover:text-cyan-300 transition-colors">
                                   {service.title}

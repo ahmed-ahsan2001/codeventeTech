@@ -1,3 +1,5 @@
+import ahmedBawanyPhoto from "@/assets/ahmed-bawany.png";
+
 export const INDUSTRIES = [
   {
     id: "fintech",
@@ -30,6 +32,12 @@ export const INDUSTRIES = [
     icon: "layers",
   },
   {
+    id: "enterprise",
+    title: "Enterprise & Operations",
+    description: "ERPNext implementations for inventory, finance, HR, and end-to-end business operations.",
+    icon: "building-2",
+  },
+  {
     id: "nonprofit",
     title: "Non-Profit",
     description: "Donation platforms, community portals, and impact-driven digital experiences.",
@@ -39,9 +47,9 @@ export const INDUSTRIES = [
 
 export const TECHNOLOGIES = [
   "React", "Next.js", "TypeScript", "Node.js", "Python", "OpenAI",
-  "LangChain", "PostgreSQL", "MongoDB", "AWS", "Docker", "Kubernetes",
-  "React Native", "Flutter", "Three.js", "TensorFlow", "Redis",
-  "GraphQL", "Tailwind CSS", "Figma", "Vercel", "Supabase",
+  "LangChain", "ERPNext", "Frappe", "PostgreSQL", "MongoDB", "AWS",
+  "Docker", "Kubernetes", "React Native", "Redis", "GraphQL",
+  "Tailwind CSS", "Figma", "Vercel", "Supabase", "MariaDB",
 ];
 
 export const AI_CAPABILITIES = [
@@ -107,7 +115,7 @@ export const WHY_CODEVENTE = [
 export const FAQ_ITEMS = [
   {
     question: "What types of projects does CodeVente take on?",
-    answer: "We specialize in AI-powered web apps, mobile apps, and custom software for startups and growing businesses. From MVPs to enterprise-scale platforms — if it involves code and ambition, we're interested.",
+    answer: "We specialize in AI-powered web apps, mobile apps, custom software, and ERPNext implementations for startups and growing businesses. From MVPs to enterprise ERP deployments — if it involves code and ambition, we're interested.",
   },
   {
     question: "How long does a typical project take?",
@@ -126,12 +134,34 @@ export const FAQ_ITEMS = [
     answer: "Yes. We audit your current stack, identify high-impact AI opportunities, and implement integrations that deliver measurable ROI — not demo-grade chatbots.",
   },
   {
+    question: "Do you implement and customize ERPNext?",
+    answer: "Yes. We deploy ERPNext on cloud or on-premise, customize modules to match your workflows, migrate existing data, train your team, and provide ongoing support after go-live.",
+  },
+  {
     question: "Where is your team located?",
     answer: "We're based in Karachi, Pakistan, serving clients globally. Our remote-first team works across time zones with async communication and real-time collaboration when needed.",
   },
 ];
 
 export const BLOG_POSTS = [
+  {
+    slug: "erpnext-implementation-guide-pakistan",
+    title: "ERPNext Implementation Guide for Pakistani Businesses (2026)",
+    excerpt: "Everything you need to know before implementing ERPNext — modules, costs, timeline, and how to choose the right partner in Pakistan.",
+    category: "ERP",
+    readTime: "12 min read",
+    date: "Aug 15, 2026",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+  },
+  {
+    slug: "erpnext-vs-traditional-erp",
+    title: "ERPNext vs Traditional ERP: Why Startups Are Switching",
+    excerpt: "Compare ERPNext with SAP, Oracle, and Tally — cost, customization, and why open-source ERP wins for growing businesses.",
+    category: "ERP",
+    readTime: "9 min read",
+    date: "Aug 5, 2026",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+  },
   {
     slug: "ai-agents-startup-playbook",
     title: "The Startup Playbook for AI Agents in 2026",
@@ -164,21 +194,19 @@ export const BLOG_POSTS = [
 export const TEAM_MEMBERS = [
   {
     name: "Ahmed Bawany",
-    role: "Founder & CEO",
-    bio: "Full-stack engineer and product strategist with a passion for AI-powered startups.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    role: "CEO",
+    bio: "Full-stack engineer and product strategist leading CodeVente's AI, software, and ERPNext delivery.",
+    image: ahmedBawanyPhoto,
   },
   {
-    name: "Engineering Team",
-    role: "Senior Developers",
-    bio: "React, Node.js, Python, and AI specialists who ship production-grade code daily.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    name: "Ammar Ahsan",
+    role: "Digital Marketing Executive",
+    bio: "Drives brand growth through SEO, social media, and data-driven digital marketing campaigns.",
   },
   {
-    name: "Design Team",
-    role: "UI/UX Designers",
-    bio: "Crafting intuitive, conversion-focused interfaces for web and mobile products.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+    name: "Talha Shakeel",
+    role: "QA Engineer",
+    bio: "Ensures every release meets production standards through rigorous testing and quality assurance.",
   },
 ];
 
@@ -245,6 +273,29 @@ export const SERVICE_DETAILS: Record<string, {
     faqs: [
       { question: "How much does AI integration cost?", answer: "It depends on complexity. Simple chatbot integrations start around $5K; full RAG pipelines range $15K–50K." },
       { question: "Do you handle AI safety and compliance?", answer: "Yes. We implement content filtering, rate limiting, audit logging, and data privacy controls." },
+    ],
+  },
+  "erp-implementation": {
+    hero: "ERPNext deployed, customized, and managed for your business — from setup to go-live and beyond.",
+    benefits: [
+      "ERPNext installation on cloud or dedicated servers",
+      "Custom DocTypes, workflows, print formats & dashboards",
+      "Accounting, inventory, CRM, HR & manufacturing modules",
+      "Legacy data migration from spreadsheets or older systems",
+      "Role-based access, approvals & audit trails",
+      "Post-launch support, updates & team training",
+    ],
+    workflow: [
+      { step: "01", title: "Requirements & Audit", description: "Map your business processes, pain points, and modules needed before configuration." },
+      { step: "02", title: "Configure & Customize", description: "Set up ERPNext, build custom fields, workflows, reports, and integrations." },
+      { step: "03", title: "Migrate & Test", description: "Import historical data, run UAT with your team, and refine until workflows fit." },
+      { step: "04", title: "Deploy & Train", description: "Go live on production, train staff, and hand over with ongoing support options." },
+    ],
+    technologies: ["ERPNext", "Frappe Framework", "Python", "MariaDB", "Redis", "Docker", "Nginx", "AWS", "Linux"],
+    faqs: [
+      { question: "Which ERPNext modules do you implement?", answer: "We commonly deploy accounting, inventory, sales, purchasing, HR, manufacturing, and CRM — configured and customized to match how your team actually works." },
+      { question: "Can you migrate data from our current system?", answer: "Yes. We migrate from Excel, QuickBooks, legacy ERPs, and other sources — with validation and reconciliation before go-live." },
+      { question: "Do you host ERPNext or deploy on our infrastructure?", answer: "Both. We can manage cloud hosting for you or deploy on your own servers/VPS with full handover documentation." },
     ],
   },
   "ui-ux": {

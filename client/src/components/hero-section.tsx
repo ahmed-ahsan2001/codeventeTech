@@ -35,8 +35,8 @@ export default function HeroSection() {
 
   const heroPoints = [
     "AI-native architecture",
+    "ERPNext deployment & customization",
     "Production-ready from day one",
-    "Startup-focused delivery",
   ];
 
   return (

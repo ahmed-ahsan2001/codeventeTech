@@ -3,7 +3,7 @@ export { PORTFOLIO_PROJECTS, getProjectBySlug, getCaseStudyPath } from "./portfo
 
 export const COMPANY_INFO = {
   name: "CodeVente",
-  tagline: "AI & Software Development Agency for Startups",
+  tagline: "AI, Software & ERP Development Agency for Startups",
   email: "ahmedbawany2001@gmail.com",
   supportEmail: "",
   whatsapp: "+923122739457",
@@ -49,6 +49,19 @@ export const SERVICES = [
       "AI-Powered Product Features",
     ],
     color: "violet",
+  },
+  {
+    id: "erp-implementation",
+    title: "ERP Implementation & Customization",
+    description: "ERPNext deployment, customization, and managed hosting — tailored workflows for inventory, finance, HR, manufacturing, and operations.",
+    icon: "layout-grid",
+    features: [
+      "ERPNext Setup & Cloud Deployment",
+      "Custom DocTypes, Workflows & Reports",
+      "Inventory, Accounting & HR Modules",
+      "Data Migration & Team Training",
+    ],
+    color: "amber",
   },
   {
     id: "ui-ux",

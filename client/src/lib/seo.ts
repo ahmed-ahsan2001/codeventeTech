@@ -1,4 +1,4 @@
-import { COMPANY_INFO } from "./constants";
+import { COMPANY_INFO, SERVICES } from "./constants";
 
 export const SITE_URL =
   import.meta.env.VITE_SITE_URL || "https://codevente.com";
@@ -9,7 +9,9 @@ export const PUBLIC_ROUTES = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/about", priority: "0.8", changefreq: "monthly" },
   { path: "/services", priority: "0.9", changefreq: "monthly" },
-  { path: "/portfolio", priority: "0.8", changefreq: "monthly" },
+  { path: "/erpnext-implementation", priority: "1.0", changefreq: "weekly" },
+  { path: "/services/erp-implementation", priority: "0.9", changefreq: "monthly" },
+  { path: "/blog", priority: "0.8", changefreq: "weekly" },
   { path: "/courses", priority: "0.8", changefreq: "weekly" },
   { path: "/contact", priority: "0.9", changefreq: "monthly" },
   { path: "/careers", priority: "0.7", changefreq: "monthly" },
@@ -42,6 +44,29 @@ export function organizationJsonLd() {
       streetAddress: address.street,
     },
     sameAs: Object.values(COMPANY_INFO.social).filter(Boolean),
+    knowsAbout: [
+      "ERPNext",
+      "Frappe Framework",
+      "AI Development",
+      "Software Development",
+      "Mobile App Development",
+      "ERP Implementation",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "CodeVente Services",
+      itemListElement: SERVICES.map((service) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: service.title,
+          description: service.description,
+          url: service.id === "erp-implementation"
+            ? absoluteUrl("/erpnext-implementation")
+            : absoluteUrl(`/services/${service.id}`),
+        },
+      })),
+    },
   };
 }
 

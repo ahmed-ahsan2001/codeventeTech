@@ -11,6 +11,13 @@ import NotFound from "@/pages/404";
 import { SERVICES } from "@/lib/constants";
 import { SERVICE_DETAILS } from "@/lib/content";
 import {
+  ERP_KEYWORDS,
+  ERP_PAGE_TITLE,
+  ERP_PAGE_DESCRIPTION,
+  ERP_CANONICAL_PATH,
+  erpAllJsonLd,
+} from "@/lib/erp-seo";
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -25,13 +32,20 @@ export default function ServiceDetail() {
 
   if (!service || !details) return <NotFound />;
 
+  const isErp = slug === "erp-implementation";
+
   return (
     <>
       <SEOHead
-        title={`${service.title} — CodeVente`}
-        description={details.hero}
-        keywords={`${service.title}, codevente services, AI development, software agency`}
-        canonicalPath={`/services/${slug}`}
+        title={isErp ? ERP_PAGE_TITLE : `${service.title} — CodeVente`}
+        description={isErp ? ERP_PAGE_DESCRIPTION : details.hero}
+        keywords={
+          isErp
+            ? ERP_KEYWORDS
+            : `${service.title}, codevente services, AI development, software agency`
+        }
+        canonicalPath={isErp ? ERP_CANONICAL_PATH : `/services/${slug}`}
+        jsonLd={isErp ? erpAllJsonLd() : undefined}
       />
 
       <PageHero
@@ -39,12 +53,21 @@ export default function ServiceDetail() {
         title={service.title}
         description={details.hero}
       >
-        <Link href="/contact">
-          <Button size="lg" className="btn-primary-gradient rounded-xl px-10 py-6 gap-2">
-            Get a Quote
-            <ArrowRight className="w-4 h-4" />
-          </Button>
-        </Link>
+        {isErp ? (
+          <Link href="/erpnext-implementation">
+            <Button size="lg" className="btn-primary-gradient rounded-xl px-10 py-6 gap-2">
+              View Full ERPNext Guide
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
+        ) : (
+          <Link href="/contact">
+            <Button size="lg" className="btn-primary-gradient rounded-xl px-10 py-6 gap-2">
+              Get a Quote
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
+        )}
       </PageHero>
 
       {/* Benefits */}
@@ -69,6 +92,15 @@ export default function ServiceDetail() {
               </FadeInSection>
             ))}
           </div>
+          {isErp && (
+            <div className="text-center mt-10">
+              <Link href="/erpnext-implementation">
+                <span className="text-sm font-semibold text-electric hover:underline cursor-pointer">
+                  Read the complete ERPNext implementation guide →
+                </span>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -134,9 +166,13 @@ export default function ServiceDetail() {
       </section>
 
       <CTABanner
-        title={`Ready for ${service.title}?`}
-        description="Book a free audit and let's discuss how we can help your startup ship faster."
-        primaryLabel="Start Your Project"
+        title={isErp ? "Ready to Implement ERPNext?" : `Ready for ${service.title}?`}
+        description={
+          isErp
+            ? "Book a free ERPNext requirements audit and get a fixed-price quote."
+            : "Book a free audit and let's discuss how we can help your startup ship faster."
+        }
+        primaryLabel={isErp ? "Get Free ERP Consultation" : "Start Your Project"}
         primaryHref="/contact"
         secondaryLabel="View Portfolio"
         secondaryHref="/portfolio"
