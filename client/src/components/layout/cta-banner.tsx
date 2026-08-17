@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ReactNode } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import MagneticButton from "@/components/animations/MagneticButton";
+import NoiseOverlay from "@/components/effects/NoiseOverlay";
+import GradientOrb from "@/components/effects/GradientOrb";
 
 interface CTABannerProps {
   title: string;
@@ -23,28 +27,34 @@ export default function CTABanner({
   children,
 }: CTABannerProps) {
   return (
-    <section className="section-padding relative overflow-hidden bg-brand-gradient animate-gradient-shift">
-      <div className="hero-mesh" />
+    <section className="relative section-padding overflow-hidden bg-void border-t border-white/[0.06]">
+      <div className="aurora-bg" />
+      <NoiseOverlay opacity={0.03} />
+      <GradientOrb size={600} color="blue" blur={140} opacity={0.12} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+
       <div className="section-container relative z-10">
         <motion.div
           className="max-w-3xl mx-auto text-center"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           <h2 className="heading-section text-white mb-5">{title}</h2>
-          <p className="text-lead text-sky-100/90 mb-8">{description}</p>
+          <p className="text-lead mb-10">{description}</p>
           {children ?? (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={primaryHref}>
-                <Button size="lg" className="btn-outline-dark rounded-xl px-8 py-6 text-base">
-                  {primaryLabel}
-                </Button>
+                <MagneticButton strength={0.2}>
+                  <Button size="lg" className="btn-primary-gradient rounded-xl px-10 py-6 text-base gap-2">
+                    {primaryLabel}
+                    <ArrowUpRight className="w-5 h-5" />
+                  </Button>
+                </MagneticButton>
               </Link>
               {secondaryLabel && secondaryHref && (
                 <Link href={secondaryHref}>
-                  <Button size="lg" className="btn-outline-light rounded-xl px-8 py-6 text-base">
+                  <Button size="lg" className="btn-outline-light rounded-xl px-10 py-6 text-base">
                     {secondaryLabel}
                   </Button>
                 </Link>

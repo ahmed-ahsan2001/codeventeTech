@@ -4,6 +4,9 @@ import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TESTIMONIALS } from "@/lib/constants";
 import SectionHeader from "@/components/layout/section-header";
+import FadeInSection from "@/components/animations/FadeInSection";
+import NoiseOverlay from "@/components/effects/NoiseOverlay";
+import GradientOrb from "@/components/effects/GradientOrb";
 
 export default function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,46 +20,53 @@ export default function TestimonialsCarousel() {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextTestimonial, 6000);
+    const interval = setInterval(nextTestimonial, 7000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="section-padding relative overflow-hidden bg-brand-gradient animate-gradient-shift">
-      <div className="hero-mesh" />
-      <div className="section-container relative z-10">
-        <SectionHeader
-          eyebrow="Testimonials"
-          title="What Our Clients Say"
-          description="Real feedback from clients who've transformed their business with us."
-          dark
-        />
+    <section className="relative section-padding section-dark overflow-hidden border-y border-white/[0.06]">
+      <div className="aurora-bg" />
+      <NoiseOverlay opacity={0.025} />
+      <GradientOrb size={500} color="purple" blur={120} opacity={0.1} className="top-0 left-1/3" />
 
-        <div className="relative max-w-3xl mx-auto">
+      <div className="section-container relative z-10">
+        <FadeInSection direction="up">
+          <SectionHeader
+            eyebrow="Testimonials"
+            title="What Our Clients Say"
+            description="Real feedback from teams who've transformed their business with us."
+            dark
+            align="center"
+          />
+        </FadeInSection>
+
+        <div className="relative max-w-3xl mx-auto mt-14">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -24, scale: 0.98 }}
+              transition={{ duration: 0.45 }}
             >
-              <div className="card-glass p-8 md:p-10">
-                <Quote className="w-8 h-8 text-sky-400/60 mb-4" />
-                <div className="flex text-amber-400 mb-4">
+              <div className="card-holographic p-8 md:p-10">
+                <Quote className="w-10 h-10 text-electric/40 mb-5" />
+                <div className="flex text-amber-400 mb-5 gap-0.5">
                   {[...Array(TESTIMONIALS[currentIndex].rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <blockquote className="text-lg md:text-xl text-slate-100 leading-relaxed mb-6">
+                <blockquote className="text-xl md:text-2xl text-white leading-relaxed mb-8 font-light">
                   "{TESTIMONIALS[currentIndex].content}"
                 </blockquote>
-                <div>
-                  <div className="font-semibold text-white">
-                    {TESTIMONIALS[currentIndex].author}
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-electric to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
+                    {TESTIMONIALS[currentIndex].author.charAt(0)}
                   </div>
-                  <div className="text-sm text-slate-400">
-                    {TESTIMONIALS[currentIndex].company}
+                  <div>
+                    <div className="font-semibold text-white">{TESTIMONIALS[currentIndex].author}</div>
+                    <div className="text-sm text-slate-500">{TESTIMONIALS[currentIndex].company}</div>
                   </div>
                 </div>
               </div>
@@ -68,7 +78,7 @@ export default function TestimonialsCarousel() {
               variant="ghost"
               size="sm"
               onClick={prevTestimonial}
-              className="w-10 h-10 p-0 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/10"
+              className="w-10 h-10 p-0 rounded-full bg-white/[0.06] hover:bg-white/10 text-white border border-white/10"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -77,8 +87,8 @@ export default function TestimonialsCarousel() {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    index === currentIndex ? "bg-white w-6" : "bg-white/30 hover:bg-white/50"
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? "bg-electric w-8" : "bg-white/20 w-1.5 hover:bg-white/40"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
@@ -88,7 +98,7 @@ export default function TestimonialsCarousel() {
               variant="ghost"
               size="sm"
               onClick={nextTestimonial}
-              className="w-10 h-10 p-0 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/10"
+              className="w-10 h-10 p-0 rounded-full bg-white/[0.06] hover:bg-white/10 text-white border border-white/10"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>

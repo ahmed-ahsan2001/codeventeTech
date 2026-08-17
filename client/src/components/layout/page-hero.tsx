@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import NoiseOverlay from "@/components/effects/NoiseOverlay";
+import GradientOrb from "@/components/effects/GradientOrb";
 
 interface PageHeroProps {
   eyebrow?: string;
@@ -18,12 +20,16 @@ export default function PageHero({
 }: PageHeroProps) {
   return (
     <section
-      className={`relative overflow-hidden bg-brand-gradient animate-gradient-shift ${
+      className={`relative overflow-hidden bg-void ${
         compact ? "pt-32 pb-16 md:pt-36 md:pb-20" : "pt-32 pb-20 md:pt-40 md:pb-28"
       }`}
     >
+      <div className="aurora-bg" />
+      <NoiseOverlay opacity={0.03} />
+      <GradientOrb size={500} color="blue" blur={120} opacity={0.15} className="top-0 right-1/4" />
+      <GradientOrb size={400} color="purple" blur={100} opacity={0.1} className="bottom-0 left-1/3" />
       <div className="hero-mesh" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-void pointer-events-none" />
 
       <div className="section-container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -46,7 +52,7 @@ export default function PageHero({
             {title}
           </motion.h1>
           <motion.p
-            className="text-lead text-sky-100/90 max-w-2xl mx-auto"
+            className="text-lead max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}

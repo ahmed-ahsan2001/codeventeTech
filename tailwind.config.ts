@@ -11,17 +11,23 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
+        sans: ["Geist", "Inter", "system-ui", "sans-serif"],
+        mono: ["Geist Mono", "ui-monospace", "monospace"],
       },
       colors: {
+        void: {
+          DEFAULT: "#030712",
+          elevated: "#0a0f1c",
+          surface: "#111827",
+        },
         brand: {
-          DEFAULT: "var(--brand-blue)",
-          dark: "var(--brand-dark)",
-          navy: "var(--brand-navy)",
-          light: "var(--brand-light)",
-          border: "var(--brand-border)",
-          card: "var(--brand-card)",
-          "card-alt": "var(--brand-card-alt)",
+          DEFAULT: "#0066FF",
+          dark: "#030712",
+          navy: "#0a1628",
+          light: "#3385FF",
+          border: "rgba(255,255,255,0.08)",
+          card: "#111827",
+          "card-alt": "#0a0f1c",
         },
         electric: {
           DEFAULT: "#0066FF",
@@ -30,12 +36,12 @@ export default {
         },
         neon: {
           cyan: "#22D3EE",
-          purple: "#7C3AED",
-          pink: "#F472B6",
+          purple: "#8B5CF6",
+          pink: "#EC4899",
         },
         space: {
-          dark: "#0A0F1E",
-          navy: "#0F1729",
+          dark: "#030712",
+          navy: "#0a0f1c",
         },
         background: "var(--background)",
         foreground: "var(--foreground)",
