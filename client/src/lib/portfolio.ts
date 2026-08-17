@@ -1,10 +1,13 @@
 import quranAppImageOne from "@/assets/quran-app-1.png";
 import quranAppImageTwo from "@/assets/quran-app-2.png";
-import zakariaMasjidDesktop from "@/assets/zakaria-masjid-bayans.png";
-import zakariaMasjidMobile from "@/assets/zakaria-masjid-hero.png";
+import zakariaMasjidDesktop from "@/assets/zakaria-masjid-desktop.png";
+import zakariaMasjidMobile from "@/assets/zakaria-masjid-mobile.png";
 import kkwtDesktop from "@/assets/kkwt-desktop.png";
 import kkwtPrograms from "@/assets/kkwt-programs.jpg";
 import kkwtOrphans from "@/assets/kkwt-orphans.jpg";
+import fiabilaDesktop from "@/assets/fiabila-desktop.jpg";
+import fiabilaShop from "@/assets/fiabila-shop.jpg";
+import fiabilaMobile from "@/assets/fiabila-mobile.jpg";
 
 export interface PortfolioProject {
   id: number;
@@ -29,6 +32,34 @@ export interface PortfolioProject {
 }
 
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
+  {
+    id: 4,
+    slug: "fiabila-shopify-store",
+    title: "Fiabila Shopify Store",
+    description:
+      "Custom Shopify storefront for a Pakistan skincare brand — collections, cart, wishlist, and PKR checkout.",
+    category: "web",
+    image: fiabilaDesktop,
+    secondaryImage: fiabilaShop,
+    technologies: "Shopify, Liquid, Online Store 2.0",
+    results: "Live catalog, collection filters, and mobile-ready checkout at fiabila.com.pk",
+    rating: 5,
+    link: "https://fiabila.com.pk",
+    client: "Fiabila",
+    duration: "6 weeks",
+    overview:
+      "A conversion-focused Shopify store for Fiabila, a Karachi-based skincare and grooming brand. We launched a branded Online Store 2.0 shop with hero merchandising, category collections, product filters, wishlist, and PKR checkout — covering face washes, sunblocks, aloe vera, serums, and salon-grade hair care.",
+    challenge:
+      "Fiabila needed a credible online store that could sell nationwide from Karachi. Their catalog spans multiple ranges, so shoppers needed clear collections, shipping messaging, and a mobile checkout they could complete on WhatsApp-heavy devices.",
+    solution:
+      "We designed and built the store on Shopify: custom homepage merchandising for sun protection, collection pages with availability and price filters, product cards with add-to-cart, promotional banners for free shipping above Rs 2,999, and a theme setup aligned with the brand’s green-and-white look. Cart, wishlist, and storefront search were wired for everyday shopping.",
+    outcomes: [
+      { label: "Platform", value: "Shopify" },
+      { label: "Catalog ranges", value: "8+" },
+      { label: "Live at", value: "fiabila.com.pk" },
+    ],
+    gallery: [fiabilaDesktop, fiabilaShop, fiabilaMobile],
+  },
   {
     id: 1,
     slug: "zakaria-masjid",

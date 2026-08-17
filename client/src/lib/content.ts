@@ -47,7 +47,7 @@ export const TECHNOLOGIES = [
   "React", "Next.js", "TypeScript", "Node.js", "Python", "OpenAI",
   "LangChain", "ERPNext", "Frappe", "PostgreSQL", "MongoDB", "AWS",
   "Docker", "Kubernetes", "React Native", "Redis", "GraphQL",
-  "Tailwind CSS", "Figma", "Vercel", "Supabase", "MariaDB",
+  "Tailwind CSS", "Figma", "Shopify", "Vercel", "Supabase", "MariaDB",
 ];
 
 export const AI_CAPABILITIES = [
@@ -215,6 +215,7 @@ export const COMPANY_STATS = [
 ];
 
 export const TRUST_LOGOS = [
+  "Fiabila",
   "Zakaria Masjid",
   "AK Impression",
   "Khadija Tul Kubra",
@@ -244,7 +245,7 @@ export const SERVICE_DETAILS: Record<string, {
       { step: "03", title: "Development", description: "Agile sprints with weekly demos and continuous integration." },
       { step: "04", title: "Launch", description: "QA, performance testing, deployment, and post-launch support." },
     ],
-    technologies: ["React", "Next.js", "Node.js", "TypeScript", "PostgreSQL", "Redis", "AWS", "Vercel"],
+    technologies: ["React", "Next.js", "Node.js", "TypeScript", "Shopify", "PostgreSQL", "Redis", "AWS", "Vercel"],
     faqs: [
       { question: "Do you build both frontend and backend?", answer: "Yes. We're a full-stack team that handles everything from UI to database architecture." },
       { question: "Can you work with our existing codebase?", answer: "Absolutely. We audit your current stack and integrate seamlessly or recommend migration paths." },
