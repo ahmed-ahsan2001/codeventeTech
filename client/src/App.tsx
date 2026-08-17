@@ -21,6 +21,7 @@ import CourseEnroll from "@/pages/course-enroll";
 import AdminEnrollments from "@/pages/admin-enrollments";
 import PrivacyPolicy from "@/pages/privacy-policy";
 import TermsOfService from "@/pages/terms-of-service";
+import CaseStudy from "@/pages/case-study";
 import ERPNextImplementation from "@/pages/erpnext-implementation";
 import NotFound from "@/pages/404";
 
