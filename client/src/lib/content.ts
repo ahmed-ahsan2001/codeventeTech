@@ -1,5 +1,3 @@
-import ahmedBawanyPhoto from "@/assets/ahmed-bawany.png";
-
 export const INDUSTRIES = [
   {
     id: "fintech",
@@ -196,7 +194,6 @@ export const TEAM_MEMBERS = [
     name: "Ahmed Bawany",
     role: "CEO",
     bio: "Full-stack engineer and product strategist leading CodeVente's AI, software, and ERPNext delivery.",
-    image: ahmedBawanyPhoto,
   },
   {
     name: "Ammar Ahsan",

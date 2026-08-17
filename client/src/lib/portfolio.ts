@@ -1,5 +1,10 @@
 import quranAppImageOne from "@/assets/quran-app-1.png";
 import quranAppImageTwo from "@/assets/quran-app-2.png";
+import zakariaMasjidDesktop from "@/assets/zakaria-masjid-bayans.png";
+import zakariaMasjidMobile from "@/assets/zakaria-masjid-hero.png";
+import kkwtDesktop from "@/assets/kkwt-desktop.png";
+import kkwtPrograms from "@/assets/kkwt-programs.jpg";
+import kkwtOrphans from "@/assets/kkwt-orphans.jpg";
 
 export interface PortfolioProject {
   id: number;
@@ -30,8 +35,8 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     title: "Zakaria Masjid Website",
     description: "Community website and hifz platform portal for a masjid in the UK.",
     category: "web",
-    image:
-      "https://ik.imagekit.io/zakariamasjid/Screenshot%202025-10-07%20at%2010.29.26%E2%80%AFPM.png?updatedAt=1759858270613",
+    image: zakariaMasjidDesktop,
+    secondaryImage: zakariaMasjidMobile,
     technologies: "React, Node.js, Firebase",
     results: "High user interaction and strong community engagement",
     rating: 5,
@@ -39,16 +44,17 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
     client: "Zakaria Masjid",
     duration: "8 weeks",
     overview:
-      "A modern digital home for Zakaria Masjid — combining event information, community resources, and a dedicated hifz student portal in one responsive platform.",
+      "A modern digital home for Zakaria Masjid — combining prayer timings, event updates, Friday bayans, spotlight videos, and community resources in one responsive platform.",
     challenge:
-      "The masjid relied on outdated pages and scattered WhatsApp groups. Families couldn't easily find timings, announcements, or hifz progress in one place.",
+      "The masjid relied on outdated pages and scattered WhatsApp groups. Families couldn't easily find timings, announcements, or bayans in one place.",
     solution:
-      "We designed and built a fast React frontend with Firebase-backed content management, role-based access for hifz administrators, and a mobile-first layout for community members on the go.",
+      "We designed and built a fast React frontend with Firebase-backed content management, jamat timing displays, media sections for bayans and naats, and a mobile-first layout for community members on the go.",
     outcomes: [
       { label: "Page load", value: "< 2s" },
       { label: "Mobile traffic", value: "70%+" },
-      { label: "Portal users", value: "Active daily" },
+      { label: "Live at", value: "zakariamasjid.com" },
     ],
+    gallery: [zakariaMasjidDesktop, zakariaMasjidMobile],
   },
   {
     id: 2,
@@ -79,27 +85,29 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
     id: 3,
     slug: "khadija-tul-kubra",
-    title: "Khadija Tul Kubra Website",
-    description: "Charity website with integrated payment gateway for donations and community programs.",
+    title: "Khadija Tul Kubra Welfare Trust",
+    description: "Charity website for kkwt.org with online donations, welfare programs, and community outreach across Pakistan.",
     category: "web",
-    image:
-      "https://ik.imagekit.io/zakariamasjid/Screenshot%202025-10-07%20at%2010.51.16%E2%80%AFPM.png?updatedAt=1759859501345",
+    image: kkwtDesktop,
+    secondaryImage: kkwtPrograms,
     technologies: "React, Node.js, Firebase, Pay Pro API",
     results: "High donation conversion and streamlined payment flow",
     rating: 5,
-    client: "Khadija Tul Kubra",
+    link: "https://kkwt.org",
+    client: "Khadija Tul Kubra Welfare Trust",
     duration: "6 weeks",
     overview:
-      "A trust-focused charity website with secure online donations, program showcases, and admin tools — built to convert visitors into supporters.",
+      "A trust-focused charity website at kkwt.org — showcasing welfare programs including education, food supply, orphan support, health care, and water projects, with secure online donations for supporters in Pakistan and abroad.",
     challenge:
-      "Manual bank transfers and unclear donation paths limited fundraising. The organization needed a credible online presence with reliable payments.",
+      "Manual bank transfers and unclear donation paths limited fundraising. The trust needed a credible online presence to showcase programs and accept donations reliably.",
     solution:
-      "We built a React site with Pay Pro payment integration, Firebase for content updates, and a donation flow optimized for mobile users in Pakistan and abroad.",
+      "We built a React site with Pay Pro payment integration, Firebase for program content and updates, and a donation flow optimized for mobile users — with dedicated pages for each welfare initiative.",
     outcomes: [
       { label: "Donation rate", value: "↑ High" },
       { label: "Mobile donations", value: "65%+" },
-      { label: "Payment success", value: "99%+" },
+      { label: "Live at", value: "kkwt.org" },
     ],
+    gallery: [kkwtDesktop, kkwtPrograms, kkwtOrphans],
   },
   {
     id: 5,
