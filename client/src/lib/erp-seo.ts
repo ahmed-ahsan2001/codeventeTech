@@ -1,4 +1,4 @@
-import { COMPANY_INFO } from "./constants";
+import { COMPANY_INFO, TESTIMONIALS } from "./constants";
 import { absoluteUrl, SITE_URL } from "./seo";
 
 /** Primary keyword clusters for ERPNext SEO */
@@ -28,13 +28,13 @@ export const ERP_KEYWORDS = [
 ].join(", ");
 
 export const ERP_PAGE_TITLE =
-  "ERPNext Implementation & Customization Services in Pakistan | CodeVente";
+  "ERPNext Implementation Partner in Pakistan | CodeVente";
 
 export const ERP_PAGE_DESCRIPTION =
-  "CodeVente deploys, customizes, and manages ERPNext for businesses in Pakistan and worldwide. Expert ERPNext implementation — accounting, inventory, HR, manufacturing, CRM, data migration, cloud hosting, and team training. Free consultation.";
+  "CodeVente is an ERPNext implementation partner in Pakistan. Consulting, customization, integration, data migration, cloud or on-premise deployment, training, and post go-live support. Free requirements audit.";
 
 export const ERP_OG_TITLE =
-  "ERPNext Implementation Partner — Deploy, Customize & Scale | CodeVente";
+  "ERPNext Implementation Partner in Pakistan — CodeVente";
 
 export const ERP_CANONICAL_PATH = "/erpnext-implementation";
 
@@ -98,6 +98,16 @@ export const ERP_EXTENDED_FAQS = [
     question: "Why choose CodeVente as your ERPNext implementation partner?",
     answer:
       "CodeVente combines ERPNext expertise with full-stack software development and AI capabilities. We have recently deployed production ERPNext systems for clients, understand both technical customization and business process design, and provide ongoing support — not just a one-time setup.",
+  },
+  {
+    question: "Can ERPNext handle Pakistani tax, FBR, and multi-company setups?",
+    answer:
+      "Yes. We configure sales tax, withholding, chart of accounts, and print formats for Pakistani operations, including multi-company and multi-warehouse setups for groups that trade from Karachi, Lahore, Islamabad, or overseas.",
+  },
+  {
+    question: "Do you offer post go-live ERPNext support?",
+    answer:
+      "Yes. Implementation includes go-live hypercare, then optional retainers for updates, new reports, user support, and performance monitoring so the system stays stable after launch.",
   },
 ];
 
@@ -273,6 +283,42 @@ export function erpProfessionalServiceJsonLd() {
   };
 }
 
+export function erpReviewJsonLd() {
+  const ratings = TESTIMONIALS.map((t) => t.rating);
+  const avg =
+    ratings.reduce((sum, rating) => sum + rating, 0) / Math.max(ratings.length, 1);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "ERPNext Implementation & Customization",
+    url: absoluteUrl(ERP_CANONICAL_PATH),
+    provider: {
+      "@type": "Organization",
+      name: COMPANY_INFO.name,
+      url: SITE_URL,
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: avg.toFixed(1),
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: String(TESTIMONIALS.length),
+      reviewCount: String(TESTIMONIALS.length),
+    },
+    review: TESTIMONIALS.map((t) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: t.author },
+      reviewBody: t.content,
+      reviewRating: {
+        "@type": "ReviewRating",
+        ratingValue: String(t.rating),
+        bestRating: "5",
+      },
+    })),
+  };
+}
+
 export function erpAllJsonLd() {
   return [
     erpWebPageJsonLd(),
@@ -280,5 +326,6 @@ export function erpAllJsonLd() {
     erpFaqJsonLd(),
     erpBreadcrumbJsonLd(),
     erpProfessionalServiceJsonLd(),
+    erpReviewJsonLd(),
   ];
 }

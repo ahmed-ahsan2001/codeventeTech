@@ -1,19 +1,25 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
-  CheckCircle,
   ArrowRight,
-  Server,
-  Settings,
+  CheckCircle2,
+  ClipboardList,
+  Cloud,
   Database,
-  Users,
-  Shield,
-  Globe,
+  Factory,
+  GraduationCap,
+  Headset,
   MapPin,
+  Plug,
+  Settings,
+  ShoppingBag,
+  Star,
+  Store,
+  Truck,
+  Workflow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
-import PageHero from "@/components/layout/page-hero";
 import SectionHeader from "@/components/layout/section-header";
 import CTABanner from "@/components/layout/cta-banner";
 import FadeInSection from "@/components/animations/FadeInSection";
@@ -23,6 +29,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { TESTIMONIALS } from "@/lib/constants";
 import { SERVICE_DETAILS } from "@/lib/content";
 import {
   ERP_KEYWORDS,
@@ -38,37 +45,102 @@ import {
 const workflow = SERVICE_DETAILS["erp-implementation"].workflow;
 const technologies = SERVICE_DETAILS["erp-implementation"].technologies;
 
-const whyUs = [
+const IMAGES = {
+  dashboard:
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+  meeting:
+    "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+  manufacturing:
+    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+  warehouse:
+    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+  training:
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+  office:
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80",
+  retail:
+    "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
+  analytics:
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+};
+
+const services = [
+  {
+    icon: ClipboardList,
+    title: "ERPNext Consulting Services",
+    desc: "We map how you actually buy, sell, stock, and close books — then design an implementation roadmap around those processes, not a generic template.",
+    image: IMAGES.meeting,
+  },
   {
     icon: Settings,
-    title: "Deep ERPNext Expertise",
-    desc: "We have deployed production ERPNext systems for clients — not just demos. Real workflows, real data, real go-lives.",
+    title: "ERPNext Customization Services",
+    desc: "Custom DocTypes, workflows, print formats, dashboards, and reports on Frappe — upgrade-safe, so future ERPNext versions do not wipe your work.",
+    image: IMAGES.dashboard,
+  },
+  {
+    icon: Plug,
+    title: "ERPNext Integration Services",
+    desc: "Connect ERPNext to e-commerce, JazzCash, EasyPaisa, Stripe, shipping, biometrics, and internal tools through APIs and webhooks.",
+    image: IMAGES.analytics,
   },
   {
     icon: Database,
-    title: "End-to-End Delivery",
-    desc: "From requirements audit to data migration, customization, deployment, training, and post-launch support.",
+    title: "ERPNext Migration Services",
+    desc: "Move data from Excel, QuickBooks, Tally, or a legacy ERP with validation, reconciliation, and a parallel run before cutover.",
+    image: IMAGES.office,
   },
   {
-    icon: Server,
-    title: "Cloud or On-Premise",
-    desc: "Managed hosting on AWS/VPS with backups and monitoring, or deployment on your own infrastructure.",
+    icon: Cloud,
+    title: "Cloud & On-Premise Deployment",
+    desc: "Managed hosting on AWS or a VPS with backups and SSL, or a hardened install on your own servers with full handover.",
+    image: IMAGES.dashboard,
   },
   {
-    icon: Users,
-    title: "Role-Based Training",
-    desc: "Hands-on training for admins, accountants, warehouse teams, and managers — with documentation included.",
+    icon: GraduationCap,
+    title: "ERPNext Training Services",
+    desc: "Role-based sessions for admins, accountants, warehouse teams, and managers — plus recordings and written guides.",
+    image: IMAGES.training,
   },
   {
-    icon: Shield,
-    title: "Upgrade-Safe Customization",
-    desc: "Custom DocTypes and workflows built on Frappe best practices so you can upgrade ERPNext without losing work.",
+    icon: Headset,
+    title: "Support & Maintenance",
+    desc: "Go-live hypercare, then ongoing updates, issue resolution, and performance monitoring so the system stays stable.",
+    image: IMAGES.meeting,
+  },
+];
+
+const industries = [
+  {
+    icon: Store,
+    title: "ERPNext for Retail",
+    desc: "Inventory, POS-ready stock, pricing, and live sales reporting across stores and warehouses.",
+    image: IMAGES.retail,
   },
   {
-    icon: Globe,
-    title: "Pakistan & Global Clients",
-    desc: "Based in Karachi, serving businesses across Pakistan and internationally with remote implementation.",
+    icon: Factory,
+    title: "ERPNext for Manufacturing",
+    desc: "BOMs, work orders, production planning, job cards, and quality checks on the shop floor.",
+    image: IMAGES.manufacturing,
   },
+  {
+    icon: Truck,
+    title: "Trading & Distribution",
+    desc: "Purchasing, warehouse transfers, landed cost, and finance in one flow for import/export businesses.",
+    image: IMAGES.warehouse,
+  },
+  {
+    icon: ShoppingBag,
+    title: "SMEs & Service Businesses",
+    desc: "Accounting, CRM, projects, and HR without SAP-level cost or complexity.",
+    image: IMAGES.office,
+  },
+];
+
+const pakistanPoints = [
+  "Sales tax, withholding, and chart of accounts configured for Pakistani operations",
+  "Multi-company and multi-warehouse for groups trading from Karachi, Lahore, and Islamabad",
+  "Print formats and numbering that match how finance teams actually file",
+  "On-site discovery in major cities and fully remote delivery nationwide",
 ];
 
 export default function ERPNextImplementation() {
@@ -84,76 +156,211 @@ export default function ERPNextImplementation() {
         jsonLd={erpAllJsonLd()}
       />
 
-      <PageHero
-        eyebrow="ERPNext Implementation Partner"
-        title={
-          <>
-            ERPNext Implementation &{" "}
-            <span className="gradient-text">Customization Services</span>
-          </>
-        }
-        description="We deploy, customize, and manage ERPNext for businesses in Pakistan and worldwide — accounting, inventory, HR, manufacturing, and more. Recently deployed for production clients."
-      >
-        <Link href="/contact">
-          <Button size="lg" className="btn-primary-gradient rounded-xl px-10 py-6 gap-2">
-            Get Free ERP Consultation
-            <ArrowRight className="w-4 h-4" />
-          </Button>
-        </Link>
-      </PageHero>
+      <section className="relative overflow-hidden bg-void pt-32 pb-20 md:pt-40 md:pb-28">
+        <div className="aurora-bg" />
+        <div className="hero-mesh" />
+        <div className="section-container relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
+            >
+              <p className="eyebrow mb-5">ERPNext Implementation Partner in Pakistan</p>
+              <h1 className="heading-display text-white mb-6">
+                Why CodeVente should be your{" "}
+                <span className="gradient-text">ERPNext implementation partner</span> in Pakistan
+              </h1>
+              <p className="text-lead mb-8">
+                End-to-end ERPNext consulting, customization, migration, and go-live — configured
+                for Pakistani tax, inventory, and operations. Recently deployed for production clients.
+              </p>
+              <ul className="space-y-3 mb-10">
+                {[
+                  "Business-first implementation, not a generic install",
+                  "Industry settings for retail, manufacturing, and trading",
+                  "Cloud or on-premise, with support after go-live",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-slate-300 text-sm">
+                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex items-center gap-3 mb-8 text-sm text-slate-300">
+                <span className="flex text-amber-400">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </span>
+                <span>
+                  5.0 from {TESTIMONIALS.length} client reviews
+                </span>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/contact">
+                  <Button size="lg" className="btn-primary-gradient rounded-xl px-8 py-6 gap-2">
+                    Request a free audit
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </Link>
+                <Link href="/portfolio">
+                  <Button size="lg" className="btn-outline-light rounded-xl px-8 py-6">
+                    See our work
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
 
-      {/* SEO-rich intro content */}
-      <section className="section-padding section-light" aria-labelledby="erp-intro-heading">
-        <div className="section-container">
-          <div className="max-w-3xl mx-auto">
-            <FadeInSection direction="up">
-              <h2 id="erp-intro-heading" className="heading-section text-slate-900 mb-6">
-                Expert ERPNext Implementation in Pakistan
-              </h2>
-              <div className="prose prose-lg prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed">
-                <p>
-                  <strong>CodeVente</strong> is an ERPNext implementation partner based in{" "}
-                  <strong>Karachi, Pakistan</strong>, helping businesses replace spreadsheets and
-                  legacy systems with a unified, open-source ERP platform. We recently deployed
-                  ERPNext for production clients — customizing modules, migrating data, and
-                  training teams for successful go-lives.
-                </p>
-                <p>
-                  Whether you need a standard ERPNext setup with accounting and inventory, or a
-                  fully customized system with manufacturing workflows and third-party integrations,
-                  our team handles the entire lifecycle: discovery, configuration, customization,
-                  data migration, deployment, and ongoing support.
-                </p>
-                <p>
-                  ERPNext runs on the <strong>Frappe framework</strong> — giving you enterprise-grade
-                  capabilities without per-user licensing fees. As your ERPNext consultant, we ensure
-                  the system matches your business processes, not the other way around.
-                </p>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.1 }}
+              className="relative"
+            >
+              <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                <img
+                  src={IMAGES.dashboard}
+                  alt="ERPNext operations dashboard used during implementation"
+                  className="w-full h-[340px] md:h-[420px] object-cover"
+                />
               </div>
-              <div className="flex items-center gap-2 mt-6 text-sm text-slate-500">
-                <MapPin className="w-4 h-4 text-electric" />
-                Serving Karachi, Lahore, Islamabad, and clients worldwide
+              <div className="absolute -bottom-5 left-5 right-5 md:left-8 md:right-auto md:w-64 card-glass p-4">
+                <p className="text-xs uppercase tracking-wider text-cyan-300 mb-1">Live systems</p>
+                <p className="text-white font-semibold">Production ERPNext go-lives in Pakistan</p>
               </div>
-            </FadeInSection>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Modules */}
-      <section className="section-padding section-dark" aria-labelledby="erp-modules-heading">
-        <div className="section-container relative z-10">
-          <FadeInSection direction="up">
-            <SectionHeader
-              eyebrow="Modules"
-              title="ERPNext Modules We Implement"
-              description="Configure only what you need — scale as your business grows."
-              dark
-              align="center"
-            />
+      <section className="section-padding section-light" aria-labelledby="erp-intro-heading">
+        <div className="section-container grid lg:grid-cols-2 gap-12 items-center">
+          <FadeInSection>
+            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
+              <img
+                src={IMAGES.office}
+                alt="CodeVente team planning an ERPNext rollout"
+                className="w-full h-[360px] object-cover"
+              />
+            </div>
           </FadeInSection>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
+          <FadeInSection delay={0.1}>
+            <h2 id="erp-intro-heading" className="heading-section text-slate-900 mb-6">
+              ERPNext implementation services in Pakistan
+            </h2>
+            <div className="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                <strong>CodeVente</strong> is an ERPNext implementation partner based in{" "}
+                <strong>Karachi</strong>. We help businesses replace spreadsheets and disconnected
+                tools with one system for finance, inventory, sales, HR, and production.
+              </p>
+              <p>
+                Implementing ERPNext is not only a software install. It is process design, data
+                cleanup, user adoption, and a stable go-live. We handle the full lifecycle:
+                discovery, configuration, customization, migration, training, and support.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 mt-6 text-sm text-slate-500">
+              <MapPin className="w-4 h-4 text-electric" />
+              Karachi, Lahore, Islamabad, and remote teams worldwide
+            </div>
+          </FadeInSection>
+        </div>
+      </section>
+
+      <section className="section-padding section-muted">
+        <div className="section-container">
+          <SectionHeader
+            eyebrow="Services"
+            title="ERPNext implementation services we deliver"
+            description="Named workstreams so you know exactly what is in scope — from consulting to support."
+          />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <FadeInSection key={service.title} delay={i * 0.05}>
+                  <article className="card-light overflow-hidden h-full flex flex-col">
+                    <div className="h-40 overflow-hidden">
+                      <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="p-6 flex-1">
+                      <div className="w-10 h-10 rounded-xl bg-electric/5 border border-electric/10 flex items-center justify-center mb-4">
+                        <Icon className="w-5 h-5 text-electric" />
+                      </div>
+                      <h3 className="font-semibold text-slate-900 mb-2">{service.title}</h3>
+                      <p className="text-sm text-slate-600 leading-relaxed">{service.desc}</p>
+                    </div>
+                  </article>
+                </FadeInSection>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding-sm bg-void">
+        <div className="section-container relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.04] p-8 md:p-10">
+            <div>
+              <p className="eyebrow mb-3">Free requirements audit</p>
+              <h2 className="heading-sub text-white mb-2">Not sure which modules you need?</h2>
+              <p className="text-slate-400 max-w-xl">
+                We map your processes, recommend ERPNext modules, and send a fixed-price quote.
+                No obligation.
+              </p>
+            </div>
+            <Link href="/contact">
+              <Button size="lg" className="btn-primary-gradient rounded-xl px-8 py-6 gap-2">
+                Get in touch
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding section-light">
+        <div className="section-container">
+          <SectionHeader
+            eyebrow="Industries"
+            title="Industry-specific ERPNext solutions"
+            description="Practical setups for how Pakistani retailers, factories, traders, and SMEs actually operate."
+          />
+          <div className="grid sm:grid-cols-2 gap-6">
+            {industries.map((industry, i) => {
+              const Icon = industry.icon;
+              return (
+                <FadeInSection key={industry.title} delay={i * 0.06}>
+                  <article className="card-light overflow-hidden h-full grid sm:grid-cols-5">
+                    <div className="sm:col-span-2 min-h-[180px]">
+                      <img src={industry.image} alt={industry.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="sm:col-span-3 p-6 flex flex-col justify-center">
+                      <Icon className="w-5 h-5 text-electric mb-3" />
+                      <h3 className="font-semibold text-slate-900 mb-2">{industry.title}</h3>
+                      <p className="text-sm text-slate-600">{industry.desc}</p>
+                    </div>
+                  </article>
+                </FadeInSection>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding section-dark">
+        <div className="section-container relative z-10">
+          <SectionHeader
+            eyebrow="Modules"
+            title="ERPNext modules we implement"
+            description="Configure only what you need — scale as the business grows."
+            dark
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {ERP_MODULES.map((mod, i) => (
-              <FadeInSection key={mod.name} delay={i * 0.06} direction="up">
+              <FadeInSection key={mod.name} delay={i * 0.05}>
                 <article className="card-holographic p-6 h-full">
                   <h3 className="font-semibold text-white mb-2">{mod.name}</h3>
                   <p className="text-sm text-slate-400 leading-relaxed">{mod.desc}</p>
@@ -164,46 +371,48 @@ export default function ERPNextImplementation() {
         </div>
       </section>
 
-      {/* Why CodeVente */}
-      <section className="section-padding section-light" aria-labelledby="erp-why-heading">
-        <div className="section-container">
-          <SectionHeader
-            eyebrow="Why CodeVente"
-            title="Your ERPNext Implementation Partner"
-            description="Technical depth meets business process expertise."
-            align="center"
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
-            {whyUs.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <FadeInSection key={item.title} delay={i * 0.07} direction="up">
-                  <div className="card-light p-6 h-full">
-                    <div className="w-10 h-10 rounded-xl bg-electric/5 border border-electric/10 flex items-center justify-center mb-4">
-                      <Icon className="w-5 h-5 text-electric" />
-                    </div>
-                    <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
-                    <p className="text-sm text-slate-600">{item.desc}</p>
-                  </div>
-                </FadeInSection>
-              );
-            })}
-          </div>
+      <section className="section-padding section-muted">
+        <div className="section-container grid lg:grid-cols-2 gap-12 items-center">
+          <FadeInSection>
+            <p className="eyebrow-light mb-3">Pakistan</p>
+            <h2 className="heading-section text-slate-900 mb-5">
+              ERPNext implementation built for Pakistani businesses
+            </h2>
+            <p className="text-slate-600 mb-6 leading-relaxed">
+              Local tax, compliance, and trading patterns matter. We configure ERPNext so finance
+              and operations teams in Pakistan can run day-to-day work without fighting the system.
+            </p>
+            <ul className="space-y-3">
+              {pakistanPoints.map((point) => (
+                <li key={point} className="flex items-start gap-3 text-sm text-slate-700">
+                  <CheckCircle2 className="w-5 h-5 text-electric flex-shrink-0 mt-0.5" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </FadeInSection>
+          <FadeInSection delay={0.1}>
+            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
+              <img
+                src={IMAGES.warehouse}
+                alt="Warehouse and distribution operations managed in ERPNext"
+                className="w-full h-[380px] object-cover"
+              />
+            </div>
+          </FadeInSection>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="section-padding section-muted" aria-labelledby="erp-process-heading">
+      <section className="section-padding section-light">
         <div className="section-container">
           <SectionHeader
             eyebrow="Process"
-            title="Our ERPNext Implementation Process"
-            description="A proven 4-phase approach from audit to go-live."
-            align="center"
+            title="ERPNext implementation methodology"
+            description="A structured path from process mapping to go-live support."
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {workflow.map((step, i) => (
-              <FadeInSection key={step.step} delay={i * 0.08} direction="up">
+              <FadeInSection key={step.step} delay={i * 0.08}>
                 <motion.div className="card-light p-6 h-full" whileHover={{ y: -4 }}>
                   <span className="text-3xl font-bold text-electric/20">{step.step}</span>
                   <h3 className="font-semibold text-slate-900 mt-2 mb-2">{step.title}</h3>
@@ -212,34 +421,64 @@ export default function ERPNextImplementation() {
               </FadeInSection>
             ))}
           </div>
+          <div className="mt-8 flex items-center justify-center gap-2 text-sm text-slate-500">
+            <Workflow className="w-4 h-4 text-electric" />
+            Process mapping → configuration → migration → training → go-live optimization
+          </div>
         </div>
       </section>
 
-      {/* Tech stack */}
-      <section className="section-padding-sm section-dark border-y border-white/[0.06]">
-        <div className="section-container relative z-10 text-center">
-          <h2 className="text-lg font-semibold text-white mb-8">ERPNext Technology Stack</h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {technologies.map((tech) => (
-              <span key={tech} className="tech-pill">{tech}</span>
+      <section className="section-padding section-dark">
+        <div className="section-container relative z-10">
+          <SectionHeader
+            eyebrow="Client reviews"
+            title="What clients say after working with us"
+            description="Ratings from real CodeVente projects — published as reviews, not invented counts."
+            dark
+          />
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {TESTIMONIALS.map((review, i) => (
+              <FadeInSection key={review.id} delay={i * 0.08}>
+                <article className="card-holographic p-7 h-full">
+                  <div className="flex gap-1 mb-4 text-amber-400">
+                    {Array.from({ length: review.rating }).map((_, star) => (
+                      <Star key={star} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-slate-200 leading-relaxed mb-6">“{review.content}”</p>
+                  <p className="text-white font-semibold">{review.author}</p>
+                  <p className="text-sm text-slate-400">{review.company}</p>
+                </article>
+              </FadeInSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Extended FAQ for SEO + schema */}
-      <section className="section-padding section-light" aria-labelledby="erp-faq-heading">
+      <section className="section-padding-sm section-dark border-y border-white/[0.06]">
+        <div className="section-container relative z-10 text-center">
+          <h2 className="text-lg font-semibold text-white mb-8">ERPNext technology stack</h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {technologies.map((tech) => (
+              <span key={tech} className="tech-pill">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding section-light">
         <div className="section-container max-w-3xl">
           <SectionHeader
             eyebrow="FAQ"
-            title="ERPNext Implementation — Frequently Asked Questions"
-            description="Everything businesses ask before starting an ERP project."
-            align="center"
+            title="ERPNext implementation — frequently asked questions"
+            description="Cost, timeline, customization, Pakistan coverage, and support."
           />
-          <Accordion type="single" collapsible className="mt-10 space-y-3">
+          <Accordion type="single" collapsible className="mt-2 space-y-3">
             {ERP_EXTENDED_FAQS.map((faq, i) => (
               <AccordionItem
-                key={i}
+                key={faq.question}
                 value={`erp-faq-${i}`}
                 className="card-light px-6 rounded-2xl border data-[state=open]:border-electric/20"
               >
@@ -255,7 +494,6 @@ export default function ERPNextImplementation() {
         </div>
       </section>
 
-      {/* Related services internal links */}
       <section className="section-padding-sm section-muted border-t border-slate-100">
         <div className="section-container text-center">
           <p className="text-sm text-slate-500 mb-4">Related services</p>
@@ -280,11 +518,11 @@ export default function ERPNextImplementation() {
       </section>
 
       <CTABanner
-        title="Ready to Implement ERPNext?"
+        title="Ready to implement ERPNext?"
         description="Book a free requirements audit. We'll map your processes, recommend modules, and provide a fixed-price quote."
-        primaryLabel="Get Free Consultation"
+        primaryLabel="Get free consultation"
         primaryHref="/contact"
-        secondaryLabel="View All Services"
+        secondaryLabel="View all services"
         secondaryHref="/services"
       />
     </>
