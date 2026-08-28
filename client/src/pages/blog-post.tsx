@@ -1,31 +1,62 @@
 import { Link, useRoute } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Share2 } from "lucide-react";
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
 import CTABanner from "@/components/layout/cta-banner";
 import NotFound from "@/pages/404";
-import { BLOG_POSTS } from "@/lib/content";
-
-function getPostBySlug(slug: string) {
-  return BLOG_POSTS.find((p) => p.slug === slug);
-}
+import { getBlogPost, getRelatedPosts } from "@/lib/blog";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { useToast } from "@/hooks/use-toast";
 
 export default function BlogPost() {
   const [, params] = useRoute("/blog/:slug");
   const slug = params?.slug ?? "";
-  const post = getPostBySlug(slug);
+  const post = getBlogPost(slug);
+  const { toast } = useToast();
 
   if (!post) return <NotFound />;
 
-  const related = BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 2);
+  const related = getRelatedPosts(slug, 3);
+  const postPath = `/blog/${post.slug}`;
+  const { Content } = post;
+
+  const parseDate = (dateStr: string) => {
+    const parsed = Date.parse(dateStr);
+    return Number.isNaN(parsed) ? new Date().toISOString() : new Date(parsed).toISOString();
+  };
+
+  const copyLink = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      toast({ title: "Link copied", description: "Article URL copied to clipboard." });
+    } catch {
+      toast({ title: "Could not copy link", variant: "destructive" });
+    }
+  }, [toast]);
 
   return (
     <>
       <SEOHead
         title={`${post.title} | CodeVente Blog`}
         description={post.excerpt}
-        canonicalPath={`/blog/${post.slug}`}
+        canonicalPath={postPath}
+        ogImage={post.image}
+        jsonLd={[
+          articleJsonLd({
+            title: post.title,
+            description: post.excerpt,
+            path: postPath,
+            datePublished: parseDate(post.date),
+            image: post.image,
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: postPath },
+          ]),
+        ]}
       />
 
       <article>
@@ -46,8 +77,11 @@ export default function BlogPost() {
               <span className="badge-glow mb-5">{post.category}</span>
               <h1 className="heading-display text-white mb-6">{post.title}</h1>
               <div className="flex items-center gap-4 text-sm text-slate-500">
-                <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" />{post.readTime}</span>
-                <span>{post.date}</span>
+                <span className="flex items-center gap-1.5">
+                  <Clock className="w-4 h-4" />
+                  {post.readTime}
+                </span>
+                <time dateTime={parseDate(post.date)}>{post.date}</time>
               </div>
             </motion.div>
           </div>
@@ -58,31 +92,19 @@ export default function BlogPost() {
             src={post.image}
             alt={post.title}
             className="w-full rounded-2xl mb-12 aspect-[16/9] object-cover"
+            loading="eager"
+            width={1200}
+            height={630}
           />
 
           <div className="prose prose-lg prose-slate max-w-none">
-            <p className="text-xl text-slate-600 leading-relaxed mb-8">{post.excerpt}</p>
-            <p className="text-slate-600 leading-relaxed mb-6">
-              At CodeVente, we work with startups every day to turn ambitious ideas into production-ready products.
-              This article explores key insights from our experience building AI-powered software for founders who
-              need to move fast without sacrificing quality.
-            </p>
-            <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-4">Key Takeaways</h2>
-            <ul className="space-y-3 text-slate-600">
-              <li>Start with a clear problem definition before choosing your tech stack</li>
-              <li>AI features should solve real user problems, not exist for marketing</li>
-              <li>Production readiness — auth, monitoring, CI/CD — should be planned from day one</li>
-              <li>Ship early, iterate based on real user feedback, not assumptions</li>
-            </ul>
-            <p className="text-slate-600 leading-relaxed mt-6">
-              Whether you're building your first MVP or scaling an existing product, the principles remain the same:
-              focus on user value, ship incrementally, and harden for production as you grow.
-            </p>
+            <p className="text-xl text-slate-600 leading-relaxed mb-10 font-medium">{post.excerpt}</p>
+            <Content />
           </div>
 
           <div className="flex items-center gap-3 mt-12 pt-8 border-t border-slate-200">
             <span className="text-sm text-slate-500">Share:</span>
-            <Button variant="outline" size="sm" className="rounded-lg gap-2">
+            <Button variant="outline" size="sm" className="rounded-lg gap-2" onClick={copyLink}>
               <Share2 className="w-4 h-4" />
               Copy link
             </Button>
@@ -92,14 +114,14 @@ export default function BlogPost() {
         {related.length > 0 && (
           <section className="section-padding-sm section-muted border-t border-slate-100">
             <div className="section-container max-w-3xl">
-              <h3 className="text-lg font-semibold text-slate-900 mb-6">Related Articles</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <h2 className="text-lg font-semibold text-slate-900 mb-6">Related Articles</h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {related.map((r) => (
                   <Link key={r.slug} href={`/blog/${r.slug}`}>
-                    <div className="card-light p-5 cursor-pointer hover:-translate-y-1 transition-transform">
+                    <article className="card-light p-5 cursor-pointer hover:-translate-y-1 transition-transform h-full">
                       <p className="text-xs text-electric mb-1">{r.category}</p>
-                      <p className="font-medium text-slate-900 text-sm">{r.title}</p>
-                    </div>
+                      <h3 className="font-medium text-slate-900 text-sm leading-snug">{r.title}</h3>
+                    </article>
                   </Link>
                 ))}
               </div>
@@ -109,10 +131,12 @@ export default function BlogPost() {
       </article>
 
       <CTABanner
-        title="Want to Build Something Like This?"
-        description="Let's discuss your product idea and how we can help you ship faster."
-        primaryLabel="Start Your Project"
+        title="Need Help With Your Project?"
+        description="ERPNext, Shopify, mobile apps, or custom software — tell us what you are building."
+        primaryLabel="Contact CodeVente"
         primaryHref="/contact"
+        secondaryLabel="View Services"
+        secondaryHref="/services"
       />
     </>
   );

@@ -1,4 +1,4 @@
-import { COMPANY_INFO, TESTIMONIALS } from "./constants";
+import { COMPANY_INFO } from "./constants";
 import { absoluteUrl, SITE_URL } from "./seo";
 
 /** Primary keyword clusters for ERPNext SEO */
@@ -283,42 +283,6 @@ export function erpProfessionalServiceJsonLd() {
   };
 }
 
-export function erpReviewJsonLd() {
-  const ratings = TESTIMONIALS.map((t) => t.rating);
-  const avg =
-    ratings.reduce((sum, rating) => sum + rating, 0) / Math.max(ratings.length, 1);
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "ERPNext Implementation & Customization",
-    url: absoluteUrl(ERP_CANONICAL_PATH),
-    provider: {
-      "@type": "Organization",
-      name: COMPANY_INFO.name,
-      url: SITE_URL,
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: avg.toFixed(1),
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: String(TESTIMONIALS.length),
-      reviewCount: String(TESTIMONIALS.length),
-    },
-    review: TESTIMONIALS.map((t) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: t.author },
-      reviewBody: t.content,
-      reviewRating: {
-        "@type": "ReviewRating",
-        ratingValue: String(t.rating),
-        bestRating: "5",
-      },
-    })),
-  };
-}
-
 export function erpAllJsonLd() {
   return [
     erpWebPageJsonLd(),
@@ -326,6 +290,5 @@ export function erpAllJsonLd() {
     erpFaqJsonLd(),
     erpBreadcrumbJsonLd(),
     erpProfessionalServiceJsonLd(),
-    erpReviewJsonLd(),
   ];
 }

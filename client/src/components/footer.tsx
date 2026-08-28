@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Linkedin, Github, Instagram, ArrowUpRight, ArrowUp, Mail, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { COMPANY_INFO, SERVICES } from "@/lib/constants";
+import { SPECIALIZED_SERVICE_IDS, getServicePath, SERVICE_META } from "@/lib/service-seo";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
 import GradientOrb from "@/components/effects/GradientOrb";
 import logo from "@/assets/codevente-logo.png";
@@ -95,6 +96,16 @@ export default function Footer() {
                     <span className="text-sm text-slate-500 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5 group">
                       <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 text-electric transition-all" />
                       {service.title}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+              {SPECIALIZED_SERVICE_IDS.map((id) => (
+                <li key={id}>
+                  <Link href={getServicePath(id)}>
+                    <span className="text-sm text-slate-500 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5 group">
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 text-electric transition-all" />
+                      {SERVICE_META[id].title}
                     </span>
                   </Link>
                 </li>

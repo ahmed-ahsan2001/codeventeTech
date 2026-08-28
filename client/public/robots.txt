@@ -3,5 +3,6 @@ Allow: /
 
 Disallow: /admin/
 Disallow: /courses/enroll
+Disallow: /api/
 
 Sitemap: https://codevente.com/sitemap.xml

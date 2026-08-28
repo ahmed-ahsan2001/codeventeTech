@@ -33,7 +33,7 @@ import BlogPreviewSection from "@/components/sections/blog-preview";
 import { PORTFOLIO_PROJECTS, COMPANY_INFO } from "@/lib/constants";
 import { TRUST_LOGOS } from "@/lib/content";
 import { getCaseStudyPath } from "@/lib/portfolio";
-import { organizationJsonLd, webSiteJsonLd } from "@/lib/seo";
+import { organizationJsonLd, webSiteJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
 export default function Home() {
   const recentProjects = PORTFOLIO_PROJECTS.slice(0, 3);
@@ -69,7 +69,7 @@ export default function Home() {
         description="ERPNext implementation partner in Pakistan. CodeVente deploys, customizes, and manages ERPNext plus AI-powered web and mobile apps for startups and businesses."
         keywords="ERPNext implementation Pakistan, ERPNext consultant Karachi, ERP customization, AI development, software agency Pakistan, ERPNext deployment"
         canonicalPath="/"
-        jsonLd={[organizationJsonLd(), webSiteJsonLd()]}
+        jsonLd={[organizationJsonLd(), webSiteJsonLd(), localBusinessJsonLd()]}
       />
 
       <HeroSection />

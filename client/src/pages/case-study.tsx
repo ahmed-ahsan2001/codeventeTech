@@ -14,6 +14,8 @@ import {
   getCategoryColor,
   getProjectCategories,
 } from "@/lib/portfolio";
+import { caseStudyJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { getServicePath, SERVICE_META } from "@/lib/service-seo";
 
 export default function CaseStudy() {
   const [, params] = useRoute("/portfolio/:slug");
@@ -29,13 +31,46 @@ export default function CaseStudy() {
   const categories = getProjectCategories(project);
   const gallery = project.gallery ?? (project.secondaryImage ? [project.image, project.secondaryImage] : [project.image]);
 
+  const relatedServiceIds = (() => {
+    const cats = getProjectCategories(project);
+    const ids: string[] = [];
+    if (cats.includes("web") || project.technologies.toLowerCase().includes("react")) {
+      ids.push("web-development", "react-development");
+    }
+    if (cats.includes("mobile") || project.technologies.toLowerCase().includes("react native")) {
+      ids.push("mobile-app-development");
+    }
+    if (project.technologies.toLowerCase().includes("shopify")) {
+      ids.push("shopify-development");
+    }
+    if (cats.includes("marketing")) ids.push("digital-marketing", "seo");
+    if (cats.includes("design")) ids.push("ui-ux");
+    return Array.from(new Set(ids)).slice(0, 4);
+  })();
+
+  const caseStudyPath = getCaseStudyPath(project.slug);
+
   return (
     <>
       <SEOHead
         title={`${project.title} — Case Study | CodeVente`}
         description={project.overview}
         keywords={`${project.title} case study, ${project.technologies}, software development portfolio`}
-        canonicalPath={getCaseStudyPath(project.slug)}
+        canonicalPath={caseStudyPath}
+        jsonLd={[
+          caseStudyJsonLd({
+            title: project.title,
+            description: project.overview,
+            path: caseStudyPath,
+            technologies: project.technologies,
+            client: project.client,
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Portfolio", path: "/portfolio" },
+            { name: project.title, path: caseStudyPath },
+          ]),
+        ]}
       />
 
       {/* Hero */}
@@ -96,7 +131,7 @@ export default function CaseStudy() {
               transition={{ duration: 0.55, delay: 0.1 }}
               className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
             >
-              <img src={project.image} alt={project.title} className="w-full aspect-[4/3] object-cover" />
+              <img src={project.image} alt={`${project.title} — project screenshot`} className="w-full aspect-[4/3] object-cover" width={1200} height={900} />
             </motion.div>
           </div>
         </div>
@@ -176,6 +211,25 @@ export default function CaseStudy() {
                 >
                   <img src={src} alt={`${project.title} screenshot ${i + 1}`} className="w-full object-cover" />
                 </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Related services */}
+      {relatedServiceIds.length > 0 && (
+        <section className="section-padding-sm section-muted border-t border-slate-200">
+          <div className="section-container max-w-3xl text-center">
+            <p className="eyebrow-light mb-3">Services</p>
+            <h2 className="heading-section text-slate-900 mb-6">Related Services</h2>
+            <div className="flex flex-wrap justify-center gap-3">
+              {relatedServiceIds.map((id) => (
+                <Link key={id} href={getServicePath(id)}>
+                  <span className="tech-pill cursor-pointer hover:border-electric/40 transition-colors">
+                    {SERVICE_META[id]?.title ?? id}
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

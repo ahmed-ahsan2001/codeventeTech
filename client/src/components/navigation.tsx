@@ -4,6 +4,7 @@ import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { SERVICES } from "@/lib/constants";
+import { SPECIALIZED_SERVICE_IDS, getServicePath, SERVICE_META } from "@/lib/service-seo";
 import logo from "@/assets/codevente-logo.png";
 
 const navItems = [
@@ -136,6 +137,18 @@ export default function Navigation() {
                                 </p>
                                 <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
                                   {service.description}
+                                </p>
+                              </div>
+                            </Link>
+                          ))}
+                          {SPECIALIZED_SERVICE_IDS.map((id) => (
+                            <Link key={id} href={getServicePath(id)}>
+                              <div className="px-4 py-3 rounded-xl hover:bg-white/[0.06] transition-colors cursor-pointer group">
+                                <p className="text-sm font-medium text-white group-hover:text-cyan-300 transition-colors">
+                                  {SERVICE_META[id].title}
+                                </p>
+                                <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                                  {SERVICE_META[id].seoDescription.slice(0, 72)}…
                                 </p>
                               </div>
                             </Link>

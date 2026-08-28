@@ -7,22 +7,44 @@ import { SERVICES } from "@/lib/constants";
 import PageHero from "@/components/layout/page-hero";
 import CTABanner from "@/components/layout/cta-banner";
 import FadeInSection from "@/components/animations/FadeInSection";
+import SectionHeader from "@/components/layout/section-header";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
+import {
+  SPECIALIZED_SERVICE_IDS,
+  getServicePath,
+  SERVICE_META,
+} from "@/lib/service-seo";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
+
+function serviceDetailHref(id: string) {
+  return id === "erp-implementation" ? "/erpnext-implementation" : `/services/${id}`;
+}
 
 export default function Services() {
   return (
     <>
       <SEOHead
-        title="Services — AI, Web & App Development | CodeVente"
-        description="AI solutions, web and mobile development, ERPNext implementation, UI/UX design, digital marketing, and SEO — full-stack services built for startups and businesses."
-        keywords="AI development services, mobile app development, web development agency, LLM integration"
+        title="Software Development Services in Pakistan | CodeVente"
+        description="AI solutions, web and mobile development, ERPNext implementation, Shopify stores, React apps, UI/UX design, digital marketing, and SEO — full-stack services for startups in Pakistan."
+        keywords="software development services Pakistan, web development Karachi, mobile app development, ERPNext implementation, Shopify development, AI development agency"
         canonicalPath="/services"
+        jsonLd={[
+          webPageJsonLd({
+            title: "Software Development Services in Pakistan | CodeVente",
+            description: "AI, web, mobile, ERPNext, Shopify, and growth services for startups.",
+            path: "/services",
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ]),
+        ]}
       />
 
       <PageHero
         eyebrow="Services"
         title="AI & Software Built for Startups"
-        description="Web apps, mobile apps, AI integrations, ERPNext deployments, and growth systems — one team from idea to production."
+        description="Web apps, mobile apps, AI integrations, ERPNext deployments, Shopify stores, and growth systems — one team from idea to production."
       />
 
       <section className="relative section-padding section-dark overflow-hidden">
@@ -49,7 +71,7 @@ export default function Services() {
                     ))}
                   </ul>
                   <div className="flex gap-3">
-                    <Link href={`/services/${service.id}`}>
+                    <Link href={serviceDetailHref(service.id)}>
                       <Button className="btn-primary-gradient rounded-xl px-8 gap-2">
                         Learn More
                         <ArrowUpRight className="w-4 h-4" />
@@ -74,6 +96,40 @@ export default function Services() {
               </div>
             </FadeInSection>
           ))}
+        </div>
+      </section>
+
+      <section className="section-padding section-light border-t border-slate-200">
+        <div className="section-container">
+          <SectionHeader
+            eyebrow="Specialized"
+            title="Focused Development Services"
+            description="Dedicated pages for our most-requested capabilities — mobile apps, React development, and Shopify e-commerce."
+            align="center"
+          />
+          <div className="grid md:grid-cols-3 gap-5 mt-12">
+            {SPECIALIZED_SERVICE_IDS.map((id, index) => {
+              const meta = SERVICE_META[id];
+              return (
+                <FadeInSection key={id} delay={index * 0.08} direction="up">
+                  <Link href={getServicePath(id)}>
+                    <motion.article
+                      className="card-light p-6 h-full group cursor-pointer"
+                      whileHover={{ y: -4 }}
+                    >
+                      <h3 className="font-semibold text-slate-900 mb-2 group-hover:text-electric transition-colors">
+                        {meta.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 mb-4">{meta.seoDescription}</p>
+                      <span className="text-sm font-medium text-electric inline-flex items-center gap-1">
+                        View service <ArrowUpRight className="w-4 h-4" />
+                      </span>
+                    </motion.article>
+                  </Link>
+                </FadeInSection>
+              );
+            })}
+          </div>
         </div>
       </section>
 

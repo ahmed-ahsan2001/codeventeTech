@@ -11,9 +11,9 @@ export default function Blog() {
   return (
     <>
       <SEOHead
-        title="Blog — AI, Engineering & Startup Insights | CodeVente"
-        description="Insights on AI development, software engineering, and building products that scale. From the CodeVente team."
-        keywords="AI blog, software development blog, startup engineering, tech insights"
+        title="Blog — ERP, Software & Startup Insights | CodeVente"
+        description="Guides on ERPNext implementation, Shopify and mobile app costs in Pakistan, React vs Next.js, and building software that scales."
+        keywords="ERPNext blog, Shopify development Pakistan, mobile app cost, software development blog, startup engineering"
         canonicalPath="/blog"
       />
 

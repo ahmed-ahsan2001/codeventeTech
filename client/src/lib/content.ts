@@ -141,53 +141,7 @@ export const FAQ_ITEMS = [
   },
 ];
 
-export const BLOG_POSTS = [
-  {
-    slug: "erpnext-implementation-guide-pakistan",
-    title: "ERPNext Implementation Guide for Pakistani Businesses (2026)",
-    excerpt: "Everything you need to know before implementing ERPNext — modules, costs, timeline, and how to choose the right partner in Pakistan.",
-    category: "ERP",
-    readTime: "12 min read",
-    date: "Aug 15, 2026",
-    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-  },
-  {
-    slug: "erpnext-vs-traditional-erp",
-    title: "ERPNext vs Traditional ERP: Why Startups Are Switching",
-    excerpt: "Compare ERPNext with SAP, Oracle, and Tally — cost, customization, and why open-source ERP wins for growing businesses.",
-    category: "ERP",
-    readTime: "9 min read",
-    date: "Aug 5, 2026",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-  },
-  {
-    slug: "ai-agents-startup-playbook",
-    title: "The Startup Playbook for AI Agents in 2026",
-    excerpt: "How early-stage companies are using autonomous AI agents to automate ops, support, and growth.",
-    category: "AI",
-    readTime: "8 min read",
-    date: "Aug 10, 2026",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-  },
-  {
-    slug: "mvp-to-production-checklist",
-    title: "From MVP to Production: A Technical Checklist",
-    excerpt: "The 12 things every startup must harden before launching to real users and investors.",
-    category: "Engineering",
-    readTime: "6 min read",
-    date: "Jul 28, 2026",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-  },
-  {
-    slug: "choosing-tech-stack-2026",
-    title: "Choosing Your Tech Stack in 2026",
-    excerpt: "React, Next.js, or something else? A pragmatic guide for founders who aren't engineers.",
-    category: "Strategy",
-    readTime: "5 min read",
-    date: "Jul 15, 2026",
-    image: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-  },
-];
+export { BLOG_POSTS } from "./blog";
 
 export const TEAM_MEMBERS = [
   {
@@ -249,6 +203,78 @@ export const SERVICE_DETAILS: Record<string, {
     faqs: [
       { question: "Do you build both frontend and backend?", answer: "Yes. We're a full-stack team that handles everything from UI to database architecture." },
       { question: "Can you work with our existing codebase?", answer: "Absolutely. We audit your current stack and integrate seamlessly or recommend migration paths." },
+      { question: "Do you build Shopify or mobile apps too?", answer: "Yes. We also offer dedicated Shopify store development and cross-platform mobile apps — see our Shopify and mobile app service pages for details." },
+    ],
+  },
+  "mobile-app-development": {
+    hero: "Cross-platform iOS and Android apps built with React Native — one codebase, native performance, and production-ready from launch.",
+    benefits: [
+      "React Native for iOS & Android from a single codebase",
+      "Push notifications, offline support & device APIs",
+      "App Store & Google Play submission support",
+      "Backend APIs, auth & real-time sync with Firebase or custom servers",
+      "UI/UX designed for thumb-friendly mobile flows",
+      "Performance profiling & crash monitoring in production",
+    ],
+    workflow: [
+      { step: "01", title: "Discovery", description: "Define user journeys, platform requirements, and MVP scope for iOS and Android." },
+      { step: "02", title: "Design", description: "Mobile-first wireframes and prototypes validated before development starts." },
+      { step: "03", title: "Build", description: "Agile sprints with TestFlight and internal APK builds for weekly feedback." },
+      { step: "04", title: "Launch", description: "Store submission, analytics setup, and post-launch iteration support." },
+    ],
+    technologies: ["React Native", "TypeScript", "Firebase", "Node.js", "PostgreSQL", "Expo", "Redux", "Push Notifications"],
+    faqs: [
+      { question: "Do you build native iOS and Android apps?", answer: "We primarily build cross-platform apps with React Native, which covers both iOS and Android from one codebase — faster to ship and easier to maintain. For most business apps, this is the right trade-off." },
+      { question: "How much does mobile app development cost in Pakistan?", answer: "A focused MVP typically starts from PKR 400,000–800,000 depending on features, integrations, and design complexity. We provide a fixed-price quote after a free scoping call." },
+      { question: "Can you maintain an app after launch?", answer: "Yes. We offer retainer support for bug fixes, OS updates, new features, and store compliance after your initial launch." },
+      { question: "Do you handle App Store and Play Store submission?", answer: "Yes. We prepare store listings, screenshots, privacy policies, and guide you through Apple and Google review requirements." },
+    ],
+  },
+  "react-development": {
+    hero: "Production-grade React and Next.js applications — fast SPAs, dashboards, SaaS products, and SEO-friendly marketing sites.",
+    benefits: [
+      "React & Next.js with TypeScript for type-safe codebases",
+      "Server-side rendering & static generation for SEO and performance",
+      "Component libraries & design system integration",
+      "State management with React Query, Zustand, or Redux",
+      "API integration with REST, GraphQL, and third-party services",
+      "Core Web Vitals optimization & accessibility (WCAG)",
+    ],
+    workflow: [
+      { step: "01", title: "Architecture", description: "Define routes, data flow, component structure, and deployment strategy." },
+      { step: "02", title: "UI Build", description: "Implement designs with reusable components and responsive layouts." },
+      { step: "03", title: "Integrate", description: "Wire APIs, auth, payments, and third-party services with error handling." },
+      { step: "04", title: "Ship", description: "CI/CD, performance audits, and deployment to Vercel, AWS, or your infrastructure." },
+    ],
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "React Query", "Node.js", "Vercel", "PostgreSQL"],
+    faqs: [
+      { question: "React or Next.js — which should we use?", answer: "Next.js is ideal when SEO, server rendering, or API routes matter. Plain React works well for dashboards and internal tools. We recommend the right fit during discovery." },
+      { question: "Can you migrate our existing React app to Next.js?", answer: "Yes. We audit your current setup, plan incremental migration, and move routes to Next.js without disrupting live users." },
+      { question: "Do you work with our design team?", answer: "Absolutely. We implement Figma designs pixel-accurately and collaborate on component specs and handoff." },
+    ],
+  },
+  "shopify-development": {
+    hero: "Custom Shopify stores for Pakistani brands — Online Store 2.0 themes, collections, checkout, and conversion-focused e-commerce.",
+    benefits: [
+      "Shopify Online Store 2.0 theme setup & customization",
+      "Collection pages, filters, and product merchandising",
+      "PKR checkout, shipping rules & free-shipping thresholds",
+      "Wishlist, search, cart, and promotional banners",
+      "Mobile-first storefront optimized for WhatsApp shoppers",
+      "Speed optimization & basic SEO for product pages",
+    ],
+    workflow: [
+      { step: "01", title: "Store Planning", description: "Map catalog structure, collections, shipping zones, and brand requirements." },
+      { step: "02", title: "Theme & Design", description: "Customize Shopify theme to match brand colors, typography, and merchandising." },
+      { step: "03", title: "Catalog Setup", description: "Import products, configure variants, filters, and payment/shipping rules." },
+      { step: "04", title: "Launch", description: "Domain setup, testing checkout flows, and handover with training." },
+    ],
+    technologies: ["Shopify", "Liquid", "Online Store 2.0", "Shopify Payments", "JavaScript", "CSS", "Google Analytics"],
+    faqs: [
+      { question: "How much does Shopify development cost in Pakistan?", answer: "A branded Shopify store with custom theme work typically starts from PKR 150,000–400,000 depending on catalog size, custom features, and integrations. We quote after reviewing your requirements." },
+      { question: "Can you migrate from WooCommerce or a custom site?", answer: "Yes. We migrate products, collections, customer data, and redirects to Shopify with minimal SEO disruption." },
+      { question: "Do you support Pakistani payment and shipping?", answer: "Yes. We configure PKR pricing, local shipping zones, COD where applicable, and integrations with Pakistani payment gateways supported by Shopify." },
+      { question: "Can you see examples of your Shopify work?", answer: "Yes — see our Fiabila case study for a live skincare store we built at fiabila.com.pk." },
     ],
   },
   "ai-solutions": {

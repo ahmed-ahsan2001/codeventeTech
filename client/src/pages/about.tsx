@@ -27,9 +27,9 @@ export default function About() {
   return (
     <>
       <SEOHead
-        title="About CodeVente — AI & Software Development Agency"
-        description="CodeVente is an AI-first software development agency helping startups build web apps, mobile apps, and AI-powered products."
-        keywords="about codevente, AI software agency, startup development team"
+        title="About CodeVente — Software Development Company in Karachi, Pakistan"
+        description="CodeVente is an AI-first software development company in Karachi, Pakistan. We build web apps, mobile apps, ERPNext systems, and AI-powered products for startups worldwide."
+        keywords="software development company Pakistan, software company Karachi, AI development agency, ERPNext partner, startup development team"
         canonicalPath="/about"
       />
 

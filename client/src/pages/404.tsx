@@ -2,6 +2,18 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
+import { getServicePath, SERVICE_META } from "@/lib/service-seo";
+
+const helpfulLinks = [
+  { href: "/", label: "Homepage" },
+  { href: "/services", label: "All Services" },
+  { href: "/erpnext-implementation", label: "ERPNext Implementation" },
+  { href: getServicePath("mobile-app-development"), label: SERVICE_META["mobile-app-development"].title },
+  { href: getServicePath("shopify-development"), label: SERVICE_META["shopify-development"].title },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function NotFound() {
   return (
@@ -51,6 +63,27 @@ export default function NotFound() {
               </Button>
             </Link>
           </motion.div>
+
+          <motion.nav
+            className="mt-12 pt-8 border-t border-white/10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            aria-label="Helpful links"
+          >
+            <p className="text-sm text-slate-400 mb-4">Popular pages</p>
+            <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+              {helpfulLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>
+                    <span className="text-sm text-sky-200 hover:text-white transition-colors cursor-pointer">
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.nav>
         </div>
 
         {/* Floating animation elements */}

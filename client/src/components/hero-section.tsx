@@ -1,9 +1,8 @@
+import { useEffect, lazy, Suspense } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react";
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import HeroScene3D from "@/components/three/HeroScene3D";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeInSection from "@/components/animations/FadeInSection";
 import MagneticButton from "@/components/animations/MagneticButton";
@@ -11,6 +10,8 @@ import CountUp from "@/components/animations/CountUp";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
 import Marquee from "@/components/effects/Marquee";
 import { TRUST_LOGOS, COMPANY_STATS } from "@/lib/content";
+
+const HeroScene3D = lazy(() => import("@/components/three/HeroScene3D"));
 
 export default function HeroSection() {
   const { scrollY } = useScroll();
@@ -44,7 +45,9 @@ export default function HeroSection() {
       {/* 3D Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 lg:left-[40%] opacity-70">
-          <HeroScene3D />
+          <Suspense fallback={null}>
+            <HeroScene3D />
+          </Suspense>
         </div>
         <div className="aurora-bg" />
         <NoiseOverlay />

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { DEFAULT_OG_IMAGE, absoluteUrl } from "@/lib/seo";
 
 interface SEOHeadProps {
@@ -24,8 +24,14 @@ export default function SEOHead({
   noindex = false,
   jsonLd,
 }: SEOHeadProps) {
+  const jsonLdKey = useMemo(
+    () => (jsonLd ? JSON.stringify(jsonLd) : null),
+    [jsonLd],
+  );
+
   useEffect(() => {
     document.title = title;
+    document.documentElement.lang = "en";
 
     const updateMetaTag = (
       name: string,
@@ -56,6 +62,9 @@ export default function SEOHead({
       link.href = href;
     };
 
+    const resolvedPath = canonicalPath || window.location.pathname;
+    const canonical = absoluteUrl(resolvedPath);
+
     updateMetaTag("description", description);
     updateMetaTag("keywords", keywords);
     updateMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
@@ -63,6 +72,7 @@ export default function SEOHead({
     updateMetaTag("og:title", ogTitle || title, "property");
     updateMetaTag("og:description", ogDescription || description, "property");
     updateMetaTag("og:image", ogImage, "property");
+    updateMetaTag("og:image:alt", `${title} — CodeVente`, "property");
     updateMetaTag("geo.region", "PK-SD");
     updateMetaTag("geo.placename", "Karachi, Pakistan");
     updateMetaTag("geo.position", "24.8607;67.0011");
@@ -71,14 +81,13 @@ export default function SEOHead({
     updateMetaTag("og:type", "website", "property");
     updateMetaTag("og:locale", "en_PK", "property");
     updateMetaTag("og:site_name", "CodeVente", "property");
-    updateMetaTag("og:url", absoluteUrl(canonicalPath || window.location.pathname), "property");
+    updateMetaTag("og:url", canonical, "property");
 
     updateMetaTag("twitter:card", "summary_large_image");
     updateMetaTag("twitter:title", ogTitle || title);
     updateMetaTag("twitter:description", ogDescription || description);
     updateMetaTag("twitter:image", ogImage);
 
-    const canonical = absoluteUrl(canonicalPath || window.location.pathname);
     updateLinkTag("canonical", canonical);
 
     const existingJsonLd = document.getElementById("page-json-ld");
@@ -100,7 +109,7 @@ export default function SEOHead({
     ogImage,
     canonicalPath,
     noindex,
-    jsonLd ? JSON.stringify(jsonLd) : null,
+    jsonLdKey,
   ]);
 
   return null;

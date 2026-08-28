@@ -1,6 +1,6 @@
 import { Link, useRoute } from "wouter";
 import { motion } from "framer-motion";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
 import PageHero from "@/components/layout/page-hero";
@@ -8,8 +8,8 @@ import SectionHeader from "@/components/layout/section-header";
 import CTABanner from "@/components/layout/cta-banner";
 import FadeInSection from "@/components/animations/FadeInSection";
 import NotFound from "@/pages/404";
-import { SERVICES } from "@/lib/constants";
 import { SERVICE_DETAILS } from "@/lib/content";
+import { getProjectBySlug, getCaseStudyPath } from "@/lib/portfolio";
 import {
   ERP_KEYWORDS,
   ERP_PAGE_TITLE,
@@ -17,6 +17,12 @@ import {
   ERP_CANONICAL_PATH,
   erpAllJsonLd,
 } from "@/lib/erp-seo";
+import {
+  buildServiceJsonLd,
+  getServiceMeta,
+  getServicePath,
+  SERVICE_META,
+} from "@/lib/service-seo";
 import {
   Accordion,
   AccordionContent,
@@ -27,31 +33,54 @@ import {
 export default function ServiceDetail() {
   const [, params] = useRoute("/services/:slug");
   const slug = params?.slug ?? "";
-  const service = SERVICES.find((s) => s.id === slug);
+  const meta = getServiceMeta(slug);
   const details = SERVICE_DETAILS[slug];
 
-  if (!service || !details) return <NotFound />;
+  if (!meta || !details) return <NotFound />;
 
   const isErp = slug === "erp-implementation";
+  const relatedProjects = meta.relatedCaseStudies
+    .map((s) => getProjectBySlug(s))
+    .filter(Boolean);
+  const relatedServices = meta.relatedServices
+    .map((id) => SERVICE_META[id])
+    .filter(Boolean);
 
   return (
     <>
       <SEOHead
-        title={isErp ? ERP_PAGE_TITLE : `${service.title} — CodeVente`}
-        description={isErp ? ERP_PAGE_DESCRIPTION : details.hero}
-        keywords={
-          isErp
-            ? ERP_KEYWORDS
-            : `${service.title}, codevente services, AI development, software agency`
-        }
-        canonicalPath={isErp ? ERP_CANONICAL_PATH : `/services/${slug}`}
-        jsonLd={isErp ? erpAllJsonLd() : undefined}
+        title={isErp ? ERP_PAGE_TITLE : meta.seoTitle}
+        description={isErp ? ERP_PAGE_DESCRIPTION : meta.seoDescription}
+        keywords={isErp ? ERP_KEYWORDS : meta.keywords}
+        canonicalPath={isErp ? ERP_CANONICAL_PATH : meta.canonicalPath}
+        jsonLd={isErp ? erpAllJsonLd() : buildServiceJsonLd(slug, meta)}
       />
+
+      <nav aria-label="Breadcrumb" className="section-container pt-28 pb-0 relative z-10">
+        <ol className="flex flex-wrap items-center gap-1.5 text-sm text-slate-500">
+          <li>
+            <Link href="/">
+              <span className="hover:text-white transition-colors cursor-pointer">Home</span>
+            </Link>
+          </li>
+          <ChevronRight className="w-3.5 h-3.5" aria-hidden />
+          <li>
+            <Link href="/services">
+              <span className="hover:text-white transition-colors cursor-pointer">Services</span>
+            </Link>
+          </li>
+          <ChevronRight className="w-3.5 h-3.5" aria-hidden />
+          <li className="text-slate-300" aria-current="page">
+            {meta.title}
+          </li>
+        </ol>
+      </nav>
 
       <PageHero
         eyebrow="Service"
-        title={service.title}
+        title={meta.title}
         description={details.hero}
+        compact
       >
         {isErp ? (
           <Link href="/erpnext-implementation">
@@ -69,6 +98,16 @@ export default function ServiceDetail() {
           </Link>
         )}
       </PageHero>
+
+      {/* What we provide */}
+      <section className="section-padding-sm section-muted border-b border-slate-200">
+        <div className="section-container max-w-3xl text-center">
+          <p className="text-lead-light">
+            {meta.intro ||
+              `CodeVente delivers ${meta.title.toLowerCase()} for startups and businesses in Pakistan and worldwide. Based in Karachi, we combine engineering rigor with fast delivery — from discovery through production launch.`}
+          </p>
+        </div>
+      </section>
 
       {/* Benefits */}
       <section className="section-padding section-dark">
@@ -144,6 +183,43 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* Related case studies */}
+      {relatedProjects.length > 0 && (
+        <section className="section-padding section-light">
+          <div className="section-container">
+            <SectionHeader
+              eyebrow="Case Studies"
+              title="Related Work"
+              description="Real projects that showcase this service in action."
+              align="center"
+            />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+              {relatedProjects.map((project) => (
+                <Link key={project!.slug} href={getCaseStudyPath(project!.slug)}>
+                  <motion.article
+                    className="card-light overflow-hidden group cursor-pointer h-full"
+                    whileHover={{ y: -4 }}
+                  >
+                    <img
+                      src={project!.image}
+                      alt={`${project!.title} project screenshot`}
+                      className="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="p-5">
+                      <h3 className="font-semibold text-slate-900 group-hover:text-electric transition-colors">
+                        {project!.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 mt-1 line-clamp-2">{project!.description}</p>
+                    </div>
+                  </motion.article>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* FAQ */}
       <section className="section-padding section-muted">
         <div className="section-container max-w-2xl">
@@ -165,8 +241,31 @@ export default function ServiceDetail() {
         </div>
       </section>
 
+      {/* Related services */}
+      {relatedServices.length > 0 && (
+        <section className="section-padding-sm section-dark border-t border-white/[0.06]">
+          <div className="section-container">
+            <SectionHeader
+              eyebrow="Related"
+              title="Explore More Services"
+              dark
+              align="center"
+            />
+            <div className="flex flex-wrap justify-center gap-3 mt-8">
+              {relatedServices.map((related) => (
+                <Link key={related.id} href={getServicePath(related.id)}>
+                  <span className="tech-pill hover:border-electric/40 cursor-pointer transition-colors">
+                    {related.title}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <CTABanner
-        title={isErp ? "Ready to Implement ERPNext?" : `Ready for ${service.title}?`}
+        title={isErp ? "Ready to Implement ERPNext?" : `Ready for ${meta.title}?`}
         description={
           isErp
             ? "Book a free ERPNext requirements audit and get a fixed-price quote."
