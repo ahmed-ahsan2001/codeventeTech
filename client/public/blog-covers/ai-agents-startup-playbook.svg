@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <defs>
+    <radialGradient id="blob" cx="75%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#6366F1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#blob)"/>
+  <text x="72" y="120" fill="#6366F1" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="700" letter-spacing="0.2em">AI</text>
+  <text x="72" y="180" fill="#0F172A" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="38" font-weight="700"><tspan x="72" dy="0">The Startup Playbook for AI</tspan><tspan x="72" dy="44">Agents in 2026</tspan></text>
+  <text x="1080" y="56" text-anchor="end" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Code<tspan fill="#6366F1">Vente</tspan></text>
+  
+    <circle cx="800" cy="220" r="56" fill="#EEF2FF" stroke="#6366F1" stroke-width="3"/>
+    <circle cx="800" cy="220" r="20" fill="#6366F1"/>
+    
+      <line x1="800" y1="220" x2="680" y2="160" stroke="#6366F1" stroke-width="2" opacity="0.4"/>
+      <circle cx="680" cy="160" r="14" fill="#fff" stroke="#6366F1" stroke-width="2"/>
+      <circle cx="680" cy="160" r="5" fill="#6366F1"/>
+    
+      <line x1="800" y1="220" x2="920" y2="160" stroke="#6366F1" stroke-width="2" opacity="0.4"/>
+      <circle cx="920" cy="160" r="14" fill="#fff" stroke="#6366F1" stroke-width="2"/>
+      <circle cx="920" cy="160" r="5" fill="#6366F1"/>
+    
+      <line x1="800" y1="220" x2="680" y2="280" stroke="#6366F1" stroke-width="2" opacity="0.4"/>
+      <circle cx="680" cy="280" r="14" fill="#fff" stroke="#6366F1" stroke-width="2"/>
+      <circle cx="680" cy="280" r="5" fill="#6366F1"/>
+    
+      <line x1="800" y1="220" x2="920" y2="280" stroke="#6366F1" stroke-width="2" opacity="0.4"/>
+      <circle cx="920" cy="280" r="14" fill="#fff" stroke="#6366F1" stroke-width="2"/>
+      <circle cx="920" cy="280" r="5" fill="#6366F1"/>
+    
+  
+</svg>

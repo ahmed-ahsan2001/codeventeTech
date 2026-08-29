@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ArrowRight, Clock } from "lucide-react";
 import SectionHeader from "@/components/layout/section-header";
 import FadeInSection from "@/components/animations/FadeInSection";
+import BlogCover from "@/components/blog/blog-cover";
 import { BLOG_POSTS } from "@/lib/content";
 
 export default function BlogPreviewSection() {
@@ -40,15 +41,7 @@ export default function BlogPreviewSection() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="relative aspect-[16/10] overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="badge-glow bg-white/90 backdrop-blur-sm">{post.category}</span>
-                    </div>
+                    <BlogCover title={post.title} category={post.category} className="h-full" />
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">

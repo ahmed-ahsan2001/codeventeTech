@@ -1,4 +1,5 @@
 import type { BlogPost } from "./types";
+import { getBlogCoverImagePath } from "./cover-themes";
 import {
   BestErpSmallBusinessPakistan,
   ErpnextCostPakistan,
@@ -28,8 +29,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "ERP",
     readTime: "10 min read",
     date: "Aug 20, 2026",
-    image:
-      "https://images.unsplash.com/photo-1554224311-beee415c201f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630",
+    image: getBlogCoverImagePath("erpnext-implementation-cost-pakistan"),
     relatedSlugs: [
       "erpnext-implementation-guide-pakistan",
       "erpnext-vs-odoo-small-business-pakistan",
@@ -45,8 +45,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "ERP",
     readTime: "9 min read",
     date: "Aug 18, 2026",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630",
+    image: getBlogCoverImagePath("erpnext-vs-odoo-small-business-pakistan"),
     relatedSlugs: [
       "erpnext-implementation-cost-pakistan",
       "best-erp-software-small-business-pakistan",
@@ -62,8 +61,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "E-Commerce",
     readTime: "8 min read",
     date: "Aug 17, 2026",
-    image:
-      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630",
+    image: getBlogCoverImagePath("shopify-development-cost-pakistan"),
     relatedSlugs: ["react-vs-nextjs-business-websites"],
     Content: ShopifyCostPakistan,
   },
@@ -75,8 +73,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Mobile",
     readTime: "9 min read",
     date: "Aug 16, 2026",
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630",
+    image: getBlogCoverImagePath("mobile-app-development-cost-pakistan"),
     relatedSlugs: ["custom-business-management-system"],
     Content: MobileAppCostPakistan,
   },
@@ -88,8 +85,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Engineering",
     readTime: "7 min read",
     date: "Aug 14, 2026",
-    image:
-      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630",
+    image: getBlogCoverImagePath("react-vs-nextjs-business-websites"),
     relatedSlugs: ["choosing-tech-stack-2026", "shopify-development-cost-pakistan"],
     Content: ReactVsNextjs,
   },
@@ -101,8 +97,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "ERP",
     readTime: "8 min read",
     date: "Aug 12, 2026",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630",
+    image: getBlogCoverImagePath("migrate-excel-to-erp-software"),
     relatedSlugs: [
       "best-erp-software-small-business-pakistan",
       "erpnext-implementation-cost-pakistan",
@@ -117,8 +112,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "ERP",
     readTime: "10 min read",
     date: "Aug 10, 2026",
-    image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630",
+    image: getBlogCoverImagePath("best-erp-software-small-business-pakistan"),
     relatedSlugs: [
       "erpnext-vs-odoo-small-business-pakistan",
       "erpnext-implementation-cost-pakistan",
@@ -133,8 +127,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Strategy",
     readTime: "9 min read",
     date: "Aug 8, 2026",
-    image:
-      "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=630",
+    image: getBlogCoverImagePath("custom-business-management-system"),
     relatedSlugs: [
       "migrate-excel-to-erp-software",
       "mobile-app-development-cost-pakistan",
@@ -149,8 +142,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "ERP",
     readTime: "12 min read",
     date: "Aug 15, 2026",
-    image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+    image: getBlogCoverImagePath("erpnext-implementation-guide-pakistan"),
     relatedSlugs: ["erpnext-implementation-cost-pakistan"],
     Content: ErpnextGuidePakistan,
   },
@@ -162,8 +154,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "ERP",
     readTime: "9 min read",
     date: "Aug 5, 2026",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+    image: getBlogCoverImagePath("erpnext-vs-traditional-erp"),
     relatedSlugs: ["erpnext-vs-odoo-small-business-pakistan"],
     Content: ErpnextVsTraditionalErp,
   },
@@ -175,8 +166,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "AI",
     readTime: "8 min read",
     date: "Aug 10, 2026",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+    image: getBlogCoverImagePath("ai-agents-startup-playbook"),
     relatedSlugs: [],
     Content: AiAgentsPlaybook,
   },
@@ -188,8 +178,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Engineering",
     readTime: "6 min read",
     date: "Jul 28, 2026",
-    image:
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+    image: getBlogCoverImagePath("mvp-to-production-checklist"),
     relatedSlugs: [],
     Content: MvpProductionChecklist,
   },
@@ -201,8 +190,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     category: "Strategy",
     readTime: "5 min read",
     date: "Jul 15, 2026",
-    image:
-      "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+    image: getBlogCoverImagePath("choosing-tech-stack-2026"),
     relatedSlugs: ["react-vs-nextjs-business-websites"],
     Content: ChoosingTechStack2026,
   },

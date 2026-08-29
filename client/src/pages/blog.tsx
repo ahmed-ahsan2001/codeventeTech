@@ -5,6 +5,7 @@ import SEOHead from "@/components/seo-head";
 import PageHero from "@/components/layout/page-hero";
 import FadeInSection from "@/components/animations/FadeInSection";
 import CTABanner from "@/components/layout/cta-banner";
+import BlogCover from "@/components/blog/blog-cover";
 import { BLOG_POSTS } from "@/lib/content";
 
 export default function Blog() {
@@ -35,17 +36,7 @@ export default function Blog() {
                     transition={{ duration: 0.3 }}
                   >
                     <div className="relative aspect-[16/10] overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        loading="lazy"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium border border-electric/20 bg-white/95 text-electric shadow-sm">
-                          {post.category}
-                        </span>
-                      </div>
+                      <BlogCover title={post.title} category={post.category} className="h-full" />
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-2 text-xs text-slate-500 mb-3">

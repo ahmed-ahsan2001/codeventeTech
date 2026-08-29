@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <defs>
+    <radialGradient id="blob" cx="75%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0891B2" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0891B2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#blob)"/>
+  <text x="72" y="120" fill="#0891B2" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="700" letter-spacing="0.2em">MOBILE</text>
+  <text x="72" y="180" fill="#0F172A" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="38" font-weight="700"><tspan x="72" dy="0">How Much Does Mobile App</tspan><tspan x="72" dy="44">Development Cost in Pakistan?</tspan><tspan x="72" dy="44">(2026)</tspan></text>
+  <text x="1080" y="56" text-anchor="end" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Code<tspan fill="#0891B2">Vente</tspan></text>
+  
+    <rect x="700" y="100" width="140" height="240" rx="24" fill="#0F172A"/>
+    <rect x="712" y="124" width="116" height="196" rx="10" fill="#E6F9FD"/>
+    <rect x="728" y="148" width="84" height="16" rx="8" fill="#0891B2" opacity="0.3"/>
+    <rect x="728" y="176" width="84" height="64" rx="10" fill="#0891B2" opacity="0.85"/>
+  
+</svg>

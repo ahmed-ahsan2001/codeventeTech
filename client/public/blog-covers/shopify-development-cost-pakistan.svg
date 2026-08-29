@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <defs>
+    <radialGradient id="blob" cx="75%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#blob)"/>
+  <text x="72" y="120" fill="#7C3AED" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="700" letter-spacing="0.2em">E-COMMERCE</text>
+  <text x="72" y="180" fill="#0F172A" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="38" font-weight="700"><tspan x="72" dy="0">How Much Does Shopify</tspan><tspan x="72" dy="44">Development Cost in Pakistan?</tspan><tspan x="72" dy="44">(2026)</tspan></text>
+  <text x="1080" y="56" text-anchor="end" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Code<tspan fill="#7C3AED">Vente</tspan></text>
+  
+    <rect x="640" y="140" width="240" height="170" rx="12" fill="#fff" stroke="#CBD5E1" stroke-width="2"/>
+    <rect x="640" y="140" width="240" height="40" rx="12" fill="#F3EEFF"/>
+    <path d="M670 240 L710 240 L720 280 L750 200 L780 240 L850 240 L850 290 L670 290 Z" fill="#7C3AED" opacity="0.85"/>
+    <circle cx="920" cy="180" r="50" fill="#F3EEFF" stroke="#7C3AED" stroke-width="3"/>
+    <path d="M895 180 H945 M920 155 V205" stroke="#7C3AED" stroke-width="4" stroke-linecap="round"/>
+  
+</svg>

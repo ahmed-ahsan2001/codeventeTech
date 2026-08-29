@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <defs>
+    <radialGradient id="blob" cx="75%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#059669" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#blob)"/>
+  <text x="72" y="120" fill="#059669" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="700" letter-spacing="0.2em">STRATEGY</text>
+  <text x="72" y="180" fill="#0F172A" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="38" font-weight="700"><tspan x="72" dy="0">Choosing Your Tech Stack in 2026</tspan></text>
+  <text x="1080" y="56" text-anchor="end" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="20" font-weight="700">Code<tspan fill="#059669">Vente</tspan></text>
+  
+    <path d="M620 300 L700 220 L780 250 L860 180 L940 210" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="940" cy="210" r="10" fill="#059669"/>
+    <rect x="640" y="160" width="24" height="140" rx="6" fill="#E2E8F0"/>
+    <rect x="640" y="220" width="24" height="80" rx="6" fill="#059669" opacity="0.5"/>
+    <rect x="680" y="190" width="24" height="110" rx="6" fill="#E2E8F0"/>
+    <rect x="680" y="240" width="24" height="60" rx="6" fill="#059669" opacity="0.7"/>
+    <circle cx="900" cy="150" r="36" fill="#ECFDF5" stroke="#059669" stroke-width="3"/>
+  
+</svg>

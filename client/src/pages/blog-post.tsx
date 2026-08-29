@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
 import CTABanner from "@/components/layout/cta-banner";
+import BlogCover from "@/components/blog/blog-cover";
 import NotFound from "@/pages/404";
 import { getBlogPost, getRelatedPosts } from "@/lib/blog";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
@@ -89,14 +90,9 @@ export default function BlogPost() {
 
         <section className="section-light section-padding-sm">
           <div className="section-container max-w-3xl">
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full rounded-2xl mb-12 aspect-[16/9] object-cover"
-              loading="eager"
-              width={1200}
-              height={630}
-            />
+            <div className="rounded-2xl overflow-hidden border border-slate-200 mb-12 aspect-[16/9]">
+              <BlogCover title={post.title} category={post.category} size="hero" className="h-full border-0" />
+            </div>
 
             <div className="max-w-none">
               <p className="text-xl text-slate-700 leading-relaxed mb-10 font-medium">{post.excerpt}</p>
@@ -120,9 +116,11 @@ export default function BlogPost() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {related.map((r) => (
                   <Link key={r.slug} href={`/blog/${r.slug}`}>
-                    <article className="card-light p-5 cursor-pointer hover:-translate-y-1 transition-transform h-full">
-                      <p className="text-xs text-electric mb-1">{r.category}</p>
-                      <h3 className="font-medium text-slate-900 text-sm leading-snug">{r.title}</h3>
+                    <article className="card-light overflow-hidden cursor-pointer hover:-translate-y-1 transition-transform h-full">
+                      <BlogCover title={r.title} category={r.category} size="compact" showBrand={false} />
+                      <div className="p-4">
+                        <h3 className="font-medium text-slate-900 text-sm leading-snug line-clamp-2">{r.title}</h3>
+                      </div>
                     </article>
                   </Link>
                 ))}
