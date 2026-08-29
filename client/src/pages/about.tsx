@@ -52,8 +52,8 @@ export default function About() {
                 dark
               />
               <div className="mt-8 space-y-4">
-                <h3 className="text-lg font-semibold text-white">Our Vision</h3>
-                <p className="text-slate-400 leading-relaxed">
+                <h3 className="text-lg font-semibold text-slate-900">Our Vision</h3>
+                <p className="text-slate-600 leading-relaxed">
                   To be the leading AI-first technology partner that transforms ideas into
                   world-class digital products — fostering innovation and success for clients worldwide.
                 </p>
@@ -70,7 +70,7 @@ export default function About() {
                     transition={{ delay: i * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <p className="text-3xl font-bold text-white">
+                    <p className="text-3xl font-bold text-slate-900">
                       <CountUp end={stat.value} suffix={stat.suffix} decimals={stat.decimals ?? 0} duration={2} />
                     </p>
                     <p className="text-xs text-slate-500 mt-1">{stat.label}</p>
@@ -159,12 +159,12 @@ export default function About() {
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-full aspect-square bg-gradient-to-br from-electric/20 to-neon-purple/10 flex items-center justify-center border-b border-white/[0.06]">
+                      <div className="w-full aspect-square bg-gradient-to-br from-electric/20 to-neon-purple/10 flex items-center justify-center border-b border-slate-200">
                         <span className="text-4xl font-bold text-electric/60">{initials}</span>
                       </div>
                     )}
                     <div className="p-5">
-                      <h3 className="font-semibold text-white">{member.name}</h3>
+                      <h3 className="font-semibold text-slate-900">{member.name}</h3>
                       <p className="text-sm text-electric mb-2">{member.role}</p>
                       <p className="text-xs text-slate-500">{member.bio}</p>
                     </div>

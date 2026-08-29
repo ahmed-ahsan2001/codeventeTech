@@ -25,7 +25,7 @@ export default function TestimonialsCarousel() {
   }, []);
 
   return (
-    <section className="relative section-padding section-dark overflow-hidden border-y border-white/[0.06]">
+    <section className="relative section-padding section-dark overflow-hidden border-y border-slate-200">
       <div className="aurora-bg" />
       <NoiseOverlay opacity={0.025} />
       <GradientOrb size={500} color="purple" blur={120} opacity={0.1} className="top-0 left-1/3" />
@@ -57,7 +57,7 @@ export default function TestimonialsCarousel() {
                     <Star key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <blockquote className="text-xl md:text-2xl text-white leading-relaxed mb-8 font-light">
+                <blockquote className="text-xl md:text-2xl text-slate-800 leading-relaxed mb-8 font-light">
                   "{TESTIMONIALS[currentIndex].content}"
                 </blockquote>
                 <div className="flex items-center gap-4">
@@ -65,7 +65,7 @@ export default function TestimonialsCarousel() {
                     {TESTIMONIALS[currentIndex].author.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-semibold text-white">{TESTIMONIALS[currentIndex].author}</div>
+                    <div className="font-semibold text-slate-900">{TESTIMONIALS[currentIndex].author}</div>
                     <div className="text-sm text-slate-500">{TESTIMONIALS[currentIndex].company}</div>
                   </div>
                 </div>
@@ -78,7 +78,7 @@ export default function TestimonialsCarousel() {
               variant="ghost"
               size="sm"
               onClick={prevTestimonial}
-              className="w-10 h-10 p-0 rounded-full bg-white/[0.06] hover:bg-white/10 text-white border border-white/10"
+              className="w-10 h-10 p-0 rounded-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-200"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -98,7 +98,7 @@ export default function TestimonialsCarousel() {
               variant="ghost"
               size="sm"
               onClick={nextTestimonial}
-              className="w-10 h-10 p-0 rounded-full bg-white/[0.06] hover:bg-white/10 text-white border border-white/10"
+              className="w-10 h-10 p-0 rounded-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-200"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>

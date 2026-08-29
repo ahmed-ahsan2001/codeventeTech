@@ -47,7 +47,7 @@ export default function BlogPreviewSection() {
                       loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="badge-glow bg-void/80 backdrop-blur-sm">{post.category}</span>
+                      <span className="badge-glow bg-white/90 backdrop-blur-sm">{post.category}</span>
                     </div>
                   </div>
                   <div className="p-6">

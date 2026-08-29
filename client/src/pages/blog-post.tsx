@@ -60,11 +60,11 @@ export default function BlogPost() {
       />
 
       <article>
-        <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-void overflow-hidden">
-          <div className="aurora-bg" />
+        <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-white border-b border-slate-100 overflow-hidden">
+          <div className="aurora-bg opacity-60" />
           <div className="section-container relative z-10 max-w-3xl">
             <Link href="/blog">
-              <span className="inline-flex items-center gap-2 text-slate-500 hover:text-white text-sm mb-8 transition-colors cursor-pointer">
+              <span className="inline-flex items-center gap-2 text-slate-500 hover:text-electric text-sm mb-8 transition-colors cursor-pointer">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Blog
               </span>
@@ -75,7 +75,7 @@ export default function BlogPost() {
               transition={{ duration: 0.6 }}
             >
               <span className="badge-glow mb-5">{post.category}</span>
-              <h1 className="heading-display text-white mb-6">{post.title}</h1>
+              <h1 className="heading-display text-slate-900 mb-6">{post.title}</h1>
               <div className="flex items-center gap-4 text-sm text-slate-500">
                 <span className="flex items-center gap-1.5">
                   <Clock className="w-4 h-4" />
@@ -87,29 +87,31 @@ export default function BlogPost() {
           </div>
         </section>
 
-        <div className="section-container max-w-3xl py-12">
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full rounded-2xl mb-12 aspect-[16/9] object-cover"
-            loading="eager"
-            width={1200}
-            height={630}
-          />
+        <section className="section-light section-padding-sm">
+          <div className="section-container max-w-3xl">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full rounded-2xl mb-12 aspect-[16/9] object-cover"
+              loading="eager"
+              width={1200}
+              height={630}
+            />
 
-          <div className="prose prose-lg prose-slate max-w-none">
-            <p className="text-xl text-slate-600 leading-relaxed mb-10 font-medium">{post.excerpt}</p>
-            <Content />
-          </div>
+            <div className="max-w-none">
+              <p className="text-xl text-slate-700 leading-relaxed mb-10 font-medium">{post.excerpt}</p>
+              <Content />
+            </div>
 
-          <div className="flex items-center gap-3 mt-12 pt-8 border-t border-slate-200">
-            <span className="text-sm text-slate-500">Share:</span>
-            <Button variant="outline" size="sm" className="rounded-lg gap-2" onClick={copyLink}>
-              <Share2 className="w-4 h-4" />
-              Copy link
-            </Button>
+            <div className="flex items-center gap-3 mt-12 pt-8 border-t border-slate-200">
+              <span className="text-sm text-slate-500">Share:</span>
+              <Button variant="outline" size="sm" className="rounded-lg gap-2" onClick={copyLink}>
+                <Share2 className="w-4 h-4" />
+                Copy link
+              </Button>
+            </div>
           </div>
-        </div>
+        </section>
 
         {related.length > 0 && (
           <section className="section-padding-sm section-muted border-t border-slate-100">

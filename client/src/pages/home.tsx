@@ -95,7 +95,7 @@ export default function Home() {
       </section>
 
       {/* Impact metrics */}
-      <section className="relative section-padding section-dark overflow-hidden border-y border-white/[0.06]">
+      <section className="relative section-padding section-dark overflow-hidden border-y border-slate-200">
         <div className="section-container relative z-10">
           <FadeInSection direction="up">
             <SectionHeader
@@ -123,7 +123,7 @@ export default function Home() {
                     transition={{ duration: 0.3 }}
                   >
                     <Icon className={`w-6 h-6 ${stat.color} mx-auto mb-4 group-hover:scale-110 transition-transform`} />
-                    <div className="text-4xl font-bold text-white mb-1">
+                    <div className="text-4xl font-bold text-slate-900 mb-1">
                       <CountUp end={stat.value} suffix={stat.suffix} decimals={stat.decimals ?? 0} duration={2.5} />
                     </div>
                     <div className="text-xs text-slate-500 uppercase tracking-wider">{stat.label}</div>
@@ -137,16 +137,16 @@ export default function Home() {
 
       <ServicesOverview />
 
-      <section className="section-padding-sm section-dark border-y border-white/[0.06]">
+      <section className="section-padding-sm section-dark border-y border-slate-200">
         <div className="section-container relative z-10">
           <FadeInSection direction="up">
             <div className="card-holographic p-8 md:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
               <div>
-                <p className="eyebrow mb-2">ERPNext Services</p>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                <p className="eyebrow-light mb-2">ERPNext Services</p>
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
                   ERPNext Implementation in Pakistan
                 </h2>
-                <p className="text-slate-400 max-w-xl">
+                <p className="text-slate-600 max-w-xl">
                   Deploy, customize, and manage ERPNext for accounting, inventory, HR, and
                   manufacturing — recently delivered for production clients.
                 </p>
@@ -190,7 +190,7 @@ export default function Home() {
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="absolute top-4 right-4 text-6xl font-bold text-white/[0.03] select-none">
+                    <div className="absolute top-4 right-4 text-6xl font-bold text-slate-200 select-none">
                       0{index + 1}
                     </div>
                     <div className="relative z-10">
@@ -200,10 +200,10 @@ export default function Home() {
                       <p className="text-[10px] font-bold text-electric uppercase tracking-[0.2em] mb-3">
                         Step {index + 1}
                       </p>
-                      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-cyan-300 transition-colors">
+                      <h3 className="text-xl font-semibold text-slate-900 mb-3 group-hover:text-electric transition-colors">
                         {step.title}
                       </h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">{step.description}</p>
+                      <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
                     </div>
                   </motion.div>
                 </FadeInSection>
@@ -303,7 +303,7 @@ export default function Home() {
       <WhyCodeVenteSection />
 
       {/* Assurance */}
-      <section className="section-padding-sm section-dark border-y border-white/[0.06]">
+      <section className="section-padding-sm section-dark border-y border-slate-200">
         <div className="section-container relative z-10">
           <motion.div
             className="card-glass p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6"
@@ -317,10 +317,10 @@ export default function Home() {
                 <ShieldCheck className="w-6 h-6 text-emerald-400" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-white mb-1">
+                <h3 className="text-lg font-semibold text-slate-900 mb-1">
                   Built for reliability, speed, and long-term scale
                 </h3>
-                <p className="text-slate-400 text-sm">
+                <p className="text-slate-600 text-sm">
                   From architecture to QA — every delivery is production-focused and maintainable.
                 </p>
               </div>
@@ -341,7 +341,7 @@ export default function Home() {
       <section className="section-padding section-muted">
         <div className="section-container">
           <motion.div
-            className="relative overflow-hidden rounded-3xl bg-void border border-white/10 p-8 md:p-12"
+            className="relative overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-sm p-8 md:p-12"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
@@ -350,11 +350,11 @@ export default function Home() {
             <div className="aurora-bg" />
             <div className="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
               <div className="lg:col-span-2">
-                <p className="eyebrow mb-3">Learn With Us</p>
-                <h2 className="heading-section text-white mb-3">
+                <p className="eyebrow-light mb-3">Learn With Us</p>
+                <h2 className="heading-section text-slate-900 mb-3">
                   Upskill With Practical, Expert-Led Training
                 </h2>
-                <p className="text-slate-400">
+                <p className="text-slate-600">
                   Web, mobile, AI, and product design — with real project workflows.
                 </p>
               </div>

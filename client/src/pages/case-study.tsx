@@ -78,7 +78,7 @@ export default function CaseStudy() {
         <div className="hero-mesh" />
         <div className="section-container relative z-10">
           <Link href="/portfolio">
-            <span className="inline-flex items-center gap-2 text-sky-300 hover:text-white text-sm mb-8 transition-colors cursor-pointer">
+            <span className="inline-flex items-center gap-2 text-slate-500 hover:text-electric text-sm mb-8 transition-colors cursor-pointer">
               <ArrowLeft className="w-4 h-4" />
               Back to Portfolio
             </span>
@@ -97,20 +97,20 @@ export default function CaseStudy() {
                   </Badge>
                 ))}
               </div>
-              <h1 className="heading-display text-white mb-4">{project.title}</h1>
-              <p className="text-lead text-sky-100/90 mb-6">{project.overview}</p>
-              <div className="flex flex-wrap gap-6 text-sm text-slate-300">
+              <h1 className="heading-display text-slate-900 mb-4">{project.title}</h1>
+              <p className="text-lead mb-6">{project.overview}</p>
+              <div className="flex flex-wrap gap-6 text-sm text-slate-600">
                 <div>
-                  <p className="text-sky-400 text-xs uppercase tracking-wider mb-1">Client</p>
-                  <p className="text-white font-medium">{project.client}</p>
+                  <p className="text-electric text-xs uppercase tracking-wider mb-1">Client</p>
+                  <p className="text-slate-900 font-medium">{project.client}</p>
                 </div>
                 <div>
-                  <p className="text-sky-400 text-xs uppercase tracking-wider mb-1">Duration</p>
-                  <p className="text-white font-medium">{project.duration}</p>
+                  <p className="text-electric text-xs uppercase tracking-wider mb-1">Duration</p>
+                  <p className="text-slate-900 font-medium">{project.duration}</p>
                 </div>
                 <div>
-                  <p className="text-sky-400 text-xs uppercase tracking-wider mb-1">Stack</p>
-                  <p className="text-white font-medium">{project.technologies}</p>
+                  <p className="text-electric text-xs uppercase tracking-wider mb-1">Stack</p>
+                  <p className="text-slate-900 font-medium">{project.technologies}</p>
                 </div>
               </div>
               {project.link && (
@@ -129,7 +129,7 @@ export default function CaseStudy() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
-              className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+              className="rounded-2xl overflow-hidden border border-slate-200 shadow-xl"
             >
               <img src={project.image} alt={`${project.title} — project screenshot`} className="w-full aspect-[4/3] object-cover" width={1200} height={900} />
             </motion.div>

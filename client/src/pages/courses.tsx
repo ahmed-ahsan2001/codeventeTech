@@ -63,10 +63,10 @@ export default function Courses() {
                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-sky-300 text-xs font-semibold uppercase tracking-wide">
                       Launch Offer
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white">
+                    <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
                       AI Agent Content Video Ads
                     </h3>
-                    <p className="text-slate-400 leading-relaxed">
+                    <p className="text-slate-600 leading-relaxed">
                       Master AI-powered video advertising and content creation with automated agents.
                     </p>
 
@@ -76,17 +76,17 @@ export default function Courses() {
                         "Live Projects & Challenges",
                         "WhatsApp Support & Private Community",
                       ].map((item) => (
-                        <div key={item} className="flex items-center gap-3 text-slate-300 text-sm">
-                          <GraduationCap className="w-4 h-4 text-sky-400 flex-shrink-0" />
+                        <div key={item} className="flex items-center gap-3 text-slate-600 text-sm">
+                          <GraduationCap className="w-4 h-4 text-electric flex-shrink-0" />
                           {item}
                         </div>
                       ))}
                     </div>
 
                     <div className="flex items-baseline gap-3 pt-2">
-                      <span className="text-4xl font-bold text-white">$15</span>
+                      <span className="text-4xl font-bold text-slate-900">$15</span>
                       <div>
-                        <span className="text-xl font-semibold text-sky-200">Rs. 4,800</span>
+                        <span className="text-xl font-semibold text-electric">Rs. 4,800</span>
                         <p className="text-xs text-slate-500 line-through">Rs. 9,900</p>
                       </div>
                     </div>

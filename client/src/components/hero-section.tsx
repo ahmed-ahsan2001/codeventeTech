@@ -41,18 +41,18 @@ export default function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-void">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-white">
       {/* 3D Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 lg:left-[40%] opacity-70">
+        <div className="absolute inset-0 lg:left-[40%] opacity-50">
           <Suspense fallback={null}>
             <HeroScene3D />
           </Suspense>
         </div>
-        <div className="aurora-bg" />
-        <NoiseOverlay />
-        <div className="absolute inset-0 bg-gradient-to-r from-void via-void/95 to-void/40 lg:from-void lg:via-void/80 lg:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-void/50" />
+        <div className="aurora-bg opacity-70" />
+        <NoiseOverlay opacity={0.02} />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/40 lg:from-white lg:via-white/85 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60" />
       </div>
 
       {/* Content */}
@@ -74,7 +74,7 @@ export default function HeroSection() {
               </div>
             </FadeInSection>
 
-            <h1 className="heading-display text-white mb-6">
+            <h1 className="heading-display text-slate-900 mb-6">
               <TextReveal delay={0.1} className="block">
                 Building AI Products
               </TextReveal>
@@ -84,10 +84,10 @@ export default function HeroSection() {
             </h1>
 
             <FadeInSection delay={0.45} direction="up">
-              <p className="text-xl md:text-2xl text-slate-400 leading-relaxed mb-10 max-w-xl">
+              <p className="text-xl md:text-2xl text-slate-600 leading-relaxed mb-10 max-w-xl">
                 We're the technical co-founder startups hire when{" "}
-                <span className="text-white font-medium">speed</span> and{" "}
-                <span className="text-white font-medium">quality</span> matter —
+                <span className="text-slate-900 font-medium">speed</span> and{" "}
+                <span className="text-slate-900 font-medium">quality</span> matter —
                 from AI integration to production launch.
               </p>
             </FadeInSection>
@@ -120,7 +120,7 @@ export default function HeroSection() {
                 {heroPoints.map((point) => (
                   <span
                     key={point}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/10 bg-white/[0.04] text-sm text-slate-300"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-slate-200 bg-white text-sm text-slate-700 shadow-sm"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
                     {point}
@@ -133,11 +133,11 @@ export default function HeroSection() {
           {/* Stats panel */}
           <FadeInSection delay={0.7} direction="left" className="lg:col-span-5 hidden lg:block">
             <motion.div style={{ x: springX, y: springY }} className="card-holographic p-8">
-              <p className="eyebrow mb-6 text-center">Impact at a Glance</p>
+              <p className="eyebrow-light mb-6 text-center">Impact at a Glance</p>
               <div className="grid grid-cols-2 gap-4">
                 {COMPANY_STATS.map((stat) => (
                   <div key={stat.label} className="stat-pill text-center">
-                    <p className="text-3xl font-bold text-white">
+                    <p className="text-3xl font-bold text-slate-900">
                       <CountUp
                         end={stat.value}
                         suffix={stat.suffix}
@@ -162,7 +162,7 @@ export default function HeroSection() {
             {TRUST_LOGOS.map((logo) => (
               <span
                 key={logo}
-                className="mx-4 px-6 py-3 rounded-xl border border-white/10 bg-white/[0.03] text-sm font-medium text-slate-400 whitespace-nowrap"
+                className="mx-4 px-6 py-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-600 whitespace-nowrap shadow-sm"
               >
                 {logo}
               </span>

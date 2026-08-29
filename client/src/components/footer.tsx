@@ -22,7 +22,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-void border-t border-white/[0.06] text-white overflow-hidden">
+    <footer className="relative bg-slate-50 border-t border-slate-200 text-slate-900 overflow-hidden">
       <NoiseOverlay opacity={0.025} />
       <GradientOrb size={700} color="blue" blur={150} opacity={0.06} className="top-0 left-0" />
       <GradientOrb size={500} color="purple" blur={130} opacity={0.05} className="bottom-0 right-0" />
@@ -36,7 +36,7 @@ export default function Footer() {
                 whileHover={{ x: 4 }}
               >
                 <div className="relative w-10 h-10">
-                  <div className="relative w-full h-full rounded-xl overflow-hidden ring-1 ring-white/15 group-hover:ring-electric/40 transition-all">
+                  <div className="relative w-full h-full rounded-xl overflow-hidden ring-1 ring-slate-200 group-hover:ring-electric/40 transition-all">
                     <img src={logo} alt="CodeVente" className="w-full h-full object-cover" />
                   </div>
                 </div>
@@ -46,22 +46,22 @@ export default function Footer() {
               </motion.div>
             </Link>
 
-            <p className="text-slate-400 leading-relaxed mb-8 max-w-sm text-sm">
+            <p className="text-slate-600 leading-relaxed mb-8 max-w-sm text-sm">
               {COMPANY_INFO.tagline}. Building AI-powered products for startups and enterprises worldwide.
             </p>
 
             <div className="space-y-3 mb-8">
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="flex items-center gap-3 text-sm text-slate-500 hover:text-cyan-400 transition-colors group"
+                className="flex items-center gap-3 text-sm text-slate-600 hover:text-electric transition-colors group"
               >
-                <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center group-hover:border-electric/30 transition-all">
+                <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center group-hover:border-electric/30 transition-all">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
                 {COMPANY_INFO.email}
               </a>
-              <div className="flex items-center gap-3 text-sm text-slate-500">
-                <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center">
+              <div className="flex items-center gap-3 text-sm text-slate-600">
+                <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center">
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
                 {location}
@@ -78,7 +78,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     aria-label={label}
                     whileHover={{ scale: 1.1, y: -2 }}
-                    className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-slate-500 hover:text-white hover:border-electric/30 transition-all"
+                    className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-electric hover:border-electric/30 transition-all"
                   >
                     <Icon className="w-4 h-4" />
                   </motion.a>
@@ -88,12 +88,12 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="text-xs font-bold text-white mb-5 uppercase tracking-[0.15em]">Services</h3>
+            <h3 className="text-xs font-bold text-slate-900 mb-5 uppercase tracking-[0.15em]">Services</h3>
             <ul className="space-y-2.5">
               {SERVICES.map((service) => (
                 <li key={service.id}>
                   <Link href={service.id === "erp-implementation" ? "/erpnext-implementation" : `/services/${service.id}`}>
-                    <span className="text-sm text-slate-500 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5 group">
+                    <span className="text-sm text-slate-600 hover:text-electric transition-colors cursor-pointer inline-flex items-center gap-1.5 group">
                       <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 text-electric transition-all" />
                       {service.title}
                     </span>
@@ -103,7 +103,7 @@ export default function Footer() {
               {SPECIALIZED_SERVICE_IDS.map((id) => (
                 <li key={id}>
                   <Link href={getServicePath(id)}>
-                    <span className="text-sm text-slate-500 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5 group">
+                    <span className="text-sm text-slate-600 hover:text-electric transition-colors cursor-pointer inline-flex items-center gap-1.5 group">
                       <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 text-electric transition-all" />
                       {SERVICE_META[id].title}
                     </span>
@@ -114,7 +114,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="text-xs font-bold text-white mb-5 uppercase tracking-[0.15em]">Company</h3>
+            <h3 className="text-xs font-bold text-slate-900 mb-5 uppercase tracking-[0.15em]">Company</h3>
             <ul className="space-y-2.5">
               {[
                 { href: "/about", label: "About" },
@@ -125,7 +125,7 @@ export default function Footer() {
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}>
-                    <span className="text-sm text-slate-500 hover:text-white transition-colors cursor-pointer">
+                    <span className="text-sm text-slate-600 hover:text-electric transition-colors cursor-pointer">
                       {link.label}
                     </span>
                   </Link>
@@ -135,7 +135,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="text-xs font-bold text-white mb-5 uppercase tracking-[0.15em]">Legal</h3>
+            <h3 className="text-xs font-bold text-slate-900 mb-5 uppercase tracking-[0.15em]">Legal</h3>
             <ul className="space-y-2.5">
               {[
                 { href: "/privacy-policy", label: "Privacy Policy" },
@@ -143,7 +143,7 @@ export default function Footer() {
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}>
-                    <span className="text-sm text-slate-500 hover:text-white transition-colors cursor-pointer">
+                    <span className="text-sm text-slate-600 hover:text-electric transition-colors cursor-pointer">
                       {link.label}
                     </span>
                   </Link>
@@ -158,7 +158,7 @@ export default function Footer() {
                 whileHover={{ y: -3 }}
                 className="card-holographic p-5 cursor-pointer group"
               >
-                <p className="text-sm font-semibold text-white mb-1 group-hover:text-cyan-300 transition-colors">
+                <p className="text-sm font-semibold text-slate-900 mb-1 group-hover:text-electric transition-colors">
                   Ready to build?
                 </p>
                 <p className="text-xs text-slate-500 mb-3">Free technical audit included</p>
@@ -179,7 +179,7 @@ export default function Footer() {
           <motion.button
             onClick={scrollToTop}
             whileHover={{ y: -2 }}
-            className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/[0.08] hover:border-electric/30 flex items-center justify-center text-slate-500 hover:text-electric transition-all"
+            className="w-9 h-9 rounded-lg bg-white border border-slate-200 hover:border-electric/30 flex items-center justify-center text-slate-500 hover:text-electric transition-all"
             aria-label="Back to top"
           >
             <ArrowUp className="w-4 h-4" />

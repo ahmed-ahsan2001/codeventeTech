@@ -14,7 +14,6 @@ export default function SectionHeader({
   title,
   description,
   align = "center",
-  dark = false,
 }: SectionHeaderProps) {
   const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
   const maxWidth = align === "center" ? "max-w-3xl" : "max-w-2xl";
@@ -27,17 +26,9 @@ export default function SectionHeader({
       transition={{ duration: 0.55 }}
       viewport={{ once: true }}
     >
-      {eyebrow && (
-        <p className={dark ? "eyebrow mb-3" : "eyebrow-light mb-3"}>{eyebrow}</p>
-      )}
-      <h2
-        className={`heading-section mb-4 ${dark ? "text-white" : "text-slate-900"}`}
-      >
-        {title}
-      </h2>
-      {description && (
-        <p className={dark ? "text-lead" : "text-lead-light"}>{description}</p>
-      )}
+      {eyebrow && <p className="eyebrow-light mb-3">{eyebrow}</p>}
+      <h2 className="heading-section text-slate-900 mb-4">{title}</h2>
+      {description && <p className="text-lead-light">{description}</p>}
     </motion.div>
   );
 }

@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import MagneticButton from "@/components/animations/MagneticButton";
-import NoiseOverlay from "@/components/effects/NoiseOverlay";
 import GradientOrb from "@/components/effects/GradientOrb";
 
 interface CTABannerProps {
@@ -27,10 +26,8 @@ export default function CTABanner({
   children,
 }: CTABannerProps) {
   return (
-    <section className="relative section-padding overflow-hidden bg-void border-t border-white/[0.06]">
-      <div className="aurora-bg" />
-      <NoiseOverlay opacity={0.03} />
-      <GradientOrb size={600} color="blue" blur={140} opacity={0.12} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+    <section className="relative section-padding overflow-hidden bg-gradient-to-br from-electric/5 via-white to-cyan-50 border-t border-slate-100">
+      <GradientOrb size={600} color="blue" blur={140} opacity={0.1} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
       <div className="section-container relative z-10">
         <motion.div
@@ -40,8 +37,8 @@ export default function CTABanner({
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="heading-section text-white mb-5">{title}</h2>
-          <p className="text-lead mb-10">{description}</p>
+          <h2 className="heading-section text-slate-900 mb-5">{title}</h2>
+          <p className="text-lead-light mb-10">{description}</p>
           {children ?? (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={primaryHref}>
@@ -54,7 +51,7 @@ export default function CTABanner({
               </Link>
               {secondaryLabel && secondaryHref && (
                 <Link href={secondaryHref}>
-                  <Button size="lg" className="btn-outline-light rounded-xl px-10 py-6 text-base">
+                  <Button size="lg" className="btn-outline-dark rounded-xl px-10 py-6 text-base">
                     {secondaryLabel}
                   </Button>
                 </Link>

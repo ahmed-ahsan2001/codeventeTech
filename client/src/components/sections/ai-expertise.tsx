@@ -49,10 +49,10 @@ export default function AIExpertiseSection() {
                   <div className="w-12 h-12 rounded-xl bg-electric/10 border border-electric/20 flex items-center justify-center mb-5 group-hover:bg-electric/20 group-hover:scale-110 transition-all duration-300">
                     <Icon className="w-6 h-6 text-cyan-400" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-electric transition-colors">
                     {cap.title}
                   </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">{cap.description}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed">{cap.description}</p>
                 </motion.div>
               </FadeInSection>
             );

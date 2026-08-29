@@ -30,7 +30,7 @@ export default function WhyCodeVenteSection() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="flex items-start justify-between gap-6 mb-5">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-cyan-300 transition-colors">
+                  <h3 className="text-xl font-semibold text-slate-900 group-hover:text-electric transition-colors">
                     {item.title}
                   </h3>
                   <div className="text-right flex-shrink-0">
@@ -45,7 +45,7 @@ export default function WhyCodeVenteSection() {
                     <p className="text-[10px] uppercase tracking-wider text-slate-500 mt-1">{item.statLabel}</p>
                   </div>
                 </div>
-                <p className="text-slate-400 leading-relaxed">{item.description}</p>
+                <p className="text-slate-600 leading-relaxed">{item.description}</p>
               </motion.div>
             </FadeInSection>
           ))}

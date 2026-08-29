@@ -236,8 +236,8 @@ export default function Contact() {
                   <div className="w-12 h-12 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-5">
                     <CheckCircle2 className="w-6 h-6 text-cyan-400" />
                   </div>
-                  <h3 className="heading-sub text-white mb-3">Message received</h3>
-                  <p className="text-slate-300 mb-6">
+                  <h3 className="heading-sub text-slate-900 mb-3">Message received</h3>
+                  <p className="text-slate-600 mb-6">
                     Thank you. We will reply to your email within one business day. If it is urgent,
                     WhatsApp is the fastest way to reach us.
                   </p>
@@ -269,7 +269,7 @@ export default function Contact() {
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-slate-300">Full name *</FormLabel>
+                            <FormLabel className="text-slate-700">Full name *</FormLabel>
                             <FormControl>
                               <Input {...field} placeholder="Your name" className="input-dark" required />
                             </FormControl>
@@ -282,7 +282,7 @@ export default function Contact() {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-slate-300">Work email *</FormLabel>
+                            <FormLabel className="text-slate-700">Work email *</FormLabel>
                             <FormControl>
                               <Input type="email" {...field} placeholder="you@company.com" className="input-dark" required />
                             </FormControl>
@@ -298,7 +298,7 @@ export default function Contact() {
                         name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-slate-300">Phone / WhatsApp</FormLabel>
+                            <FormLabel className="text-slate-700">Phone / WhatsApp</FormLabel>
                             <FormControl>
                               <Input {...field} value={field.value ?? ""} placeholder="+92 3xx xxxxxxx" className="input-dark" />
                             </FormControl>
@@ -311,7 +311,7 @@ export default function Contact() {
                         name="company"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-slate-300">Company</FormLabel>
+                            <FormLabel className="text-slate-700">Company</FormLabel>
                             <FormControl>
                               <Input {...field} value={field.value ?? ""} placeholder="Company name" className="input-dark" />
                             </FormControl>
@@ -327,7 +327,7 @@ export default function Contact() {
                         name="service"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-slate-300">What do you need?</FormLabel>
+                            <FormLabel className="text-slate-700">What do you need?</FormLabel>
                             <Select onValueChange={field.onChange} value={field.value ?? undefined}>
                               <FormControl>
                                 <SelectTrigger className="input-dark">
@@ -354,7 +354,7 @@ export default function Contact() {
                         name="budget"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-slate-300">Budget range</FormLabel>
+                            <FormLabel className="text-slate-700">Budget range</FormLabel>
                             <Select onValueChange={field.onChange} value={field.value ?? undefined}>
                               <FormControl>
                                 <SelectTrigger className="input-dark">
@@ -380,7 +380,7 @@ export default function Contact() {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-slate-300">Project details *</FormLabel>
+                          <FormLabel className="text-slate-700">Project details *</FormLabel>
                           <FormControl>
                             <Textarea
                               {...field}
@@ -445,42 +445,42 @@ export default function Contact() {
                   <MessageCircle className="w-5 h-5 text-cyan-400" />
                 </div>
                 <div>
-                  <p className="text-white font-semibold mb-1">WhatsApp</p>
-                  <p className="text-sm text-slate-400 mb-2">Fastest for ERP and project questions</p>
-                  <p className="text-cyan-300 text-sm">{COMPANY_INFO.phone}</p>
+                  <p className="text-slate-900 font-semibold mb-1">WhatsApp</p>
+                  <p className="text-sm text-slate-600 mb-2">Fastest for ERP and project questions</p>
+                  <p className="text-electric text-sm">{COMPANY_INFO.phone}</p>
                 </div>
               </a>
 
               <div className="card-dark p-6 space-y-5">
-                <h3 className="font-semibold text-white text-lg">Direct contact</h3>
+                <h3 className="font-semibold text-slate-900 text-lg">Direct contact</h3>
                 <ul className="space-y-4">
-                  <li className="flex items-center gap-3 text-slate-300 text-sm">
-                    <div className="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-4 h-4 text-sky-300" />
+                  <li className="flex items-center gap-3 text-slate-600 text-sm">
+                    <div className="w-9 h-9 rounded-lg bg-electric/10 flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-4 h-4 text-electric" />
                     </div>
-                    <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white transition-colors break-all">
+                    <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-electric transition-colors break-all">
                       {COMPANY_INFO.email}
                     </a>
                   </li>
-                  <li className="flex items-center gap-3 text-slate-300 text-sm">
-                    <div className="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-4 h-4 text-sky-300" />
+                  <li className="flex items-center gap-3 text-slate-600 text-sm">
+                    <div className="w-9 h-9 rounded-lg bg-electric/10 flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-4 h-4 text-electric" />
                     </div>
-                    <a href={`tel:${COMPANY_INFO.phone.replace(/\s/g, "")}`} className="hover:text-white transition-colors">
+                    <a href={`tel:${COMPANY_INFO.phone.replace(/\s/g, "")}`} className="hover:text-electric transition-colors">
                       {COMPANY_INFO.phone}
                     </a>
                   </li>
-                  <li className="flex items-center gap-3 text-slate-300 text-sm">
-                    <div className="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-4 h-4 text-sky-300" />
+                  <li className="flex items-center gap-3 text-slate-600 text-sm">
+                    <div className="w-9 h-9 rounded-lg bg-electric/10 flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-4 h-4 text-electric" />
                     </div>
                     <span>
                       {COMPANY_INFO.address.city}, {COMPANY_INFO.address.country}
                     </span>
                   </li>
-                  <li className="flex items-center gap-3 text-slate-300 text-sm">
-                    <div className="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Clock className="w-4 h-4 text-sky-300" />
+                  <li className="flex items-center gap-3 text-slate-600 text-sm">
+                    <div className="w-9 h-9 rounded-lg bg-electric/10 flex items-center justify-center flex-shrink-0">
+                      <Clock className="w-4 h-4 text-electric" />
                     </div>
                     <span>Mon–Sat, 11:00–19:00 PKT · replies within 24h</span>
                   </li>
@@ -489,7 +489,7 @@ export default function Contact() {
 
               {activeSocials.length > 0 && (
                 <div className="card-dark p-6">
-                  <h3 className="font-semibold text-white mb-4">Follow</h3>
+                  <h3 className="font-semibold text-slate-900 mb-4">Follow</h3>
                   <div className="flex gap-3">
                     {activeSocials.map(({ key, Icon }) => (
                       <a
@@ -497,7 +497,7 @@ export default function Contact() {
                         href={COMPANY_INFO.social[key]}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                        className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-electric hover:border-electric/30 transition-colors"
                       >
                         <Icon className="w-5 h-5" />
                       </a>
@@ -506,7 +506,7 @@ export default function Contact() {
                 </div>
               )}
 
-              <div className="overflow-hidden rounded-2xl border border-white/10 h-48">
+              <div className="overflow-hidden rounded-2xl border border-slate-200 h-48">
                 <iframe
                   title="CodeVente Karachi"
                   src="https://maps.google.com/maps?q=Karachi%20Pakistan&t=&z=11&ie=UTF8&iwloc=&output=embed"

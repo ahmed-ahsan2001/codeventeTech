@@ -48,6 +48,9 @@ export default function Navigation() {
 
   const isHome = location === "/";
 
+  const navSurface =
+    "bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.04)]";
+
   return (
     <>
       <motion.nav
@@ -55,9 +58,7 @@ export default function Navigation() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          isScrolled || !isHome
-            ? "bg-void/90 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-            : "bg-transparent border-b border-transparent"
+          isScrolled || !isHome ? navSurface : "bg-white/80 backdrop-blur-md border-b border-transparent"
         }`}
       >
         <motion.div
@@ -75,11 +76,11 @@ export default function Navigation() {
               >
                 <div className="relative w-9 h-9 lg:w-10 lg:h-10">
                   <div className="absolute inset-0 rounded-xl bg-electric/20 blur-md group-hover:blur-lg transition-all opacity-0 group-hover:opacity-100" />
-                  <div className="relative w-full h-full rounded-xl overflow-hidden ring-1 ring-white/15 group-hover:ring-electric/40 transition-all">
+                  <div className="relative w-full h-full rounded-xl overflow-hidden ring-1 ring-slate-200 group-hover:ring-electric/40 transition-all">
                     <img src={logo} alt="CodeVente" className="w-full h-full object-cover" />
                   </div>
                 </div>
-                <span className="text-lg lg:text-xl font-bold text-white tracking-tight">
+                <span className="text-lg lg:text-xl font-bold text-slate-900 tracking-tight">
                   Code<span className="text-electric">Vente</span>
                 </span>
               </motion.div>
@@ -101,14 +102,14 @@ export default function Navigation() {
                       transition={{ delay: index * 0.04 + 0.15 }}
                       className={`relative flex items-center gap-1 px-3.5 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${
                         isActive(item.href)
-                          ? "text-white"
-                          : "text-slate-400 hover:text-white"
+                          ? "text-electric"
+                          : "text-slate-600 hover:text-slate-900"
                       }`}
                     >
                       {isActive(item.href) && (
                         <motion.div
                           layoutId="nav-indicator"
-                          className="absolute inset-0 bg-white/[0.08] rounded-lg border border-white/10"
+                          className="absolute inset-0 bg-electric/5 rounded-lg border border-electric/15"
                           transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                         />
                       )}
@@ -127,12 +128,12 @@ export default function Navigation() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 8, scale: 0.96 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-72 p-2 rounded-2xl bg-void-elevated/95 backdrop-blur-2xl border border-white/10 shadow-2xl"
+                          className="absolute top-full left-0 mt-2 w-72 p-2 rounded-2xl bg-white backdrop-blur-xl border border-slate-200 shadow-xl"
                         >
                           {SERVICES.map((service) => (
                             <Link key={service.id} href={service.id === "erp-implementation" ? "/erpnext-implementation" : `/services/${service.id}`}>
-                              <div className="px-4 py-3 rounded-xl hover:bg-white/[0.06] transition-colors cursor-pointer group">
-                                <p className="text-sm font-medium text-white group-hover:text-cyan-300 transition-colors">
+                              <div className="px-4 py-3 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer group">
+                                <p className="text-sm font-medium text-slate-900 group-hover:text-electric transition-colors">
                                   {service.title}
                                 </p>
                                 <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
@@ -143,8 +144,8 @@ export default function Navigation() {
                           ))}
                           {SPECIALIZED_SERVICE_IDS.map((id) => (
                             <Link key={id} href={getServicePath(id)}>
-                              <div className="px-4 py-3 rounded-xl hover:bg-white/[0.06] transition-colors cursor-pointer group">
-                                <p className="text-sm font-medium text-white group-hover:text-cyan-300 transition-colors">
+                              <div className="px-4 py-3 rounded-xl hover:bg-slate-50 transition-colors cursor-pointer group">
+                                <p className="text-sm font-medium text-slate-900 group-hover:text-electric transition-colors">
                                   {SERVICE_META[id].title}
                                 </p>
                                 <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
@@ -153,9 +154,9 @@ export default function Navigation() {
                               </div>
                             </Link>
                           ))}
-                          <div className="border-t border-white/10 mt-1 pt-1">
+                          <div className="border-t border-slate-100 mt-1 pt-1">
                             <Link href="/services">
-                              <div className="px-4 py-2.5 text-xs font-semibold text-electric hover:text-cyan-300 transition-colors cursor-pointer">
+                              <div className="px-4 py-2.5 text-xs font-semibold text-electric hover:text-electric/80 transition-colors cursor-pointer">
                                 View all services →
                               </div>
                             </Link>
@@ -180,7 +181,7 @@ export default function Navigation() {
             </div>
 
             <button
-              className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="lg:hidden text-slate-800 p-2 hover:bg-slate-100 rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -206,7 +207,7 @@ export default function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 220 }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-void-elevated/98 backdrop-blur-2xl border-l border-white/10 z-[95] lg:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white border-l border-slate-200 shadow-2xl z-[95] lg:hidden overflow-y-auto"
             >
               <div className="p-6 pt-20 space-y-1">
                 {navItems.map((item, index) => (
@@ -217,8 +218,8 @@ export default function Navigation() {
                       transition={{ delay: index * 0.04 }}
                       className={`block px-4 py-3.5 rounded-xl text-base font-medium transition-all cursor-pointer ${
                         isActive(item.href)
-                          ? "bg-white/[0.08] text-white border border-white/10"
-                          : "text-slate-400 hover:text-white hover:bg-white/[0.04]"
+                          ? "bg-electric/5 text-electric border border-electric/15"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                       }`}
                     >
                       {item.label}
@@ -229,7 +230,7 @@ export default function Navigation() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="pt-6 mt-4 border-t border-white/10"
+                  className="pt-6 mt-4 border-t border-slate-100"
                 >
                   <Link href="/contact">
                     <Button className="btn-primary-gradient w-full rounded-xl py-6 gap-2">

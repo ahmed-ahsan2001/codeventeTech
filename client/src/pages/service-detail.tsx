@@ -60,17 +60,17 @@ export default function ServiceDetail() {
         <ol className="flex flex-wrap items-center gap-1.5 text-sm text-slate-500">
           <li>
             <Link href="/">
-              <span className="hover:text-white transition-colors cursor-pointer">Home</span>
+              <span className="hover:text-electric transition-colors cursor-pointer">Home</span>
             </Link>
           </li>
           <ChevronRight className="w-3.5 h-3.5" aria-hidden />
           <li>
             <Link href="/services">
-              <span className="hover:text-white transition-colors cursor-pointer">Services</span>
+              <span className="hover:text-electric transition-colors cursor-pointer">Services</span>
             </Link>
           </li>
           <ChevronRight className="w-3.5 h-3.5" aria-hidden />
-          <li className="text-slate-300" aria-current="page">
+          <li className="text-slate-700" aria-current="page">
             {meta.title}
           </li>
         </ol>
@@ -124,9 +124,9 @@ export default function ServiceDetail() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-14 max-w-4xl mx-auto">
             {details.benefits.map((benefit, i) => (
               <FadeInSection key={benefit} delay={i * 0.06} direction="up">
-                <div className="flex items-start gap-3 p-4 rounded-xl border border-white/[0.06] bg-white/[0.02]">
-                  <CheckCircle className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-300">{benefit}</span>
+                <div className="flex items-start gap-3 p-4 rounded-xl border border-slate-200 bg-white">
+                  <CheckCircle className="w-5 h-5 text-electric flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-slate-700">{benefit}</span>
                 </div>
               </FadeInSection>
             ))}
@@ -167,7 +167,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* Technologies */}
-      <section className="section-padding-sm section-dark border-y border-white/[0.06]">
+      <section className="section-padding-sm section-dark border-y border-slate-200">
         <div className="section-container relative z-10">
           <SectionHeader
             eyebrow="Stack"
@@ -243,7 +243,7 @@ export default function ServiceDetail() {
 
       {/* Related services */}
       {relatedServices.length > 0 && (
-        <section className="section-padding-sm section-dark border-t border-white/[0.06]">
+        <section className="section-padding-sm section-dark border-t border-slate-200">
           <div className="section-container">
             <SectionHeader
               eyebrow="Related"

@@ -6,7 +6,7 @@ import { TECHNOLOGIES } from "@/lib/content";
 
 export default function TechnologiesSection() {
   return (
-    <section className="relative section-padding-sm section-dark overflow-hidden border-y border-white/5">
+    <section className="relative section-padding-sm section-dark overflow-hidden border-y border-slate-200">
       <NoiseOverlay opacity={0.025} />
 
       <div className="section-container relative z-10 mb-10">

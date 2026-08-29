@@ -60,13 +60,13 @@ export default function ServicesOverview() {
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                    <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-electric transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-slate-400 leading-relaxed mb-5">{service.description}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed mb-5">{service.description}</p>
                     <div className="flex flex-wrap gap-1.5 mb-5">
                       {service.features.slice(0, 2).map((f) => (
-                        <span key={f} className="text-[10px] px-2.5 py-1 rounded-full bg-white/[0.04] text-slate-500 border border-white/[0.06]">
+                        <span key={f} className="text-[10px] px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
                           {f}
                         </span>
                       ))}

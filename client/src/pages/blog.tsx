@@ -42,7 +42,9 @@ export default function Blog() {
                         loading="lazy"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="badge-glow">{post.category}</span>
+                        <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium border border-electric/20 bg-white/95 text-electric shadow-sm">
+                          {post.category}
+                        </span>
                       </div>
                     </div>
                     <div className="p-6">

@@ -32,9 +32,9 @@ export default function NotFound() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="text-9xl font-bold text-white/20 mb-4">404</div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Page Not Found</h1>
-            <p className="text-xl text-slate-300 mb-8 max-w-md mx-auto">
+            <div className="text-9xl font-bold text-slate-200 mb-4">404</div>
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">Page Not Found</h1>
+            <p className="text-xl text-slate-600 mb-8 max-w-md mx-auto">
               Oops! The page you're looking for seems to have wandered off into cyberspace.
             </p>
           </motion.div>
@@ -48,7 +48,7 @@ export default function NotFound() {
             <Link href="/">
               <Button
                 size="lg"
-                className="bg-white text-brand px-8 py-4 font-semibold hover:bg-sky-50 transition-all duration-200 mr-4"
+                className="bg-electric text-white px-8 py-4 font-semibold hover:bg-electric/90 transition-all duration-200 mr-4"
               >
                 Return Home
               </Button>
@@ -57,7 +57,7 @@ export default function NotFound() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-white text-white px-8 py-4 font-semibold hover:bg-white hover:text-brand transition-all duration-200"
+                className="border-2 border-slate-300 text-slate-700 px-8 py-4 font-semibold hover:bg-slate-100 transition-all duration-200"
               >
                 Contact Support
               </Button>
@@ -65,18 +65,18 @@ export default function NotFound() {
           </motion.div>
 
           <motion.nav
-            className="mt-12 pt-8 border-t border-white/10"
+            className="mt-12 pt-8 border-t border-slate-200"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.35 }}
             aria-label="Helpful links"
           >
-            <p className="text-sm text-slate-400 mb-4">Popular pages</p>
+            <p className="text-sm text-slate-500 mb-4">Popular pages</p>
             <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2">
               {helpfulLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href}>
-                    <span className="text-sm text-sky-200 hover:text-white transition-colors cursor-pointer">
+                    <span className="text-sm text-slate-600 hover:text-electric transition-colors cursor-pointer">
                       {link.label}
                     </span>
                   </Link>

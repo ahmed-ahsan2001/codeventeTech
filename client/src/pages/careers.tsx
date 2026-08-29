@@ -317,7 +317,7 @@ export default function Careers() {
 
                       <Button
                         onClick={() => applyToPosition(position.id)}
-                        className="w-full bg-brand-gradient text-white hover:opacity-95 transition-all duration-200"
+                        className="w-full btn-primary-gradient hover:opacity-95 transition-all duration-200"
                       >
                         Apply Now
                       </Button>
@@ -645,7 +645,7 @@ export default function Careers() {
                     <Button
                       type="submit"
                       disabled={jobApplicationMutation.isPending || !resumeFile}
-                      className="w-full bg-brand-gradient text-white px-8 py-4 font-semibold hover:opacity-95 transition-all duration-200"
+                      className="w-full btn-primary-gradient px-8 py-4 font-semibold hover:opacity-95 transition-all duration-200"
                     >
                       {jobApplicationMutation.isPending ? "Submitting..." : "Submit Application"}
                     </Button>

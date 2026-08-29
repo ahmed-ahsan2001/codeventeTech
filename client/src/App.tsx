@@ -53,7 +53,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen bg-void">
+        <div className="min-h-screen bg-white">
           <CustomCursor />
           <ScrollToTop />
           <Navigation />

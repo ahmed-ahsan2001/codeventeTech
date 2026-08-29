@@ -59,12 +59,12 @@ export default function Services() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <p className="eyebrow mb-3">{String(index + 1).padStart(2, "0")} — Service</p>
-                  <h2 className="heading-section text-white mb-4">{service.title}</h2>
+                  <p className="eyebrow-light mb-3">{String(index + 1).padStart(2, "0")} — Service</p>
+                  <h2 className="heading-section text-slate-900 mb-4">{service.title}</h2>
                   <p className="text-lead mb-6">{service.description}</p>
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-slate-400 text-sm">
+                      <li key={feature} className="flex items-center text-slate-600 text-sm">
                         <CheckCircle className="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" />
                         {feature}
                       </li>
@@ -88,8 +88,8 @@ export default function Services() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <div className="rounded-xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-electric/20 via-void to-neon-purple/20 flex items-center justify-center">
-                      <span className="text-6xl font-bold text-white/[0.06]">{String(index + 1).padStart(2, "0")}</span>
+                    <div className="rounded-xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-electric/10 via-slate-50 to-neon-purple/10 flex items-center justify-center">
+                      <span className="text-6xl font-bold text-slate-200">{String(index + 1).padStart(2, "0")}</span>
                     </div>
                   </motion.div>
                 </div>

@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import type { ReactNode } from "react";
 
 export function P({ children }: { children: ReactNode }) {
-  return <p className="text-slate-600 leading-relaxed mb-6">{children}</p>;
+  return <p className="text-slate-700 leading-relaxed mb-6 [&_strong]:text-slate-900">{children}</p>;
 }
 
 export function H2({ children }: { children: ReactNode }) {
@@ -14,15 +14,15 @@ export function H3({ children }: { children: ReactNode }) {
 }
 
 export function Ul({ children }: { children: ReactNode }) {
-  return <ul className="list-disc pl-6 space-y-2 text-slate-600 mb-6">{children}</ul>;
+  return <ul className="list-disc pl-6 space-y-2 text-slate-700 mb-6">{children}</ul>;
 }
 
 export function Ol({ children }: { children: ReactNode }) {
-  return <ol className="list-decimal pl-6 space-y-2 text-slate-600 mb-6">{children}</ol>;
+  return <ol className="list-decimal pl-6 space-y-2 text-slate-700 mb-6">{children}</ol>;
 }
 
 export function Li({ children }: { children: ReactNode }) {
-  return <li className="leading-relaxed">{children}</li>;
+  return <li className="leading-relaxed [&_strong]:text-slate-900">{children}</li>;
 }
 
 export function InternalLink({ href, children }: { href: string; children: ReactNode }) {
@@ -58,7 +58,7 @@ export function Table({ headers, rows }: { headers: string[]; rows: string[][] }
           {rows.map((row, i) => (
             <tr key={i} className="border-b border-slate-100 last:border-0">
               {row.map((cell, j) => (
-                <td key={j} className="px-4 py-3 text-slate-600 align-top">
+                <td key={j} className="px-4 py-3 text-slate-700 align-top">
                   {cell}
                 </td>
               ))}
