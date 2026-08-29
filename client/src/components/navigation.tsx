@@ -20,16 +20,9 @@ const navItems = [
 export default function Navigation() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -46,10 +39,8 @@ export default function Navigation() {
     return location.startsWith(href);
   };
 
-  const isHome = location === "/";
-
   const navSurface =
-    "bg-white/95 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.04)]";
+    "bg-white/98 backdrop-blur-xl border-b border-slate-200 shadow-[0_4px_24px_rgba(0,0,0,0.06)]";
 
   return (
     <>
@@ -57,9 +48,7 @@ export default function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          isScrolled || !isHome ? navSurface : "bg-white/80 backdrop-blur-md border-b border-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[100] ${navSurface}`}
       >
         <motion.div
           style={{ scaleX }}

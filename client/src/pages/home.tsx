@@ -34,6 +34,10 @@ import { PORTFOLIO_PROJECTS, COMPANY_INFO } from "@/lib/constants";
 import { TRUST_LOGOS } from "@/lib/content";
 import { getCaseStudyPath } from "@/lib/portfolio";
 import { organizationJsonLd, webSiteJsonLd, localBusinessJsonLd } from "@/lib/seo";
+import erpAccountsDashboard from "@/assets/erp/accounts-dashboard.png";
+import erpIntegrations from "@/assets/erp/integrations.png";
+import erpMigrationCloud from "@/assets/erp/migration-cloud.png";
+import erpTrainingSupport from "@/assets/erp/training-support.png";
 
 export default function Home() {
   const recentProjects = PORTFOLIO_PROJECTS.slice(0, 3);
@@ -131,6 +135,46 @@ export default function Home() {
                 </FadeInSection>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Work showcase strip */}
+      <section className="section-padding-sm bg-white border-b border-slate-100">
+        <div className="section-container">
+          <FadeInSection direction="up">
+            <SectionHeader
+              eyebrow="Our Work"
+              title="Real Products, Real Screenshots"
+              description="From ERPNext deployments to mobile apps and e-commerce — a glimpse of what we ship."
+              align="center"
+            />
+          </FadeInSection>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+            {[
+              { src: erpAccountsDashboard, alt: "ERPNext accounts dashboard", label: "ERPNext Finance" },
+              { src: erpIntegrations, alt: "ERPNext integrations", label: "Integrations" },
+              { src: erpMigrationCloud, alt: "Cloud migration", label: "Cloud & Migration" },
+              { src: erpTrainingSupport, alt: "ERP training and support", label: "Training & Support" },
+            ].map((item, index) => (
+              <FadeInSection key={item.label} delay={index * 0.08} direction="up">
+                <motion.div
+                  className="group relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm aspect-[4/3]"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/70 to-transparent p-3 pt-8">
+                    <p className="text-xs font-semibold text-white">{item.label}</p>
+                  </div>
+                </motion.div>
+              </FadeInSection>
+            ))}
           </div>
         </div>
       </section>

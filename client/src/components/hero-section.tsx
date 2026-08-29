@@ -1,5 +1,5 @@
 import { useEffect, lazy, Suspense } from "react";
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,14 +10,11 @@ import CountUp from "@/components/animations/CountUp";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
 import Marquee from "@/components/effects/Marquee";
 import { TRUST_LOGOS, COMPANY_STATS } from "@/lib/content";
+import heroOffice from "@/assets/hero-office.png";
 
 const HeroScene3D = lazy(() => import("@/components/three/HeroScene3D"));
 
 export default function HeroSection() {
-  const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
-  const y = useTransform(scrollY, [0, 400], [0, 80]);
-
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
@@ -56,10 +53,7 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <motion.div
-        style={{ opacity, y }}
-        className="section-container relative z-20 w-full pt-32 pb-20 lg:pt-40 lg:pb-32"
-      >
+      <div className="section-container relative z-20 w-full pt-32 pb-20 lg:pt-40 lg:pb-32">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           <div className="lg:col-span-7">
             <FadeInSection delay={0} direction="up">
@@ -130,24 +124,42 @@ export default function HeroSection() {
             </FadeInSection>
           </div>
 
-          {/* Stats panel */}
-          <FadeInSection delay={0.7} direction="left" className="lg:col-span-5 hidden lg:block">
-            <motion.div style={{ x: springX, y: springY }} className="card-holographic p-8">
-              <p className="eyebrow-light mb-6 text-center">Impact at a Glance</p>
-              <div className="grid grid-cols-2 gap-4">
-                {COMPANY_STATS.map((stat) => (
-                  <div key={stat.label} className="stat-pill text-center">
-                    <p className="text-3xl font-bold text-slate-900">
-                      <CountUp
-                        end={stat.value}
-                        suffix={stat.suffix}
-                        decimals={stat.decimals ?? 0}
-                        duration={2.5}
-                      />
-                    </p>
-                    <p className="text-xs text-slate-500 mt-1.5">{stat.label}</p>
-                  </div>
-                ))}
+          {/* Hero image + stats */}
+          <FadeInSection delay={0.7} direction="left" className="lg:col-span-5">
+            <motion.div style={{ x: springX, y: springY }} className="space-y-5">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl aspect-[4/3]">
+                <img
+                  src={heroOffice}
+                  alt="CodeVente team collaborating on software and ERP projects"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  width={640}
+                  height={480}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-white text-sm font-semibold drop-shadow-sm">Karachi-based engineering team</p>
+                  <p className="text-white/80 text-xs">AI, web, mobile & ERPNext delivery</p>
+                </div>
+              </div>
+
+              <div className="card-holographic p-6 hidden lg:block">
+                <p className="eyebrow-light mb-4 text-center">Impact at a Glance</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {COMPANY_STATS.map((stat) => (
+                    <div key={stat.label} className="stat-pill text-center py-4">
+                      <p className="text-2xl font-bold text-slate-900">
+                        <CountUp
+                          end={stat.value}
+                          suffix={stat.suffix}
+                          decimals={stat.decimals ?? 0}
+                          duration={2.5}
+                        />
+                      </p>
+                      <p className="text-[10px] text-slate-500 mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </FadeInSection>
@@ -179,7 +191,7 @@ export default function HeroSection() {
           <span className="text-[10px] uppercase tracking-[0.25em]">Scroll</span>
           <div className="w-px h-8 bg-gradient-to-b from-slate-600 to-transparent" />
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
