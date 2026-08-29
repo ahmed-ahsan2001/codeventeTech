@@ -184,23 +184,34 @@ export default function Home() {
       <section className="section-padding-sm section-dark border-y border-slate-200">
         <div className="section-container relative z-10">
           <FadeInSection direction="up">
-            <div className="card-holographic p-8 md:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-              <div>
-                <p className="eyebrow-light mb-2">ERPNext Services</p>
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                  ERPNext Implementation in Pakistan
-                </h2>
-                <p className="text-slate-600 max-w-xl">
-                  Deploy, customize, and manage ERPNext for accounting, inventory, HR, and
-                  manufacturing — recently delivered for production clients.
-                </p>
+            <div className="card-holographic overflow-hidden">
+              <div className="grid lg:grid-cols-2 gap-0 items-stretch">
+                <div className="relative min-h-[240px] lg:min-h-full">
+                  <img
+                    src={erpAccountsDashboard}
+                    alt="ERPNext accounts dashboard with financial reports"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 lg:to-white/0" />
+                </div>
+                <div className="p-8 md:p-10 flex flex-col justify-center">
+                  <p className="eyebrow-light mb-2">ERPNext Services</p>
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+                    ERPNext Implementation in Pakistan
+                  </h2>
+                  <p className="text-slate-600 max-w-xl mb-6">
+                    Deploy, customize, and manage ERPNext for accounting, inventory, HR, and
+                    manufacturing — recently delivered for production clients.
+                  </p>
+                  <Link href="/erpnext-implementation">
+                    <Button className="btn-primary-gradient rounded-xl px-8 py-6 gap-2 w-fit">
+                      ERPNext Implementation Guide
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
               </div>
-              <Link href="/erpnext-implementation">
-                <Button className="btn-primary-gradient rounded-xl px-8 py-6 gap-2 whitespace-nowrap">
-                  ERPNext Implementation Guide
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
             </div>
           </FadeInSection>
         </div>
@@ -307,14 +318,22 @@ export default function Home() {
               {supportingProjects.map((project, index) => (
                 <Link key={project.id} href={getCaseStudyPath(project.slug)} className="block group flex-1">
                   <motion.div
-                    className="card-light p-5 md:p-6 h-full"
+                    className="card-light overflow-hidden h-full"
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.55, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ y: -4 }}
                   >
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-5 md:p-6 flex items-start justify-between gap-4">
                       <div className="min-w-0">
                         <h3 className="font-semibold text-slate-900 mb-1 group-hover:text-electric transition-colors">
                           {project.title}
