@@ -8,8 +8,6 @@ import FadeInSection from "@/components/animations/FadeInSection";
 import MagneticButton from "@/components/animations/MagneticButton";
 import CountUp from "@/components/animations/CountUp";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
-import { MarqueeLight } from "@/components/effects/Marquee";
-import { TrustLogoItems } from "@/components/trust-logo-strip";
 import { COMPANY_STATS } from "@/lib/content";
 import heroOffice from "@/assets/hero-office.png";
 
@@ -166,19 +164,9 @@ export default function HeroSection() {
           </FadeInSection>
         </div>
 
-        {/* Trust logos marquee */}
-        <FadeInSection delay={0.9} direction="up" className="mt-20 lg:mt-28">
-          <p className="text-center text-xs uppercase tracking-[0.2em] text-slate-600 mb-6">
-            Trusted by innovative teams
-          </p>
-          <MarqueeLight speed="slow">
-            <TrustLogoItems />
-          </MarqueeLight>
-        </FadeInSection>
-
         {/* Scroll indicator */}
         <motion.div
-          className="hidden lg:flex flex-col items-center gap-2 mt-16 text-slate-600"
+          className="hidden lg:flex flex-col items-center gap-2 mt-20 lg:mt-24 text-slate-600"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2.5, repeat: Infinity }}
         >
