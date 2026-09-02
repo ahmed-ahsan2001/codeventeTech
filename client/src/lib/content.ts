@@ -168,13 +168,7 @@ export const COMPANY_STATS = [
   { value: 2.4, suffix: "x", label: "Avg. Speed Increase", decimals: 1 },
 ];
 
-export const TRUST_LOGOS = [
-  "Fiabila",
-  "Zakaria Masjid",
-  "AK Impression",
-  "Khadija Tul Kubra",
-  "Quran App",
-];
+export { TRUST_LOGOS } from "./trust-logos";
 
 export const SERVICE_DETAILS: Record<string, {
   hero: string;

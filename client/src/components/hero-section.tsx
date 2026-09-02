@@ -8,8 +8,9 @@ import FadeInSection from "@/components/animations/FadeInSection";
 import MagneticButton from "@/components/animations/MagneticButton";
 import CountUp from "@/components/animations/CountUp";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
-import Marquee from "@/components/effects/Marquee";
-import { TRUST_LOGOS, COMPANY_STATS } from "@/lib/content";
+import { MarqueeLight } from "@/components/effects/Marquee";
+import { TrustLogoItems } from "@/components/trust-logo-strip";
+import { COMPANY_STATS } from "@/lib/content";
 import heroOffice from "@/assets/hero-office.png";
 
 const HeroScene3D = lazy(() => import("@/components/three/HeroScene3D"));
@@ -170,16 +171,9 @@ export default function HeroSection() {
           <p className="text-center text-xs uppercase tracking-[0.2em] text-slate-600 mb-6">
             Trusted by innovative teams
           </p>
-          <Marquee speed="slow">
-            {TRUST_LOGOS.map((logo) => (
-              <span
-                key={logo}
-                className="mx-4 px-6 py-3 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-600 whitespace-nowrap shadow-sm"
-              >
-                {logo}
-              </span>
-            ))}
-          </Marquee>
+          <MarqueeLight speed="slow">
+            <TrustLogoItems />
+          </MarqueeLight>
         </FadeInSection>
 
         {/* Scroll indicator */}

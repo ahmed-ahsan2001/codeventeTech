@@ -24,6 +24,7 @@ import CTABanner from "@/components/layout/cta-banner";
 import CountUp from "@/components/animations/CountUp";
 import FadeInSection from "@/components/animations/FadeInSection";
 import { MarqueeLight } from "@/components/effects/Marquee";
+import { TrustLogoItems } from "@/components/trust-logo-strip";
 import AIExpertiseSection from "@/components/sections/ai-expertise";
 import IndustriesSection from "@/components/sections/industries";
 import TechnologiesSection from "@/components/sections/technologies";
@@ -31,7 +32,6 @@ import WhyCodeVenteSection from "@/components/sections/why-codevente";
 import FAQSection from "@/components/sections/faq-section";
 import BlogPreviewSection from "@/components/sections/blog-preview";
 import { PORTFOLIO_PROJECTS, COMPANY_INFO } from "@/lib/constants";
-import { TRUST_LOGOS } from "@/lib/content";
 import { getCaseStudyPath } from "@/lib/portfolio";
 import { organizationJsonLd, webSiteJsonLd, localBusinessJsonLd } from "@/lib/seo";
 import erpAccountsDashboard from "@/assets/erp/accounts-dashboard.png";
@@ -88,11 +88,7 @@ export default function Home() {
           />
           <div className="mt-10">
             <MarqueeLight speed="slow">
-              {TRUST_LOGOS.map((logo) => (
-                <div key={logo} className="trust-pill min-w-[180px] mx-2">
-                  {logo}
-                </div>
-              ))}
+              <TrustLogoItems />
             </MarqueeLight>
           </div>
         </div>
