@@ -28,7 +28,6 @@ import { TrustLogoItems } from "@/components/trust-logo-strip";
 import AIExpertiseSection from "@/components/sections/ai-expertise";
 import IndustriesSection from "@/components/sections/industries";
 import TechnologiesSection from "@/components/sections/technologies";
-import TechnologyPartnersSection from "@/components/sections/technology-partners";
 import WhyCodeVenteSection from "@/components/sections/why-codevente";
 import FAQSection from "@/components/sections/faq-section";
 import BlogPreviewSection from "@/components/sections/blog-preview";
@@ -94,8 +93,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <TechnologyPartnersSection />
 
       {/* Impact metrics */}
       <section className="relative section-padding section-dark overflow-hidden border-y border-slate-200">

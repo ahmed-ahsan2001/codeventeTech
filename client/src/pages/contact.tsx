@@ -116,7 +116,7 @@ export default function Contact() {
   const onSubmit = async (data: ContactFormValues) => {
     setIsSending(true);
     try {
-      const ownerEmail = COMPANY_INFO.email || "ahmedbawany2001@gmail.com";
+      const ownerEmail = COMPANY_INFO.email || "infocodevente@gmail.com";
       const messageWithPhone = data.phone
         ? `${data.message}\n\nPhone / WhatsApp: ${data.phone}`
         : data.message;

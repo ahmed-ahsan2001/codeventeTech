@@ -4,7 +4,7 @@ export { PORTFOLIO_PROJECTS, getProjectBySlug, getCaseStudyPath } from "./portfo
 export const COMPANY_INFO = {
   name: "CodeVente",
   tagline: "AI, Software & ERP Development Agency for Startups",
-  email: "ahmedbawany2001@gmail.com",
+  email: "infocodevente@gmail.com",
   supportEmail: "",
   whatsapp: "+923122739457",
   phone: "+92 312 2739457",

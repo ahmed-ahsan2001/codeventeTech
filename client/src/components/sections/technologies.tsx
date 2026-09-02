@@ -1,8 +1,7 @@
 import SectionHeader from "@/components/layout/section-header";
 import FadeInSection from "@/components/animations/FadeInSection";
-import { MarqueeLight } from "@/components/effects/Marquee";
+import { PartnerLogoMarquee } from "@/components/partner-logo-marquee";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
-import { TECHNOLOGIES } from "@/lib/content";
 
 export default function TechnologiesSection() {
   return (
@@ -21,22 +20,9 @@ export default function TechnologiesSection() {
         </FadeInSection>
       </div>
 
-      <MarqueeLight speed="slow">
-        {TECHNOLOGIES.map((tech) => (
-          <span key={tech} className="tech-pill mx-2 whitespace-nowrap">
-            {tech}
-          </span>
-        ))}
-      </MarqueeLight>
-
-      <div className="mt-6">
-        <MarqueeLight speed="slow" reverse>
-          {[...TECHNOLOGIES].reverse().map((tech) => (
-            <span key={`rev-${tech}`} className="tech-pill mx-2 whitespace-nowrap opacity-60">
-              {tech}
-            </span>
-          ))}
-        </MarqueeLight>
+      <PartnerLogoMarquee />
+      <div className="mt-5 opacity-90">
+        <PartnerLogoMarquee reverse />
       </div>
     </section>
   );
