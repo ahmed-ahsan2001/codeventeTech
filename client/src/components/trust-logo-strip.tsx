@@ -1,57 +1,87 @@
 import { Link } from "wouter";
+import { cn } from "@/lib/utils";
 import { TRUST_LOGOS, type TrustLogo } from "@/lib/trust-logos";
 
-export function TrustLogoItem({ name, logo, darkBg, appIcon, embedded, href }: TrustLogo) {
-  const inner = appIcon ? (
-    <div className="flex items-center justify-center h-[76px] min-w-[76px] mx-2">
+function LogoMark({ name, logo, darkBg, appIcon, embedded }: TrustLogo) {
+  if (appIcon) {
+    return (
       <img
         src={logo}
-        alt={`${name} icon`}
-        className="h-14 w-14 rounded-2xl object-cover shadow-md ring-1 ring-slate-200/80 hover:scale-105 transition-transform duration-300"
+        alt=""
+        aria-hidden
+        className="h-14 w-14 rounded-2xl object-cover shadow-sm ring-1 ring-slate-200/80"
         loading="lazy"
         width={56}
         height={56}
       />
-    </div>
-  ) : embedded ? (
-    <div className="flex items-center justify-center h-[76px] min-w-[120px] mx-2 rounded-xl overflow-hidden ring-1 ring-slate-200 shadow-sm hover:ring-electric/25 transition-all duration-300">
-      <img
-        src={logo}
-        alt={`${name} logo`}
-        className="h-full w-full object-cover"
-        loading="lazy"
-        width={120}
-        height={76}
-      />
-    </div>
-  ) : (
+    );
+  }
+
+  if (embedded) {
+    return (
+      <div className="h-14 w-full rounded-lg overflow-hidden ring-1 ring-slate-200">
+        <img
+          src={logo}
+          alt=""
+          aria-hidden
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    );
+  }
+
+  return (
     <div
-      className={`flex items-center justify-center h-[76px] min-w-[168px] mx-2 px-6 rounded-xl border transition-all duration-300 ${
-        darkBg
-          ? "bg-slate-900 border-slate-800 hover:border-slate-700"
-          : "bg-white border-slate-200 hover:border-electric/25 hover:shadow-[0_8px_30px_rgba(0,102,255,0.08)]"
-      }`}
+      className={cn(
+        "flex h-14 w-full items-center justify-center rounded-lg px-3",
+        darkBg ? "bg-slate-900" : "bg-white",
+      )}
     >
       <img
         src={logo}
-        alt={`${name} logo`}
-        className="max-h-11 max-w-[132px] w-auto object-contain"
+        alt=""
+        aria-hidden
+        className="max-h-10 max-w-[120px] w-auto object-contain"
         loading="lazy"
-        width={132}
-        height={44}
       />
+    </div>
+  );
+}
+
+export function TrustLogoItem({ name, logo, darkBg, appIcon, embedded, href }: TrustLogo) {
+  const card = (
+    <div className="mx-3 flex min-w-[148px] max-w-[168px] flex-col items-center gap-2.5 py-1">
+      <div
+        className={cn(
+          "flex w-full items-center justify-center",
+          !appIcon && !embedded && "rounded-xl border border-slate-200 bg-slate-50/80 p-2 shadow-sm",
+          (appIcon || embedded) && "px-0.5",
+        )}
+      >
+        <LogoMark
+          name={name}
+          logo={logo}
+          darkBg={darkBg}
+          appIcon={appIcon}
+          embedded={embedded}
+        />
+      </div>
+      <p className="text-center text-[11px] font-medium leading-snug text-slate-600 line-clamp-2 sm:text-xs">
+        {name}
+      </p>
     </div>
   );
 
   if (href) {
     return (
-      <Link href={href} aria-label={`${name} case study`}>
-        {inner}
+      <Link href={href} className="group" aria-label={`${name} case study`}>
+        <div className="transition-transform duration-300 group-hover:-translate-y-0.5">{card}</div>
       </Link>
     );
   }
 
-  return inner;
+  return card;
 }
 
 export function TrustLogoItems() {
