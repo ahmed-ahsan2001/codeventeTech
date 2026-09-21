@@ -293,6 +293,32 @@ export const SERVICE_DETAILS: Record<string, {
       { question: "Do you handle AI safety and compliance?", answer: "Yes. We implement content filtering, rate limiting, audit logging, and data privacy controls." },
     ],
   },
+  "hr-software": {
+    hero: "HR software that matches how your team hires, tracks time, runs payroll, and stays compliant — on ERPNext or a custom HRMS.",
+    benefits: [
+      "Employee master, departments, grades & shift rules",
+      "Attendance, leave policies & approval workflows",
+      "Payroll, salary slips & expense claims",
+      "Recruitment, onboarding & performance basics",
+      "Biometric (ZKTeco) & multi-branch sync",
+      "Employee self-service portal (web & mobile-ready)",
+    ],
+    workflow: [
+      { step: "01", title: "HR process audit", description: "Document how you hire, approve leave, run payroll, and report attendance today — gaps and must-haves." },
+      { step: "02", title: "Configure HR modules", description: "Set up ERPNext HR or custom HRMS with your policies, roles, and print formats." },
+      { step: "03", title: "Integrate & migrate", description: "Import employee data, connect biometrics, and reconcile attendance before payroll test runs." },
+      { step: "04", title: "Train & go live", description: "HR admin and manager training, employee guides, and hypercare through the first payroll cycle." },
+    ],
+    technologies: ["ERPNext HR", "Frappe HR", "Python", "MariaDB", "ZKTeco", "REST APIs", "React", "Docker", "AWS"],
+    faqs: [
+      { question: "What HR software does CodeVente implement?", answer: "We primarily implement the ERPNext HR module — employee records, attendance, leave, payroll, expense claims, recruitment, and performance workflows. For teams that need a standalone HRMS, we also build custom web and mobile HR portals integrated with your existing systems." },
+      { question: "Can you integrate biometric attendance with HR software?", answer: "Yes. We connect ZKTeco and other biometric devices to ERPNext or custom HR systems via API imports, scheduled sync jobs, and shift rules so attendance feeds payroll and leave balances automatically." },
+      { question: "How much does HR software implementation cost in Pakistan?", answer: "A standard ERPNext HR rollout (employee master, attendance, leave, basic payroll) typically starts from PKR 120,000–250,000 depending on headcount, branches, and integrations. Full payroll with statutory reports and biometric sync is quoted after a free process audit." },
+      { question: "Is ERPNext HR suitable for Pakistani payroll and compliance?", answer: "ERPNext can be configured for Pakistani payroll structures, tax deductions, and company-specific policies. We map your salary components, approvals, and payslip formats with finance so HR and accounts stay aligned." },
+      { question: "How long does HR software setup take?", answer: "Core HR (employee data, leave, attendance) often goes live in 2–4 weeks. Payroll and biometric integrations add 2–4 weeks depending on testing with your finance team." },
+      { question: "Do you train HR and line managers after go-live?", answer: "Yes. Role-based training for HR admins, payroll staff, and managers — plus short guides for employees on leave requests and self-service where enabled." },
+    ],
+  },
   "erp-implementation": {
     hero: "ERPNext deployed, customized, and managed for your business — from setup to go-live and beyond.",
     benefits: [

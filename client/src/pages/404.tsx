@@ -8,6 +8,7 @@ const helpfulLinks = [
   { href: "/", label: "Homepage" },
   { href: "/services", label: "All Services" },
   { href: "/erpnext-implementation", label: "ERPNext Implementation" },
+  { href: "/hr-software", label: "HR Software" },
   { href: getServicePath("mobile-app-development"), label: SERVICE_META["mobile-app-development"].title },
   { href: getServicePath("shopify-development"), label: SERVICE_META["shopify-development"].title },
   { href: "/portfolio", label: "Portfolio" },

@@ -1,3 +1,5 @@
+import { TESTIMONIAL_AVATAR_URLS } from "./hr-avatars";
+
 export type { PortfolioProject } from "./portfolio";
 export { PORTFOLIO_PROJECTS, getProjectBySlug, getCaseStudyPath } from "./portfolio";
 
@@ -64,6 +66,19 @@ export const SERVICES = [
     color: "amber",
   },
   {
+    id: "hr-software",
+    title: "HR Software & Payroll",
+    description: "ERPNext HR and custom HRMS — attendance, leave, payroll, biometrics, and employee self-service for teams in Pakistan.",
+    icon: "users",
+    features: [
+      "Attendance & Leave Management",
+      "Payroll & Salary Structures",
+      "Biometric Device Integration",
+      "Employee Self-Service Portal",
+    ],
+    color: "rose",
+  },
+  {
     id: "ui-ux",
     title: "UI/UX Design",
     description: "User-centered design for web and mobile products — intuitive interfaces that drive engagement and conversion.",
@@ -110,14 +125,16 @@ export const TESTIMONIALS = [
     author: "Abid",
     company: "CEO Zakaria Masjid.",
     content: "CodeVente transformed our outdated website into a modern, high-performing platform",
-    rating: 5
+    rating: 5,
+    avatar: TESTIMONIAL_AVATAR_URLS.abid,
   },
   {
     id: 2,
     author: "CEO AK Impression",
     company: "AK Impression",
     content: "The team's expertise in digital marketing helped us reach new audiences and grow our online presence significantly. Highly recommended!",
-    rating: 5
+    rating: 5,
+    avatar: TESTIMONIAL_AVATAR_URLS.akImpression,
   },
 ];
 

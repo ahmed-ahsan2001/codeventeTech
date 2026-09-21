@@ -16,6 +16,7 @@ const staticPages = [
   { path: "/about", priority: "0.8", changefreq: "monthly" },
   { path: "/services", priority: "0.9", changefreq: "monthly" },
   { path: "/erpnext-implementation", priority: "1.0", changefreq: "weekly" },
+  { path: "/hr-software", priority: "1.0", changefreq: "weekly" },
   { path: "/portfolio", priority: "0.9", changefreq: "weekly" },
   { path: "/blog", priority: "0.8", changefreq: "weekly" },
   { path: "/courses", priority: "0.6", changefreq: "monthly" },

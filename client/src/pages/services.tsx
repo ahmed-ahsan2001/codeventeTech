@@ -17,7 +17,7 @@ import {
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 
 function serviceDetailHref(id: string) {
-  return id === "erp-implementation" ? "/erpnext-implementation" : `/services/${id}`;
+  return getServicePath(id);
 }
 
 export default function Services() {

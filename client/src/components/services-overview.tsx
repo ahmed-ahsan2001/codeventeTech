@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Code, Megaphone, TrendingUp, Palette, Sparkles, ArrowRight, ArrowUpRight, LayoutGrid } from "lucide-react";
+import { Code, Megaphone, TrendingUp, Palette, Sparkles, ArrowRight, ArrowUpRight, LayoutGrid, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SERVICES } from "@/lib/constants";
+import { getServicePath } from "@/lib/service-seo";
 import SectionHeader from "@/components/layout/section-header";
 import FadeInSection from "@/components/animations/FadeInSection";
 import NoiseOverlay from "@/components/effects/NoiseOverlay";
@@ -14,6 +15,7 @@ const iconMap = {
   "trending-up": TrendingUp,
   palette: Palette,
   "layout-grid": LayoutGrid,
+  users: Users,
 };
 
 const colorMap: Record<string, string> = {
@@ -22,6 +24,7 @@ const colorMap: Record<string, string> = {
   emerald: "from-emerald-500/20 to-emerald-500/5 border-emerald-500/20 group-hover:border-emerald-500/40",
   cyan: "from-cyan-500/20 to-cyan-500/5 border-cyan-500/20 group-hover:border-cyan-500/40",
   amber: "from-amber-500/20 to-amber-500/5 border-amber-500/20 group-hover:border-amber-500/40",
+  rose: "from-rose-500/20 to-rose-500/5 border-rose-500/20 group-hover:border-rose-500/40",
 };
 
 export default function ServicesOverview() {
@@ -46,7 +49,7 @@ export default function ServicesOverview() {
             const colorClass = colorMap[service.color] ?? colorMap.blue;
             return (
               <FadeInSection key={service.id} delay={index * 0.07} direction="up">
-                <Link href={service.id === "erp-implementation" ? "/erpnext-implementation" : `/services/${service.id}`}>
+                <Link href={getServicePath(service.id)}>
                   <motion.div
                     className={`card-holographic p-7 h-full group cursor-pointer`}
                     whileHover={{ y: -6 }}

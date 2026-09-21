@@ -558,8 +558,26 @@ export default function ERPNextImplementation() {
                     ))}
                   </div>
                   <p className="text-slate-700 leading-relaxed mb-6">“{review.content}”</p>
-                  <p className="text-slate-900 font-semibold">{review.author}</p>
-                  <p className="text-sm text-slate-500">{review.company}</p>
+                  <div className="flex items-center gap-3">
+                    {"avatar" in review && review.avatar ? (
+                      <img
+                        src={review.avatar}
+                        alt={review.author}
+                        className="w-11 h-11 rounded-full object-cover ring-2 ring-white/10"
+                        width={44}
+                        height={44}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-electric to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
+                        {review.author.charAt(0)}
+                      </div>
+                    )}
+                    <div>
+                      <p className="text-slate-900 font-semibold">{review.author}</p>
+                      <p className="text-sm text-slate-500">{review.company}</p>
+                    </div>
+                  </div>
                 </article>
               </FadeInSection>
             ))}

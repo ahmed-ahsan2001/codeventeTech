@@ -1,5 +1,6 @@
 import { COMPANY_INFO } from "./constants";
 import { SERVICE_DETAILS } from "./content";
+import { HR_SERVICE_META } from "./hr-seo";
 import { absoluteUrl, SITE_URL } from "./seo";
 
 export interface ServiceMeta {
@@ -83,9 +84,10 @@ export const SERVICE_META: Record<string, ServiceMeta> = {
       "ERPNext deployment, customization, data migration, and managed hosting for businesses in Pakistan — accounting, inventory, HR, and manufacturing.",
     keywords: "ERPNext implementation Pakistan, ERP customization Karachi, Frappe ERPNext partner",
     canonicalPath: "/erpnext-implementation",
-    relatedServices: ["web-development", "ai-solutions"],
+    relatedServices: ["hr-software", "web-development", "ai-solutions"],
     relatedCaseStudies: [],
   },
+  "hr-software": HR_SERVICE_META,
   "ui-ux": {
     id: "ui-ux",
     title: "UI/UX Design",
@@ -133,6 +135,7 @@ export function getServiceMeta(slug: string): ServiceMeta | undefined {
 
 export function getServicePath(slug: string): string {
   if (slug === "erp-implementation") return "/erpnext-implementation";
+  if (slug === "hr-software") return "/hr-software";
   return `/services/${slug}`;
 }
 

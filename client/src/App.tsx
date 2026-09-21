@@ -23,6 +23,7 @@ import PrivacyPolicy from "@/pages/privacy-policy";
 import TermsOfService from "@/pages/terms-of-service";
 import CaseStudy from "@/pages/case-study";
 import ERPNextImplementation from "@/pages/erpnext-implementation";
+import HRSoftware from "@/pages/hr-software";
 import NotFound from "@/pages/404";
 
 function Router() {
@@ -31,6 +32,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/erpnext-implementation" component={ERPNextImplementation} />
+      <Route path="/hr-software" component={HRSoftware} />
       <Route path="/services/:slug" component={ServiceDetail} />
       <Route path="/services" component={Services} />
       <Route path="/portfolio/:slug" component={CaseStudy} />

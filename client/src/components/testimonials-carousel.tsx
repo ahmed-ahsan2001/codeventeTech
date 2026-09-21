@@ -61,9 +61,20 @@ export default function TestimonialsCarousel() {
                   "{TESTIMONIALS[currentIndex].content}"
                 </blockquote>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-electric to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
-                    {TESTIMONIALS[currentIndex].author.charAt(0)}
-                  </div>
+                  {TESTIMONIALS[currentIndex].avatar ? (
+                    <img
+                      src={TESTIMONIALS[currentIndex].avatar}
+                      alt={TESTIMONIALS[currentIndex].author}
+                      className="w-10 h-10 rounded-full object-cover ring-2 ring-electric/20"
+                      width={40}
+                      height={40}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-electric to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
+                      {TESTIMONIALS[currentIndex].author.charAt(0)}
+                    </div>
+                  )}
                   <div>
                     <div className="font-semibold text-slate-900">{TESTIMONIALS[currentIndex].author}</div>
                     <div className="text-sm text-slate-500">{TESTIMONIALS[currentIndex].company}</div>
