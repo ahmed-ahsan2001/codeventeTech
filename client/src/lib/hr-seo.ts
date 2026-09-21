@@ -41,11 +41,6 @@ export const HR_FAQS = [
       "Yes. We connect ZKTeco and other biometric devices to ERPNext or custom HR systems via API imports, scheduled sync jobs, and shift rules so attendance feeds payroll and leave balances automatically.",
   },
   {
-    question: "How much does HR software implementation cost in Pakistan?",
-    answer:
-      "A standard ERPNext HR rollout (employee master, attendance, leave, basic payroll) typically starts from PKR 120,000–250,000 depending on headcount, branches, and integrations. Full payroll with statutory reports and biometric sync is quoted after a free process audit.",
-  },
-  {
     question: "Is ERPNext HR suitable for Pakistani payroll and compliance?",
     answer:
       "ERPNext can be configured for Pakistani payroll structures, tax deductions, and company-specific policies. We map your salary components, approvals, and payslip formats with finance so HR and accounts stay aligned.",

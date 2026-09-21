@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/accordion";
 import { TESTIMONIALS } from "@/lib/constants";
 import { SERVICE_DETAILS } from "@/lib/content";
-import { HR_PERSONAS } from "@/lib/hr-avatars";
 import {
   HR_KEYWORDS,
   HR_PAGE_TITLE,
@@ -151,37 +150,6 @@ export default function HRSoftware() {
         </div>
       </section>
 
-      <section className="section-padding section-dark border-y border-slate-200">
-        <div className="section-container relative z-10">
-          <SectionHeader
-            eyebrow="Built for HR teams"
-            title="Who we configure HR software for"
-            description="HR managers, payroll, site teams, and your CodeVente implementation lead — configured around how you actually run people operations."
-            dark
-            align="center"
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
-            {HR_PERSONAS.map((persona, i) => (
-              <FadeInSection key={persona.name} delay={i * 0.06}>
-                <article className="card-holographic p-6 h-full text-center">
-                  <img
-                    src={persona.image}
-                    alt={persona.name}
-                    className="w-20 h-20 rounded-full object-cover mx-auto mb-4 ring-2 ring-electric/20"
-                    width={80}
-                    height={80}
-                    loading="lazy"
-                  />
-                  <h3 className="font-semibold text-slate-900 text-sm">{persona.name}</h3>
-                  <p className="text-xs text-electric mt-1 mb-3">{persona.role}</p>
-                  <p className="text-sm text-slate-600 leading-relaxed">{persona.detail}</p>
-                </article>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section-padding section-light">
         <div className="section-container">
           <SectionHeader
@@ -254,7 +222,7 @@ export default function HRSoftware() {
           <SectionHeader
             eyebrow="Client reviews"
             title="Teams that trust CodeVente"
-            description="Published feedback from real projects — with client portraits."
+            description="Published feedback from real projects."
             dark
           />
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-10">
@@ -267,26 +235,8 @@ export default function HRSoftware() {
                     ))}
                   </div>
                   <p className="text-slate-700 leading-relaxed mb-6">"{review.content}"</p>
-                  <div className="flex items-center gap-3">
-                    {review.avatar ? (
-                      <img
-                        src={review.avatar}
-                        alt={review.author}
-                        className="w-11 h-11 rounded-full object-cover ring-2 ring-white/10"
-                        width={44}
-                        height={44}
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-11 h-11 rounded-full bg-gradient-to-br from-electric to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
-                        {review.author.charAt(0)}
-                      </div>
-                    )}
-                    <div>
-                      <p className="text-slate-900 font-semibold">{review.author}</p>
-                      <p className="text-sm text-slate-500">{review.company}</p>
-                    </div>
-                  </div>
+                  <p className="text-slate-900 font-semibold">{review.author}</p>
+                  <p className="text-sm text-slate-500">{review.company}</p>
                 </article>
               </FadeInSection>
             ))}
@@ -312,7 +262,7 @@ export default function HRSoftware() {
           <SectionHeader
             eyebrow="FAQ"
             title="HR software — frequently asked questions"
-            description="Cost, timeline, ERPNext HR, biometrics, and training in Pakistan."
+            description="Timeline, ERPNext HR, biometrics, and training in Pakistan."
           />
           <Accordion type="single" collapsible className="mt-2 space-y-3">
             {HR_FAQS.map((faq, i) => (
