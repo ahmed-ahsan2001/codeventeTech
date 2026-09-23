@@ -162,7 +162,6 @@ export default function HRSoftware() {
         image={HR_CHOOSE_PAYROLL_IMAGE}
         imageAlt="Payroll software UI: salary revisions, tax deductions in PKR, payslips, and attendance clock-in"
         textFirst
-        imageBlendLighten
       />
 
       <HrCreamSplitSection
@@ -180,7 +179,6 @@ export default function HRSoftware() {
         image={HR_KEY_FEATURES_IMAGE}
         imageAlt="Leave balances, mobile leave requests, admin time-off approvals, and HR documents"
         textFirst
-        imageBlendLighten
       />
 
       <HrCreamSplitSection
@@ -198,7 +196,6 @@ export default function HRSoftware() {
         image={HR_BENEFITS_IMAGE}
         imageAlt="Attendance time and pay adjustments, daily admin report, biometric clock-in"
         textFirst={false}
-        imageBlendLighten
       />
 
       <HrCreamSplitSection

@@ -17,8 +17,6 @@ interface HrCreamSplitSectionProps {
   /** Text column first on large screens */
   textFirst?: boolean;
   cream?: boolean;
-  /** Blends dark matte PNGs into the cream section background */
-  imageBlendLighten?: boolean;
 }
 
 export default function HrCreamSplitSection({
@@ -30,7 +28,6 @@ export default function HrCreamSplitSection({
   imageAlt,
   textFirst = true,
   cream = true,
-  imageBlendLighten = false,
 }: HrCreamSplitSectionProps) {
   const bg = cream ? HR_CREAM : "#ffffff";
 
@@ -72,19 +69,15 @@ export default function HrCreamSplitSection({
       delay={textFirst ? 0.08 : 0}
       className="w-full"
     >
-      <div
-        className="relative rounded-2xl p-2 sm:p-4"
-        style={{ backgroundColor: bg }}
-      >
+      <div className="relative rounded-2xl p-1 sm:p-2" style={{ backgroundColor: bg }}>
         <img
           src={image}
           alt={imageAlt}
-          className={`w-full h-auto max-w-2xl mx-auto ${
-            imageBlendLighten ? "mix-blend-lighten" : "drop-shadow-[0_20px_50px_rgba(15,23,42,0.12)]"
-          }`}
+          className="w-full h-auto max-w-2xl mx-auto rounded-xl"
           width={880}
           height={640}
           loading="lazy"
+          decoding="async"
         />
       </div>
     </FadeInSection>

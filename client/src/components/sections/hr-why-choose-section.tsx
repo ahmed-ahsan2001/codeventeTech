@@ -18,7 +18,7 @@ export default function HrWhyChooseSection() {
               <img
                 src={HR_WHY_CHOOSE_IMAGE}
                 alt="Employer overwhelmed by HR and payroll questions — CodeVente helps simplify HRMS in Pakistan"
-                className="w-full max-w-[340px] sm:max-w-[380px] h-auto object-contain mix-blend-lighten"
+                className="w-full max-w-[340px] sm:max-w-[380px] h-auto object-contain"
                 width={640}
                 height={520}
                 loading="lazy"
