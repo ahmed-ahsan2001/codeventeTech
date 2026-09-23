@@ -1,7 +1,10 @@
 import whyChooseHrIllustration from "@/assets/hr/why-choose-hr.png";
-import hrChoosePayrollIllustration from "@/assets/hr/hr-choose-payroll.png";
-import hrKeyFeaturesIllustration from "@/assets/hr/hr-key-features.png";
+import hrChoosePayrollIllustration from "@/assets/hr/hr-choose-payroll.jpg";
+import hrKeyFeaturesIllustration from "@/assets/hr/hr-key-features.jpg";
 import hrBenefitsIllustration from "@/assets/hr/hr-benefits.png";
+import hrCloudBranchesIllustration from "@/assets/hr/hr-cloud-branches.jpg";
+import hrPayslipEssIllustration from "@/assets/hr/hr-payslip-ess.png";
+import hrPayrollWorkflowIllustration from "@/assets/hr/hr-payroll-workflow.jpg";
 
 /** Warm off-white band — matches Sowaan-style HR landing sections. */
 export const HR_CREAM = "#FAF8F4";
@@ -166,6 +169,9 @@ export const HR_WHY_CHOOSE_IMAGE = whyChooseHrIllustration;
 export const HR_CHOOSE_PAYROLL_IMAGE = hrChoosePayrollIllustration;
 export const HR_KEY_FEATURES_IMAGE = hrKeyFeaturesIllustration;
 export const HR_BENEFITS_IMAGE = hrBenefitsIllustration;
+export const HR_CLOUD_BRANCHES_IMAGE = hrCloudBranchesIllustration;
+export const HR_PAYSLIP_ESS_IMAGE = hrPayslipEssIllustration;
+export const HR_PAYROLL_WORKFLOW_IMAGE = hrPayrollWorkflowIllustration;
 
 export const HR_CHOOSE_INTRO =
   "Picking the right payroll software in Pakistan affects employee trust and your finance close. Use this checklist when you compare HRMS options — then see how ERPNext HR fits your branches and compliance needs.";

@@ -10,8 +10,6 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const assetsDir = join(root, "client/src/assets/hr");
 const files = [
-  "hr-choose-payroll.png",
-  "hr-key-features.png",
   "hr-benefits.png",
   "why-choose-hr.png",
 ];

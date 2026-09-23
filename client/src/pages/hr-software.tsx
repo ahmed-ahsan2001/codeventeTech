@@ -26,10 +26,12 @@ import {
   HR_CHOOSE_CRITERIA,
   HR_CHOOSE_INTRO,
   HR_CHOOSE_PAYROLL_IMAGE,
+  HR_CLOUD_BRANCHES_IMAGE,
   HR_KEY_FEATURES,
   HR_KEY_FEATURES_IMAGE,
   HR_KEY_FEATURES_INTRO,
-  HR_PAYROLL_STEPS,
+  HR_PAYROLL_WORKFLOW_IMAGE,
+  HR_PAYSLIP_ESS_IMAGE,
   hrIllustrationPath,
 } from "@/lib/hr-content";
 import {
@@ -44,11 +46,6 @@ import {
 import erpIntegrations from "@/assets/erp/integrations.png";
 
 const technologies = SERVICE_DETAILS["hr-software"].technologies;
-
-const payrollProcessItems = HR_PAYROLL_STEPS.map((s) => ({
-  title: s.title,
-  description: s.description,
-}));
 
 export default function HRSoftware() {
   const heroImage = hrIllustrationPath("hero-dashboard");
@@ -167,8 +164,8 @@ export default function HRSoftware() {
       <HrCreamSplitSection
         title="Cloud HR that scales with your branches"
         items={HR_CHOOSE_CRITERIA.slice(3, 6)}
-        image={hrIllustrationPath("collage-choose-cloud")}
-        imageAlt="Cloud HR dashboard with attendance, payslip download, and document modules"
+        image={HR_CLOUD_BRANCHES_IMAGE}
+        imageAlt="Cloud HR map connecting HQ and global branches with live sync, attendance, and payroll-ready status"
         textFirst={false}
       />
 
@@ -177,15 +174,15 @@ export default function HRSoftware() {
         intro={HR_KEY_FEATURES_INTRO}
         items={HR_KEY_FEATURES.slice(0, 3)}
         image={HR_KEY_FEATURES_IMAGE}
-        imageAlt="Leave balances, mobile leave requests, admin time-off approvals, and HR documents"
+        imageAlt="Allocated leave balances, mobile leave applications, manager approvals, and HR documents"
         textFirst
       />
 
       <HrCreamSplitSection
         title="Payslips, branches & employee self-service"
         items={HR_KEY_FEATURES.slice(3, 6)}
-        image={hrIllustrationPath("collage-features-ess")}
-        imageAlt="Payroll payment review screen for bank disbursement"
+        image={HR_PAYSLIP_ESS_IMAGE}
+        imageAlt="Payslips and bank transfer, multi-branch HR, and employee self-service on mobile"
         textFirst={false}
       />
 
@@ -194,19 +191,28 @@ export default function HRSoftware() {
         intro={HR_BENEFITS_INTRO}
         items={HR_BUSINESS_BENEFITS.slice(0, 3)}
         image={HR_BENEFITS_IMAGE}
-        imageAlt="Attendance time and pay adjustments, daily admin report, biometric clock-in"
+        imageAlt="Integrated HR and payroll benefits: efficiency, accuracy, compliance, attendance and pay adjustments"
         textFirst={false}
       />
 
-      <HrCreamSplitSection
-        title="How does payroll software work?"
-        intro="From attendance data to payslips and reports — a clear pipeline with fewer manual steps each month."
-        items={payrollProcessItems}
-        image={hrIllustrationPath("payroll-workflow")}
-        imageAlt="Five-step payroll workflow from data input to disbursement"
-        textFirst
-        cream={false}
-      />
+      <section
+        className="section-padding bg-white border-y border-slate-100"
+        aria-label="How payroll software works"
+      >
+        <div className="section-container">
+          <FadeInSection>
+            <img
+              src={HR_PAYROLL_WORKFLOW_IMAGE}
+              alt="How payroll software works: data input, salary calculation, compliance, payslips, and disbursement"
+              className="w-full max-w-6xl mx-auto h-auto rounded-2xl"
+              width={1400}
+              height={900}
+              loading="lazy"
+              decoding="async"
+            />
+          </FadeInSection>
+        </div>
+      </section>
 
       <HrWhyChooseSection />
 
