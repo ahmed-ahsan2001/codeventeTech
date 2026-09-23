@@ -15,13 +15,14 @@ export default function HeroScene3D({ className = "" }: HeroScene3DProps) {
 
     // Simple device detection for performance
     const checkPerformance = () => {
-      // Check if on mobile or low-end device
+      const prefersReduced =
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
+        navigator.userAgent,
       );
       const isLowEndMobile = isMobile && window.innerWidth < 768;
-
-      setIsLowPerformance(isLowEndMobile);
+      // Skip WebGL on mobile, reduced-motion, or narrow viewports (saves GPU + scroll jank)
+      setIsLowPerformance(prefersReduced || isLowEndMobile || window.innerWidth < 1024);
     };
 
     checkPerformance();

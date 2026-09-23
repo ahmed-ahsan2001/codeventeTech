@@ -15,7 +15,7 @@ export default function GradientOrb({
   blur = 80,
   opacity = 0.6,
   className = "",
-  animate = true,
+  animate = false,
 }: GradientOrbProps) {
   const colors = {
     blue: "from-blue-500/40 to-cyan-500/40",

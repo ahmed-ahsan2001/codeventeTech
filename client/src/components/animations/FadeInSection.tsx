@@ -1,5 +1,5 @@
 import { ReactNode, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 
 interface FadeInSectionProps {
   children: ReactNode;
@@ -19,7 +19,8 @@ export default function FadeInSection({
   once = true,
 }: FadeInSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: "-100px" });
+  const isInView = useInView(ref, { once, margin: "-80px" });
+  const reduceMotion = useReducedMotion();
 
   const directionOffset = {
     up: { y: 32 },
@@ -28,6 +29,14 @@ export default function FadeInSection({
     right: { x: -32 },
     none: {},
   };
+
+  if (reduceMotion) {
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div

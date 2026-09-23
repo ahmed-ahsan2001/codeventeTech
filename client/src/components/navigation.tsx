@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { SERVICES } from "@/lib/constants";
 import { SPECIALIZED_SERVICE_IDS, getServicePath, SERVICE_META } from "@/lib/service-seo";
 import logo from "@/assets/codevente-logo.png";
@@ -21,13 +21,34 @@ export default function Navigation() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setServicesOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    let rafId = 0;
+    const update = () => {
+      const el = document.documentElement;
+      const max = el.scrollHeight - el.clientHeight;
+      setScrollProgress(max > 0 ? el.scrollTop / max : 0);
+    };
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        update();
+      });
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
@@ -40,7 +61,7 @@ export default function Navigation() {
   };
 
   const navSurface =
-    "bg-white/98 backdrop-blur-xl border-b border-slate-200 shadow-[0_4px_24px_rgba(0,0,0,0.06)]";
+    "bg-white border-b border-slate-200 shadow-[0_1px_0_rgba(15,23,42,0.06)]";
 
   return (
     <>
@@ -50,9 +71,10 @@ export default function Navigation() {
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 right-0 z-[100] ${navSurface}`}
       >
-        <motion.div
-          style={{ scaleX }}
-          className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-electric via-cyan-400 to-neon-purple origin-left"
+        <div
+          className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-electric via-cyan-400 to-neon-purple origin-left will-change-transform"
+          style={{ transform: `scaleX(${scrollProgress})` }}
+          aria-hidden
         />
 
         <div className="section-container">

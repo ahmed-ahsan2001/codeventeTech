@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import CustomCursor from "@/components/effects/CustomCursor";
 import ScrollToTop from "@/components/scroll-to-top";
 import Home from "@/pages/home";
 import About from "@/pages/about";
@@ -56,7 +55,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="min-h-screen bg-white">
-          <CustomCursor />
           <ScrollToTop />
           <Navigation />
           <main>
