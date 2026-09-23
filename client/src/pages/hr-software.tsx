@@ -1,15 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Cloud,
-  Scale,
-  Shield,
-  Star,
-  TrendingUp,
-  Users,
-} from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
 import SectionHeader from "@/components/layout/section-header";
@@ -18,6 +9,7 @@ import FadeInSection from "@/components/animations/FadeInSection";
 import { TrustLogoItems } from "@/components/trust-logo-strip";
 import { MarqueeLight } from "@/components/effects/Marquee";
 import ErpFeatureSection, { ErpFeatureBlock } from "@/components/sections/erp-feature-section";
+import HrCreamSplitSection from "@/components/sections/hr-cream-split-section";
 import HrWhyChooseSection from "@/components/sections/hr-why-choose-section";
 import {
   Accordion,
@@ -28,9 +20,15 @@ import {
 import { TESTIMONIALS } from "@/lib/constants";
 import { SERVICE_DETAILS } from "@/lib/content";
 import {
+  HR_BENEFITS_IMAGE,
+  HR_BENEFITS_INTRO,
   HR_BUSINESS_BENEFITS,
   HR_CHOOSE_CRITERIA,
+  HR_CHOOSE_INTRO,
+  HR_CHOOSE_PAYROLL_IMAGE,
   HR_KEY_FEATURES,
+  HR_KEY_FEATURES_IMAGE,
+  HR_KEY_FEATURES_INTRO,
   HR_PAYROLL_STEPS,
   hrIllustrationPath,
 } from "@/lib/hr-content";
@@ -47,7 +45,10 @@ import erpIntegrations from "@/assets/erp/integrations.png";
 
 const technologies = SERVICE_DETAILS["hr-software"].technologies;
 
-const benefitIcons = [Users, Scale, Shield, TrendingUp];
+const payrollProcessItems = HR_PAYROLL_STEPS.map((s) => ({
+  title: s.title,
+  description: s.description,
+}));
 
 export default function HRSoftware() {
   const heroImage = hrIllustrationPath("hero-dashboard");
@@ -64,7 +65,6 @@ export default function HRSoftware() {
         jsonLd={hrAllJsonLd()}
       />
 
-      {/* Hero */}
       <section className="relative overflow-hidden bg-white border-b border-slate-100 pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="aurora-bg opacity-60" />
         <div className="hero-mesh" />
@@ -154,162 +154,72 @@ export default function HRSoftware() {
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="section-padding section-light" aria-labelledby="hr-intro-heading">
-        <div className="section-container grid lg:grid-cols-2 gap-12 items-center">
-          <FadeInSection>
-            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-white">
-              <img
-                src={hrIllustrationPath("choose-payroll")}
-                alt="Checklist for choosing HR and payroll software in Pakistan"
-                className="w-full h-auto"
-                width={1200}
-                height={720}
-                loading="lazy"
-              />
-            </div>
-          </FadeInSection>
-          <FadeInSection delay={0.08}>
-            <h2 id="hr-intro-heading" className="heading-section text-slate-900 mb-6">
-              How to choose payroll software in Pakistan
-            </h2>
-            <p className="text-slate-600 leading-relaxed mb-6">
-              The right HR and payroll system affects employee trust and your finance close. Use this
-              checklist when evaluating HRMS options — then compare how{" "}
-              <Link href="/erpnext-implementation" className="text-electric hover:underline">
-                ERPNext
-              </Link>{" "}
-              fits your size, branches, and compliance needs.
-            </p>
-            <ul className="space-y-4">
-              {HR_CHOOSE_CRITERIA.map((item) => (
-                <li key={item.title} className="flex gap-3 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold text-slate-900">{item.title}</p>
-                    <p className="text-slate-600 mt-0.5">{item.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </FadeInSection>
-        </div>
-      </section>
+      <HrCreamSplitSection
+        id="hr-choose-heading"
+        title="How to choose payroll software in Pakistan"
+        intro={HR_CHOOSE_INTRO}
+        items={HR_CHOOSE_CRITERIA.slice(0, 3)}
+        image={HR_CHOOSE_PAYROLL_IMAGE}
+        imageAlt="Payroll software UI: salary revisions, tax deductions in PKR, payslips, and attendance clock-in"
+        textFirst
+        imageBlendLighten
+      />
 
-      {/* Key features */}
-      <section className="section-padding section-muted">
-        <div className="section-container">
-          <SectionHeader
-            eyebrow="Features"
-            title="Key features of payroll & HR software"
-            description="Built for Pakistani SMEs and multi-branch operations — configured on ERPNext HR with CodeVente."
-            align="center"
-          />
-          <FadeInSection className="mt-10 mb-12">
-            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-white max-w-5xl mx-auto">
-              <img
-                src={hrIllustrationPath("key-features")}
-                alt="Salary structure, attendance sync, and payslip preview in HR software"
-                className="w-full h-auto"
-                width={1200}
-                height={720}
-                loading="lazy"
-              />
-            </div>
-          </FadeInSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {HR_KEY_FEATURES.map((feature, i) => (
-              <FadeInSection key={feature.title} delay={i * 0.05}>
-                <article className="card-light p-6 h-full border border-slate-200/80">
-                  <h3 className="font-semibold text-slate-900 mb-2">{feature.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{feature.description}</p>
-                </article>
-              </FadeInSection>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HrCreamSplitSection
+        title="Cloud HR that scales with your branches"
+        items={HR_CHOOSE_CRITERIA.slice(3, 6)}
+        image={hrIllustrationPath("collage-choose-cloud")}
+        imageAlt="Cloud HR dashboard with attendance, payslip download, and document modules"
+        textFirst={false}
+      />
 
-      <ErpFeatureSection
-        eyebrow="Process"
+      <HrCreamSplitSection
+        title="Key features of payroll software in Pakistan"
+        intro={HR_KEY_FEATURES_INTRO}
+        items={HR_KEY_FEATURES.slice(0, 3)}
+        image={HR_KEY_FEATURES_IMAGE}
+        imageAlt="Leave balances, mobile leave requests, admin time-off approvals, and HR documents"
+        textFirst
+        imageBlendLighten
+      />
+
+      <HrCreamSplitSection
+        title="Payslips, branches & employee self-service"
+        items={HR_KEY_FEATURES.slice(3, 6)}
+        image={hrIllustrationPath("collage-features-ess")}
+        imageAlt="Payroll payment review screen for bank disbursement"
+        textFirst={false}
+      />
+
+      <HrCreamSplitSection
+        title="Benefits of HR & payroll software for businesses"
+        intro={HR_BENEFITS_INTRO}
+        items={HR_BUSINESS_BENEFITS.slice(0, 3)}
+        image={HR_BENEFITS_IMAGE}
+        imageAlt="Attendance time and pay adjustments, daily admin report, biometric clock-in"
+        textFirst={false}
+        imageBlendLighten
+      />
+
+      <HrCreamSplitSection
         title="How does payroll software work?"
-        description="From attendance data to payslips and reports — a clear pipeline with fewer manual steps."
+        intro="From attendance data to payslips and reports — a clear pipeline with fewer manual steps each month."
+        items={payrollProcessItems}
         image={hrIllustrationPath("payroll-workflow")}
         imageAlt="Five-step payroll workflow from data input to disbursement"
-        imageFirst
-        className="section-light"
-      >
-        <ol className="space-y-4">
-          {HR_PAYROLL_STEPS.map((step) => (
-            <li key={step.step} className="flex gap-4">
-              <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-electric/10 text-electric text-xs font-bold flex items-center justify-center">
-                {step.step}
-              </span>
-              <div>
-                <p className="font-semibold text-slate-900">{step.title}</p>
-                <p className="text-sm text-slate-600 mt-1">{step.description}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </ErpFeatureSection>
-
-      <ErpFeatureSection
-        eyebrow="Employee experience"
-        title="Transparent communication through self-service"
-        description="When staff can see payslips, leave, and attendance themselves, HR spends less time on repeat questions."
-        image={hrIllustrationPath("employee-portal")}
-        imageAlt="Employee self-service portal with leave, attendance, and payslip views"
-        className="section-muted"
-      >
-        <ErpFeatureBlock title="Employee self-service portals">
-          We enable ESS on ERPNext HR or custom portals so employees apply for leave, download
-          payslips, and view balances — with permissions that match your policies.
-        </ErpFeatureBlock>
-        <ErpFeatureBlock title="Manager approvals">
-          Leave and attendance corrections route to line managers with notifications, keeping payroll
-          inputs accurate before each run.
-        </ErpFeatureBlock>
-      </ErpFeatureSection>
-
-      {/* Benefits */}
-      <section className="section-padding section-light">
-        <div className="section-container">
-          <SectionHeader
-            eyebrow="Benefits"
-            title="Benefits of HR & payroll software for businesses"
-            description="More than time savings — a compliant, scalable people operations foundation."
-            align="center"
-          />
-          <div className="grid md:grid-cols-2 gap-5 mt-12 max-w-4xl mx-auto">
-            {HR_BUSINESS_BENEFITS.map((item, i) => {
-              const Icon = benefitIcons[i] ?? Cloud;
-              return (
-                <FadeInSection key={item.title} delay={i * 0.06}>
-                  <div className="card-light p-6 flex gap-4 h-full">
-                    <div className="w-11 h-11 rounded-xl bg-electric/10 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 text-electric" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
-                      <p className="text-sm text-slate-600">{item.description}</p>
-                    </div>
-                  </div>
-                </FadeInSection>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+        textFirst
+        cream={false}
+      />
 
       <HrWhyChooseSection />
 
       <ErpFeatureSection
         eyebrow="Integrations"
         title="Connect HR with attendance, finance & banking"
-        description="Biometrics, APIs, and ERP modules — illustrated below alongside our integration practice."
+        description="Biometrics, APIs, and ERP modules — alongside our integration practice."
         image={hrIllustrationPath("integrations")}
         imageAlt="Diagram of ERPNext HR connected to biometric, finance, bank, and mobile"
+        imageFirst
         className="section-light"
       >
         <ErpFeatureBlock title="Biometric & device sync">
@@ -328,8 +238,7 @@ export default function HRSoftware() {
         </div>
       </ErpFeatureSection>
 
-      {/* Implementation phases */}
-      <section className="section-padding section-muted">
+      <section className="section-padding border-y border-stone-200/50" style={{ backgroundColor: "#FAF8F4" }}>
         <div className="section-container">
           <SectionHeader
             eyebrow="Delivery"
@@ -339,7 +248,7 @@ export default function HRSoftware() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
             {SERVICE_DETAILS["hr-software"].workflow.map((step, i) => (
               <FadeInSection key={step.step} delay={i * 0.08}>
-                <div className="card-light p-6 h-full">
+                <div className="card-light p-6 h-full bg-white/80">
                   <span className="text-3xl font-bold text-electric/20">{step.step}</span>
                   <h3 className="font-semibold text-slate-900 mt-2 mb-2">{step.title}</h3>
                   <p className="text-sm text-slate-600">{step.description}</p>

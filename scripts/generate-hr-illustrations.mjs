@@ -219,8 +219,311 @@ const ILLUSTRATIONS = {
   ),
 };
 
+const CREAM = "#FAF8F4";
+
+function collage(title, body) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 640" role="img">
+  <title>${escapeXml(title)}</title>
+  <defs>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="880" height="640" fill="${CREAM}"/>
+  ${body}
+</svg>`;
+}
+
+function card(x, y, w, h, inner) {
+  return `<g filter="url(#sh)"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  ${inner}</g>`;
+}
+
+function btn(x, y, label, fill = ACCENT) {
+  return `<rect x="${x}" y="${y}" width="${label.length * 7 + 24}" height="28" rx="8" fill="${fill}"/>
+  <text x="${x + 12}" y="${y + 19}" font-size="11" font-weight="600" fill="#fff" font-family="system-ui,sans-serif">${escapeXml(label)}</text>`;
+}
+
+const COLLAGES = {
+  "collage-choose-payroll": collage(
+    "Choosing payroll software UI",
+    `
+    ${card(
+      40,
+      50,
+      380,
+      200,
+      `
+      <text x="58" y="82" font-size="13" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Salary revisions</text>
+      <rect x="58" y="95" width="340" height="22" rx="4" fill="#F1F5F9"/>
+      <text x="66" y="110" font-size="9" fill="${SLATE}" font-family="system-ui,sans-serif">Name · Date · Status · Amount</text>
+      <rect x="58" y="125" width="340" height="28" rx="6" fill="#F8FAFC"/>
+      <text x="66" y="144" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">Pending approval</text>
+      ${btn(300, 132, "Approve")}
+      <rect x="58" y="160" width="340" height="28" rx="6" fill="#F8FAFC"/>
+      <text x="66" y="179" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">Structure update</text>
+      ${btn(280, 167, "Review")}
+    `,
+    )}
+    ${card(
+      450,
+      30,
+      200,
+      120,
+      `
+      <text x="468" y="58" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Compliance</text>
+      ${["EOBI", "Income tax", "Social security"]
+        .map(
+          (l, i) => `
+        <circle cx="478" cy="${78 + i * 22}" r="6" fill="#10B981"/>
+        <path d="M475 ${78 + i * 22} L477 ${80 + i * 22} L481 ${76 + i * 22}" stroke="#fff" stroke-width="1.5" fill="none"/>
+        <text x="492" y="${82 + i * 22}" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">${l}</text>
+      `,
+        )
+        .join("")}
+    `,
+    )}
+    ${card(
+      430,
+      170,
+      400,
+      150,
+      `
+      <text x="448" y="198" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Tax deduction summary</text>
+      ${[0, 1, 2, 3, 4].map(
+        (i) => `
+        <rect x="${448 + i * 68}" y="210" width="56" height="52" rx="8" fill="${ACCENT_LIGHT}"/>
+        <text x="${456 + i * 68}" y="232" font-size="8" fill="${SLATE}" font-family="system-ui,sans-serif">Month</text>
+        <text x="${456 + i * 68}" y="248" font-size="10" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">PKR</text>
+      `,
+      ).join("")}
+      <rect x="448" y="275" width="360" height="32" rx="8" fill="#F1F5F9"/>
+      <text x="460" y="295" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">Total income tax payable</text>
+    `,
+    )}
+    ${card(
+      60,
+      280,
+      160,
+      100,
+      `
+      <text x="78" y="308" font-size="11" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Payslip</text>
+      ${btn(78, 320, "Download")}
+      <text x="78" y="360" font-size="10" fill="${SLATE}" font-family="system-ui,sans-serif">ESS portal</text>
+    `,
+    )}
+    ${card(
+      250,
+      320,
+      280,
+      200,
+      `
+      <text x="268" y="348" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Payroll register</text>
+      ${[0, 1, 2, 3].map(
+        (r) => `
+        <rect x="268" y="${360 + r * 34}" width="240" height="26" rx="6" fill="${r % 2 ? "#F8FAFC" : "#fff"}"/>
+        <text x="278" y="${378 + r * 34}" font-size="9" fill="#0F172A" font-family="system-ui,sans-serif">Employee · Days · Net pay</text>
+      `,
+      ).join("")}
+    `,
+    )}
+    ${card(
+      560,
+      340,
+      260,
+      120,
+      `
+      <text x="578" y="372" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Attendance</text>
+      ${btn(578, 388, "Clock-In")}
+      <text x="578" y="430" font-size="9" fill="${SLATE}" font-family="system-ui,sans-serif">Biometric sync</text>
+    `,
+    )}
+  `,
+  ),
+  "collage-choose-cloud": collage(
+    "Cloud HR dashboard",
+    `
+    ${card(
+      80,
+      40,
+      720,
+      340,
+      `
+      <rect x="98" y="58" width="120" height="24" rx="6" fill="${ACCENT_LIGHT}"/>
+      <text x="108" y="74" font-size="11" font-weight="700" fill="${ACCENT}" font-family="system-ui,sans-serif">CodeVente HR</text>
+      <rect x="98" y="92" width="140" height="260" rx="10" fill="#F8FAFC"/>
+      ${["Dashboard", "Employees", "Attendance", "Payroll"].map(
+        (l, i) => `
+        <rect x="108" y="${108 + i * 44}" width="120" height="32" rx="6" fill="${i === 0 ? ACCENT_LIGHT : "#fff"}"/>
+        <text x="118" y="${128 + i * 44}" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">${l}</text>
+      `,
+      ).join("")}
+      ${[
+        ["Total staff", "248"],
+        ["On leave", "12"],
+        ["Open jobs", "7"],
+      ]
+        .map(
+          ([l, v], i) => `
+        <rect x="${260 + i * 170}" y="100" width="150" height="70" rx="10" fill="#fff" stroke="#E2E8F0"/>
+        <text x="272" y="${122 + i * 0}" font-size="9" fill="${SLATE}" font-family="system-ui,sans-serif">${l}</text>
+        <text x="272" y="${145 + i * 0}" font-size="20" font-weight="700" fill="${ACCENT}" font-family="system-ui,sans-serif">${v}</text>
+      `,
+        )
+        .join("")}
+      <rect x="260" y="185" width="520" height="150" rx="10" fill="#F8FAFC"/>
+      ${[40, 70, 55, 90, 65, 80].map(
+        (h, i) => `
+        <rect x="${280 + i * 72}" y="${320 - h}" width="36" height="${h}" rx="4" fill="${ACCENT}" opacity="0.7"/>
+      `,
+      ).join("")}
+    `,
+    )}
+    ${card(120, 400, 200, 110, `<text x="138" y="430" font-size="11" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Attendance</text>${btn(138, 448, "Clock-In")}`)}
+    ${card(360, 380, 200, 130, `<text x="378" y="410" font-size="11" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Payslip</text>${btn(378, 428, "Download")}<circle cx="530" cy="450" r="10" fill="#10B981"/><text x="378" y="480" font-size="9" fill="${SLATE}" font-family="system-ui,sans-serif">Manager approved</text>`)}
+    ${card(600, 410, 200, 100, `<text x="618" y="440" font-size="11" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Documents</text>${btn(618, 458, "Download")}`)}
+  `,
+  ),
+  "collage-key-features": collage(
+    "Leave and payroll features",
+    `
+    ${card(
+      40,
+      80,
+      220,
+      420,
+      `
+      <rect x="70" y="100" width="160" height="320" rx="24" fill="#0F172A"/>
+      <rect x="82" y="120" width="136" height="40" rx="8" fill="#1E293B"/>
+      <text x="94" y="146" font-size="11" font-weight="600" fill="#fff" font-family="system-ui,sans-serif">Leave application</text>
+      ${[0, 1, 2, 3].map(
+        (i) => `
+        <rect x="82" y="${175 + i * 58}" width="136" height="48" rx="8" fill="#1E293B"/>
+        <text x="92" y="${202 + i * 58}" font-size="9" fill="#E2E8F0" font-family="system-ui,sans-serif">Request · Pending</text>
+      `,
+      ).join("")}
+    `,
+    )}
+    ${card(
+      290,
+      50,
+      550,
+      100,
+      `
+      <text x="308" y="78" font-size="11" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Allocated leaves</text>
+      <rect x="308" y="88" width="510" height="24" rx="4" fill="${ACCENT}"/>
+      <text x="318" y="104" font-size="8" fill="#fff" font-family="system-ui,sans-serif">Type · Allocated · Used · Available</text>
+    `,
+    )}
+    ${card(
+      320,
+      170,
+      240,
+      140,
+      `
+      <text x="338" y="198" font-size="11" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Leave requests</text>
+      <circle cx="520" cy="210" r="14" fill="#FEE2E2"/>
+      <text x="515" y="214" font-size="9" fill="#DC2626" font-family="system-ui,sans-serif">3</text>
+      <rect x="338" y="215" width="200" height="12" rx="4" fill="#E2E8F0"/>
+      <rect x="338" y="235" width="160" height="12" rx="4" fill="#E2E8F0"/>
+    `,
+    )}
+    ${card(
+      300,
+      330,
+      520,
+      180,
+      `
+      <text x="318" y="358" font-size="11" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Time off — admin view</text>
+      <rect x="318" y="370" width="480" height="28" rx="6" fill="${ACCENT_LIGHT}"/>
+      <text x="328" y="388" font-size="9" fill="#0F172A" font-family="system-ui,sans-serif">Employee · Dates · Status</text>
+      ${btn(680, 410, "Approve")}
+      ${btn(680, 448, "Approve")}
+    `,
+    )}
+  `,
+  ),
+  "collage-features-ess": collage(
+    "Review payment and ESS",
+    `
+    ${card(
+      60,
+      80,
+      420,
+      460,
+      `
+      <text x="78" y="110" font-size="14" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Review payment</text>
+      <rect x="78" y="125" width="380" height="44" rx="8" fill="${ACCENT}"/>
+      <text x="92" y="152" font-size="10" fill="#fff" font-family="system-ui,sans-serif">ERPNext payroll · Bank disbursement ready</text>
+      ${[
+        ["Payment method", "Bank transfer"],
+        ["Selected employees", "186"],
+        ["Total amount", "PKR —"],
+        ["Fund date", "28 Feb 2026"],
+      ]
+        .map(
+          ([k, v], i) => `
+        <text x="88" y="${195 + i * 36}" font-size="10" fill="${SLATE}" font-family="system-ui,sans-serif">${escapeXml(k)}</text>
+        <text x="280" y="${195 + i * 36}" font-size="10" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">${escapeXml(v)}</text>
+      `,
+        )
+        .join("")}
+      ${btn(320, 480, "Submit payment")}
+    `,
+    )}
+    <circle cx="580" cy="200" r="48" fill="${ACCENT_LIGHT}" stroke="${ACCENT}" stroke-width="2"/>
+    <text x="580" y="206" text-anchor="middle" font-size="32" fill="${ACCENT}" font-family="system-ui,sans-serif">⚖</text>
+  `,
+  ),
+  "collage-benefits": collage(
+    "Attendance and payroll benefits",
+    `
+    ${card(
+      40,
+      60,
+      400,
+      220,
+      `
+      <text x="58" y="88" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">ATTENDANCE</text>
+      <text x="58" y="108" font-size="10" fill="${ACCENT}" font-family="system-ui,sans-serif">Time and pay adjustments</text>
+      <rect x="58" y="118" width="360" height="24" rx="4" fill="${ACCENT}"/>
+      <text x="66" y="134" font-size="8" fill="#fff" font-family="system-ui,sans-serif">Name · Date · Type · Action</text>
+      ${[0, 1, 2].map(
+        (r) => `
+        <rect x="58" y="${150 + r * 32}" width="360" height="26" rx="4" fill="#F8FAFC"/>
+        ${btn(350, 154 + r * 32, "To payroll")}
+      `,
+      ).join("")}
+    `,
+    )}
+    ${card(
+      80,
+      300,
+      480,
+      200,
+      `
+      <text x="98" y="328" font-size="10" fill="${SLATE}" font-family="system-ui,sans-serif">ADMIN VIEW</text>
+      <text x="98" y="348" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Daily report</text>
+      <rect x="98" y="358" width="440" height="22" rx="4" fill="${ACCENT}"/>
+      <text x="106" y="373" font-size="8" fill="#fff" font-family="system-ui,sans-serif">Employee · Check-in · Check-out · Hours</text>
+      ${[0, 1, 2, 3].map(
+        (r) => `
+        <rect x="98" y="${388 + r * 22}" width="440" height="18" rx="3" fill="${r % 2 ? "#F8FAFC" : "#fff"}"/>
+      `,
+      ).join("")}
+    `,
+    )}
+    ${card(520, 120, 300, 140, `<text x="538" y="150" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Attendance</text><text x="538" y="175" font-size="20" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">9:30 AM</text>${btn(538, 195, "Clock-In")}`)}
+    <circle cx="600" cy="520" r="36" fill="${ACCENT_LIGHT}"/>
+    <text x="600" y="528" text-anchor="middle" font-size="24" fill="${ACCENT}" font-family="system-ui,sans-serif">👆</text>
+  `,
+  ),
+};
+
 mkdirSync(OUT_DIR, { recursive: true });
-for (const [name, svg] of Object.entries(ILLUSTRATIONS)) {
+const all = { ...ILLUSTRATIONS, ...COLLAGES };
+for (const [name, svg] of Object.entries(all)) {
   writeFileSync(join(OUT_DIR, `${name}.svg`), svg.trim());
 }
-console.log(`HR illustrations written to ${OUT_DIR} (${Object.keys(ILLUSTRATIONS).length} files)`);
+console.log(`HR illustrations written to ${OUT_DIR} (${Object.keys(all).length} files)`);

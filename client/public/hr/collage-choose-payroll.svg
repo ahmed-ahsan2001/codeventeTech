@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 640" role="img">
+  <title>Choosing payroll software UI</title>
+  <defs>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="880" height="640" fill="#FAF8F4"/>
+  
+    <g filter="url(#sh)"><rect x="40" y="50" width="380" height="200" rx="14" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  
+      <text x="58" y="82" font-size="13" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Salary revisions</text>
+      <rect x="58" y="95" width="340" height="22" rx="4" fill="#F1F5F9"/>
+      <text x="66" y="110" font-size="9" fill="#64748B" font-family="system-ui,sans-serif">Name · Date · Status · Amount</text>
+      <rect x="58" y="125" width="340" height="28" rx="6" fill="#F8FAFC"/>
+      <text x="66" y="144" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">Pending approval</text>
+      <rect x="300" y="132" width="73" height="28" rx="8" fill="#0066FF"/>
+  <text x="312" y="151" font-size="11" font-weight="600" fill="#fff" font-family="system-ui,sans-serif">Approve</text>
+      <rect x="58" y="160" width="340" height="28" rx="6" fill="#F8FAFC"/>
+      <text x="66" y="179" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">Structure update</text>
+      <rect x="280" y="167" width="66" height="28" rx="8" fill="#0066FF"/>
+  <text x="292" y="186" font-size="11" font-weight="600" fill="#fff" font-family="system-ui,sans-serif">Review</text>
+    </g>
+    <g filter="url(#sh)"><rect x="450" y="30" width="200" height="120" rx="14" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  
+      <text x="468" y="58" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Compliance</text>
+      
+        <circle cx="478" cy="78" r="6" fill="#10B981"/>
+        <path d="M475 78 L477 80 L481 76" stroke="#fff" stroke-width="1.5" fill="none"/>
+        <text x="492" y="82" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">EOBI</text>
+      
+        <circle cx="478" cy="100" r="6" fill="#10B981"/>
+        <path d="M475 100 L477 102 L481 98" stroke="#fff" stroke-width="1.5" fill="none"/>
+        <text x="492" y="104" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">Income tax</text>
+      
+        <circle cx="478" cy="122" r="6" fill="#10B981"/>
+        <path d="M475 122 L477 124 L481 120" stroke="#fff" stroke-width="1.5" fill="none"/>
+        <text x="492" y="126" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">Social security</text>
+      
+    </g>
+    <g filter="url(#sh)"><rect x="430" y="170" width="400" height="150" rx="14" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  
+      <text x="448" y="198" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Tax deduction summary</text>
+      
+        <rect x="448" y="210" width="56" height="52" rx="8" fill="#E8F1FF"/>
+        <text x="456" y="232" font-size="8" fill="#64748B" font-family="system-ui,sans-serif">Month</text>
+        <text x="456" y="248" font-size="10" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">PKR</text>
+      
+        <rect x="516" y="210" width="56" height="52" rx="8" fill="#E8F1FF"/>
+        <text x="524" y="232" font-size="8" fill="#64748B" font-family="system-ui,sans-serif">Month</text>
+        <text x="524" y="248" font-size="10" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">PKR</text>
+      
+        <rect x="584" y="210" width="56" height="52" rx="8" fill="#E8F1FF"/>
+        <text x="592" y="232" font-size="8" fill="#64748B" font-family="system-ui,sans-serif">Month</text>
+        <text x="592" y="248" font-size="10" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">PKR</text>
+      
+        <rect x="652" y="210" width="56" height="52" rx="8" fill="#E8F1FF"/>
+        <text x="660" y="232" font-size="8" fill="#64748B" font-family="system-ui,sans-serif">Month</text>
+        <text x="660" y="248" font-size="10" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">PKR</text>
+      
+        <rect x="720" y="210" width="56" height="52" rx="8" fill="#E8F1FF"/>
+        <text x="728" y="232" font-size="8" fill="#64748B" font-family="system-ui,sans-serif">Month</text>
+        <text x="728" y="248" font-size="10" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">PKR</text>
+      
+      <rect x="448" y="275" width="360" height="32" rx="8" fill="#F1F5F9"/>
+      <text x="460" y="295" font-size="10" fill="#0F172A" font-family="system-ui,sans-serif">Total income tax payable</text>
+    </g>
+    <g filter="url(#sh)"><rect x="60" y="280" width="160" height="100" rx="14" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  
+      <text x="78" y="308" font-size="11" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Payslip</text>
+      <rect x="78" y="320" width="80" height="28" rx="8" fill="#0066FF"/>
+  <text x="90" y="339" font-size="11" font-weight="600" fill="#fff" font-family="system-ui,sans-serif">Download</text>
+      <text x="78" y="360" font-size="10" fill="#64748B" font-family="system-ui,sans-serif">ESS portal</text>
+    </g>
+    <g filter="url(#sh)"><rect x="250" y="320" width="280" height="200" rx="14" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  
+      <text x="268" y="348" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Payroll register</text>
+      
+        <rect x="268" y="360" width="240" height="26" rx="6" fill="#fff"/>
+        <text x="278" y="378" font-size="9" fill="#0F172A" font-family="system-ui,sans-serif">Employee · Days · Net pay</text>
+      
+        <rect x="268" y="394" width="240" height="26" rx="6" fill="#F8FAFC"/>
+        <text x="278" y="412" font-size="9" fill="#0F172A" font-family="system-ui,sans-serif">Employee · Days · Net pay</text>
+      
+        <rect x="268" y="428" width="240" height="26" rx="6" fill="#fff"/>
+        <text x="278" y="446" font-size="9" fill="#0F172A" font-family="system-ui,sans-serif">Employee · Days · Net pay</text>
+      
+        <rect x="268" y="462" width="240" height="26" rx="6" fill="#F8FAFC"/>
+        <text x="278" y="480" font-size="9" fill="#0F172A" font-family="system-ui,sans-serif">Employee · Days · Net pay</text>
+      
+    </g>
+    <g filter="url(#sh)"><rect x="560" y="340" width="260" height="120" rx="14" fill="#fff" stroke="#E2E8F0" stroke-width="1"/>
+  
+      <text x="578" y="372" font-size="12" font-weight="700" fill="#0F172A" font-family="system-ui,sans-serif">Attendance</text>
+      <rect x="578" y="388" width="80" height="28" rx="8" fill="#0066FF"/>
+  <text x="590" y="407" font-size="11" font-weight="600" fill="#fff" font-family="system-ui,sans-serif">Clock-In</text>
+      <text x="578" y="430" font-size="9" fill="#64748B" font-family="system-ui,sans-serif">Biometric sync</text>
+    </g>
+  
+</svg>

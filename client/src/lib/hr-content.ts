@@ -1,3 +1,11 @@
+import whyChooseHrIllustration from "@/assets/hr/why-choose-hr.png";
+import hrChoosePayrollIllustration from "@/assets/hr/hr-choose-payroll.png";
+import hrKeyFeaturesIllustration from "@/assets/hr/hr-key-features.png";
+import hrBenefitsIllustration from "@/assets/hr/hr-benefits.png";
+
+/** Warm off-white band — matches Sowaan-style HR landing sections. */
+export const HR_CREAM = "#FAF8F4";
+
 /** Structured copy for /hr-software — organized like long-form product landing pages. */
 
 export const HR_CHOOSE_CRITERIA = [
@@ -153,10 +161,20 @@ export const HR_WHY_CODEVENTE = [
   },
 ] as const;
 
-import whyChooseHrIllustration from "@/assets/hr/why-choose-hr.png";
-
-/** Bundled illustration for “Why choose CodeVente” (user-provided asset). */
+/** Section illustrations (user-provided assets). */
 export const HR_WHY_CHOOSE_IMAGE = whyChooseHrIllustration;
+export const HR_CHOOSE_PAYROLL_IMAGE = hrChoosePayrollIllustration;
+export const HR_KEY_FEATURES_IMAGE = hrKeyFeaturesIllustration;
+export const HR_BENEFITS_IMAGE = hrBenefitsIllustration;
+
+export const HR_CHOOSE_INTRO =
+  "Picking the right payroll software in Pakistan affects employee trust and your finance close. Use this checklist when you compare HRMS options — then see how ERPNext HR fits your branches and compliance needs.";
+
+export const HR_KEY_FEATURES_INTRO =
+  "CodeVente configures ERPNext HR for Pakistani businesses — salary structures, statutory mapping, and attendance tied to payroll, not disconnected spreadsheets.";
+
+export const HR_BENEFITS_INTRO =
+  "Adopting HR software in Pakistan is not only about saving time — it is about a more efficient, compliant workplace your team can rely on every payday.";
 
 export function hrIllustrationPath(name: string): string {
   return `/hr/${name}.svg`;
