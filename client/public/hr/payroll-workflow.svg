@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img">
+  <title>How payroll processing works</title>
+  <rect width="1200" height="720" fill="#F8FAFC"/>
+  <rect x="40" y="40" width="1120" height="640" rx="24" fill="#fff" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="40" y="40" width="1120" height="56" rx="24" fill="#E8F1FF"/>
+  <rect x="40" y="72" width="1120" height="24" fill="#E8F1FF"/>
+  <circle cx="72" cy="68" r="8" fill="#F87171"/><circle cx="96" cy="68" r="8" fill="#FBBF24"/><circle cx="120" cy="68" r="8" fill="#34D399"/>
+  <text x="150" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#64748B">How payroll processing works</text>
+  
+    
+      <rect x="80" y="130" width="1040" height="92" rx="14" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="130" cy="176" r="28" fill="#0066FF" />
+      <text x="130" y="182" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">1</text>
+      <text x="180" y="168" font-size="18" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Data input</text>
+      <text x="180" y="194" font-size="13" fill="#64748B" font-family="system-ui,sans-serif">Attendance, leave, OT, expenses</text>
+      <path d="M130 204 L130 222" stroke="#0066FF" stroke-width="2" stroke-dasharray="4 4"/>
+    
+      <rect x="80" y="238" width="1040" height="92" rx="14" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="130" cy="284" r="28" fill="#0066FF" />
+      <text x="130" y="290" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">2</text>
+      <text x="180" y="276" font-size="18" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Calculation</text>
+      <text x="180" y="302" font-size="13" fill="#64748B" font-family="system-ui,sans-serif">Structures & rules per employee</text>
+      <path d="M130 312 L130 330" stroke="#0066FF" stroke-width="2" stroke-dasharray="4 4"/>
+    
+      <rect x="80" y="346" width="1040" height="92" rx="14" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="130" cy="392" r="28" fill="#0066FF" />
+      <text x="130" y="398" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">3</text>
+      <text x="180" y="384" font-size="18" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Compliance</text>
+      <text x="180" y="410" font-size="13" fill="#64748B" font-family="system-ui,sans-serif">Deductions & statutory checks</text>
+      <path d="M130 420 L130 438" stroke="#0066FF" stroke-width="2" stroke-dasharray="4 4"/>
+    
+      <rect x="80" y="454" width="1040" height="92" rx="14" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="130" cy="500" r="28" fill="#0066FF" />
+      <text x="130" y="506" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">4</text>
+      <text x="180" y="492" font-size="18" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Payslips</text>
+      <text x="180" y="518" font-size="13" fill="#64748B" font-family="system-ui,sans-serif">Itemized slips to ESS portal</text>
+      <path d="M130 528 L130 546" stroke="#0066FF" stroke-width="2" stroke-dasharray="4 4"/>
+    
+      <rect x="80" y="562" width="1040" height="92" rx="14" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="130" cy="608" r="28" fill="#0066FF" />
+      <text x="130" y="614" text-anchor="middle" font-size="20" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">5</text>
+      <text x="180" y="600" font-size="18" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Disbursement</text>
+      <text x="180" y="626" font-size="13" fill="#64748B" font-family="system-ui,sans-serif">Bank file & management reports</text>
+      
+    
+  
+</svg>

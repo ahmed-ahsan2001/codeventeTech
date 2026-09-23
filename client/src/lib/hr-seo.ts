@@ -55,6 +55,21 @@ export const HR_FAQS = [
     answer:
       "Yes. Role-based training for HR admins, payroll staff, and managers — plus short guides for employees on leave requests and self-service where enabled.",
   },
+  {
+    question: "Which HR software is best for payslips in Pakistan?",
+    answer:
+      "Teams that want automated payslips with employee portal access often choose ERPNext HR configured for their salary components. CodeVente sets up structures, print formats, and self-service so payslips are generated each cycle without manual PDF work.",
+  },
+  {
+    question: "What essential features should Pakistani HR software include?",
+    answer:
+      "Local payroll component mapping, attendance and leave tied to payroll, biometric or import-based time tracking, cloud access for multiple branches, employee self-service, and a clear implementation partner for training and support.",
+  },
+  {
+    question: "How do you use payroll software day to day?",
+    answer:
+      "After initial setup, HR maintains employee records and attendance, managers approve leave, and payroll runs use those inputs to calculate pay, generate payslips, and export reports. CodeVente documents this workflow for your team during implementation.",
+  },
 ];
 
 export const HR_SERVICE_META: ServiceMeta = {

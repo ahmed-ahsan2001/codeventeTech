@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img">
+  <title>Choosing HR & payroll software</title>
+  <rect width="1200" height="720" fill="#F8FAFC"/>
+  <rect x="40" y="40" width="1120" height="640" rx="24" fill="#fff" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="40" y="40" width="1120" height="56" rx="24" fill="#E8F1FF"/>
+  <rect x="40" y="72" width="1120" height="24" fill="#E8F1FF"/>
+  <circle cx="72" cy="68" r="8" fill="#F87171"/><circle cx="96" cy="68" r="8" fill="#FBBF24"/><circle cx="120" cy="68" r="8" fill="#34D399"/>
+  <text x="150" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#64748B">Choosing HR & payroll software</text>
+  
+    <text x="80" y="140" font-size="24" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Evaluation checklist</text>
+    
+      <rect x="80" y="180" width="1040" height="68" rx="12" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="108" cy="214" r="14" fill="#E8F1FF" stroke="#0066FF" stroke-width="2"/>
+      <path d="M102 214 L106 218 L114 210" stroke="#0066FF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <text x="136" y="208" font-size="15" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Local labor & tax rules</text>
+      <text x="136" y="230" font-size="12" fill="#64748B" font-family="system-ui,sans-serif">Income tax, EOBI, social security mapped to salary components</text>
+    
+      <rect x="80" y="262" width="1040" height="68" rx="12" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="108" cy="296" r="14" fill="#E8F1FF" stroke="#0066FF" stroke-width="2"/>
+      <path d="M102 296 L106 300 L114 292" stroke="#0066FF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <text x="136" y="290" font-size="15" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Automated payroll runs</text>
+      <text x="136" y="312" font-size="12" fill="#64748B" font-family="system-ui,sans-serif">Structures, overtime, bonuses, deductions with audit trail</text>
+    
+      <rect x="80" y="344" width="1040" height="68" rx="12" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="108" cy="378" r="14" fill="#E8F1FF" stroke="#0066FF" stroke-width="2"/>
+      <path d="M102 378 L106 382 L114 374" stroke="#0066FF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <text x="136" y="372" font-size="15" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Easy for HR & staff</text>
+      <text x="136" y="394" font-size="12" fill="#64748B" font-family="system-ui,sans-serif">Clear screens, role-based access, minimal IT dependency</text>
+    
+      <rect x="80" y="426" width="1040" height="68" rx="12" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="108" cy="460" r="14" fill="#E8F1FF" stroke="#0066FF" stroke-width="2"/>
+      <path d="M102 460 L106 464 L114 456" stroke="#0066FF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <text x="136" y="454" font-size="15" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Cloud & multi-branch</text>
+      <text x="136" y="476" font-size="12" fill="#64748B" font-family="system-ui,sans-serif">Karachi HQ + warehouses — one live system</text>
+    
+      <rect x="80" y="508" width="1040" height="68" rx="12" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="108" cy="542" r="14" fill="#E8F1FF" stroke="#0066FF" stroke-width="2"/>
+      <path d="M102 542 L106 546 L114 538" stroke="#0066FF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <text x="136" y="536" font-size="15" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">HR module integration</text>
+      <text x="136" y="558" font-size="12" fill="#64748B" font-family="system-ui,sans-serif">Attendance, leave, and employee master feed payroll</text>
+    
+      <rect x="80" y="590" width="1040" height="68" rx="12" fill="#fff" stroke="#CBD5E1"/>
+      <circle cx="108" cy="624" r="14" fill="#E8F1FF" stroke="#0066FF" stroke-width="2"/>
+      <path d="M102 624 L106 628 L114 620" stroke="#0066FF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <text x="136" y="618" font-size="15" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Implementation support</text>
+      <text x="136" y="640" font-size="12" fill="#64748B" font-family="system-ui,sans-serif">Local partner for setup, training, and go-live</text>
+    
+  
+</svg>
