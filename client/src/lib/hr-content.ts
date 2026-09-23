@@ -153,6 +153,11 @@ export const HR_WHY_CODEVENTE = [
   },
 ] as const;
 
+import whyChooseHrIllustration from "@/assets/hr/why-choose-hr.png";
+
+/** Bundled illustration for “Why choose CodeVente” (user-provided asset). */
+export const HR_WHY_CHOOSE_IMAGE = whyChooseHrIllustration;
+
 export function hrIllustrationPath(name: string): string {
   return `/hr/${name}.svg`;
 }

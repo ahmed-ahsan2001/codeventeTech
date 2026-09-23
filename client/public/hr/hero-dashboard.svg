@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img">
-  <title>HR & Payroll overview</title>
+  <title>HR &amp; Payroll overview</title>
   <rect width="1200" height="720" fill="#F8FAFC"/>
   <rect x="40" y="40" width="1120" height="640" rx="24" fill="#fff" stroke="#CBD5E1" stroke-width="2"/>
   <rect x="40" y="40" width="1120" height="56" rx="24" fill="#E8F1FF"/>
   <rect x="40" y="72" width="1120" height="24" fill="#E8F1FF"/>
   <circle cx="72" cy="68" r="8" fill="#F87171"/><circle cx="96" cy="68" r="8" fill="#FBBF24"/><circle cx="120" cy="68" r="8" fill="#34D399"/>
-  <text x="150" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#64748B">HR & Payroll overview</text>
+  <text x="150" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#64748B">HR &amp; Payroll overview</text>
   
     
     <rect x="56" y="120" width="200" height="536" rx="12" fill="#F1F5F9"/>

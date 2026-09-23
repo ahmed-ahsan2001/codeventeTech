@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img">
-  <title>Payroll & HR features</title>
+  <title>Payroll &amp; HR features</title>
   <rect width="1200" height="720" fill="#F8FAFC"/>
   <rect x="40" y="40" width="1120" height="640" rx="24" fill="#fff" stroke="#CBD5E1" stroke-width="2"/>
   <rect x="40" y="40" width="1120" height="56" rx="24" fill="#E8F1FF"/>
   <rect x="40" y="72" width="1120" height="24" fill="#E8F1FF"/>
   <circle cx="72" cy="68" r="8" fill="#F87171"/><circle cx="96" cy="68" r="8" fill="#FBBF24"/><circle cx="120" cy="68" r="8" fill="#34D399"/>
-  <text x="150" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#64748B">Payroll & HR features</text>
+  <text x="150" y="76" font-family="system-ui,sans-serif" font-size="14" fill="#64748B">Payroll &amp; HR features</text>
   
     <rect x="80" y="130" width="520" height="500" rx="16" fill="#fff" stroke="#CBD5E1"/>
     <text x="100" y="168" font-size="16" font-weight="600" fill="#0F172A" font-family="system-ui,sans-serif">Salary structure</text>

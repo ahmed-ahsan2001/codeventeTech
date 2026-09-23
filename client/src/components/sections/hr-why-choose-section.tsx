@@ -1,6 +1,6 @@
 import FadeInSection from "@/components/animations/FadeInSection";
 import { Check } from "lucide-react";
-import { HR_WHY_CODEVENTE, HR_WHY_INTRO, hrIllustrationPath } from "@/lib/hr-content";
+import { HR_WHY_CHOOSE_IMAGE, HR_WHY_CODEVENTE, HR_WHY_INTRO } from "@/lib/hr-content";
 
 export default function HrWhyChooseSection() {
   return (
@@ -10,8 +10,8 @@ export default function HrWhyChooseSection() {
           <FadeInSection direction="left" className="order-2 lg:order-1">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <img
-                src={hrIllustrationPath("why-choose-hr")}
-                alt="Business leader evaluating HR and payroll software options in Pakistan"
+                src={HR_WHY_CHOOSE_IMAGE}
+                alt="Employer overwhelmed by HR and payroll questions — CodeVente helps simplify HRMS in Pakistan"
                 className="w-full h-auto"
                 width={640}
                 height={520}
