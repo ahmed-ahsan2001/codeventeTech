@@ -23,9 +23,9 @@ import {
 const ALL_BLOG_POSTS: BlogPost[] = [
   {
     slug: "erpnext-implementation-cost-pakistan",
-    title: "How Much Does ERPNext Implementation Cost in Pakistan? (2026 Guide)",
+    title: "ERPNext Implementation Scope & Quoting in Pakistan (2026 Guide)",
     excerpt:
-      "Realistic PKR price ranges for ERPNext setup, customization, migration, and support — and what drives the final quote.",
+      "What drives your ERPNext quote — modules, customization, migration, and support — without published price lists.",
     category: "ERP",
     readTime: "10 min read",
     date: "Aug 20, 2026",
@@ -138,7 +138,7 @@ const ALL_BLOG_POSTS: BlogPost[] = [
     slug: "erpnext-implementation-guide-pakistan",
     title: "ERPNext Implementation Guide for Pakistani Businesses (2026)",
     excerpt:
-      "Everything you need to know before implementing ERPNext — modules, costs, timeline, and how to choose the right partner in Pakistan.",
+      "Everything you need to know before implementing ERPNext — modules, timeline, quoting, and how to choose the right partner in Pakistan.",
     category: "ERP",
     readTime: "12 min read",
     date: "Aug 15, 2026",

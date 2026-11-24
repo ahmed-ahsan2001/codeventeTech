@@ -26,7 +26,7 @@ export default function Services() {
       <SEOHead
         title="Software Development Services in Pakistan | CodeVente"
         description="AI solutions, web and mobile development, ERPNext implementation, Shopify stores, React apps, UI/UX design, digital marketing, and SEO — full-stack services for startups in Pakistan."
-        keywords="software development services Pakistan, web development Karachi, mobile app development, ERPNext implementation, Shopify development, AI development agency"
+        keywords="ERPNext service, ERPNext services, software development services Pakistan, web development Karachi, mobile app development, ERPNext implementation, Shopify development, AI development agency"
         canonicalPath="/services"
         jsonLd={[
           webPageJsonLd({

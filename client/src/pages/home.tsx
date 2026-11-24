@@ -71,7 +71,7 @@ export default function Home() {
       <SEOHead
         title="CodeVente — ERPNext Implementation, AI & Software Development | Pakistan"
         description="ERPNext implementation partner in Pakistan. CodeVente deploys, customizes, and manages ERPNext plus AI-powered web and mobile apps for startups and businesses."
-        keywords="ERPNext implementation Pakistan, ERPNext consultant Karachi, ERP customization, AI development, software agency Pakistan, ERPNext deployment"
+        keywords="ERPNext service, ERPNext services, ErpNext service, ERPNext implementation Pakistan, ERPNext consultant Karachi, ERP customization, AI development, software agency Pakistan"
         canonicalPath="/"
         jsonLd={[organizationJsonLd(), webSiteJsonLd(), localBusinessJsonLd()]}
       />
@@ -194,11 +194,12 @@ export default function Home() {
                 <div className="p-8 md:p-10 flex flex-col justify-center">
                   <p className="eyebrow-light mb-2">ERPNext Services</p>
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                    ERPNext implementation services in Pakistan
+                    ERPNext implementation — Pakistan &amp; GCC
                   </h2>
                   <p className="text-slate-600 max-w-xl mb-6">
                     Consulting, customization, migration, and hosting for ERPNext — accounting,
-                    inventory, HR, and manufacturing. Based in Karachi, serving nationwide.
+                    inventory, HR, and manufacturing. Karachi HQ; remote delivery in UAE, Saudi
+                    Arabia, and across the Gulf.
                   </p>
                   <Link href="/erpnext-implementation">
                     <Button className="btn-primary-gradient rounded-xl px-8 py-6 gap-2 w-fit">

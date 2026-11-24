@@ -47,6 +47,8 @@ import {
 import {
   ERP_IMPLEMENTATION_SERVICES,
   ERP_LOCAL_COVERAGE,
+  ERP_GCC_COVERAGE,
+  ERP_GCC_HIGHLIGHTS,
   ERP_RELATED_BLOG_LINKS,
 } from "@/lib/erp-content";
 import erpTrainingSupport from "@/assets/erp/training-support.png";
@@ -194,14 +196,18 @@ export default function ERPNextImplementation() {
                   { label: "ERPNext implementation services" },
                 ]}
               />
-              <p className="eyebrow-light mb-5">Karachi · Lahore · Islamabad · Nationwide</p>
+              <p className="eyebrow-light mb-5">
+                Pakistan · UAE · Saudi Arabia · GCC · Remote MENA
+              </p>
               <h1 className="heading-display text-slate-900 mb-6">
                 ERPNext <span className="gradient-text">implementation services</span> in Pakistan
+                &amp; the GCC
               </h1>
               <p className="text-lead mb-8">
                 CodeVente delivers ERPNext consulting, customization, migration, integrations, and
-                go-live support — built for Pakistani tax, inventory, and multi-branch operations.
-                Recent production deployments for retail, trading, and manufacturing teams.
+                go-live support — for Pakistani tax and compliance, VAT-ready GCC finance, and
+                multi-branch operations across South Asia and the Gulf. Recent production deployments
+                for retail, trading, and manufacturing teams.
               </p>
               <ul className="space-y-3 mb-10">
                 {[
@@ -249,7 +255,7 @@ export default function ERPNextImplementation() {
               <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white">
                 <img
                   src={erpAccountsDashboard}
-                  alt="ERPNext implementation services in Pakistan — live accounts, billing, and ageing dashboards"
+                  alt="ERPNext implementation services Pakistan and GCC — accounts, billing, and ageing dashboards"
                   className="w-full h-auto object-contain"
                 />
               </div>
@@ -295,7 +301,7 @@ export default function ERPNextImplementation() {
             </div>
             <div className="flex items-center gap-2 mt-6 text-sm text-slate-500">
               <MapPin className="w-4 h-4 text-electric" />
-              Karachi, Lahore, Islamabad, and remote teams worldwide
+              Karachi, Lahore, Islamabad · Dubai · Riyadh · remote GCC teams
             </div>
           </FadeInSection>
         </div>
@@ -346,6 +352,47 @@ export default function ERPNextImplementation() {
                   <h3 className="font-semibold text-slate-900 mb-2">ERPNext in {row.city}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed">{row.detail}</p>
                 </motion.article>
+              </FadeInSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding section-muted" aria-labelledby="erp-gcc-heading">
+        <div className="section-container grid lg:grid-cols-2 gap-12 items-start">
+          <FadeInSection>
+            <p className="eyebrow-light mb-3">GCC</p>
+            <h2 id="erp-gcc-heading" className="heading-section text-slate-900 mb-5">
+              ERPNext implementation for UAE, Saudi Arabia &amp; the Gulf
+            </h2>
+            <p className="text-slate-600 mb-6 leading-relaxed">
+              Growing GCC SMEs search for an <strong>ERPNext implementation partner in Dubai</strong>{" "}
+              or <strong>Riyadh</strong> who can deliver without SAP-level licensing. We run remote
+              discovery and phased go-lives from Karachi — same engineering team, timezone overlap
+              with the Gulf, and English-first documentation.
+            </p>
+            <ul className="space-y-3 mb-6">
+              {ERP_GCC_HIGHLIGHTS.map((point) => (
+                <li key={point} className="flex items-start gap-3 text-sm text-slate-700">
+                  <CheckCircle2 className="w-5 h-5 text-electric flex-shrink-0 mt-0.5" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <Link href="/contact">
+              <Button className="btn-primary-gradient rounded-xl gap-2">
+                Discuss a GCC rollout
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </FadeInSection>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {ERP_GCC_COVERAGE.map((row, i) => (
+              <FadeInSection key={row.market} delay={i * 0.06}>
+                <article className="card-light h-full p-5 rounded-2xl border border-slate-200">
+                  <h3 className="font-semibold text-slate-900 mb-2 text-sm">{row.market}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{row.detail}</p>
+                </article>
               </FadeInSection>
             ))}
           </div>
@@ -673,7 +720,7 @@ export default function ERPNextImplementation() {
           <SectionHeader
             eyebrow="FAQ"
             title="ERPNext implementation — frequently asked questions"
-            description="Cost, timeline, customization, Pakistan coverage, and support."
+            description="Cost, timeline, customization, Pakistan &amp; GCC coverage, VAT, and support."
           />
           <Accordion type="single" collapsible className="mt-2 space-y-3">
             {ERP_EXTENDED_FAQS.map((faq, i) => (

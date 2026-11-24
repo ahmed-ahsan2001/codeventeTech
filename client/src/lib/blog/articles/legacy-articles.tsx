@@ -54,11 +54,14 @@ export function ErpnextGuidePakistan() {
         <Li>What does post go-live support include?</Li>
       </Ul>
 
-      <H2>Cost overview</H2>
+      <H2>Planning budget without a public price list</H2>
       <P>
-        Budget PKR 150,000–600,000+ for most SME implementations depending on modules and
-        customization. See our detailed{" "}
-        <InternalLink href="/blog/erpnext-implementation-cost-pakistan">cost breakdown</InternalLink>.
+        Implementation effort depends on modules, customization, migration, and training — not a single
+        list price. Ask partners for fixed scope after discovery. See our{" "}
+        <InternalLink href="/blog/erpnext-implementation-cost-pakistan">
+          scope and quoting guide
+        </InternalLink>{" "}
+        for factors that shape your estimate.
       </P>
 
       <Callout>

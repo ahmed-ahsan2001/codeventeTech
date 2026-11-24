@@ -3,6 +3,9 @@ import { absoluteUrl, SITE_URL } from "./seo";
 
 /** Primary keyword clusters for ERPNext SEO */
 export const ERP_KEYWORDS = [
+  "ERPNext service",
+  "ERPNext services",
+  "ErpNext service",
   "ERPNext implementation",
   "ERPNext customization",
   "ERPNext consultant Pakistan",
@@ -32,16 +35,46 @@ export const ERP_KEYWORDS = [
   "Frappe ERPNext implementation Karachi",
   "ERPNext partner Lahore",
   "open source ERP Pakistan",
+  "ERPNext implementation UAE",
+  "ERPNext implementation Dubai",
+  "ERPNext consultant Saudi Arabia",
+  "ERPNext implementation Riyadh",
+  "ERPNext implementation GCC",
+  "ERPNext partner Middle East",
+  "ERPNext VAT UAE",
+  "Frappe ERPNext Dubai",
+  "ERP implementation services GCC",
+  "ERPNext remote implementation GCC",
 ].join(", ");
 
 export const ERP_PAGE_TITLE =
-  "ERPNext Implementation Services in Pakistan | CodeVente Karachi";
+  "ERPNext Implementation Services in Pakistan & GCC | CodeVente";
 
 export const ERP_PAGE_DESCRIPTION =
-  "ERPNext implementation services in Pakistan — consulting, customization, data migration, cloud hosting, integrations, and training. CodeVente delivers end-to-end ERPNext for Karachi, Lahore, Islamabad, and nationwide. Free audit.";
+  "ERPNext implementation services in Pakistan and the GCC — UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman. Consulting, customization, migration, cloud hosting, VAT-ready finance, and training. Based in Karachi; remote delivery across MENA. Free audit.";
 
 export const ERP_OG_TITLE =
-  "ERPNext Implementation Services in Pakistan | CodeVente";
+  "ERPNext Implementation — Pakistan & GCC | CodeVente";
+
+/** Schema.org areaServed — Pakistan + GCC member states + hubs */
+export const ERP_AREA_SERVED = [
+  { "@type": "Country", name: "Pakistan" },
+  { "@type": "City", name: "Karachi" },
+  { "@type": "City", name: "Lahore" },
+  { "@type": "City", name: "Islamabad" },
+  { "@type": "Country", name: "United Arab Emirates" },
+  { "@type": "City", name: "Dubai" },
+  { "@type": "City", name: "Abu Dhabi" },
+  { "@type": "Country", name: "Saudi Arabia" },
+  { "@type": "City", name: "Riyadh" },
+  { "@type": "City", name: "Jeddah" },
+  { "@type": "Country", name: "Qatar" },
+  { "@type": "City", name: "Doha" },
+  { "@type": "Country", name: "Kuwait" },
+  { "@type": "Country", name: "Bahrain" },
+  { "@type": "Country", name: "Oman" },
+  { "@type": "Place", name: "Gulf Cooperation Council (GCC)" },
+] as const;
 
 /** Page-specific social preview (accounts dashboard). */
 export const ERP_OG_IMAGE = `${SITE_URL}/erpnext-implementation-og.png`;
@@ -57,7 +90,7 @@ export const ERP_EXTENDED_FAQS = [
   {
     question: "How much does ERPNext implementation cost in Pakistan?",
     answer:
-      "ERPNext implementation cost depends on modules, customization depth, data migration complexity, and user count. Basic setups with standard modules typically start from PKR 150,000–300,000. Full custom implementations with manufacturing workflows, integrations, and migration can range PKR 500,000–2,000,000+. CodeVente provides a free requirements audit and fixed-price quote before any work begins.",
+      "There is no single public price — it depends on modules, customization depth, data migration complexity, integrations, hosting, and training. CodeVente runs a free requirements audit, maps your processes, and provides a fixed-scope quote before any build starts. We do not publish rate cards on the website.",
   },
   {
     question: "How long does ERPNext implementation take?",
@@ -124,6 +157,21 @@ export const ERP_EXTENDED_FAQS = [
     answer:
       "CodeVente provides full ERPNext implementation services in Pakistan — from discovery and module configuration to Frappe customization, migration, hosting, and training. We are based in Karachi and serve Lahore, Islamabad, and clients nationwide. Request a free requirements audit to scope modules and timeline.",
   },
+  {
+    question: "Do you provide ERPNext implementation services in the UAE and GCC?",
+    answer:
+      "Yes. We deliver ERPNext remotely for businesses in the GCC — UAE (Dubai, Abu Dhabi), Saudi Arabia (Riyadh, Jeddah), Qatar, Kuwait, Bahrain, and Oman. Discovery, configuration, UAT, and training run on your timezone where needed. Optional on-site workshops can be arranged for larger rollouts in the Gulf.",
+  },
+  {
+    question: "Can ERPNext support VAT and multi-currency for GCC companies?",
+    answer:
+      "Yes. ERPNext supports VAT-style tax templates, multi-currency ledgers, and regional chart of accounts for UAE, Saudi, and wider GCC operations — including branches in the Gulf and Pakistan under one or multiple companies. We align invoicing, withholding, and reporting with how your finance team files.",
+  },
+  {
+    question: "Why hire a Pakistan-based ERPNext partner for GCC projects?",
+    answer:
+      "CodeVente combines competitive delivery from Karachi with Frappe expertise and English-first communication. Many GCC SMEs want open-source ERP without per-seat SAP fees — we implement, host in AWS regions close to your users, and provide ongoing support across Pakistan and the Gulf.",
+  },
 ];
 
 export const ERP_MODULES = [
@@ -157,10 +205,7 @@ export function erpServiceJsonLd() {
     },
     serviceType: "ERPNext Implementation",
     category: "Enterprise Resource Planning",
-    areaServed: [
-      { "@type": "Country", name: "Pakistan" },
-      { "@type": "Place", name: "Worldwide" },
-    ],
+    areaServed: [...ERP_AREA_SERVED],
     availableChannel: {
       "@type": "ServiceChannel",
       serviceUrl: absoluteUrl("/contact"),
@@ -232,7 +277,8 @@ export function erpProfessionalServiceJsonLd() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: COMPANY_INFO.name,
-    description: "ERPNext implementation, customization, and deployment services in Pakistan",
+    description:
+      "ERPNext implementation, customization, and deployment services in Pakistan and the GCC (UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman)",
     url: absoluteUrl(ERP_CANONICAL_PATH),
     telephone: COMPANY_INFO.phone,
     email: COMPANY_INFO.email,
@@ -251,12 +297,7 @@ export function erpProfessionalServiceJsonLd() {
       latitude: 24.8607,
       longitude: 67.0011,
     },
-    areaServed: [
-      { "@type": "City", name: "Karachi" },
-      { "@type": "City", name: "Lahore" },
-      { "@type": "City", name: "Islamabad" },
-      { "@type": "Country", name: "Pakistan" },
-    ],
+    areaServed: [...ERP_AREA_SERVED],
     knowsAbout: [
       "ERPNext",
       "Frappe Framework",
@@ -264,6 +305,8 @@ export function erpProfessionalServiceJsonLd() {
       "Business Process Automation",
       "Inventory Management",
       "Accounting Software",
+      "VAT compliance UAE",
+      "GCC enterprise software",
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -310,7 +353,7 @@ export function erpImplementationServicesListJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "ERPNext implementation services in Pakistan",
+    name: "ERPNext implementation services in Pakistan and the GCC",
     itemListElement: services.map((name, i) => ({
       "@type": "ListItem",
       position: i + 1,

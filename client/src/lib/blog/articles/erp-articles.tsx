@@ -20,11 +20,12 @@ export function ErpnextCostPakistan() {
       </P>
       <P>
         At CodeVente we implement ERPNext for SMEs and growing companies across Karachi, Lahore,
-        Islamabad, and remote teams. This guide breaks down what drives the price, typical ranges in
-        PKR, and how to budget without surprises.
+        Islamabad, and remote teams. This guide breaks down what drives your quote — modules, scope,
+        and delivery — so you can plan a rollout without surprises. We do not publish fixed price lists;
+        every business gets a scoped estimate after discovery.
       </P>
 
-      <H2>What affects ERPNext implementation cost?</H2>
+      <H2>What affects your ERPNext implementation quote?</H2>
       <P>
         ERPNext itself is open-source — you do not pay per-user licensing like SAP or Oracle. Your
         implementation cost comes from setup, configuration, customization, migration, and ongoing
@@ -55,32 +56,32 @@ export function ErpnextCostPakistan() {
         </Li>
       </Ul>
 
-      <H2>Typical ERPNext implementation cost in Pakistan (2026)</H2>
+      <H2>How scope maps to timeline (not a price list)</H2>
       <P>
-        These ranges reflect what we see on real projects. Your quote may fall outside them depending
-        on scope — always get a requirements audit before committing.
+        Timelines vary by team availability and data quality. Use this table to think about phases — not
+        as published pricing. Your partner should quote after a requirements audit.
       </P>
       <Table
-        headers={["Scope", "Typical PKR range", "Timeline"]}
+        headers={["Scope", "What it usually includes", "Typical timeline"]}
         rows={[
           [
-            "Starter — accounting, sales, basic inventory",
-            "PKR 150,000 – 300,000",
+            "Starter",
+            "Accounting, sales, basic inventory",
             "4–6 weeks",
           ],
           [
-            "Standard — multi-module with light customization",
-            "PKR 300,000 – 600,000",
+            "Standard",
+            "Multi-module with light customization",
             "6–10 weeks",
           ],
           [
-            "Advanced — manufacturing, workflows, migration",
-            "PKR 600,000 – 1,200,000",
+            "Advanced",
+            "Manufacturing, workflows, migration",
             "10–16 weeks",
           ],
           [
-            "Enterprise-style — multi-company, heavy custom + integrations",
-            "PKR 1,200,000 – 2,000,000+",
+            "Multi-company",
+            "Heavy customization, integrations, branches",
             "12–20+ weeks",
           ],
         ]}
@@ -98,12 +99,11 @@ export function ErpnextCostPakistan() {
         <Li>Go-live support and role-based training</Li>
       </Ol>
       <P>
-        Hosting, annual server costs, and ongoing support retainers are often quoted separately.
-        Managed hosting on a dedicated VPS typically runs PKR 15,000–40,000 per month depending on
-        users and backup requirements.
+        Hosting, server operations, and ongoing support retainers are often quoted separately from
+        implementation — discuss them explicitly in your statement of work.
       </P>
 
-      <H2>Hidden costs to watch for</H2>
+      <H2>Hidden scope risks to watch for</H2>
       <Ul>
         <Li>
           <strong>Scope creep</strong> — adding manufacturing or payroll mid-project without
@@ -125,10 +125,10 @@ export function ErpnextCostPakistan() {
 
       <H2>ERPNext vs. paying for traditional ERP licenses</H2>
       <P>
-        For a 20-user company, SAP or Oracle can cost tens of millions of PKR in licenses alone before
-        implementation. ERPNext removes per-seat licensing, which is why Pakistani manufacturers,
-        distributors, and service businesses increasingly choose it. You pay for implementation
-        quality and support — not annual license renewals that scale with headcount.
+        Legacy vendors often charge per user and per module on top of implementation. ERPNext removes
+        per-seat licensing for the core product, which is why Pakistani manufacturers, distributors,
+        and service businesses increasingly choose it. You invest in implementation quality and support
+        rather than license fees that scale with headcount.
       </P>
 
       <H2>How to get an accurate quote</H2>
@@ -215,17 +215,17 @@ export function ErpnextVsOdooPakistan() {
         needed anyway.
       </P>
 
-      <H2>Cost reality for small businesses in Pakistan</H2>
+      <H2>Commercial model for small businesses in Pakistan</H2>
       <H3>ERPNext</H3>
       <P>
-        Software license: PKR 0 for the core product. You pay for implementation (often PKR 150,000–
-        600,000 for SMEs), hosting, and optional support retainers. See our{" "}
+        The core product is open-source — no per-user license for standard ERPNext. You pay for
+        implementation, hosting, and optional support retainers. See our{" "}
         <InternalLink href="/blog/erpnext-implementation-cost-pakistan">
-          ERPNext cost guide
+          guide to implementation scope and quoting
         </InternalLink>{" "}
-        for detailed ranges.
+        for what affects your project estimate.
       </P>
-        <H3>Odoo</H3>
+      <H3>Odoo</H3>
       <P>
         Community edition is free but limited for many business apps. Enterprise is priced per user per
         month (international pricing, billed in USD/EUR). Implementation and customization are additional.

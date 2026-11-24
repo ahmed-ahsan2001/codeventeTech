@@ -1,12 +1,13 @@
-/** On-page SEO copy for /erpnext-implementation (primary: ERPNext implementation services Pakistan). */
+/** On-page SEO copy for /erpnext-implementation (Pakistan + GCC). */
 
-export const ERP_PRIMARY_KEYWORD = "ERPNext implementation services in Pakistan";
+export const ERP_PRIMARY_KEYWORD =
+  "ERPNext implementation services in Pakistan and the GCC";
 
 export const ERP_IMPLEMENTATION_SERVICES = [
   {
     name: "ERPNext consulting & requirements audit",
     description:
-      "Process mapping, module selection, and a fixed-scope roadmap before configuration — for SMEs and enterprises across Pakistan.",
+      "Process mapping, module selection, and a fixed-scope roadmap — for SMEs in Pakistan, UAE, Saudi Arabia, and the wider GCC.",
   },
   {
     name: "ERPNext customization (Frappe)",
@@ -26,7 +27,7 @@ export const ERP_IMPLEMENTATION_SERVICES = [
   {
     name: "Integrations & APIs",
     description:
-      "E-commerce, JazzCash, EasyPaisa, biometrics, shipping, and internal tools connected to ERPNext.",
+      "E-commerce, Stripe, regional payment gateways, JazzCash, EasyPaisa, biometrics, shipping, and internal tools connected to ERPNext.",
   },
   {
     name: "Training, go-live & support",
@@ -58,6 +59,36 @@ export const ERP_LOCAL_COVERAGE = [
   },
 ] as const;
 
+export const ERP_GCC_COVERAGE = [
+  {
+    market: "UAE (Dubai & Abu Dhabi)",
+    detail:
+      "Trading, retail, and services — VAT-ready accounting, multi-currency, and warehouse setup for mainland and free-zone style operations.",
+  },
+  {
+    market: "Saudi Arabia (Riyadh & Jeddah)",
+    detail:
+      "Distributors and light manufacturing with purchasing, landed cost, and finance configured for how KSA teams report and audit.",
+  },
+  {
+    market: "Qatar, Kuwait, Bahrain & Oman",
+    detail:
+      "Remote-first ERPNext rollout with timezone-aligned workshops, English documentation, and hosting in AWS regions close to Gulf users.",
+  },
+  {
+    market: "Pakistan ↔ GCC groups",
+    detail:
+      "One ERPNext footprint for import/export businesses with stock in Karachi and sales desks in Dubai — inter-company and consolidated reporting.",
+  },
+] as const;
+
+export const ERP_GCC_HIGHLIGHTS = [
+  "VAT and multi-currency finance for UAE and Saudi operations",
+  "English-first discovery, UAT, and role-based training",
+  "AWS hosting in regions suitable for GCC latency and data residency discussions",
+  "Same delivery team as Pakistan projects — one partner for South Asia and the Gulf",
+] as const;
+
 export const ERP_RELATED_BLOG_LINKS = [
   {
     href: "/blog/erpnext-implementation-guide-pakistan",
@@ -65,7 +96,7 @@ export const ERP_RELATED_BLOG_LINKS = [
   },
   {
     href: "/blog/erpnext-implementation-cost-pakistan",
-    label: "ERPNext implementation cost in Pakistan",
+    label: "ERPNext implementation scope & quoting (Pakistan)",
   },
   {
     href: "/blog/best-erp-software-small-business-pakistan",
