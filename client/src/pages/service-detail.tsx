@@ -23,6 +23,8 @@ import {
   getServicePath,
   SERVICE_META,
 } from "@/lib/service-seo";
+import ServiceVisual from "@/components/services/service-visual";
+import { getServiceVisual } from "@/lib/service-images";
 import {
   Accordion,
   AccordionContent,
@@ -45,6 +47,7 @@ export default function ServiceDetail() {
   const relatedServices = meta.relatedServices
     .map((id) => SERVICE_META[id])
     .filter(Boolean);
+  const heroImage = getServiceVisual(slug);
 
   return (
     <>
@@ -98,6 +101,16 @@ export default function ServiceDetail() {
           </Link>
         )}
       </PageHero>
+
+      {heroImage && (
+        <section className="section-container relative z-10 -mt-4 pb-10">
+          <FadeInSection direction="up">
+            <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden border border-slate-200 shadow-2xl aspect-[2/1] md:aspect-[21/9]">
+              <ServiceVisual serviceId={slug} variant="banner" className="w-full h-full" loading="eager" />
+            </div>
+          </FadeInSection>
+        </section>
+      )}
 
       {/* What we provide */}
       <section className="section-padding-sm section-muted border-b border-slate-200">

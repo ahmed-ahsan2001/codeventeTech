@@ -14,6 +14,7 @@ import {
   getServicePath,
   SERVICE_META,
 } from "@/lib/service-seo";
+import ServiceVisual from "@/components/services/service-visual";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo";
 
 function serviceDetailHref(id: string) {
@@ -59,12 +60,12 @@ export default function Services() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <p className="eyebrow-light mb-3">{String(index + 1).padStart(2, "0")} — Service</p>
-                  <h2 className="heading-section text-slate-900 mb-4">{service.title}</h2>
+                  <p className="eyebrow mb-3">{String(index + 1).padStart(2, "0")} — Service</p>
+                  <h2 className="heading-section text-white mb-4">{service.title}</h2>
                   <p className="text-lead mb-6">{service.description}</p>
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-slate-600 text-sm">
+                      <li key={feature} className="flex items-center text-slate-300 text-sm">
                         <CheckCircle className="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" />
                         {feature}
                       </li>
@@ -88,9 +89,12 @@ export default function Services() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <div className="rounded-xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-electric/10 via-slate-50 to-neon-purple/10 flex items-center justify-center">
-                      <span className="text-6xl font-bold text-slate-200">{String(index + 1).padStart(2, "0")}</span>
-                    </div>
+                    <ServiceVisual
+                      serviceId={service.id}
+                      variant="featured"
+                      className="rounded-xl aspect-[4/3]"
+                      loading={index < 2 ? "eager" : "lazy"}
+                    />
                   </motion.div>
                 </div>
               </div>
@@ -114,16 +118,24 @@ export default function Services() {
                 <FadeInSection key={id} delay={index * 0.08} direction="up">
                   <Link href={getServicePath(id)}>
                     <motion.article
-                      className="card-light p-6 h-full group cursor-pointer"
+                      className="card-light overflow-hidden h-full group cursor-pointer flex flex-col"
                       whileHover={{ y: -4 }}
                     >
+                      <ServiceVisual
+                        serviceId={id}
+                        variant="card"
+                        className="h-44 group-hover:scale-[1.02] transition-transform duration-700"
+                        imageClassName="group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="p-6 flex flex-col flex-1">
                       <h3 className="font-semibold text-slate-900 mb-2 group-hover:text-electric transition-colors">
                         {meta.title}
                       </h3>
                       <p className="text-sm text-slate-600 mb-4">{meta.seoDescription}</p>
-                      <span className="text-sm font-medium text-electric inline-flex items-center gap-1">
+                      <span className="text-sm font-medium text-electric inline-flex items-center gap-1 mt-auto">
                         View service <ArrowUpRight className="w-4 h-4" />
                       </span>
+                      </div>
                     </motion.article>
                   </Link>
                 </FadeInSection>
