@@ -60,13 +60,13 @@ export default function Services() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <p className="eyebrow mb-3">{String(index + 1).padStart(2, "0")} — Service</p>
-                  <h2 className="heading-section text-white mb-4">{service.title}</h2>
-                  <p className="text-lead mb-6">{service.description}</p>
+                  <p className="eyebrow-light mb-3">{String(index + 1).padStart(2, "0")} — Service</p>
+                  <h2 className="heading-section text-slate-900 mb-4">{service.title}</h2>
+                  <p className="text-lead-light mb-6">{service.description}</p>
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-slate-300 text-sm">
-                        <CheckCircle className="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" />
+                      <li key={feature} className="flex items-center text-slate-600 text-sm">
+                        <CheckCircle className="w-4 h-4 text-electric mr-3 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
