@@ -194,15 +194,15 @@ export default function Home() {
                 <div className="p-8 md:p-10 flex flex-col justify-center">
                   <p className="eyebrow-light mb-2">ERPNext Services</p>
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-                    ERPNext Implementation in Pakistan
+                    ERPNext implementation services in Pakistan
                   </h2>
                   <p className="text-slate-600 max-w-xl mb-6">
-                    Deploy, customize, and manage ERPNext for accounting, inventory, HR, and
-                    manufacturing — recently delivered for production clients.
+                    Consulting, customization, migration, and hosting for ERPNext — accounting,
+                    inventory, HR, and manufacturing. Based in Karachi, serving nationwide.
                   </p>
                   <Link href="/erpnext-implementation">
                     <Button className="btn-primary-gradient rounded-xl px-8 py-6 gap-2 w-fit">
-                      ERPNext Implementation Guide
+                      ERPNext implementation services
                       <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>

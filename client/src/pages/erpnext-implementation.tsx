@@ -21,6 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/seo-head";
 import SectionHeader from "@/components/layout/section-header";
+import PageBreadcrumbs from "@/components/layout/page-breadcrumbs";
 import CTABanner from "@/components/layout/cta-banner";
 import FadeInSection from "@/components/animations/FadeInSection";
 import {
@@ -40,8 +41,14 @@ import {
   ERP_CANONICAL_PATH,
   ERP_EXTENDED_FAQS,
   ERP_MODULES,
+  ERP_OG_IMAGE,
   erpAllJsonLd,
 } from "@/lib/erp-seo";
+import {
+  ERP_IMPLEMENTATION_SERVICES,
+  ERP_LOCAL_COVERAGE,
+  ERP_RELATED_BLOG_LINKS,
+} from "@/lib/erp-content";
 import erpTrainingSupport from "@/assets/erp/training-support.png";
 import erpAccountsDashboard from "@/assets/erp/accounts-dashboard.png";
 import erpMigrationCloud from "@/assets/erp/migration-cloud.png";
@@ -166,6 +173,7 @@ export default function ERPNextImplementation() {
         ogTitle={ERP_OG_TITLE}
         ogDescription={ERP_PAGE_DESCRIPTION}
         canonicalPath={ERP_CANONICAL_PATH}
+        ogImage={ERP_OG_IMAGE}
         jsonLd={erpAllJsonLd()}
       />
 
@@ -179,14 +187,21 @@ export default function ERPNextImplementation() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
             >
-              <p className="eyebrow-light mb-5">ERPNext Implementation Partner in Pakistan</p>
+              <PageBreadcrumbs
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Services", href: "/services" },
+                  { label: "ERPNext implementation services" },
+                ]}
+              />
+              <p className="eyebrow-light mb-5">Karachi · Lahore · Islamabad · Nationwide</p>
               <h1 className="heading-display text-slate-900 mb-6">
-                Why CodeVente should be your{" "}
-                <span className="gradient-text">ERPNext implementation partner</span> in Pakistan
+                ERPNext <span className="gradient-text">implementation services</span> in Pakistan
               </h1>
               <p className="text-lead mb-8">
-                End-to-end ERPNext consulting, customization, migration, and go-live — configured
-                for Pakistani tax, inventory, and operations. Recently deployed for production clients.
+                CodeVente delivers ERPNext consulting, customization, migration, integrations, and
+                go-live support — built for Pakistani tax, inventory, and multi-branch operations.
+                Recent production deployments for retail, trading, and manufacturing teams.
               </p>
               <ul className="space-y-3 mb-10">
                 {[
@@ -234,7 +249,7 @@ export default function ERPNextImplementation() {
               <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-white">
                 <img
                   src={erpAccountsDashboard}
-                  alt="ERPNext Accounts Dashboard with financial charts and ageing reports"
+                  alt="ERPNext implementation services in Pakistan — live accounts, billing, and ageing dashboards"
                   className="w-full h-auto object-contain"
                 />
               </div>
@@ -271,7 +286,11 @@ export default function ERPNextImplementation() {
               <p>
                 Implementing ERPNext is not only a software install. It is process design, data
                 cleanup, user adoption, and a stable go-live. We handle the full lifecycle:
-                discovery, configuration, customization, migration, training, and support.
+                discovery, configuration, customization, migration, training, and support — including{" "}
+                <Link href="/hr-software" className="text-electric font-medium hover:underline">
+                  ERPNext HR &amp; payroll
+                </Link>{" "}
+                when your team is ready to move off spreadsheets.
               </p>
             </div>
             <div className="flex items-center gap-2 mt-6 text-sm text-slate-500">
@@ -279,6 +298,57 @@ export default function ERPNextImplementation() {
               Karachi, Lahore, Islamabad, and remote teams worldwide
             </div>
           </FadeInSection>
+        </div>
+      </section>
+
+      <section className="section-padding section-muted" aria-labelledby="erp-services-heading">
+        <div className="section-container">
+          <FadeInSection direction="up">
+            <SectionHeader
+              eyebrow="Services"
+              title="What our ERPNext implementation services include"
+              description="End-to-end delivery from discovery through go-live — one partner for consulting, build, hosting, and support."
+            />
+          </FadeInSection>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+            {ERP_IMPLEMENTATION_SERVICES.map((service, i) => (
+              <FadeInSection key={service.name} delay={i * 0.05}>
+                <article className="card-light h-full p-6 rounded-2xl border border-slate-200">
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{service.name}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{service.description}</p>
+                </article>
+              </FadeInSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding section-light" aria-labelledby="erp-local-heading">
+        <div className="section-container max-w-4xl">
+          <FadeInSection direction="up">
+            <h2 id="erp-local-heading" className="heading-section text-slate-900 mb-4 text-center">
+              ERPNext implementation in Karachi, Lahore &amp; Islamabad
+            </h2>
+            <p className="text-center text-slate-600 text-lead-light mb-10 max-w-2xl mx-auto">
+              Businesses search for an <strong>ERPNext implementation company in Pakistan</strong> they
+              can trust for rollout and long-term support. We combine Frappe development with on-site or
+              remote delivery depending on your city and team structure.
+            </p>
+          </FadeInSection>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {ERP_LOCAL_COVERAGE.map((row, i) => (
+              <FadeInSection key={row.city} delay={i * 0.06}>
+                <motion.article
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                  whileHover={{ y: -2 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <h3 className="font-semibold text-slate-900 mb-2">ERPNext in {row.city}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{row.detail}</p>
+                </motion.article>
+              </FadeInSection>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -625,12 +695,35 @@ export default function ERPNextImplementation() {
       </section>
 
       <section className="section-padding-sm section-muted border-t border-slate-100">
-        <div className="section-container text-center">
+        <div className="section-container text-center max-w-3xl">
+          <h2 className="text-lg font-semibold text-slate-900 mb-2">
+            Guides on ERP &amp; ERPNext in Pakistan
+          </h2>
+          <p className="text-sm text-slate-500 mb-6">
+            Long-form resources that complement our implementation services — useful for finance and IT
+            leads comparing ERP options.
+          </p>
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-8">
+            {ERP_RELATED_BLOG_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href}>
+                  <span className="text-sm font-medium text-electric hover:underline cursor-pointer">
+                    {link.label}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
           <p className="text-sm text-slate-500 mb-4">Related services</p>
           <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/hr-software">
+              <span className="text-sm font-medium text-electric hover:underline cursor-pointer">
+                ERPNext HR &amp; Payroll Software
+              </span>
+            </Link>
             <Link href="/services/web-development">
               <span className="text-sm font-medium text-electric hover:underline cursor-pointer">
-                Web & App Development
+                Web &amp; App Development
               </span>
             </Link>
             <Link href="/services/ai-solutions">
@@ -640,7 +733,7 @@ export default function ERPNextImplementation() {
             </Link>
             <Link href="/contact">
               <span className="text-sm font-medium text-electric hover:underline cursor-pointer">
-                Contact Us
+                Contact CodeVente
               </span>
             </Link>
           </div>

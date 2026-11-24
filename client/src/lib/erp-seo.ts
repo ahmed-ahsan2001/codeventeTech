@@ -25,16 +25,26 @@ export const ERP_KEYWORDS = [
   "ERPNext for small business Pakistan",
   "ERPNext for startups",
   "ERPNext remote implementation",
+  "ERPNext implementation services in Pakistan",
+  "ERPNext implementation company Pakistan",
+  "ERPNext services Pakistan",
+  "ERP implementation services Pakistan",
+  "Frappe ERPNext implementation Karachi",
+  "ERPNext partner Lahore",
+  "open source ERP Pakistan",
 ].join(", ");
 
 export const ERP_PAGE_TITLE =
-  "ERPNext Implementation Partner in Pakistan | CodeVente";
+  "ERPNext Implementation Services in Pakistan | CodeVente Karachi";
 
 export const ERP_PAGE_DESCRIPTION =
-  "CodeVente is an ERPNext implementation partner in Pakistan. Consulting, customization, integration, data migration, cloud or on-premise deployment, training, and post go-live support. Free requirements audit.";
+  "ERPNext implementation services in Pakistan — consulting, customization, data migration, cloud hosting, integrations, and training. CodeVente delivers end-to-end ERPNext for Karachi, Lahore, Islamabad, and nationwide. Free audit.";
 
 export const ERP_OG_TITLE =
-  "ERPNext Implementation Partner in Pakistan — CodeVente";
+  "ERPNext Implementation Services in Pakistan | CodeVente";
+
+/** Page-specific social preview (accounts dashboard). */
+export const ERP_OG_IMAGE = `${SITE_URL}/erpnext-implementation-og.png`;
 
 export const ERP_CANONICAL_PATH = "/erpnext-implementation";
 
@@ -108,6 +118,11 @@ export const ERP_EXTENDED_FAQS = [
     question: "Do you offer post go-live ERPNext support?",
     answer:
       "Yes. Implementation includes go-live hypercare, then optional retainers for updates, new reports, user support, and performance monitoring so the system stays stable after launch.",
+  },
+  {
+    question: "Who provides ERPNext implementation services in Pakistan?",
+    answer:
+      "CodeVente provides full ERPNext implementation services in Pakistan — from discovery and module configuration to Frappe customization, migration, hosting, and training. We are based in Karachi and serve Lahore, Islamabad, and clients nationwide. Request a free requirements audit to scope modules and timeline.",
   },
 ];
 
@@ -208,7 +223,7 @@ export function erpWebPageJsonLd() {
       name: "ERPNext",
       description: "Open-source ERP platform for business management",
     },
-    primaryImageOfPage: `${SITE_URL}/og-image.png`,
+    primaryImageOfPage: ERP_OG_IMAGE,
   };
 }
 
@@ -283,6 +298,28 @@ export function erpProfessionalServiceJsonLd() {
   };
 }
 
+export function erpImplementationServicesListJsonLd() {
+  const services = [
+    "ERPNext consulting and requirements audit",
+    "ERPNext customization and Frappe development",
+    "ERPNext data migration",
+    "ERPNext cloud and on-premise deployment",
+    "ERPNext integrations",
+    "ERPNext training and support",
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "ERPNext implementation services in Pakistan",
+    itemListElement: services.map((name, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name,
+      url: absoluteUrl(ERP_CANONICAL_PATH),
+    })),
+  };
+}
+
 export function erpAllJsonLd() {
   return [
     erpWebPageJsonLd(),
@@ -290,5 +327,6 @@ export function erpAllJsonLd() {
     erpFaqJsonLd(),
     erpBreadcrumbJsonLd(),
     erpProfessionalServiceJsonLd(),
+    erpImplementationServicesListJsonLd(),
   ];
 }

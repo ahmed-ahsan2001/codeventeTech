@@ -79,10 +79,11 @@ export const SERVICE_META: Record<string, ServiceMeta> = {
   "erp-implementation": {
     id: "erp-implementation",
     title: "ERP Implementation & Customization",
-    seoTitle: "ERPNext Implementation Partner in Pakistan | CodeVente",
+    seoTitle: "ERPNext Implementation Services in Pakistan | CodeVente",
     seoDescription:
-      "ERPNext deployment, customization, data migration, and managed hosting for businesses in Pakistan — accounting, inventory, HR, and manufacturing.",
-    keywords: "ERPNext implementation Pakistan, ERP customization Karachi, Frappe ERPNext partner",
+      "ERPNext implementation services in Pakistan — consulting, customization, migration, hosting, integrations, and training for Karachi, Lahore, and nationwide.",
+    keywords:
+      "ERPNext implementation services Pakistan, ERPNext implementation company, ERP customization Karachi, Frappe ERPNext partner",
     canonicalPath: "/erpnext-implementation",
     relatedServices: ["hr-software", "web-development", "ai-solutions"],
     relatedCaseStudies: [],
